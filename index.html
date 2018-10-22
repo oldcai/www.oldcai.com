@@ -93,17 +93,17 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>之前服务器偶尔故障，SSH连不上，只能在IDC的后台去重启机器。这就使得调查导致问题的原因变得十分困难。 于是老蔡查阅“中外典籍”，找到了这个神器：atop atop不仅平时可以帮你自动高亮异常负载（CPU，内存，磁盘，网络），还能每隔15分钟存个档，重启后可以调出来看案发现场是哪个进程出了故障。</p>
-<h2 id="定时保存服务器资源负载数据"><a href="#定时保存服务器资源负载数据" class="headerlink" title="定时保存服务器资源负载数据"></a>定时保存服务器资源负载数据</h2><p><img src="https://www.oldcai.com/wp-content/uploads/2018/10/memory.jpeg" alt=""> 这是老蔡在刚刚不久前通过atop定期记录服务器负载这个功能定位到的一个很低概率发生的内存泄漏导致服务器死机的现场还原截图。 atop默认有个服务，启动服务后，每15分钟存档一次，以天为单位保存成文件。 真相永远只有一个，各位新一姬，还原犯罪现场，找出杀死服务器的真凶吧。</p>
+<h2 id="定时保存服务器资源负载数据"><a href="#定时保存服务器资源负载数据" class="headerlink" title="定时保存服务器资源负载数据"></a>定时保存服务器资源负载数据</h2><p><img src="/images/2018/10/memory.jpeg" alt=""> 这是老蔡在刚刚不久前通过atop定期记录服务器负载这个功能定位到的一个很低概率发生的内存泄漏导致服务器死机的现场还原截图。 atop默认有个服务，启动服务后，每15分钟存档一次，以天为单位保存成文件。 真相永远只有一个，各位新一姬，还原犯罪现场，找出杀死服务器的真凶吧。</p>
 <p>service atop restart</p>
 <p>启动atop记录服务</p>
 <p>atop -r /var/log/atop/atop_20181019</p>
 <p>通过这条命令来查阅记录，进入后，t是下一页，T是上一页，每一页15分钟间隔。</p>
-<h2 id="atop还能自动高亮服务器性能瓶颈"><a href="#atop还能自动高亮服务器性能瓶颈" class="headerlink" title="atop还能自动高亮服务器性能瓶颈"></a>atop还能自动高亮服务器性能瓶颈</h2><p><img src="https://www.oldcai.com/wp-content/uploads/2018/10/io.jpeg" alt=""> 拿一台磁盘IO基本已经快到顶的服务器举例，atop会自动标红DSK的busy程度。 以往我们排查问题的时候，可能会需要用各种工具查看，比如htop，iotop，iostat，nload，iftop，等等，最后过了半个小时说不定才可以找到问题（还看经验是否丰富），而用atop可以轻松察觉。</p>
+<h2 id="atop还能自动高亮服务器性能瓶颈"><a href="#atop还能自动高亮服务器性能瓶颈" class="headerlink" title="atop还能自动高亮服务器性能瓶颈"></a>atop还能自动高亮服务器性能瓶颈</h2><p><img src="/images/2018/10/io.jpeg" alt=""> 拿一台磁盘IO基本已经快到顶的服务器举例，atop会自动标红DSK的busy程度。 以往我们排查问题的时候，可能会需要用各种工具查看，比如htop，iotop，iostat，nload，iftop，等等，最后过了半个小时说不定才可以找到问题（还看经验是否丰富），而用atop可以轻松察觉。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.oldcai.com/archives/1226/" data-id="cjnkmvrk1001l0pc8yvbie3gl" class="article-share-link">Share</a>
+      <a data-url="https://www.oldcai.com/archives/1226/" data-id="cjnkn7sua001lcmc821pxzjjx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/atop/">atop</a></li></ul>
@@ -153,7 +153,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.oldcai.com/archives/1217/" data-id="cjnkmvrk0001i0pc8cs3hf7pk" class="article-share-link">Share</a>
+      <a data-url="https://www.oldcai.com/archives/1217/" data-id="cjnkn7su9001jcmc851524bw6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -189,7 +189,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="https://www.oldcai.com/wp-content/uploads/2017/12/golang-exiting-null.png" alt=""> 早前一直用<a href="http://go-ide.com/" target="_blank" rel="noopener">go-ide</a>写golang，最近JetBrains出了GoLand，好像于是就自动把go-ide卸载了，老蔡又有点舍不得买JetBrains一年几千块的全家桶，于是想试试Visual Studio Code，写平时只是玩耍，用的不是很多的golang和nodejs。但是就碰到了如图所示的情况——一个简单的hello world都遇到了问题——提示Process exiting with code: null。 这时，可以验证一下是否是golang的调试器dlv出了问题，验证方法如下：</p>
+        <p><img src="/images/2017/12/golang-exiting-null.png" alt=""> 早前一直用<a href="http://go-ide.com/" target="_blank" rel="noopener">go-ide</a>写golang，最近JetBrains出了GoLand，好像于是就自动把go-ide卸载了，老蔡又有点舍不得买JetBrains一年几千块的全家桶，于是想试试Visual Studio Code，写平时只是玩耍，用的不是很多的golang和nodejs。但是就碰到了如图所示的情况——一个简单的hello world都遇到了问题——提示Process exiting with code: null。 这时，可以验证一下是否是golang的调试器dlv出了问题，验证方法如下：</p>
 <p>dlv -h</p>
 <p>如果和老蔡这边碰到的情况一样，会返回结果：<code>[1] 34378 killed</code> dlv <code>-h</code> 明确了原因，就容易对症下药了。 如果是在Mac下，我们运行如下命令：</p>
 <p>brew install go-delve/delve/delve<br>cd $GOPATH/src/github.com/derekparker<br>rm -rf delve/<br>git clone <a href="https://github.com/derekparker/delve" target="_blank" rel="noopener">https://github.com/derekparker/delve</a><br>cd delve<br>CERT=dlv-cert make install</p>
@@ -198,7 +198,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.oldcai.com/archives/1205/" data-id="cjnkmvrjx001f0pc89arqwodm" class="article-share-link">Share</a>
+      <a data-url="https://www.oldcai.com/archives/1205/" data-id="cjnkn7su7001hcmc8xscrr9ce" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/golang/">golang</a></li></ul>
@@ -244,12 +244,12 @@
 <p>&lt;?php<br>/**<br> * Displays footer site info<br> *<br> * @package WordPress<br> * @subpackage Twenty_Seventeen<br> * @since 1.0<br> * @version 1.0<br> */<br>?&gt;<br> <a href="<?php echo esc\_url( \_\_( 'https://wordpress.org/', 'twentyseventeen' ) ); ?>">&lt;?php printf( __( ‘Proudly powered by %s’, ‘twentyseventeen’ ), ‘WordPress’ ); ?&gt;</a><br><!-- .site-info --></p>
 <p>修改后文件如下：</p>
 <p>&lt;?php<br>/**<br> * Displays footer site info<br> *<br> * @package WordPress<br> * @subpackage Twenty_Seventeen<br> * @since 1.0<br> * @version 1.0<br> */<br>?&gt;<br> <a href="<?php echo esc\_url( \_\_( 'https://wordpress.org/', 'twentyseventeen' ) ); ?>">&lt;?php printf( __( ‘Proudly powered by %s’, ‘twentyseventeen’ ), ‘WordPress’ ); ?&gt;</a><br> |<br> <span><a href="http://www.miitbeian.gov.cn/" rel="external nofollow" target="_blank">哪ICP备XXXXXXXX号</a></span><br><!-- .site-info --></p>
-<p>显示效果如下： <img src="https://www.oldcai.com/wp-content/uploads/2017/12/20171212_12.jpg" alt=""> 本方法可能只适用于WordPress 4，以后版本还需要验证，欢迎验证后的朋友留言告知。</p>
+<p>显示效果如下： <img src="/images/2017/12/20171212_12.jpg" alt=""> 本方法可能只适用于WordPress 4，以后版本还需要验证，欢迎验证后的朋友留言告知。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.oldcai.com/archives/1200/" data-id="cjnkmvrjw001b0pc8klrlrsxq" class="article-share-link">Share</a>
+      <a data-url="https://www.oldcai.com/archives/1200/" data-id="cjnkn7su5001dcmc8out89uti" class="article-share-link">Share</a>
       
       
     </footer>
@@ -306,7 +306,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.oldcai.com/archives/1187/" data-id="cjnkmvrjv00190pc8dgvfuy4x" class="article-share-link">Share</a>
+      <a data-url="https://www.oldcai.com/archives/1187/" data-id="cjnkn7su4001bcmc8ynmpiesr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -356,7 +356,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.oldcai.com/archives/1165/" data-id="cjnkmvrju00150pc8s2ni53d1" class="article-share-link">Share</a>
+      <a data-url="https://www.oldcai.com/archives/1165/" data-id="cjnkn7su30016cmc83i3tnf6d" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/F-Stack/">F-Stack</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/高性能/">高性能</a></li></ul>
@@ -402,7 +402,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.oldcai.com/archives/1162/" data-id="cjnkmvrjs00130pc8i75sbdzb" class="article-share-link">Share</a>
+      <a data-url="https://www.oldcai.com/archives/1162/" data-id="cjnkn7su00014cmc8y4koq5g7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -438,7 +438,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="https://www.oldcai.com/wp-content/uploads/2017/05/1493751258.jpeg" alt=""></p>
+        <p><img src="/images/2017/05/1493751258.jpeg" alt=""></p>
 <p>这个问题需要站在两个角度来看：文件丢失之前，文件丢失之后。比如和家人的照片，丢失之前可能无所谓，换一块几百块钱的硬盘都不一定舍得；丢失之后，可能修理店喊1000块也想恢复过来。</p>
 <p>国外有一家专门做备份的公司，叫BackBlaze。</p>
 <p>之前还是因为在挑选服务器硬盘品牌的时候，找到他们的一篇<a href="https://www.backblaze.com/blog/what-hard-drive-should-i-buy/" target="_blank" rel="noopener">硬盘平均寿命统计</a>的文章，当时感觉他们至少是在对待数据安全性和降低成本上面比别人更认真，就上了贼船。</p>
@@ -452,11 +452,11 @@
 <h3 id="继续订购的理由只需要一个"><a href="#继续订购的理由只需要一个" class="headerlink" title="继续订购的理由只需要一个"></a>继续订购的理由只需要一个</h3><ol>
 <li>数据一旦丢失，即使可以通过各种方法找回来，但是至少需要半天时间。 假设$50是老蔡半天的收入，以后这个占比可能更小， 而以后多浪费半天的时间在没有意义的事情上面，是极其不划算的。</li>
 </ol>
-<p>这是最主要的原因，当然，也列一下一些其他的理由，以便说服将来的自己。 <img src="https://www.oldcai.com/wp-content/uploads/2017/05/1493751829_1.jpeg" alt=""></p>
+<p>这是最主要的原因，当然，也列一下一些其他的理由，以便说服将来的自己。 <img src="/images/2017/05/1493751829_1.jpeg" alt=""></p>
 <ol>
 <li>作为备选方案，即使家中失窃，也能保证不丢失任何数据。</li>
 </ol>
-<p><img src="https://www.oldcai.com/wp-content/uploads/2017/05/1493751932_1.jpeg" alt=""></p>
+<p><img src="/images/2017/05/1493751932_1.jpeg" alt=""></p>
 <ol>
 <li>想要有个说走就走的旅行？再也不用在临行前还在等待路上可能要用到的办公文件从iMac里拷贝到rMBP里了。</li>
 </ol>
@@ -466,7 +466,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.oldcai.com/archives/1150/" data-id="cjnkmvrjp000x0pc8z6ts8vaa" class="article-share-link">Share</a>
+      <a data-url="https://www.oldcai.com/archives/1150/" data-id="cjnkn7sty000ycmc8o7v5gs14" class="article-share-link">Share</a>
       
       
     </footer>
@@ -510,7 +510,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.oldcai.com/archives/1144/" data-id="cjnkmvrjk000q0pc82gub83l1" class="article-share-link">Share</a>
+      <a data-url="https://www.oldcai.com/archives/1144/" data-id="cjnkn7stu000rcmc8l4fmee4a" class="article-share-link">Share</a>
       
       
     </footer>
@@ -574,7 +574,7 @@ max_open_files: 1020000
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.oldcai.com/archives/1123/" data-id="cjnkmvrjl000r0pc8wc17rsvs" class="article-share-link">Share</a>
+      <a data-url="https://www.oldcai.com/archives/1123/" data-id="cjnkn7stt000qcmc85o0blopj" class="article-share-link">Share</a>
       
       
     </footer>

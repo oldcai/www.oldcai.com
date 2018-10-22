@@ -15,12 +15,12 @@
 <meta property="og:site_name" content="老蔡博客">
 <meta property="og:description" content="早前一直用go-ide写golang，最近JetBrains出了GoLand，好像于是就自动把go-ide卸载了，老蔡又有点舍不得买JetBrains一年几千块的全家桶，于是想试试Visual Studio Code，写平时只是玩耍，用的不是很多的golang和nodejs。但是就碰到了如图所示的情况——一个简单的hello world都遇到了问题——提示Process exiting with">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://www.oldcai.com/wp-content/uploads/2017/12/golang-exiting-null.png">
-<meta property="og:updated_time" content="2018-10-22T17:45:58.662Z">
+<meta property="og:image" content="https://www.oldcai.com/images/2017/12/golang-exiting-null.png">
+<meta property="og:updated_time" content="2018-10-22T18:51:00.502Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="VS Code运行golang报错Process exiting with code: null的解决办法">
 <meta name="twitter:description" content="早前一直用go-ide写golang，最近JetBrains出了GoLand，好像于是就自动把go-ide卸载了，老蔡又有点舍不得买JetBrains一年几千块的全家桶，于是想试试Visual Studio Code，写平时只是玩耍，用的不是很多的golang和nodejs。但是就碰到了如图所示的情况——一个简单的hello world都遇到了问题——提示Process exiting with">
-<meta name="twitter:image" content="https://www.oldcai.com/wp-content/uploads/2017/12/golang-exiting-null.png">
+<meta name="twitter:image" content="https://www.oldcai.com/images/2017/12/golang-exiting-null.png">
   
     <link rel="alternate" href="/atom.xml" title="老蔡博客" type="application/atom+xml">
   
@@ -97,7 +97,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="https://www.oldcai.com/wp-content/uploads/2017/12/golang-exiting-null.png" alt=""> 早前一直用<a href="http://go-ide.com/" target="_blank" rel="noopener">go-ide</a>写golang，最近JetBrains出了GoLand，好像于是就自动把go-ide卸载了，老蔡又有点舍不得买JetBrains一年几千块的全家桶，于是想试试Visual Studio Code，写平时只是玩耍，用的不是很多的golang和nodejs。但是就碰到了如图所示的情况——一个简单的hello world都遇到了问题——提示Process exiting with code: null。 这时，可以验证一下是否是golang的调试器dlv出了问题，验证方法如下：</p>
+        <p><img src="/images/2017/12/golang-exiting-null.png" alt=""> 早前一直用<a href="http://go-ide.com/" target="_blank" rel="noopener">go-ide</a>写golang，最近JetBrains出了GoLand，好像于是就自动把go-ide卸载了，老蔡又有点舍不得买JetBrains一年几千块的全家桶，于是想试试Visual Studio Code，写平时只是玩耍，用的不是很多的golang和nodejs。但是就碰到了如图所示的情况——一个简单的hello world都遇到了问题——提示Process exiting with code: null。 这时，可以验证一下是否是golang的调试器dlv出了问题，验证方法如下：</p>
 <p>dlv -h</p>
 <p>如果和老蔡这边碰到的情况一样，会返回结果：<code>[1] 34378 killed</code> dlv <code>-h</code> 明确了原因，就容易对症下药了。 如果是在Mac下，我们运行如下命令：</p>
 <p>brew install go-delve/delve/delve<br>cd $GOPATH/src/github.com/derekparker<br>rm -rf delve/<br>git clone <a href="https://github.com/derekparker/delve" target="_blank" rel="noopener">https://github.com/derekparker/delve</a><br>cd delve<br>CERT=dlv-cert make install</p>
@@ -106,7 +106,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.oldcai.com/archives/1205/" data-id="cjnkmvrjx001f0pc89arqwodm" class="article-share-link">Share</a>
+      <a data-url="https://www.oldcai.com/archives/1205/" data-id="cjnkn7su7001hcmc8xscrr9ce" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/golang/">golang</a></li></ul>
