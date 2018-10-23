@@ -7,7 +7,7 @@
       <link href="/hexo/wordpress-to-hexo-lose-return/"/>
       <url>/hexo/wordpress-to-hexo-lose-return/</url>
       
-        <content type="html"><![CDATA[<p>刚从 WordPress 转到 Hexo 的时候，很多文章文字都挤在一团，很不方便阅读。</p><h2 id="替换代码："><a href="#替换代码：" class="headerlink" title="替换代码："></a>替换代码：</h2><figure class="highlight bash"><figcaption><span>空格替换回回车</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -d <span class="built_in">source</span>/_posts/archives/* | xargs perl -pi -e <span class="string">'s|(?&lt;!^)(?&lt;![~`!@#$%^&amp;*()\-_=+\\\|.,&lt;&gt;/?;: #\w\d]) |\n\n|g'</span></span><br></pre></td></tr></table></figure><p>运行上面代码，再稍微整理一下，就好看多了。</p><p>因为替换时的正则表达式用到了<a href="/hexoprograming/regex/">零宽正回顾断言</a>，所以，并不会影响英文和代码的正常显示。</p><h3 id="替换前："><a href="#替换前：" class="headerlink" title="替换前："></a>替换前：</h3><p><img src="/images/2018/10/content-no-return.jpg" alt="从WordPress导入过来的没回车的文章"></p><h3 id="替换后："><a href="#替换后：" class="headerlink" title="替换后："></a>替换后：</h3><p><img src="/images/2018/10/content-with-return.jpg" alt="替换好回车的文章"></p>]]></content>
+        <content type="html"><![CDATA[<p>刚从 WordPress 转到 Hexo 的时候，很多文章文字都挤在一团，很不方便阅读。</p><h2 id="替换代码："><a href="#替换代码：" class="headerlink" title="替换代码："></a>替换代码：</h2><figure class="highlight bash"><figcaption><span>空格替换回回车</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -d <span class="built_in">source</span>/_posts/archives/* | xargs perl -pi -e <span class="string">'s|(?&lt;!^)(?&lt;![~`!@#$%^&amp;*()\-_=+\\\|.,&lt;&gt;/?;: #\w\d]) |\n\n|g'</span></span><br></pre></td></tr></table></figure><p>运行上面代码，再稍微整理一下，就好看多了。</p><p>因为替换时的正则表达式用到了<a href="/hexoprograming/regex/">零宽正回顾断言</a>，所以，并不会影响英文和代码的正常显示。</p><p>但是，不管怎样，还是要记得先把文章备份。</p><h3 id="替换前："><a href="#替换前：" class="headerlink" title="替换前："></a>替换前：</h3><p><img src="/images/2018/10/content-no-return.jpg" alt="从WordPress导入过来的没回车的文章"></p><h3 id="替换后："><a href="#替换后：" class="headerlink" title="替换后："></a>替换后：</h3><p><img src="/images/2018/10/content-with-return.jpg" alt="替换好回车的文章"></p>]]></content>
       
       
       <categories>
@@ -1339,12 +1339,12 @@
       <link href="/archives/681/"/>
       <url>/archives/681/</url>
       
-        <content type="html"><![CDATA[<p><a href="/images/2013/04/wise-women-as-css-properties.gif"><img src="/images/2013/04/wise-women-as-css-properties.gif" alt="wise-women-as-css-properties"></a> 老蔡很喜欢，不知道是不是跨浏览器兼容的哈。</p><p> 不过应该是.wise_women，聪明的女人可不止一个^_^（#wise_women只能匹配给一个wise women……）。</p><p>转自<a href="http://dribbble.com/patrick_spiers" target="_blank" rel="noopener">http://dribbble.com/patrick_spiers</a>，</p>]]></content>
+        <content type="html"><![CDATA[<p><a href="/images/2013/04/wise-women-as-css-properties.gif"><img src="/images/2013/04/wise-women-as-css-properties.gif" alt="wise-women-as-css-properties"></a> 老蔡很喜欢，不知道是不是跨浏览器兼容的哈。</p><p>不过应该是.wise_women，聪明的女人可不止一个^_^<br>#wise_women只能匹配一个wise women……</p><p>转自<a href="http://dribbble.com/patrick_spiers" target="_blank" rel="noopener">http://dribbble.com/patrick_spiers</a>，</p>]]></content>
       
       
       <categories>
           
-          <category> web design </category>
+          <category> 前端 </category>
           
       </categories>
       
