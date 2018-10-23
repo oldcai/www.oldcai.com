@@ -1,729 +1,275 @@
 <!DOCTYPE html>
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
-  
-
-  
-  <title>老蔡博客</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta property="og:type" content="website">
 <meta property="og:title" content="老蔡博客">
 <meta property="og:url" content="https://www.oldcai.com/page/2/index.html">
 <meta property="og:site_name" content="老蔡博客">
 <meta property="og:locale" content="default">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="老蔡博客">
-  
-    <link rel="alternate" href="/atom.xml" title="老蔡博客" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/css/style.css">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>老蔡博客</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/atom.xml" title="老蔡博客" type="application/atom+xml">
+    
 </head>
-</html>
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">老蔡博客</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">老蔡的总结和思考</a>
-        </h2>
-      
+
+<body class="max-width mx-auto px3 ltr">
+    
+    <div class="content index py4">
+        
+          <header id="header">
+  <a href="/">
+  
+    
+      <div id="logo" style="background-image: url(/images/logo.png);"></div>
+    
+  
+    <div id="title">
+      <h1>老蔡博客</h1>
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://www.oldcai.com"></form>
-      </div>
-    </div>
+  </a>
+  <div id="nav">
+    <ul>
+      <li class="icon">
+        <a href="#"><i class="fas fa-bars fa-2x"></i></a>
+      </li>
+       
+        <li><a href="/">Home</a></li>
+       
+        <li><a href="/about/">About</a></li>
+       
+        <li><a href="/archives/">Writing</a></li>
+       
+        <li><a href="/search/">Search</a></li>
+      
+    </ul>
   </div>
 </header>
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-archives/1116" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/archives/1116/" class="article-date">
-  <time datetime="2016-06-13T14:01:16.000Z" itemprop="datePublished">2016-06-13</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/linux/">linux</a>►<a class="article-category-link" href="/categories/linux/工具/">工具</a>►<a class="article-category-link" href="/categories/linux/工具/服务器运维/">服务器运维</a>
-  </div>
 
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
         
+        <section id="about">
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/archives/1116/">Docker的坑——Docker不好、不方便的地方</a>
-    </h1>
   
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>有太多的人一直在说docker的好处，当然，老蔡也肯定，并且拥抱docker，不过在此记录一点不一样的声音，增加一下多样性。</p>
-<h2 id="一、难以动态映射端口"><a href="#一、难以动态映射端口" class="headerlink" title="一、难以动态映射端口"></a>一、难以动态映射端口</h2><p>老蔡使用docker很大程度上是因为需要水平扩展高系统开销的应用，而想优雅地将水平扩展做到自动化——auto scaling，自动化端口映射就必不可少。 在docker中，启动一个container可以设置-p参数，指定publish的端口，但是多不同状态的容器就需要额外的管理程序来管理映射。 举个栗子，如果是一个IDC需要加入利用docker来运行用户的虚拟主机，需要将域名动态映射到端口，这时，一个虚拟主机的网页从服务器接收请求到运行虚拟主机中的程序的中间，就需要二次开发一层管理映射、映射关系的程序，对维护性和性能都有影响。 如果有管理映射的API直接提供更好。</p>
-<h2 id="二、默认监听IPV6，无法指定IPV4"><a href="#二、默认监听IPV6，无法指定IPV4" class="headerlink" title="二、默认监听IPV6，无法指定IPV4"></a>二、默认监听IPV6，无法指定IPV4</h2><p>想暴露在公网的服务，监听不了0.0.0.0，默认监听的IPV6地址，手动设置都不行，只能通过TCP转发的方式给外网访问。 设计者大概没考虑过第三世界人民的使用😂</p>
-<h2 id="不过，总体来说，docker还是很棒的"><a href="#不过，总体来说，docker还是很棒的" class="headerlink" title="不过，总体来说，docker还是很棒的"></a>不过，总体来说，docker还是很棒的</h2><p>使用docker的过程中，很意外的，遇到的挫折很少，这在使用linux下的软件的时候是很少见的。 docker爆炸性增长的社区会带着docker不断完善和进步，在未来，docker会变得更棒。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://www.oldcai.com/archives/1116/" data-id="cjnl7jnku000k0qc8a0k1160k" class="article-share-link">Share</a>
-      
-        <a href="https://www.oldcai.com/archives/1116/#disqus_thread" class="article-comment-link">Comments</a>
+    <p>
+      Find me on
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/">docker</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-archives/1049" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/archives/1049/" class="article-date">
-  <time datetime="2015-08-29T05:53:37.000Z" itemprop="datePublished">2015-08-29</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Mac/">Mac</a>►<a class="article-category-link" href="/categories/Mac/工具/">工具</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+      
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/archives/1049/">小鹤双拼形码百度Mac版本的短语库</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>注意：导入后会导致短暂僵死，并且，再次进入百度输入法的偏好设置就会僵死并退出，无法再次设置；但是形码可以正常使用。</strong> 下载请点击→<a href="http://www.oldcai.com/wp-content/uploads/2015/08/Mac百度输入法小鹤形码短语库.zip">Mac百度输入法小鹤形码短语库</a> 这个文件是根据小鹤官方提供的百度输入法PC版挂接改的。 按理说鼠须管输入法也是极好的，所以网上很少看到有人折腾Mac上的其他小鹤输入法的方案，但是我觉得我更习惯有短语输入、大词库、长句输入能力的。 很早以前用的智能ABC就是小词库，打字上屏的确定性确实很强，但是，后来用了sogou拼音，让算法去把最可能需要上屏的词排在最前排，打字速度才提升了一个等级。我个人似乎是一点都不怀念小词库的。 百度输入法外挂词组的方案也会存在问题：用百度输入法的时候，单字或许可以使用形码，词组就会把形码当作第二个词的声母。所以一般来说，不是要打需要翻很多页的字基本用不上。 最后，感谢<a href="https://chojemmy.wordpress.com/2015/08/14/%E6%97%A0%E6%89%80%E4%BA%8B%E4%BA%8B%E7%9A%84%E6%84%9F%E8%A7%89/" target="_blank" rel="noopener">@ChoJemmy</a>，是他成功学习了双拼，才激励得我有兴趣花时间去学习它。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://www.oldcai.com/archives/1049/" data-id="cjnl7jnko000a0qc827y2uaaz" class="article-share-link">Share</a>
-      
-        <a href="https://www.oldcai.com/archives/1049/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/小鹤双拼/">小鹤双拼</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-archives/1046" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/archives/1046/" class="article-date">
-  <time datetime="2015-08-16T15:18:28.000Z" itemprop="datePublished">2015-08-16</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Business/">Business</a>►<a class="article-category-link" href="/categories/Business/思考/">思考</a>►<a class="article-category-link" href="/categories/Business/思考/搜索引擎/">搜索引擎</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+          <a class="icon" target="_blank" href="https://github.com/oldcai/">
+            <i class="fab fa-github"></i><!--
+      ---></a><!--
+    ---><!--
+    --->, 
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/archives/1046/">从Google到Alphabet，是从创造论到进化论。</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
       
-        <p>关闭Google Wave，关闭Google Reader，以及即将关闭的Google Code，过去的很长一段时间内，Google都是在创造和关闭一个个项目中度过的。有人专门整理了<a href="https://qdan.me/list/VQJbSSERPShZYvg9" target="_blank" rel="noopener">一个列表</a>，盘点出Google近几年一共关闭和替换的项目有21个。一度大家认为Google这个Web 1.0时代的巨头已经无法融入Web 2.0时代。 是什么原因让Google这样靠技术变革爆发的帝国在另一场变革面前接连受挫，而Alphabet接管后可以摆脱逆境？</p>
-<h3 id="第一，避开了Google作为母公司以搜索的中心的公司本能"><a href="#第一，避开了Google作为母公司以搜索的中心的公司本能" class="headerlink" title="第一，避开了Google作为母公司以搜索的中心的公司本能"></a>第一，避开了Google作为母公司以搜索的中心的公司本能</h3><p>公司业务其他项目，比如Android能脱离搜索引擎的束缚，更加旺盛地发展。公司业务能够多样化地繁荣，为进化出卓越的产品提供可能性。</p>
-<h3 id="第二，企业角色由创造者转向投资者"><a href="#第二，企业角色由创造者转向投资者" class="headerlink" title="第二，企业角色由创造者转向投资者"></a>第二，企业角色由创造者转向投资者</h3><p>放弃上帝视角对于事必躬亲，热衷于掌管权利的人来说绝对是反人性的——开车的人大多都喜欢那种驾驭感，甚至坐在副驾驶上都是一种煎熬。 但是，把企业看做一个生态系统，一家公司看做一个物种，用合理的标准淘汰物种，生态系统才可持续。Google向Alphabet的转变，让每家公司成为了一个独立的生物。让决策者从时时事事的微观决策转向宏观格局的决策的转变，是一个由术向道的飞跃。</p>
-<h3 id="第三，团队领头人由职业经理人转向了创业者"><a href="#第三，团队领头人由职业经理人转向了创业者" class="headerlink" title="第三，团队领头人由职业经理人转向了创业者"></a>第三，团队领头人由职业经理人转向了创业者</h3><p>传统企业经理人的激情远没有创业者高昂。创业者面对的是自己的事业，想做成杰出；经理人面对的是一份工作，想做到没有差错，甚至觉得不是最差就够了。</p>
-<blockquote>
-<p>求其上，得其中；求其中，得其下；求其下，必败。 —— 《孙子兵法》</p>
-</blockquote>
-<p>一个求其上，一个求其下，结局不言自明。 祝福Google成功进化，Alphabet中的大G不会孤单。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://www.oldcai.com/archives/1046/" data-id="cjnl7jnkr000f0qc8zt2kjcde" class="article-share-link">Share</a>
-      
-        <a href="https://www.oldcai.com/archives/1046/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-archives/1031" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/archives/1031/" class="article-date">
-  <time datetime="2015-03-16T10:55:22.000Z" itemprop="datePublished">2015-03-16</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Mac/">Mac</a>►<a class="article-category-link" href="/categories/Mac/软件评测/">软件评测</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/archives/1031/">Mac OS X上使用Microsoft Sculpt Ergonomic鼠标的Windows键</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>老蔡昨天学习了下Karabiner的使用方法，并<a href="http://www.oldcai.com/archives/1029" title="Mac OS X中将失灵的小键盘映射成标准键盘(利用Karabiner)">用Karabiner将小键盘映射成标准键值</a>，也一起解决了微软鼠标上面Win键在Mac下无用的问题。下面来介绍一下如何用Karabiner改键把Microsoft Sculpt Ergonomic（微软小馒头）鼠标改成OS X下面的Mission Control。</p>
-<ol>
-<li>先用系统的“键盘-修饰键”功能，把Microsoft 2.5GHz Transceiver v9.0原先的Command改成Option</li>
-<li>然后用Karabiner把右边的Option改成鼠标5键</li>
-<li>然后在“设置-Mission Control”中把Mission Control启动加上鼠标5键</li>
-</ol>
-<p><strong>这样改键的副作用</strong>是现在右边的Option键不能正常用，可以自行在修饰键中把原⌘ Command换成自己不常用的右边的键。因为Command+Backspace是删除文件，经常用到的，而右Option则暂时对老蔡没有用处，所以如此设置。</p>
-<item><br>    <name>Change mouse win to button5</name><br>    <identifier>private.change_mousewin_to_button5</identifier><br>    <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::VK_MOUSEKEY_BUTTON_BUTTON5</autogen><br></item>
-
-<p>Mission Control确实是极好的，此外，老蔡还把鼠标中键设置成了显示桌面，虽然桌面上面是空的，但是内心还是感觉效率提高了好多啊。。。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://www.oldcai.com/archives/1031/" data-id="cjnl7jnkn00090qc85xzb95qb" class="article-share-link">Share</a>
-      
-        <a href="https://www.oldcai.com/archives/1031/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Karabiner/">Karabiner</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/解决办法/">解决办法</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-archives/1029" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/archives/1029/" class="article-date">
-  <time datetime="2015-03-15T17:30:34.000Z" itemprop="datePublished">2015-03-16</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Mac/">Mac</a>►<a class="article-category-link" href="/categories/Mac/软件评测/">软件评测</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+          <a class="icon" target="_blank" href="https://twitter.com/oldcai">
+            <i class="fab fa-twitter"></i><!--
+      ---></a><!--
+    ---><!--
+    ---> and 
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/archives/1029/">Mac OS X中将失灵的小键盘映射成标准键盘(利用Karabiner)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
       
-        <p>用Mac OS X的时候，外接的键盘上面的小键盘(Key Pad)在一些程序上会失灵，比如iTerm2就会无法使用小键盘上面的数字回车加号减号星号斜杠。今天老蔡终于找到了一款可以解决这个问题的软件：Karabiner。 <a href="https://github.com/tekezo/Karabiner" target="_blank" rel="noopener">Karabiner</a>是一款能帮Mac OS X改键的软件，键盘鼠标的键都可以改。 映射小键盘上面的星号、加号比较不同，需要把键位映射成组合键，其他的都是可以直接映射的。 至于如何导入配置，可以参考<a href="https://pqrs.org/osx/karabiner/document.html.en#privatexml" target="_blank" rel="noopener">How to add your own settings</a> 配置如下：</p>
-<p>&lt;?xml version=”1.0”?&gt;</p>
-<root><br><item><br><name>Change KeyPad 0 to Num 0</name><br><identifier>private.change_keypad0_to_num0</identifier><br><autogen>__KeyToKey__ KeyCode::KEYPAD_0, KeyCode::KEY_0</autogen><br></item><br><item><br><name>Change KeyPad 1 to Num 1</name><br><identifier>private.change_keypad1_to_num1</identifier><br><autogen>__KeyToKey__ KeyCode::KEYPAD_1, KeyCode::KEY_1</autogen><br></item><br><item><br><name>Change KeyPad 2 to Num 2</name><br><identifier>private.change_keypad2_to_num2</identifier><br><autogen>__KeyToKey__ KeyCode::KEYPAD_2, KeyCode::KEY_2</autogen><br></item><br><item><br><name>Change KeyPad 3 to Num 3</name><br><identifier>private.change_keypad3_to_num3</identifier><br><autogen>__KeyToKey__ KeyCode::KEYPAD_3, KeyCode::KEY_3</autogen><br></item><br><item><br><name>Change KeyPad 4 to Num 4</name><br><identifier>private.change_keypad4_to_num4</identifier><br><autogen>__KeyToKey__ KeyCode::KEYPAD_4, KeyCode::KEY_4</autogen><br></item><br><item><br><name>Change KeyPad 5 to Num 5</name><br><identifier>private.change_keypad5_to_num5</identifier><br><autogen>__KeyToKey__ KeyCode::KEYPAD_5, KeyCode::KEY_5</autogen><br></item><br><item><br><name>Change KeyPad 6 to Num 6</name><br><identifier>private.change_keypad6_to_num6</identifier><br><autogen>__KeyToKey__ KeyCode::KEYPAD_6, KeyCode::KEY_6</autogen><br></item><br><item><br><name>Change KeyPad 7 to Num 7</name><br><identifier>private.change_keypad7_to_num7</identifier><br><autogen>__KeyToKey__ KeyCode::KEYPAD_7, KeyCode::KEY_7</autogen><br></item><br><item><br><name>Change KeyPad 8 to Num 8</name><br><identifier>private.change_keypad8_to_num8</identifier><br><autogen>__KeyToKey__ KeyCode::KEYPAD_8, KeyCode::KEY_8</autogen><br></item><br><item><br><name>Change KeyPad 9 to Num 9</name><br><identifier>private.change_keypad9_to_num9</identifier><br><autogen>__KeyToKey__ KeyCode::KEYPAD_9, KeyCode::KEY_9</autogen><br></item><br><item><br><name>Change KeyPad / to /</name><br><identifier>private.change_keypadslash_to_shift_slash</identifier><br><autogen>__KeyToKey__ KeyCode::KEYPAD_SLASH, KeyCode::SLASH</autogen><br></item><br><item><br><name>Change KeyPad * to shift+8</name><br><identifier>private.change_keypadasterisk_to_shift_shift_8</identifier><br><autogen>__KeyToKey__ KeyCode::KEYPAD_MULTIPLY, KeyCode::KEY_8, ModifierFlag::SHIFT_L</autogen><br></item><br><item><br><name>Change KeyPad - to -</name><br><identifier>private.change_keypadminus_to_shift_minus</identifier><br><autogen>__KeyToKey__ KeyCode::KEYPAD_MINUS, KeyCode::MINUS</autogen><br></item><br><item><br><name>Change KeyPad + to shift+=</name><br><identifier>private.change_keypadplus_to_shift_plus</identifier><br><autogen>__KeyToKey__ KeyCode::KEYPAD_PLUS, KeyCode::EQUAL, ModifierFlag::SHIFT_L</autogen><br></item><br><item><br><name>Change KeyPad Enter to Return</name><br><identifier>private.change_keypad_enter_to_return</identifier><br><autogen>__KeyToKey__ KeyCode::ENTER, KeyCode::RETURN</autogen><br></item><br><item><br><name>Change KeyPad Dot to Dot</name><br><identifier>private.change_keypad_dot_to_dot</identifier><br><autogen>__KeyToKey__ KeyCode::KEYPAD_DOT, KeyCode::DOT</autogen><br></item><br></root>
-
-<p>  本文是受到了oschina上的<a href="http://my.oschina.net/ioslighter" target="_blank" rel="noopener">@yoyoso</a>的一篇不完整的映射方案启发后探索和调试数个小时整理出来的。感谢@yoyoso同学。 使用发生错误之类的欢迎留言。 另外如果有兴趣，折腾完了键盘，可以继续折腾一下鼠标：<a href="http://www.oldcai.com/archives/1031" title="Mac OS X上使用Microsoft Sculpt Ergonomic鼠标的Windows键">Karabiner改鼠标上的快捷键</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://www.oldcai.com/archives/1029/" data-id="cjnl7jnkl00060qc8flcsseaz" class="article-share-link">Share</a>
-      
-        <a href="https://www.oldcai.com/archives/1029/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Karabiner/">Karabiner</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/解决办法/">解决办法</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-archives/1026" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/archives/1026/" class="article-date">
-  <time datetime="2015-01-25T13:24:51.000Z" itemprop="datePublished">2015-01-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/linux/">linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/archives/1026/">降级linux内核，以Ubuntu 14.04为例，降级系统内核</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>升级linux内核，普遍使用系统提供的功能 <code>sudo apt-get dist-upgrade</code> 降级就比较麻烦了，需要我们自己手动安装。</p>
-<p>下面老蔡以Ubuntu 14.04为例，从内核版本linux-headers-3.13.0-44降级到linux-headers-3.13.0-24为例，来演示下怎么降级linux内核。</p>
-<p>sudo aptitude install -y linux-image-3.13.0-24-generic \<br>     linux-headers-3.13.0-24</p>
-<p><code>grep submenu /boot/grub/grub.cfg</code>  </p>
-<p>看到父选项</p>
-<blockquote>
-<p>Advanced options for Ubuntu</p>
-</blockquote>
-<p><code>grep menuentry /boot/grub/grub.cfg</code></p>
-<p>看到子选项</p>
-<blockquote>
-<p>Ubuntu, with Linux 3.13.0-24-generic</p>
-</blockquote>
-<p>其他版本也可以从执行结果中选取相应的。</p>
-<p>然后修改/etc/default/grub文件</p>
-<p><code>sudo vim /etc/default/grub</code> 将其中</p>
-<blockquote>
-<p>GRUB_DEFAULT=0</p>
-</blockquote>
-<p>改为</p>
-<blockquote>
-<p>GRUB_DEFAULT=”Advanced options for Ubuntu&gt;Ubuntu, with Linux 3.13.0-24-generic”</p>
-</blockquote>
-<p>然后执行</p>
-<p><code>sudo update-grub</code></p>
-<p>此时如果有错误，则检查GRUB_DEFAULT是否需要将前面部分”Advanced options for Ubuntu&gt;”去掉后重新执行，可能你的不在次级选项中。</p>
-<p>没有什么错误提示，即可reboot重启。</p>
-<p>重新连接上后，检查uname -a，如果已经到目的版本，则说明成功了。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://www.oldcai.com/archives/1026/" data-id="cjnl7jnkk00050qc8iu2p8r1o" class="article-share-link">Share</a>
-      
-        <a href="https://www.oldcai.com/archives/1026/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/内核/">内核</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/降级/">降级</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-archives/1018" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/archives/1018/" class="article-date">
-  <time datetime="2015-01-20T09:13:01.000Z" itemprop="datePublished">2015-01-20</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/网站/">网站</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+          <a class="icon" target="_blank" href="mailto:oldcai@live.com">
+            <i class="fas fa-envelope"></i><!--
+      ---></a><!--
+      ---><!--
+    --->.
         
+      
+    </p>
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/archives/1018/">namesilo优惠码使用攻略：【namesilo长期$7左右】注册更新转入，不用再苦找godaddy优惠码</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>减1美元优惠码： namesilo1dollar<br>首次转入、新注册、更新都可以用，有效期至2021。<br>namesilo的链接是：<a href="https://www.namesilo.com/" target="_blank" rel="noopener">https://www.namesilo.com/</a><br>如果觉得本文有帮助，可以访问[<a href="http://www.namesilo.com/register.php?rid=e01d243rt" target="_blank" rel="noopener">这个链接</a>]去注册。</p>
-<p>namesilo相比godaddy等域名注册服务商的特色：</p>
-<ul>
-<li>不用再为了低价折腾，节约时间</li>
-<li>免费域名隐私保护</li>
-</ul>
-<p>支持的付款方式：</p>
-<ul>
-<li><strong>支付宝</strong></li>
-<li>paypal</li>
-<li>信用卡</li>
-<li><strong>比特币</strong></li>
-<li>Google Wallet</li>
-<li>skrill</li>
-<li>dwolla</li>
-<li>电汇</li>
-</ul>
-<p>转入价格表：<br><img src="http://ww1.sinaimg.cn/large/72d31d4ftw1efys646sw5j20i801idfw.jpg" alt=""></p>
-<p>更新域名价格表：<br><img src="http://ww1.sinaimg.cn/large/72d31d4ftw1efys9sp8fpj20i706eabg.jpg" alt=""></p>
-<h3 id="新注册域名价格超实惠"><a href="#新注册域名价格超实惠" class="headerlink" title="新注册域名价格超实惠"></a>新注册域名价格超实惠</h3><p>经常性的活动注册价格表，有时候更低，两三刀就可以注册com<br><img src="https://ws1.sinaimg.cn/large/bf0b9338gy1fm87q6bxo8j20ip0b0ju1.jpg" alt=""><br>很少的没活动的时间段的注册价格表：<br><img src="http://ww1.sinaimg.cn/large/72d31d4fgw1efytgf4sywj20i907tjt8.jpg" alt=""><br>未加入折扣计划，更新和新注册com是$8.99，加入后$8.89或者更低，具体看表。</p>
-<p>注意：加入namesilo折扣计划后，充值最小金额$50，所以如果低于$50的需求，最好先充够这次需要使用的金额后再加入域名优惠计划，因为只有用账户余额付款才能按折扣计算价格。<br>加入namesilo折扣计划：注册后在[<a href="https://www.namesilo.com/account_discount_program.php" target="_blank" rel="noopener">这个页面</a>]最上面打钩<br>和其他一些域名注册商价格对比表：<br><img src="http://ww2.sinaimg.cn/large/72d31d4ftw1efys93zd7aj20i80avq5h.jpg" alt=""><br>还参考过一家internetbs价格也是普通用户$8.99，但是价格梯度要在拥有2500个域名的时候才能到$8.49，其他的域名商价格感觉就更没什么优势了。<br>如果觉得有帮助或者有建议，欢迎你留言告知我让我得知，这对我是很大的激励，让我继续保持动力创作。<br>最后，减1美元优惠码奉上，有效期至2021：<br>namesilo1dollar<br>首次转入、新注册、更新都可以用。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://www.oldcai.com/archives/1018/" data-id="cjnl7jnkd00010qc8dokzs8l5" class="article-share-link">Share</a>
-      
-        <a href="https://www.oldcai.com/archives/1018/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/godaddy/">godaddy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/域名/">域名</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/隐私保护/">隐私保护</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-archives/1012" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/archives/1012/" class="article-date">
-  <time datetime="2015-01-14T15:46:01.000Z" itemprop="datePublished">2015-01-14</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Marketing/">Marketing</a>►<a class="article-category-link" href="/categories/Marketing/思考/">思考</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/archives/1012/">营销传导的是用户拥有产品后的感受还是产品本身？</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>[embed]<a href="https://www.youtube.com/watch?v=wTcNtgA6gHs\[/embed\]" target="_blank" rel="noopener">https://www.youtube.com/watch?v=wTcNtgA6gHs\[/embed\]</a> 今天听Louis说gopro的小众营销的概念，就去<a href="http://gopro.com/" target="_blank" rel="noopener">gopro首页</a>看了看，感觉首页的视频确实让人内心澎湃，转载了过来，如果未能显示请搜索关键词“科学上网”并参考。 视频从头到尾并没有对产品本身的任何介绍，甚至掐头去尾的话不太看得出是摄像机的广告。而且整个视频没有一个字、一个特写的画面来描述产品本身，甚至除了开头引用的一句海伦凯勒的“Life is either an incredible adventure or it’s nothing at all.”，就没有其他语言了。 任由观众去想象拥有了gopro以后的感觉，想要拥有这样的经历，成为这样的人。 <a href="http://www.oldcai.com/wp-content/uploads/2015/01/mac-pro-ad.png"><img src="http://www.oldcai.com/wp-content/uploads/2015/01/mac-pro-ad.png" alt="mac-pro-ad"></a> 而<a href="https://www.apple.com/hk/en/mac-pro/" target="_blank" rel="noopener">mac pro</a>的导入页面又是另外一个极端，把产品剖开给你看，让你赞叹产品本身，想拥有它。 内在的逻辑在哪里呢？ 在马斯洛人类需求层次里，最基本的需求，比如温饱这样的生理需求，在人看到食物的时候就能条件反射到对它的需要；而更高级点的需求，比如尊重、自我实现这样的需求大多数人不能直接通过产品本身就能条件反射出需要它的情感。 所以，难道说，现在电脑已经变成了一种生理需求？2333</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://www.oldcai.com/archives/1012/" data-id="cjnl7jnk700000qc8bcdhmyaz" class="article-share-link">Share</a>
-      
-        <a href="https://www.oldcai.com/archives/1012/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gopro/">gopro</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mac-pro/">mac pro</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-archives/1005" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/archives/1005/" class="article-date">
-  <time datetime="2014-12-01T16:53:08.000Z" itemprop="datePublished">2014-12-02</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Mac/">Mac</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/archives/1005/">清理Avast trusted CA根证书，直接删除Avast后的残留证书</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>一些不讲卫生的程序总会留下一些残留，比如杀毒软件。 Avast直接从应用程序扔进垃圾桶后会有一些残留的东西，真正的卸载应该重新运行安装包后运行卸载程序。 但是如果我们已经删除掉了应用程序，卸载程序已经没法清理Avast trusted CA根证书文件了，怎么办呢？ 在控制台运行一下这条命令：</p>
-<p>sudo security delete-certificate -c “Avast trusted CA” \<br>/System/Library/Keychains/SystemRootCertificates.keychain</p>
-<p>再看看钥匙串里就没有Avast trusted CA的根证书了吧，是不是感觉整个人都干净了呢~</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://www.oldcai.com/archives/1005/" data-id="cjnl7jnki00040qc87f82ipxu" class="article-share-link">Share</a>
-      
-        <a href="https://www.oldcai.com/archives/1005/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/解决办法/">解决办法</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-archives/992" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/archives/992/" class="article-date">
-  <time datetime="2014-07-27T02:40:56.000Z" itemprop="datePublished">2014-07-27</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/工具/">工具</a>►<a class="article-category-link" href="/categories/工具/软件评测/">软件评测</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/archives/992/">自动搜索并复制SSH Public Key的Alfred Workflow</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>前几天老蔡买了Alfred的Powerpack，工作效率果然提升了很多。 它对效率的提升体现在可以将原本需要多个步骤完成的工作，简单地呼出并输入一行命令就完成了。 比如对于SSH的Public Key， 每次我们都需要五个步骤才能复制到剪切板：</p>
-<ol>
-<li>打开终端或者文件浏览器</li>
-<li>定位到需要复制的key</li>
-<li>打开它的pub文件</li>
-<li>全选</li>
-<li>复制</li>
-</ol>
-<p>现在老蔡写了一个Workflow，原先五个步骤才能完成的操作，现在，热键呼出输入框，输入前几个字母就自动查找到key，回车就可以复制到剪切板。 2015-12-07更新： 选中密钥文件后按住command(⌘)+回车，生成一段脚本自动生成<strong>~/.ssh/authorized_keys</strong>文件，更大限度简化了部署新服务器的操作。 <a href="http://www.oldcai.com/wp-content/uploads/2014/07/copy-public-key.png"><img src="http://www.oldcai.com/wp-content/uploads/2014/07/copy-public-key.png" alt="filter public key"></a></p>
-<p>It helps you to find and copy SSH public key by just type a few letters and enter.</p>
-<p>2015-12-07 Updates: It even creates shell script to help you generate <strong>~/.ssh/authorized_keys</strong> file. Just hold Command(⌘) + Enter to select your key file, it would be copied to your clipboard.</p>
-<p>Works with <strong>Alfred 2.8.1</strong>. The newest version so far. Hope you’ll enjoy it.</p>
-<p>Workflow文件下载： <a href="http://www.oldcai.com/wp-content/uploads/2014/07/Copy-SSH-Public-Key.zip">Copy SSH Public Key</a> Packal链接：<a href="http://www.packal.org/workflow/copy-ssh-public-key" target="_blank" rel="noopener">http://www.packal.org/workflow/copy-ssh-public-key</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://www.oldcai.com/archives/992/" data-id="cjnl7jnpm00ad0qc8x5ljy6be" class="article-share-link">Share</a>
-      
-        <a href="https://www.oldcai.com/archives/992/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Alfred-Workflow/">Alfred Workflow</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/public-key/">public key</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ssh/">ssh</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
-
-  <nav id="page-nav">
-    
-    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
-  </nav>
-
 </section>
+
+<section id="writing">
+  <span class="h1"><a href="/archives">Writing</a></span>
+  
+  <ul class="post-list">
+    
+      
+    
+    
+      <li class="post-item">
         
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Business/">Business</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Business/思考/">思考</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Business/思考/搜索引擎/">搜索引擎</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Cloud/">Cloud</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Cloud/软件评测/">软件评测</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/IT评论/">IT评论</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/IT评论/算法/">算法</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/IT评论/算法/编程/">编程</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mac/">Mac</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Mac/工具/">工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mac/软件评测/">软件评测</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Marketing/">Marketing</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Marketing/思考/">思考</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/linux/工具/">工具</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/linux/工具/服务器运维/">服务器运维</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/数据库/">数据库</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/linux/数据库/服务器运维/">服务器运维</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/服务器运维/">服务器运维</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/linux/服务器运维/软件评测/">软件评测</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/编程/">编程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/网站/">网站</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/web-design/">web design</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/不敢联想/">不敢联想</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/不敢联想/工具/">工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/不敢联想/日记/">日记</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/人工智能/">人工智能</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具/">工具</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/工具/编程/">编程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具/软件评测/">软件评测</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/思考/">思考</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/思考/构架/">构架</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/思考/译文/">译文</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/思考/软件/">软件</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/搜索引擎/">搜索引擎</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/搜索引擎/网站/">网站</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/搜索引擎/网站/网站运营/">网站运营</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/编程/">编程</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/新玩意/">新玩意</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/新玩意/网站/">网站</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/新玩意/网站/网站运营/">网站运营</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/日记/">日记</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/日记/生活杂记/">生活杂记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/日记/网站/">网站</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/日记/网站/网站运营/">网站运营</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/日记/视频欣赏/">视频欣赏</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/服务器运维/">服务器运维</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/服务器运维/构架/">构架</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/服务器运维/构架/软件评测/">软件评测</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/未分类/">未分类</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/游戏/">游戏</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活杂记/">生活杂记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/电子产品/">电子产品</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程/">编程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/网站/">网站</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/网站运营/">网站运营</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/英语学习/">英语学习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/视频欣赏/">视频欣赏</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/诗歌/">诗歌</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件评测/">软件评测</a></li></ul>
+    <div class="meta">
+        <time datetime="2018-10-22T15:45:13.000Z" itemprop="datePublished">2018-10-22</time>
     </div>
-  </div>
 
 
-  
+        <span>
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/404/">404</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Alfred-Workflow/">Alfred Workflow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ApacheBench/">ApacheBench</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Builder/">C++ Builder</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CPU-Hour/">CPU Hour</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome插件/">Chrome插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DSL/">DSL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Discuz/">Discuz</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/">Django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Evernote/">Evernote</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/F-Stack/">F-Stack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GAE/">GAE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google/">Google</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google-Adsense/">Google Adsense</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google-Plus/">Google Plus</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IT幽默笑话/">IT幽默笑话</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Karabiner/">Karabiner</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kloxo/">Kloxo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LNK2019/">LNK2019</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Logo/">Logo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenSSL/">OpenSSL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PostgreSQL/">PostgreSQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PyCharm/">PyCharm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/QT/">QT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RPG/">RPG</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ruby/">Ruby</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ruby-on-Rails/">Ruby on Rails</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ruby类库/">Ruby类库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SEO技术分析/">SEO技术分析</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL2000/">SQL2000</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sina-App-Engine/">Sina App Engine</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sublime-Text/">Sublime Text</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VB/">VB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VS2008/">VS2008</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WLAN上网/">WLAN上网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web服务器/">Web服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wiz/">Wiz</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/access/">access</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/alias/">alias</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android手机/">android手机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/atop/">atop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/debian/">debian</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/debian-6-0/">debian 6.0</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/function/">function</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gnome/">gnome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/godaddy/">godaddy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/golang/">golang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gollum/">gollum</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gopro/">gopro</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/go语言/">go语言</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/group/">group</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hashmap/">hashmap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kde/">kde</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kubuntu/">kubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux命令/">linux命令</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux小技巧/">linux小技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux磁盘管理/">linux磁盘管理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac-pro/">mac pro</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/milestone2/">milestone2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mount-umount/">mount/umount</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/procedure/">procedure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/public-key/">public key</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/qr-code/">qr code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rewrite/">rewrite</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/">ssh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/v2ex/">v2ex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vanilla/">vanilla</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wordpress/">wordpress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/下载/">下载</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/书评/">书评</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/乱码/">乱码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/人人网/">人人网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/介绍/">介绍</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/代码对齐/">代码对齐</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/代码高亮/">代码高亮</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/伦敦/">伦敦</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/修理/">修理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/元编程/">元编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/内存/">内存</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/内容农场/">内容农场</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/内核/">内核</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/内涵/">内涵</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/凑字数/">凑字数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数/">函数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/创意/">创意</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/创新工场/">创新工场</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/办事/">办事</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动态GIF/">动态GIF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/北京/">北京</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/升级/">升级</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单词辨析/">单词辨析</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/南方/">南方</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客/">博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/压力测试/">压力测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/友情链接/">友情链接</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/和谐/">和谐</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图文/">图文</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/垃圾站/">垃圾站</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/域名/">域名</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/大学岁月/">大学岁月</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/天气/">天气</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/太子党/">太子党</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/奥运会/">奥运会</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/字符串/">字符串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习计划/">学习计划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/寻址搜索/">寻址搜索</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小兵传奇/">小兵传奇</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小号/">小号</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小型超市管理系统/">小型超市管理系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小说/">小说</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小鹤双拼/">小鹤双拼</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工作/">工作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/应用/">应用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微动开关/">微动开关</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/快捷键/">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/我在武汉/">我在武汉</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/手机应用/">手机应用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/打字/">打字</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/技巧/">技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/抽象/">抽象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/捕鼠达人/">捕鼠达人</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/接口/">接口</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/控制台/">控制台</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/插件/">插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/搜索引擎/">搜索引擎</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/搜索结果/">搜索结果</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/搬家/">搬家</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/支付宝/">支付宝</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数学论证/">数学论证</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据溢出/">数据溢出</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/文件同步/">文件同步</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/文档工具/">文档工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/新少林寺/">新少林寺</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/方言/">方言</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/日记/">日记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/显示/">显示</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/概念手机/">概念手机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模拟经营/">模拟经营</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/注释/">注释</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器/">浏览器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/淘宝商城/">淘宝商城</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/游戏编程/">游戏编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/潮湿/">潮湿</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爱情/">爱情</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/用户体验/">用户体验</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/登录器/">登录器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/盈利/">盈利</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/程序/">程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/程序崩溃/">程序崩溃</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笑话/">笑话</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记本/">笔记本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记软件/">笔记软件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法的道理/">算法的道理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/管理制度/">管理制度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程/">编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编译/">编译</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编辑器/">编辑器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网上银行/">网上银行</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站/">网站</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站备案/">网站备案</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网页游戏/">网页游戏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/腾讯/">腾讯</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自动登录/">自动登录</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/萝莉/">萝莉</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/葡萄酒/">葡萄酒</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/蛋疼/">蛋疼</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/视频/">视频</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/解决办法/">解决办法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/解耦/">解耦</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/论文/">论文</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/评测/">评测</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/路径/">路径</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件评测/">软件评测</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/进化论/">进化论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/送礼/">送礼</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/遍历/">遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/遍历文件夹/">遍历文件夹</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/道德/">道德</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/邮政储蓄/">邮政储蓄</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/重启/">重启</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/金山卫士/">金山卫士</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/钱/">钱</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/闷热/">闷热</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/降级/">降级</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/隐私保护/">隐私保护</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试/">面试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/首页/">首页</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/高性能/">高性能</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/黑名单/">黑名单</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/鼠标/">鼠标</a></li></ul>
+        <a class="" href="/hexo/wordpress-to-hexo-lose-return/">WordPress 转 Hexo 后，回车变成空格的问题解决</a>
+    
+
+
+</span>
+      </li>
+    
+      <li class="post-item">
+        
+    <div class="meta">
+        <time datetime="2018-10-21T13:19:01.000Z" itemprop="datePublished">2018-10-21</time>
     </div>
-  </div>
 
 
-  
+        <span>
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/404/" style="font-size: 10px;">404</a> <a href="/tags/Alfred-Workflow/" style="font-size: 10px;">Alfred Workflow</a> <a href="/tags/ApacheBench/" style="font-size: 10px;">ApacheBench</a> <a href="/tags/C/" style="font-size: 20px;">C++</a> <a href="/tags/C-Builder/" style="font-size: 12.86px;">C++ Builder</a> <a href="/tags/CPU-Hour/" style="font-size: 10px;">CPU Hour</a> <a href="/tags/Chrome插件/" style="font-size: 12.86px;">Chrome插件</a> <a href="/tags/DSL/" style="font-size: 10px;">DSL</a> <a href="/tags/Discuz/" style="font-size: 10px;">Discuz</a> <a href="/tags/Django/" style="font-size: 10px;">Django</a> <a href="/tags/Evernote/" style="font-size: 10px;">Evernote</a> <a href="/tags/F-Stack/" style="font-size: 10px;">F-Stack</a> <a href="/tags/GAE/" style="font-size: 10px;">GAE</a> <a href="/tags/Google/" style="font-size: 14.29px;">Google</a> <a href="/tags/Google-Adsense/" style="font-size: 10px;">Google Adsense</a> <a href="/tags/Google-Plus/" style="font-size: 10px;">Google Plus</a> <a href="/tags/IT幽默笑话/" style="font-size: 10px;">IT幽默笑话</a> <a href="/tags/Karabiner/" style="font-size: 11.43px;">Karabiner</a> <a href="/tags/Kloxo/" style="font-size: 11.43px;">Kloxo</a> <a href="/tags/LNK2019/" style="font-size: 10px;">LNK2019</a> <a href="/tags/Logo/" style="font-size: 10px;">Logo</a> <a href="/tags/MongoDB/" style="font-size: 11.43px;">MongoDB</a> <a href="/tags/OpenSSL/" style="font-size: 10px;">OpenSSL</a> <a href="/tags/PHP/" style="font-size: 18.57px;">PHP</a> <a href="/tags/PostgreSQL/" style="font-size: 10px;">PostgreSQL</a> <a href="/tags/PyCharm/" style="font-size: 10px;">PyCharm</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/QT/" style="font-size: 12.86px;">QT</a> <a href="/tags/RPG/" style="font-size: 10px;">RPG</a> <a href="/tags/Ruby/" style="font-size: 15.71px;">Ruby</a> <a href="/tags/Ruby-on-Rails/" style="font-size: 10px;">Ruby on Rails</a> <a href="/tags/Ruby类库/" style="font-size: 10px;">Ruby类库</a> <a href="/tags/SEO技术分析/" style="font-size: 10px;">SEO技术分析</a> <a href="/tags/SQL2000/" style="font-size: 10px;">SQL2000</a> <a href="/tags/Sina-App-Engine/" style="font-size: 12.86px;">Sina App Engine</a> <a href="/tags/Sublime-Text/" style="font-size: 11.43px;">Sublime Text</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/VB/" style="font-size: 10px;">VB</a> <a href="/tags/VS2008/" style="font-size: 10px;">VS2008</a> <a href="/tags/WLAN上网/" style="font-size: 10px;">WLAN上网</a> <a href="/tags/Web服务器/" style="font-size: 10px;">Web服务器</a> <a href="/tags/Wiz/" style="font-size: 10px;">Wiz</a> <a href="/tags/access/" style="font-size: 10px;">access</a> <a href="/tags/alias/" style="font-size: 10px;">alias</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/android手机/" style="font-size: 10px;">android手机</a> <a href="/tags/atop/" style="font-size: 10px;">atop</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/debian/" style="font-size: 10px;">debian</a> <a href="/tags/debian-6-0/" style="font-size: 10px;">debian 6.0</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/function/" style="font-size: 10px;">function</a> <a href="/tags/gnome/" style="font-size: 10px;">gnome</a> <a href="/tags/godaddy/" style="font-size: 10px;">godaddy</a> <a href="/tags/golang/" style="font-size: 10px;">golang</a> <a href="/tags/gollum/" style="font-size: 10px;">gollum</a> <a href="/tags/gopro/" style="font-size: 10px;">gopro</a> <a href="/tags/go语言/" style="font-size: 10px;">go语言</a> <a href="/tags/group/" style="font-size: 10px;">group</a> <a href="/tags/hashmap/" style="font-size: 10px;">hashmap</a> <a href="/tags/kde/" style="font-size: 11.43px;">kde</a> <a href="/tags/kubuntu/" style="font-size: 10px;">kubuntu</a> <a href="/tags/linux命令/" style="font-size: 10px;">linux命令</a> <a href="/tags/linux小技巧/" style="font-size: 10px;">linux小技巧</a> <a href="/tags/linux磁盘管理/" style="font-size: 10px;">linux磁盘管理</a> <a href="/tags/mac-pro/" style="font-size: 10px;">mac pro</a> <a href="/tags/milestone2/" style="font-size: 10px;">milestone2</a> <a href="/tags/mount-umount/" style="font-size: 10px;">mount/umount</a> <a href="/tags/mysql/" style="font-size: 11.43px;">mysql</a> <a href="/tags/procedure/" style="font-size: 10px;">procedure</a> <a href="/tags/public-key/" style="font-size: 10px;">public key</a> <a href="/tags/qr-code/" style="font-size: 10px;">qr code</a> <a href="/tags/rewrite/" style="font-size: 10px;">rewrite</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/v2ex/" style="font-size: 10px;">v2ex</a> <a href="/tags/vanilla/" style="font-size: 10px;">vanilla</a> <a href="/tags/wordpress/" style="font-size: 15.71px;">wordpress</a> <a href="/tags/下载/" style="font-size: 10px;">下载</a> <a href="/tags/书评/" style="font-size: 10px;">书评</a> <a href="/tags/乱码/" style="font-size: 10px;">乱码</a> <a href="/tags/人人网/" style="font-size: 11.43px;">人人网</a> <a href="/tags/介绍/" style="font-size: 10px;">介绍</a> <a href="/tags/代码对齐/" style="font-size: 10px;">代码对齐</a> <a href="/tags/代码高亮/" style="font-size: 10px;">代码高亮</a> <a href="/tags/伦敦/" style="font-size: 10px;">伦敦</a> <a href="/tags/修理/" style="font-size: 10px;">修理</a> <a href="/tags/元编程/" style="font-size: 10px;">元编程</a> <a href="/tags/内存/" style="font-size: 10px;">内存</a> <a href="/tags/内容农场/" style="font-size: 12.86px;">内容农场</a> <a href="/tags/内核/" style="font-size: 10px;">内核</a> <a href="/tags/内涵/" style="font-size: 10px;">内涵</a> <a href="/tags/凑字数/" style="font-size: 10px;">凑字数</a> <a href="/tags/函数/" style="font-size: 10px;">函数</a> <a href="/tags/创意/" style="font-size: 10px;">创意</a> <a href="/tags/创新工场/" style="font-size: 10px;">创新工场</a> <a href="/tags/办事/" style="font-size: 10px;">办事</a> <a href="/tags/动态GIF/" style="font-size: 10px;">动态GIF</a> <a href="/tags/北京/" style="font-size: 10px;">北京</a> <a href="/tags/升级/" style="font-size: 11.43px;">升级</a> <a href="/tags/单词辨析/" style="font-size: 10px;">单词辨析</a> <a href="/tags/南方/" style="font-size: 10px;">南方</a> <a href="/tags/博客/" style="font-size: 12.86px;">博客</a> <a href="/tags/压力测试/" style="font-size: 10px;">压力测试</a> <a href="/tags/友情链接/" style="font-size: 11.43px;">友情链接</a> <a href="/tags/和谐/" style="font-size: 10px;">和谐</a> <a href="/tags/图文/" style="font-size: 10px;">图文</a> <a href="/tags/垃圾站/" style="font-size: 10px;">垃圾站</a> <a href="/tags/域名/" style="font-size: 10px;">域名</a> <a href="/tags/大学岁月/" style="font-size: 11.43px;">大学岁月</a> <a href="/tags/天气/" style="font-size: 10px;">天气</a> <a href="/tags/太子党/" style="font-size: 10px;">太子党</a> <a href="/tags/奥运会/" style="font-size: 10px;">奥运会</a> <a href="/tags/字符串/" style="font-size: 10px;">字符串</a> <a href="/tags/学习计划/" style="font-size: 10px;">学习计划</a> <a href="/tags/寻址搜索/" style="font-size: 10px;">寻址搜索</a> <a href="/tags/小兵传奇/" style="font-size: 10px;">小兵传奇</a> <a href="/tags/小号/" style="font-size: 10px;">小号</a> <a href="/tags/小型超市管理系统/" style="font-size: 10px;">小型超市管理系统</a> <a href="/tags/小说/" style="font-size: 10px;">小说</a> <a href="/tags/小鹤双拼/" style="font-size: 10px;">小鹤双拼</a> <a href="/tags/工作/" style="font-size: 11.43px;">工作</a> <a href="/tags/应用/" style="font-size: 10px;">应用</a> <a href="/tags/微动开关/" style="font-size: 10px;">微动开关</a> <a href="/tags/快捷键/" style="font-size: 12.86px;">快捷键</a> <a href="/tags/我在武汉/" style="font-size: 10px;">我在武汉</a> <a href="/tags/手机应用/" style="font-size: 10px;">手机应用</a> <a href="/tags/打字/" style="font-size: 10px;">打字</a> <a href="/tags/技巧/" style="font-size: 10px;">技巧</a> <a href="/tags/抽象/" style="font-size: 11.43px;">抽象</a> <a href="/tags/捕鼠达人/" style="font-size: 10px;">捕鼠达人</a> <a href="/tags/接口/" style="font-size: 10px;">接口</a> <a href="/tags/控制台/" style="font-size: 10px;">控制台</a> <a href="/tags/插件/" style="font-size: 11.43px;">插件</a> <a href="/tags/搜索引擎/" style="font-size: 10px;">搜索引擎</a> <a href="/tags/搜索结果/" style="font-size: 10px;">搜索结果</a> <a href="/tags/搬家/" style="font-size: 10px;">搬家</a> <a href="/tags/支付宝/" style="font-size: 10px;">支付宝</a> <a href="/tags/数学论证/" style="font-size: 10px;">数学论证</a> <a href="/tags/数据溢出/" style="font-size: 10px;">数据溢出</a> <a href="/tags/文件同步/" style="font-size: 11.43px;">文件同步</a> <a href="/tags/文档工具/" style="font-size: 10px;">文档工具</a> <a href="/tags/新少林寺/" style="font-size: 10px;">新少林寺</a> <a href="/tags/方言/" style="font-size: 10px;">方言</a> <a href="/tags/日记/" style="font-size: 10px;">日记</a> <a href="/tags/显示/" style="font-size: 12.86px;">显示</a> <a href="/tags/概念手机/" style="font-size: 10px;">概念手机</a> <a href="/tags/模拟经营/" style="font-size: 10px;">模拟经营</a> <a href="/tags/注释/" style="font-size: 10px;">注释</a> <a href="/tags/浏览器/" style="font-size: 10px;">浏览器</a> <a href="/tags/淘宝商城/" style="font-size: 10px;">淘宝商城</a> <a href="/tags/游戏编程/" style="font-size: 11.43px;">游戏编程</a> <a href="/tags/潮湿/" style="font-size: 10px;">潮湿</a> <a href="/tags/爱情/" style="font-size: 10px;">爱情</a> <a href="/tags/用户体验/" style="font-size: 11.43px;">用户体验</a> <a href="/tags/登录器/" style="font-size: 10px;">登录器</a> <a href="/tags/盈利/" style="font-size: 10px;">盈利</a> <a href="/tags/程序/" style="font-size: 11.43px;">程序</a> <a href="/tags/程序崩溃/" style="font-size: 11.43px;">程序崩溃</a> <a href="/tags/笑话/" style="font-size: 10px;">笑话</a> <a href="/tags/笔记本/" style="font-size: 10px;">笔记本</a> <a href="/tags/笔记软件/" style="font-size: 10px;">笔记软件</a> <a href="/tags/算法/" style="font-size: 11.43px;">算法</a> <a href="/tags/算法的道理/" style="font-size: 10px;">算法的道理</a> <a href="/tags/管理制度/" style="font-size: 10px;">管理制度</a> <a href="/tags/编程/" style="font-size: 12.86px;">编程</a> <a href="/tags/编译/" style="font-size: 10px;">编译</a> <a href="/tags/编辑器/" style="font-size: 11.43px;">编辑器</a> <a href="/tags/网上银行/" style="font-size: 10px;">网上银行</a> <a href="/tags/网站/" style="font-size: 10px;">网站</a> <a href="/tags/网站备案/" style="font-size: 10px;">网站备案</a> <a href="/tags/网页游戏/" style="font-size: 11.43px;">网页游戏</a> <a href="/tags/腾讯/" style="font-size: 10px;">腾讯</a> <a href="/tags/自动登录/" style="font-size: 11.43px;">自动登录</a> <a href="/tags/萝莉/" style="font-size: 10px;">萝莉</a> <a href="/tags/葡萄酒/" style="font-size: 10px;">葡萄酒</a> <a href="/tags/蛋疼/" style="font-size: 10px;">蛋疼</a> <a href="/tags/视频/" style="font-size: 10px;">视频</a> <a href="/tags/解决办法/" style="font-size: 17.14px;">解决办法</a> <a href="/tags/解耦/" style="font-size: 10px;">解耦</a> <a href="/tags/论文/" style="font-size: 11.43px;">论文</a> <a href="/tags/评测/" style="font-size: 10px;">评测</a> <a href="/tags/路径/" style="font-size: 10px;">路径</a> <a href="/tags/软件评测/" style="font-size: 11.43px;">软件评测</a> <a href="/tags/进化论/" style="font-size: 10px;">进化论</a> <a href="/tags/送礼/" style="font-size: 10px;">送礼</a> <a href="/tags/遍历/" style="font-size: 10px;">遍历</a> <a href="/tags/遍历文件夹/" style="font-size: 10px;">遍历文件夹</a> <a href="/tags/道德/" style="font-size: 10px;">道德</a> <a href="/tags/邮政储蓄/" style="font-size: 10px;">邮政储蓄</a> <a href="/tags/重启/" style="font-size: 10px;">重启</a> <a href="/tags/金山卫士/" style="font-size: 10px;">金山卫士</a> <a href="/tags/钱/" style="font-size: 10px;">钱</a> <a href="/tags/闷热/" style="font-size: 10px;">闷热</a> <a href="/tags/降级/" style="font-size: 10px;">降级</a> <a href="/tags/隐私保护/" style="font-size: 10px;">隐私保护</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a> <a href="/tags/首页/" style="font-size: 11.43px;">首页</a> <a href="/tags/高性能/" style="font-size: 10px;">高性能</a> <a href="/tags/黑名单/" style="font-size: 10px;">黑名单</a> <a href="/tags/鼠标/" style="font-size: 10px;">鼠标</a>
+        <a class="" href="/programing/regex/">正则表达式进阶，零宽正回顾断言，零宽负回顾断言</a>
+    
+
+
+</span>
+      </li>
+    
+      <li class="post-item">
+        
+    <div class="meta">
+        <time datetime="2018-10-21T04:45:13.000Z" itemprop="datePublished">2018-10-21</time>
     </div>
-  </div>
 
-  
+
+        <span>
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">July 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">June 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/02/">February 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">November 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/10/">October 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">April 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">February 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">January 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">December 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">October 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/05/">May 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/04/">April 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/03/">March 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/12/">December 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/11/">November 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/10/">October 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/09/">September 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/08/">August 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/06/">June 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/05/">May 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/04/">April 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/03/">March 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/02/">February 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/01/">January 2011</a></li></ul>
+        <a class="" href="/hexo/migrate-to-hexo/">弃用 WordPress，对比 Ghost 后改用 Hexo</a>
+    
+
+
+</span>
+      </li>
+    
+      <li class="post-item">
+        
+    <div class="meta">
+        <time datetime="2018-10-20T09:44:52.000Z" itemprop="datePublished">2018-10-20</time>
     </div>
-  </div>
 
 
-  
+        <span>
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
+        <a class="" href="/archives/1226/">atop，调查服务器宕机事件的神器</a>
+    
+
+
+</span>
+      </li>
+    
+      <li class="post-item">
+        
+    <div class="meta">
+        <time datetime="2018-06-29T17:51:40.000Z" itemprop="datePublished">2018-06-30</time>
+    </div>
+
+
+        <span>
+    
+        <a class="" href="/archives/1217/">更大的标尺</a>
+    
+
+
+</span>
+      </li>
+    
+  </ul>
+  
+</section>
+
+
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2018 oldcai
+  </div>
+  <div class="footer-right">
+    <nav>
       <ul>
-        
-          <li>
-            <a href="/archives/1226/">atop，调查服务器宕机事件的神器</a>
-          </li>
-        
-          <li>
-            <a href="/archives/1217/">更大的标尺</a>
-          </li>
-        
-          <li>
-            <a href="/archives/1205/">VS Code运行golang报错Process exiting with code: null的解决办法</a>
-          </li>
-        
-          <li>
-            <a href="/archives/1200/">WordPress怎样悬挂备案号</a>
-          </li>
-        
-          <li>
-            <a href="/archives/1187/">图灵测试只能测假装是人类的人工智能</a>
-          </li>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/search/">Search</a></li>
         
       </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2018 oldcai<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
+    </nav>
   </div>
 </footer>
+
     </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-<script>
-  var disqus_shortname = 'oldcai';
-  
-  (function(){
-    var dsq = document.createElement('script');
-    dsq.type = 'text/javascript';
-    dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-  })();
-</script>
-
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-<script src="/js/script.js"></script>
-
-
-
-  </div>
 </body>
 </html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-3874125-2', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'oldcai';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+
