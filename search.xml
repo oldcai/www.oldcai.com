@@ -73,9 +73,9 @@
             
             <tag> Hexo </tag>
             
-            <tag> WordPress </tag>
-            
             <tag> Ghost </tag>
+            
+            <tag> WordPress </tag>
             
         </tags>
       
@@ -1724,7 +1724,7 @@
             
             <tag> 博客 </tag>
             
-            <tag> wordpress </tag>
+            <tag> WordPress </tag>
             
             <tag> 升级 </tag>
             
@@ -2561,7 +2561,7 @@
     </entry>
     
     <entry>
-      <title>博客升级至wordpress 3.1.3攻略——老蔡的博客搬家升级啦</title>
+      <title>博客升级至WordPress 3.1.3攻略——老蔡的博客搬家升级啦</title>
       <link href="/archives/236/"/>
       <url>/archives/236/</url>
       
@@ -2579,7 +2579,7 @@
       
         <tags>
             
-            <tag> wordpress </tag>
+            <tag> WordPress </tag>
             
             <tag> 升级 </tag>
             
@@ -3170,14 +3170,10 @@
           
           <category> 网站 </category>
           
-          <category> 网站运营 </category>
-          
       </categories>
       
       
         <tags>
-            
-            <tag> 显示 </tag>
             
             <tag> Google Adsense </tag>
             
@@ -3188,11 +3184,11 @@
     </entry>
     
     <entry>
-      <title>只在首页显示wordpress友情链接的方法[图文]</title>
+      <title>只在首页显示WordPress友情链接的方法[图文]</title>
       <link href="/archives/65/"/>
       <url>/archives/65/</url>
       
-        <content type="html"><![CDATA[<p>刚才已经我已经测试成功，并认真检查了用我的方法让wordpress的链接按左栏的链接目录里面设定的形式，<strong>只在博客首页显</strong>毫示无BUG地成功了。下面我用图片和文字重复一下具体操作，让你即使不会PHP也能这样地改好任意的一个wordpress模板，实现友情链接只在首页显示的功能。首先，我们进入后台，找到左侧的“外观”栏，点击“编辑”</p><p>[caption id=”attachment_66”</p><p>align=”aligncenter”</p><p>width=”166”]<a href="/images/2011/01/jpg"><img src="/images/2011/01/jpg" alt="后台里编辑wordpress模板" title="编辑"></a> 编辑wordpress的模板[/caption]</p><p>进入编辑页面后，观察右侧，有一个sidebar.php，也就是边栏模板。</p><p>[caption id=”attachment_67”</p><p>align=”aligncenter”</p><p>width=”153”]<a href="/images/2011/01/sidebar.jpg"><img src="/images/2011/01/sidebar.jpg" alt="wordpress边栏模板" title="sidebar"></a> 当前主题的边栏模板[/caption]</p><p>点击它后，左边的框内会出现PHP代码。我们全选这些代码，复制下来，粘贴到一个文本文档里面做好备份，如果待会友情链接没显示，却把整个页面弄烂了，也好能还原。</p><p>然后我们搜索</p><p>&lt;?php if ( !function_exists(‘dynamic_sidebar’) || !dynamic_sidebar() ) : ?&gt;</p><p>如果搜索不到这一句，搜“dynamic_sidebar”即可，然后顺着它，一直找到“endif;”（PHP代码均无引号）</p><p>找到后，我们就可以在下面添加代码了：</p><ul><li><h2 id="Meta"><a href="#Meta" class="headerlink" title="Meta"></a>Meta</h2><ul><li><a href="http://validator.w3.org/check/referer" title="This page validates as XHTML 1.0 Transitional" target="_blank" rel="noopener">Valid XHTML</a></li><li><a href="http://gmpg.org/xfn/" target="_blank" rel="noopener">XFN</a></li><li><a href="http://wordpress.org/" title="Powered by WordPress, state-of-the-art semantic personal publishing platform." target="_blank" rel="noopener">WordPress</a></li></ul></li></ul><p>加入后，我们点下面的更新文件按钮，即可。</p><p>然后我们来到首页，如果之前wordpress的友情链接栏没有去掉，就会出现两个友情链接，这一点一定要注意。</p><p>去掉之前的链接栏，在后台左侧的“外观”-“小工具”中，</p><p>[caption id=”attachment_68”</p><p>align=”aligncenter”</p><p>width=”141”]<a href="/images/2011/01/tools.jpg"><img src="/images/2011/01/tools.jpg" alt="wordpress小工具位置" title="tools"></a> 小工具在后台中的位置[/caption]</p><p>我们找到链接所在的位置后</p><p>[caption id=”attachment_70”</p><p>align=”aligncenter”</p><p>width=”300”]<a href="/images/2011/01/1.jpg"><img src="/images/2011/01/1.jpg" alt="边栏中原来链接位置" title="边栏"></a> 原来的链接在边栏中的位置[/caption]</p><p>直接拖拽出来，</p><p><a href="/images/2011/01/err2.jpg"><img src="/images/2011/01/err2.jpg" alt="将链接拖出wordpress边栏" title="拖出来"></a></p><p>原来的链接栏即可不在wordpress中显示。</p>]]></content>
+        <content type="html"><![CDATA[<p>刚才已经我已经测试成功，并认真检查了用我的方法让wordpress的链接按左栏的链接目录里面设定的形式，<strong>只在博客首页显</strong>毫示无BUG地成功了。下面我用图片和文字重复一下具体操作，让你即使不会PHP也能这样地改好任意的一个wordpress模板，实现友情链接只在首页显示的功能。首先，我们进入后台，找到左侧的“外观”栏，点击“编辑”</p><p><a href="/images/2011/01/jpg"><img src="/images/2011/01/jpg" alt="后台里编辑wordpress模板" title="编辑"></a> 编辑wordpress的模板</p><p>进入编辑页面后，观察右侧，有一个sidebar.php，也就是边栏模板。</p><p><a href="/images/2011/01/sidebar.jpg"><img src="/images/2011/01/sidebar.jpg" alt="wordpress边栏模板" title="sidebar"></a> 当前主题的边栏模板</p><p>点击它后，左边的框内会出现PHP代码。我们全选这些代码，复制下来，粘贴到一个文本文档里面做好备份，如果待会友情链接没显示，却把整个页面弄烂了，也好能还原。</p><p>然后我们搜索</p><p>&lt;?php if ( !function_exists(‘dynamic_sidebar’) || !dynamic_sidebar() ) : ?&gt;</p><p>如果搜索不到这一句，搜“dynamic_sidebar”即可，然后顺着它，一直找到“endif;”（PHP代码均无引号）</p><p>找到后，我们就可以在下面添加代码了：</p><ul><li><h2 id="Meta"><a href="#Meta" class="headerlink" title="Meta"></a>Meta</h2><ul><li><a href="http://validator.w3.org/check/referer" title="This page validates as XHTML 1.0 Transitional" target="_blank" rel="noopener">Valid XHTML</a></li><li><a href="http://gmpg.org/xfn/" target="_blank" rel="noopener">XFN</a></li><li><a href="http://wordpress.org/" title="Powered by WordPress, state-of-the-art semantic personal publishing platform." target="_blank" rel="noopener">WordPress</a></li></ul></li></ul><p>加入后，我们点下面的更新文件按钮，即可。</p><p>然后我们来到首页，如果之前wordpress的友情链接栏没有去掉，就会出现两个友情链接，这一点一定要注意。</p><p>去掉之前的链接栏，在后台左侧的“外观”-“小工具”中，</p><p><a href="/images/2011/01/tools.jpg"><img src="/images/2011/01/tools.jpg" alt="wordpress小工具位置" title="tools"></a> 小工具在后台中的位置</p><p>我们找到链接所在的位置后</p><p><a href="/images/2011/01/1.jpg"><img src="/images/2011/01/1.jpg" alt="边栏中原来链接位置" title="边栏"></a> 原来的链接在边栏中的位置</p><p>直接拖拽出来，</p><p><a href="/images/2011/01/err2.jpg"><img src="/images/2011/01/err2.jpg" alt="将链接拖出wordpress边栏" title="拖出来"></a></p><p>原来的链接栏即可不在wordpress中显示。</p>]]></content>
       
       
       <categories>
@@ -3204,28 +3200,22 @@
       
         <tags>
             
-            <tag> wordpress </tag>
+            <tag> WordPress </tag>
             
             <tag> PHP </tag>
             
             <tag> 友情链接 </tag>
-            
-            <tag> 显示 </tag>
-            
-            <tag> 首页 </tag>
-            
-            <tag> 图文 </tag>
             
         </tags>
       
     </entry>
     
     <entry>
-      <title>怎么让wordpress友情链接只在首页显示</title>
+      <title>怎么让WordPress友情链接只在首页显示</title>
       <link href="/archives/58/"/>
       <url>/archives/58/</url>
       
-        <content type="html"><![CDATA[<p>用wordpress的朋友大概都很在意自己博客的边栏（sidebar）的整洁，而默认情况下，边栏里面会有友情链接以及登录框等我们不需要他们出现在文章页（single）里面的内容。</p><p>怎么让wordpress的友情链接（Link）和登录功能链接（Meta）只在首页显示呢？我本来想下一个插件解决这个问题，毕竟wordpress的插件那是相当的多，无奈想到昨天用了一个别人的模板风格，就导致博客里面藏了黑链，看了好久代码，才完美地去掉它们。所以感觉，星级（Mark）少了的插件还不如不下。并且这个功能也不是什么复杂得不能接受的，就自己看了看代码，<strong>最终把友情链接做到只在首页显示了</strong>。</p><p>详细过程配流程图： <a href="http://www.oldcai.com/archives/65">只在首页显示wordpress友情链接的方法[图文]</a></p>]]></content>
+        <content type="html"><![CDATA[<p>用WordPress的朋友大概都很在意自己博客的边栏（sidebar）的整洁，而默认情况下，边栏里面会有友情链接以及登录框等我们不需要他们出现在文章页（single）里面的内容。</p><p>怎么让WordPress的友情链接（Link）和登录功能链接（Meta）只在首页显示呢？<br>我本来想下一个插件解决这个问题，毕竟WordPress的插件那是相当的多，无奈想到昨天用了一个别人的模板风格，就导致博客里面藏了黑链，看了好久代码，才完美地去掉它们。<br>所以感觉，星级（Mark）少了的插件还不如不下。并且这个功能也不是什么复杂得不能接受的，就自己看了看代码，<strong>最终把友情链接做到只在首页显示了</strong>。</p><p>详细过程配流程图： <a href="http://www.oldcai.com/archives/65">只在首页显示wordpress友情链接的方法[图文]</a></p>]]></content>
       
       
       <categories>
@@ -3237,15 +3227,11 @@
       
         <tags>
             
-            <tag> wordpress </tag>
+            <tag> WordPress </tag>
             
             <tag> PHP </tag>
             
             <tag> 友情链接 </tag>
-            
-            <tag> 显示 </tag>
-            
-            <tag> 首页 </tag>
             
         </tags>
       
