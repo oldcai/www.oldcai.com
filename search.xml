@@ -3,6 +3,17 @@
   
     
     <entry>
+      <title>friends</title>
+      <link href="/friends/"/>
+      <url>/friends/</url>
+      
+        <content type="html"><![CDATA[<p>因为搬迁到了 Hexo，所以首页暂时还不知道怎么摆放友链，</p><p>先在此处展示：</p><p><a href="http://www.wxnn.org/" target="_blank" rel="noopener">无心呢喃</a><br><a href="http://www.zz-zero.com/" target="_blank" rel="noopener">ZZZero</a><br><a href="http://www.isnowfy.com/" target="_blank" rel="noopener">isnowfy</a><br><a href="http://www.jnan.org/" target="_blank" rel="noopener">jnduan的Blog</a><br><a href="http://www.szxchina.com/" target="_blank" rel="noopener">十字绣</a><br><a href="http://www.auramarker.com/" target="_blank" rel="noopener">Aura Marker Studio</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    <entry>
       <title>WordPress 转 Hexo 后，回车变成空格的问题解决</title>
       <link href="/hexo/wordpress-to-hexo-lose-return/"/>
       <url>/hexo/wordpress-to-hexo-lose-return/</url>
@@ -19,11 +30,11 @@
       
         <tags>
             
+            <tag> WordPress </tag>
+            
             <tag> 博客 </tag>
             
             <tag> Hexo </tag>
-            
-            <tag> WordPress </tag>
             
         </tags>
       
@@ -69,13 +80,13 @@
       
         <tags>
             
+            <tag> WordPress </tag>
+            
             <tag> 博客 </tag>
             
             <tag> Hexo </tag>
             
             <tag> Ghost </tag>
-            
-            <tag> WordPress </tag>
             
         </tags>
       
