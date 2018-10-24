@@ -8,18 +8,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="Why not use rsyncd service directlyWe do not need rsyncd keep running and cost our precious memory, in fact most of us only use it once in a while for backup. So we need a way to keep our sync service">
+    <meta name="description" content="Why Not Use Rsyncd Service DirectlyWe do not need rsyncd keep running and cost our precious memory, in fact most of us only use it once in a while for backup. So we need a way to keep our sync service">
 <meta name="keywords" content="xinetd,rsync">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Using rsyncd Service on Demand via Xinetd">
+<meta property="og:title" content="Run rsync Service Only When Needed By Using xinetd">
 <meta property="og:url" content="https://www.oldcai.com/linux/rsync-via-xinetd/index.html">
 <meta property="og:site_name" content="老蔡博客">
-<meta property="og:description" content="Why not use rsyncd service directlyWe do not need rsyncd keep running and cost our precious memory, in fact most of us only use it once in a while for backup. So we need a way to keep our sync service">
+<meta property="og:description" content="Why Not Use Rsyncd Service DirectlyWe do not need rsyncd keep running and cost our precious memory, in fact most of us only use it once in a while for backup. So we need a way to keep our sync service">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-24T16:11:34.061Z">
+<meta property="og:updated_time" content="2018-10-24T17:35:20.191Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Using rsyncd Service on Demand via Xinetd">
-<meta name="twitter:description" content="Why not use rsyncd service directlyWe do not need rsyncd keep running and cost our precious memory, in fact most of us only use it once in a while for backup. So we need a way to keep our sync service">
+<meta name="twitter:title" content="Run rsync Service Only When Needed By Using xinetd">
+<meta name="twitter:description" content="Why Not Use Rsyncd Service DirectlyWe do not need rsyncd keep running and cost our precious memory, in fact most of us only use it once in a while for backup. So we need a way to keep our sync service">
     
     
         
@@ -39,7 +39,7 @@
         
     
     <!-- title -->
-    <title>Using rsyncd Service on Demand via Xinetd</title>
+    <title>Run rsync Service Only When Needed By Using xinetd</title>
     <!-- styles -->
     <link rel="stylesheet" href="/css/style.css">
     <!-- persian styles -->
@@ -92,20 +92,20 @@
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/linux/rsync-via-xinetd/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://www.oldcai.com/linux/rsync-via-xinetd/&text=Using rsyncd Service on Demand via Xinetd"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/linux/rsync-via-xinetd/&title=Using rsyncd Service on Demand via Xinetd"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/linux/rsync-via-xinetd/&is_video=false&description=Using rsyncd Service on Demand via Xinetd"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Using rsyncd Service on Demand via Xinetd&body=Check out this article: https://www.oldcai.com/linux/rsync-via-xinetd/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://www.oldcai.com/linux/rsync-via-xinetd/&title=Using rsyncd Service on Demand via Xinetd"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://www.oldcai.com/linux/rsync-via-xinetd/&title=Using rsyncd Service on Demand via Xinetd"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/linux/rsync-via-xinetd/&title=Using rsyncd Service on Demand via Xinetd"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://www.oldcai.com/linux/rsync-via-xinetd/&title=Using rsyncd Service on Demand via Xinetd"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/linux/rsync-via-xinetd/&name=Using rsyncd Service on Demand via Xinetd&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://www.oldcai.com/linux/rsync-via-xinetd/&text=Run rsync Service Only When Needed By Using xinetd"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/linux/rsync-via-xinetd/&title=Run rsync Service Only When Needed By Using xinetd"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/linux/rsync-via-xinetd/&is_video=false&description=Run rsync Service Only When Needed By Using xinetd"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Run rsync Service Only When Needed By Using xinetd&body=Check out this article: https://www.oldcai.com/linux/rsync-via-xinetd/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://www.oldcai.com/linux/rsync-via-xinetd/&title=Run rsync Service Only When Needed By Using xinetd"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://www.oldcai.com/linux/rsync-via-xinetd/&title=Run rsync Service Only When Needed By Using xinetd"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/linux/rsync-via-xinetd/&title=Run rsync Service Only When Needed By Using xinetd"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://www.oldcai.com/linux/rsync-via-xinetd/&title=Run rsync Service Only When Needed By Using xinetd"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/linux/rsync-via-xinetd/&name=Run rsync Service Only When Needed By Using xinetd&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Why-not-use-rsyncd-service-directly"><span class="toc-number">1.</span> <span class="toc-text">Why not use rsyncd service directly</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#What-is-xinetd"><span class="toc-number">2.</span> <span class="toc-text">What is xinetd</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#How-to-config-it-to-launch-rsync"><span class="toc-number">3.</span> <span class="toc-text">How to config it to launch rsync</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Why-Not-Use-Rsyncd-Service-Directly"><span class="toc-number">1.</span> <span class="toc-text">Why Not Use Rsyncd Service Directly</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#What-Is-Xinetd"><span class="toc-number">2.</span> <span class="toc-text">What Is Xinetd</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#How-to-Config-xinetd-Work-With-rsync"><span class="toc-number">3.</span> <span class="toc-text">How to Config xinetd Work With rsync</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -117,7 +117,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        Using rsyncd Service on Demand via Xinetd
+        Run rsync Service Only When Needed By Using xinetd
     </h1>
 
 
@@ -151,11 +151,11 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h2 id="Why-not-use-rsyncd-service-directly"><a href="#Why-not-use-rsyncd-service-directly" class="headerlink" title="Why not use rsyncd service directly"></a>Why not use rsyncd service directly</h2><p>We do not need <code>rsyncd</code> keep running and cost our precious memory, in fact most of us only use it once in a while for backup.</p>
+    <h2 id="Why-Not-Use-Rsyncd-Service-Directly"><a href="#Why-Not-Use-Rsyncd-Service-Directly" class="headerlink" title="Why Not Use Rsyncd Service Directly"></a>Why Not Use Rsyncd Service Directly</h2><p>We do not need <code>rsyncd</code> keep running and cost our precious memory, in fact most of us only use it once in a while for backup.</p>
 <p>So we need a way to keep our sync service on without the <code>rsyncd</code> process.</p>
-<h2 id="What-is-xinetd"><a href="#What-is-xinetd" class="headerlink" title="What is xinetd"></a>What is xinetd</h2><p><code>xinetd</code> is a service that can open network based services only when they are called.</p>
+<h2 id="What-Is-Xinetd"><a href="#What-Is-Xinetd" class="headerlink" title="What Is Xinetd"></a>What Is Xinetd</h2><p><code>xinetd</code> is a service that can open network based services only when they are connected.</p>
 <p>When <code>xinetd</code> listens to a port, while the traffic comes in, <code>xinetd</code> could launch the real service program and transfer traffic to it.</p>
-<h2 id="How-to-config-it-to-launch-rsync"><a href="#How-to-config-it-to-launch-rsync" class="headerlink" title="How to config it to launch rsync"></a>How to config it to launch rsync</h2><p>We can create a file <code>/etc/xinetd.d/rsync</code> filled with codes below.</p>
+<h2 id="How-to-Config-xinetd-Work-With-rsync"><a href="#How-to-Config-xinetd-Work-With-rsync" class="headerlink" title="How to Config xinetd Work With rsync"></a>How to Config xinetd Work With rsync</h2><p>We can create a file <code>/etc/xinetd.d/rsync</code> filled with codes below.</p>
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">service rsync</span><br><span class="line">&#123;</span><br><span class="line">        <span class="builtin-name">disable</span>         = <span class="literal">no</span></span><br><span class="line">        socket_type     = stream</span><br><span class="line">        wait            = <span class="literal">no</span></span><br><span class="line">       <span class="built_in"> user </span>           = rsync</span><br><span class="line">       <span class="built_in"> server </span>         = /usr/bin/rsync</span><br><span class="line">        server_args     = --daemon</span><br><span class="line">        log_on_failure  += USERID</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Tips:</p>
 <blockquote>
@@ -192,21 +192,21 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Why-not-use-rsyncd-service-directly"><span class="toc-number">1.</span> <span class="toc-text">Why not use rsyncd service directly</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#What-is-xinetd"><span class="toc-number">2.</span> <span class="toc-text">What is xinetd</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#How-to-config-it-to-launch-rsync"><span class="toc-number">3.</span> <span class="toc-text">How to config it to launch rsync</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Why-Not-Use-Rsyncd-Service-Directly"><span class="toc-number">1.</span> <span class="toc-text">Why Not Use Rsyncd Service Directly</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#What-Is-Xinetd"><span class="toc-number">2.</span> <span class="toc-text">What Is Xinetd</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#How-to-Config-xinetd-Work-With-rsync"><span class="toc-number">3.</span> <span class="toc-text">How to Config xinetd Work With rsync</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/linux/rsync-via-xinetd/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://www.oldcai.com/linux/rsync-via-xinetd/&text=Using rsyncd Service on Demand via Xinetd"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/linux/rsync-via-xinetd/&title=Using rsyncd Service on Demand via Xinetd"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/linux/rsync-via-xinetd/&is_video=false&description=Using rsyncd Service on Demand via Xinetd"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Using rsyncd Service on Demand via Xinetd&body=Check out this article: https://www.oldcai.com/linux/rsync-via-xinetd/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://www.oldcai.com/linux/rsync-via-xinetd/&title=Using rsyncd Service on Demand via Xinetd"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://www.oldcai.com/linux/rsync-via-xinetd/&title=Using rsyncd Service on Demand via Xinetd"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/linux/rsync-via-xinetd/&title=Using rsyncd Service on Demand via Xinetd"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://www.oldcai.com/linux/rsync-via-xinetd/&title=Using rsyncd Service on Demand via Xinetd"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/linux/rsync-via-xinetd/&name=Using rsyncd Service on Demand via Xinetd&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://www.oldcai.com/linux/rsync-via-xinetd/&text=Run rsync Service Only When Needed By Using xinetd"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/linux/rsync-via-xinetd/&title=Run rsync Service Only When Needed By Using xinetd"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/linux/rsync-via-xinetd/&is_video=false&description=Run rsync Service Only When Needed By Using xinetd"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Run rsync Service Only When Needed By Using xinetd&body=Check out this article: https://www.oldcai.com/linux/rsync-via-xinetd/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://www.oldcai.com/linux/rsync-via-xinetd/&title=Run rsync Service Only When Needed By Using xinetd"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://www.oldcai.com/linux/rsync-via-xinetd/&title=Run rsync Service Only When Needed By Using xinetd"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/linux/rsync-via-xinetd/&title=Run rsync Service Only When Needed By Using xinetd"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://www.oldcai.com/linux/rsync-via-xinetd/&title=Run rsync Service Only When Needed By Using xinetd"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/linux/rsync-via-xinetd/&name=Run rsync Service Only When Needed By Using xinetd&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
