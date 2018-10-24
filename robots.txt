@@ -11,6 +11,7 @@ Disallow: /fonts/
 Disallow: /vendors/
 Disallow: /fancybox/
 
-Sitemap: https://www.m690.com/sitemap.xml
-Sitemap: https://www.m690.com/baidusitemap.xml
+Sitemap: https://www.oldcai.com/sitemap.xml
+Sitemap: https://www.oldcai.com/atom.xml
+Sitemap: https://www.oldcai.com/baidusitemap.xml
 

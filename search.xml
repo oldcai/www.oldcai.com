@@ -44,11 +44,11 @@
       
         <tags>
             
+            <tag> WordPress </tag>
+            
             <tag> 博客 </tag>
             
             <tag> Hexo </tag>
-            
-            <tag> WordPress </tag>
             
         </tags>
       
@@ -94,13 +94,13 @@
       
         <tags>
             
+            <tag> WordPress </tag>
+            
             <tag> 博客 </tag>
             
             <tag> Hexo </tag>
             
             <tag> Ghost </tag>
-            
-            <tag> WordPress </tag>
             
         </tags>
       
@@ -1747,9 +1747,9 @@
       
         <tags>
             
-            <tag> 博客 </tag>
-            
             <tag> WordPress </tag>
+            
+            <tag> 博客 </tag>
             
             <tag> 升级 </tag>
             
@@ -2173,11 +2173,11 @@
       
         <tags>
             
-            <tag> Kloxo </tag>
+            <tag> mysql </tag>
             
             <tag> PHP </tag>
             
-            <tag> mysql </tag>
+            <tag> Kloxo </tag>
             
             <tag> 内存 </tag>
             
@@ -2529,9 +2529,9 @@
       
         <tags>
             
-            <tag> Kloxo </tag>
-            
             <tag> PHP </tag>
+            
+            <tag> Kloxo </tag>
             
             <tag> 路径 </tag>
             
@@ -2573,11 +2573,11 @@
       
         <tags>
             
-            <tag> PHP </tag>
-            
             <tag> function </tag>
             
             <tag> mysql </tag>
+            
+            <tag> PHP </tag>
             
             <tag> procedure </tag>
             
