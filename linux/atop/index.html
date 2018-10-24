@@ -12,13 +12,13 @@
 <meta name="keywords" content="atop">
 <meta property="og:type" content="article">
 <meta property="og:title" content="atop，调查服务器宕机事件的神器">
-<meta property="og:url" content="https://www.oldcai.com/archives/1226/index.html">
+<meta property="og:url" content="https://www.oldcai.com/linux/atop/index.html">
 <meta property="og:site_name" content="老蔡博客">
 <meta property="og:description" content="之前服务器偶尔故障，SSH连不上，只能在IDC的后台去重启机器。这就使得调查导致问题的原因变得十分困难。 于是老蔡查阅“中外典籍”，找到了这个神器：atop atop不仅平时可以帮你自动高亮异常负载（CPU，内存，磁盘，网络），还能每隔15分钟存个档，重启后可以调出来看案发现场是哪个进程出了故障。 定时保存服务器资源负载数据 这是老蔡在刚刚不久前通过atop定期记录服务器负载这个功能定位到的一个很">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://www.oldcai.com/images/2018/10/memory.jpeg">
 <meta property="og:image" content="https://www.oldcai.com/images/2018/10/io.jpeg">
-<meta property="og:updated_time" content="2018-10-23T14:45:53.611Z">
+<meta property="og:updated_time" content="2018-10-24T13:36:10.171Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="atop，调查服务器宕机事件的神器">
 <meta name="twitter:description" content="之前服务器偶尔故障，SSH连不上，只能在IDC的后台去重启机器。这就使得调查导致问题的原因变得十分困难。 于是老蔡查阅“中外典籍”，找到了这个神器：atop atop不仅平时可以帮你自动高亮异常负载（CPU，内存，磁盘，网络），还能每隔15分钟存个档，重启后可以调出来看案发现场是哪个进程出了故障。 定时保存服务器资源负载数据 这是老蔡在刚刚不久前通过atop定期记录服务器负载这个功能定位到的一个很">
@@ -96,16 +96,16 @@
     <br>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/archives/1226/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://www.oldcai.com/archives/1226/&text=atop，调查服务器宕机事件的神器"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/archives/1226/&title=atop，调查服务器宕机事件的神器"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/archives/1226/&is_video=false&description=atop，调查服务器宕机事件的神器"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=atop，调查服务器宕机事件的神器&body=Check out this article: https://www.oldcai.com/archives/1226/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://www.oldcai.com/archives/1226/&title=atop，调查服务器宕机事件的神器"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://www.oldcai.com/archives/1226/&title=atop，调查服务器宕机事件的神器"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/archives/1226/&title=atop，调查服务器宕机事件的神器"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://www.oldcai.com/archives/1226/&title=atop，调查服务器宕机事件的神器"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/archives/1226/&name=atop，调查服务器宕机事件的神器&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/linux/atop/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://www.oldcai.com/linux/atop/&text=atop，调查服务器宕机事件的神器"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/linux/atop/&title=atop，调查服务器宕机事件的神器"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/linux/atop/&is_video=false&description=atop，调查服务器宕机事件的神器"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=atop，调查服务器宕机事件的神器&body=Check out this article: https://www.oldcai.com/linux/atop/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://www.oldcai.com/linux/atop/&title=atop，调查服务器宕机事件的神器"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://www.oldcai.com/linux/atop/&title=atop，调查服务器宕机事件的神器"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/linux/atop/&title=atop，调查服务器宕机事件的神器"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://www.oldcai.com/linux/atop/&title=atop，调查服务器宕机事件的神器"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/linux/atop/&name=atop，调查服务器宕机事件的神器&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -203,16 +203,16 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/archives/1226/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://www.oldcai.com/archives/1226/&text=atop，调查服务器宕机事件的神器"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/archives/1226/&title=atop，调查服务器宕机事件的神器"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/archives/1226/&is_video=false&description=atop，调查服务器宕机事件的神器"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=atop，调查服务器宕机事件的神器&body=Check out this article: https://www.oldcai.com/archives/1226/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://www.oldcai.com/archives/1226/&title=atop，调查服务器宕机事件的神器"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://www.oldcai.com/archives/1226/&title=atop，调查服务器宕机事件的神器"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/archives/1226/&title=atop，调查服务器宕机事件的神器"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://www.oldcai.com/archives/1226/&title=atop，调查服务器宕机事件的神器"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/archives/1226/&name=atop，调查服务器宕机事件的神器&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/linux/atop/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://www.oldcai.com/linux/atop/&text=atop，调查服务器宕机事件的神器"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/linux/atop/&title=atop，调查服务器宕机事件的神器"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/linux/atop/&is_video=false&description=atop，调查服务器宕机事件的神器"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=atop，调查服务器宕机事件的神器&body=Check out this article: https://www.oldcai.com/linux/atop/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://www.oldcai.com/linux/atop/&title=atop，调查服务器宕机事件的神器"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://www.oldcai.com/linux/atop/&title=atop，调查服务器宕机事件的神器"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/linux/atop/&title=atop，调查服务器宕机事件的神器"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://www.oldcai.com/linux/atop/&title=atop，调查服务器宕机事件的神器"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/linux/atop/&name=atop，调查服务器宕机事件的神器&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>

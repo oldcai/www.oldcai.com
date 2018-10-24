@@ -3,6 +3,31 @@
   
     
     <entry>
+      <title>Using rsyncd Service on Demand via Xinetd</title>
+      <link href="/linux/rsync-via-xinetd/"/>
+      <url>/linux/rsync-via-xinetd/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Why-not-use-rsyncd-service-directly"><a href="#Why-not-use-rsyncd-service-directly" class="headerlink" title="Why not use rsyncd service directly"></a>Why not use rsyncd service directly</h2><p>We do not need <code>rsyncd</code> keep running and cost our precious memory, in fact most of us only use it once in a while for backup.</p><p>So we need a way to keep our sync service on without the <code>rsyncd</code> process.</p><h2 id="What-is-xinetd"><a href="#What-is-xinetd" class="headerlink" title="What is xinetd"></a>What is xinetd</h2><p><code>xinetd</code> is a service that can open network based services only when they are called.</p><p>When <code>xinetd</code> listens to a port, while the traffic comes in, <code>xinetd</code> could launch the real service program and transfer traffic to it.</p><h2 id="How-to-config-it-to-launch-rsync"><a href="#How-to-config-it-to-launch-rsync" class="headerlink" title="How to config it to launch rsync"></a>How to config it to launch rsync</h2><p>We can create a file <code>/etc/xinetd.d/rsync</code> filled with codes below.</p><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">service rsync</span><br><span class="line">&#123;</span><br><span class="line">        <span class="builtin-name">disable</span>         = <span class="literal">no</span></span><br><span class="line">        socket_type     = stream</span><br><span class="line">        wait            = <span class="literal">no</span></span><br><span class="line">       <span class="built_in"> user </span>           = rsync</span><br><span class="line">       <span class="built_in"> server </span>         = /usr/bin/rsync</span><br><span class="line">        server_args     = --daemon</span><br><span class="line">        log_on_failure  += USERID</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>Tips:</p><blockquote><p>Other configs in <code>/etc/rsyncd.conf</code> and <code>/etc/rsyncd.pass</code> are just like what they were when you are using <code>rsyncd</code> service.</p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> xinetd </tag>
+            
+            <tag> rsync </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>WordPress 转 Hexo 后，回车变成空格的问题解决</title>
       <link href="/hexo/wordpress-to-hexo-lose-return/"/>
       <url>/hexo/wordpress-to-hexo-lose-return/</url>
@@ -83,8 +108,8 @@
     
     <entry>
       <title>atop，调查服务器宕机事件的神器</title>
-      <link href="/archives/1226/"/>
-      <url>/archives/1226/</url>
+      <link href="/linux/atop/"/>
+      <url>/linux/atop/</url>
       
         <content type="html"><![CDATA[<p>之前服务器偶尔故障，SSH连不上，只能在IDC的后台去重启机器。这就使得调查导致问题的原因变得十分困难。</p><p>于是老蔡查阅“中外典籍”，找到了这个神器：atop atop不仅平时可以帮你自动高亮异常负载（CPU，内存，磁盘，网络），还能每隔15分钟存个档，重启后可以调出来看案发现场是哪个进程出了故障。</p><h2 id="定时保存服务器资源负载数据"><a href="#定时保存服务器资源负载数据" class="headerlink" title="定时保存服务器资源负载数据"></a>定时保存服务器资源负载数据</h2><p><img src="/images/2018/10/memory.jpeg" alt=""> 这是老蔡在刚刚不久前通过atop定期记录服务器负载这个功能定位到的一个很低概率发生的内存泄漏导致服务器死机的现场还原截图。</p><p>atop默认有个服务，启动服务后，每15分钟存档一次，以天为单位保存成文件。</p><p>真相永远只有一个，各位新一姬，还原犯罪现场，找出杀死服务器的真凶吧。</p><p>service atop restart</p><p>启动atop记录服务</p><p>atop -r /var/log/atop/atop_20181019</p><p>通过这条命令来查阅记录，进入后，t是下一页，T是上一页，每一页15分钟间隔。</p><h2 id="atop还能自动高亮服务器性能瓶颈"><a href="#atop还能自动高亮服务器性能瓶颈" class="headerlink" title="atop还能自动高亮服务器性能瓶颈"></a>atop还能自动高亮服务器性能瓶颈</h2><p><img src="/images/2018/10/io.jpeg" alt=""> 拿一台磁盘IO基本已经快到顶的服务器举例，atop会自动标红DSK的busy程度。</p><p>以往我们排查问题的时候，可能会需要用各种工具查看，比如htop，iotop，iostat，nload，iftop，等等，最后过了半个小时说不定才可以找到问题（还看经验是否丰富），而用atop可以轻松察觉。</p>]]></content>
       
@@ -2148,11 +2173,11 @@
       
         <tags>
             
-            <tag> mysql </tag>
+            <tag> Kloxo </tag>
             
             <tag> PHP </tag>
             
-            <tag> Kloxo </tag>
+            <tag> mysql </tag>
             
             <tag> 内存 </tag>
             
@@ -2504,9 +2529,9 @@
       
         <tags>
             
-            <tag> PHP </tag>
-            
             <tag> Kloxo </tag>
+            
+            <tag> PHP </tag>
             
             <tag> 路径 </tag>
             
@@ -2548,11 +2573,11 @@
       
         <tags>
             
+            <tag> PHP </tag>
+            
             <tag> function </tag>
             
             <tag> mysql </tag>
-            
-            <tag> PHP </tag>
             
             <tag> procedure </tag>
             
@@ -2660,9 +2685,9 @@
             
             <tag> C++ </tag>
             
-            <tag> QT </tag>
-            
             <tag> LNK2019 </tag>
+            
+            <tag> QT </tag>
             
         </tags>
       
