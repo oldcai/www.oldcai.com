@@ -8,18 +8,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="零宽断言，表示匹配字符的时候再添加一些定位条件，使匹配更精准，但又不匹配到字符串。  \w+(?=ing) 匹配以ing结尾的单词前缀（不包括ing），talking匹配到talk \w+(?!ing) 匹配不是以ing结尾的多个字符，do talking匹配到do (?&amp;lt;=re)\w+ 匹配以re开头的多个字符（不包括re），redo匹配到do (?&amp;lt;!re)\w+ 匹配排除re开头">
+    <meta name="description" content="零宽断言，表示匹配字符的时候再添加一些定位条件，使匹配更精准，但又不匹配到字符串。    举例 解释     \w+(?=ing) 匹配以ing结尾的单词前缀（不包括ing），talking匹配到talk   \w+(?!ing) 匹配不是以ing结尾的多个字符，do talking匹配到do   (?&amp;lt;=re)\w+ 匹配以re开头的多个字符（不包括re），redo匹配到do   (?&amp;l">
 <meta name="keywords" content="代码高亮">
 <meta property="og:type" content="article">
 <meta property="og:title" content="正则表达式进阶，零宽正回顾断言，零宽负回顾断言">
 <meta property="og:url" content="https://www.oldcai.com/programing/regex/index.html">
 <meta property="og:site_name" content="老蔡博客">
-<meta property="og:description" content="零宽断言，表示匹配字符的时候再添加一些定位条件，使匹配更精准，但又不匹配到字符串。  \w+(?=ing) 匹配以ing结尾的单词前缀（不包括ing），talking匹配到talk \w+(?!ing) 匹配不是以ing结尾的多个字符，do talking匹配到do (?&amp;lt;=re)\w+ 匹配以re开头的多个字符（不包括re），redo匹配到do (?&amp;lt;!re)\w+ 匹配排除re开头">
+<meta property="og:description" content="零宽断言，表示匹配字符的时候再添加一些定位条件，使匹配更精准，但又不匹配到字符串。    举例 解释     \w+(?=ing) 匹配以ing结尾的单词前缀（不包括ing），talking匹配到talk   \w+(?!ing) 匹配不是以ing结尾的多个字符，do talking匹配到do   (?&amp;lt;=re)\w+ 匹配以re开头的多个字符（不包括re），redo匹配到do   (?&amp;l">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-23T14:35:42.297Z">
+<meta property="og:updated_time" content="2018-10-27T12:22:24.973Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="正则表达式进阶，零宽正回顾断言，零宽负回顾断言">
-<meta name="twitter:description" content="零宽断言，表示匹配字符的时候再添加一些定位条件，使匹配更精准，但又不匹配到字符串。  \w+(?=ing) 匹配以ing结尾的单词前缀（不包括ing），talking匹配到talk \w+(?!ing) 匹配不是以ing结尾的多个字符，do talking匹配到do (?&amp;lt;=re)\w+ 匹配以re开头的多个字符（不包括re），redo匹配到do (?&amp;lt;!re)\w+ 匹配排除re开头">
+<meta name="twitter:description" content="零宽断言，表示匹配字符的时候再添加一些定位条件，使匹配更精准，但又不匹配到字符串。    举例 解释     \w+(?=ing) 匹配以ing结尾的单词前缀（不包括ing），talking匹配到talk   \w+(?!ing) 匹配不是以ing结尾的多个字符，do talking匹配到do   (?&amp;lt;=re)\w+ 匹配以re开头的多个字符（不包括re），redo匹配到do   (?&amp;l">
     
     
         
@@ -154,12 +154,32 @@
 
   <div class="content" itemprop="articleBody">
     <p>零宽断言，表示匹配字符的时候再添加一些定位条件，使匹配更精准，但又不匹配到字符串。</p>
-<ul>
-<li><code>\w+(?=ing)</code> 匹配以ing结尾的单词前缀（不包括ing），<code>talking</code>匹配到<code>talk</code></li>
-<li><code>\w+(?!ing)</code> 匹配不是以ing结尾的多个字符，<code>do talking</code>匹配到<code>do</code></li>
-<li><code>(?&lt;=re)\w+</code> 匹配以re开头的多个字符（不包括re），<code>redo</code>匹配到<code>do</code></li>
-<li><code>(?&lt;!re)\w+</code> 匹配排除re开头的单词外的其他单词，<code>refreshing wether</code>匹配到<code>weather</code></li>
-</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">举例</th>
+<th style="text-align:center">解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>\w+(?=ing)</code></td>
+<td style="text-align:center">匹配以ing结尾的单词前缀（不包括ing），<code>talking</code>匹配到<code>talk</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>\w+(?!ing)</code></td>
+<td style="text-align:center">匹配不是以ing结尾的多个字符，<code>do talking</code>匹配到<code>do</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>(?&lt;=re)\w+</code></td>
+<td style="text-align:center">匹配以re开头的多个字符（不包括re），<code>redo</code>匹配到<code>do</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>(?&lt;!re)\w+</code></td>
+<td style="text-align:center">匹配排除re开头的单词外的其他单词，<code>refreshing wether</code>匹配到<code>weather</code></td>
+</tr>
+</tbody>
+</table>
 <p>组合起来使用<br><code>(?&lt;=\s)\d+(?=\s)</code> 匹配两边是空白符的数字，不包括空白符，相当于Vim中在单词上按下<code>*</code>号的结果</p>
 <p>另外，推荐一个测试正则表达式的网站: <a href="https://regexr.com/" target="_blank" rel="noopener">Regexr</a><br>regex，是正则regular expression的缩写，加上r就当是被正则坑的人的意思吧😂</p>
 
