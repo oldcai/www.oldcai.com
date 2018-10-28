@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.oldcai.com/"/>
-  <updated>2018-10-27T12:08:54.173Z</updated>
+  <updated>2018-10-28T03:49:37.731Z</updated>
   <id>https://www.oldcai.com/</id>
   
   <author>
@@ -21,15 +21,15 @@
     <link href="https://www.oldcai.com/linux/atop-dsk/"/>
     <id>https://www.oldcai.com/linux/atop-dsk/</id>
     <published>2018-10-27T10:50:52.000Z</published>
-    <updated>2018-10-27T12:08:54.173Z</updated>
+    <updated>2018-10-28T03:49:37.731Z</updated>
     
-    <content type="html"><![CDATA[<p>上次介绍了<a href="/linux/atop/">atop在定位服务器瓶颈、调查宕机事件</a>上的作用，今天再来具体看看 DSK 示数的含义，</p><h2 id="一个悲伤的故事"><a href="#一个悲伤的故事" class="headerlink" title="一个悲伤的故事"></a>一个悲伤的故事</h2><p>前天，公司服务器一周内宕机了5次!!!</p><p>苦苦找寻原因的老蔡，天天就盯着各种监控程序百思不得其解，<br>很巧合地，前天宕机的时候，正巧在服务器上面用atop盯着看监控，于是捕捉到了宕机的那一刻的异常，如下图所示。</p><table><thead><tr><th style="text-align:center"><a href="/images/2018/10/ali-atop-busy.jpg"><img src="/images/2018/10/ali-atop-busy.jpg" alt="DSK繁忙示例"></a></th></tr></thead><tbody><tr><td style="text-align:center"><strong>点击可看大图</strong></td></tr></tbody></table><p>可以说，如果早知道atop里面DSK的具体含义，说不定前天就已经“破案”了。<br>可惜老蔡刚开始对这个示数也只有个大致的认知，只知道数字越大就说明读写越高，而具体<code>read</code>和<code>write</code>表示的什么，以及单位是什么，却是不知。<br>还以为是为了紧凑，把明显的KB/s或者MB/s去掉了。<br><a id="more"></a></p><p>那么下面具体来讲解讲解这幅图里面的数值和含义吧</p><h2 id="DSK示数解读"><a href="#DSK示数解读" class="headerlink" title="DSK示数解读"></a>DSK示数解读</h2><table><thead><tr><th style="text-align:center">示数</th><th style="text-align:center">含义</th><th style="text-align:center">例子解读</th></tr></thead><tbody><tr><td style="text-align:center"><strong>vda</strong></td><td style="text-align:center">盘符</td><td style="text-align:center">例子中是系统盘</td></tr><tr><td style="text-align:center"><strong>busy 100%</strong></td><td style="text-align:center">平时是硬盘繁忙情况的百分比</td><td style="text-align:center">磁盘io满了</td></tr><tr><td style="text-align:center"><strong>read 27</strong></td><td style="text-align:center">每秒读取请求的数量</td><td style="text-align:center">每秒27次</td></tr><tr><td style="text-align:center"><strong>write 9</strong></td><td style="text-align:center">每秒写的请求数量</td><td style="text-align:center">每秒9次</td></tr><tr><td style="text-align:center"><strong>KiB/r 4</strong></td><td style="text-align:center">每次读请求所读取的文件大小的平均值</td><td style="text-align:center">4k随机读为主</td></tr><tr><td style="text-align:center"><strong>KiB/w 29</strong></td><td style="text-align:center">每次写请求写的文件大小平均值</td><td style="text-align:center">每次平均写29kB</td></tr><tr><td style="text-align:center"><strong>Mbr/s 0.0</strong></td><td style="text-align:center">每秒读盘的吞吐量</td><td style="text-align:center">四舍五入为0了</td></tr><tr><td style="text-align:center"><strong>Mbw/s 0.0</strong></td><td style="text-align:center">每秒写入的吞吐量</td><td style="text-align:center">同上</td></tr><tr><td style="text-align:center"><strong>avq 1.01</strong></td><td style="text-align:center">平均磁盘读写队列长度</td><td style="text-align:center">1.01个，说明读写不重</td></tr><tr><td style="text-align:center"><strong>avio 278ms</strong></td><td style="text-align:center">平均每个读写请求需要的时间</td><td style="text-align:center">硬盘读写延迟<code>278ms</code>，对于单次io等待，可以说是很高了</td></tr></tbody></table><p>而老蔡刚开始的时候以为是自己的程序磁盘占用太多，把读写单位当做<code>MB/s</code>来理解。<br>现在明白真正该怀疑是什么问题后，才恍然大悟——之前的解读是错的。<br>那么，机智的你，猜到是什么原因导致的宕机了吗？欢迎留言哦。</p>]]></content>
+    <content type="html"><![CDATA[<p>上次介绍了<a href="/linux/atop/">atop在定位服务器瓶颈、调查宕机事件</a>上的作用，今天再来具体看看 DSK 示数的含义，</p><h2 id="一个悲伤的故事"><a href="#一个悲伤的故事" class="headerlink" title="一个悲伤的故事"></a>一个悲伤的故事</h2><p>前天，公司服务器一周内第5次宕机!!!</p><p>苦苦找寻原因的老蔡，天天盯着各种监控程序百思不得其解，<br>很巧合地，这次宕机的时候，老蔡正巧在服务器上面用atop盯着监控，于是捕捉到了宕机的那一刻的异常，如下图所示。</p><table><thead><tr><th style="text-align:center"><a href="/images/2018/10/ali-atop-busy.jpg"><img src="/images/2018/10/ali-atop-busy.jpg" alt="DSK繁忙示例"></a></th></tr></thead><tbody><tr><td style="text-align:center"><strong>点击可看大图</strong></td></tr></tbody></table><p>可以说，如果早知道atop里面DSK的具体含义，说不定前天就已经“破案”了。<br>可惜老蔡刚开始对这个示数也只有个大致的认知，只知道数字越大就说明读写越高，而具体<code>read</code>和<code>write</code>表示的什么，以及单位是什么，却是不知。<br>还以为是为了紧凑，把明显的KB/s或者MB/s去掉了。<br><a id="more"></a></p><p>那么下面具体来讲解讲解这幅图里面的数值和含义吧</p><h2 id="DSK示数解读"><a href="#DSK示数解读" class="headerlink" title="DSK示数解读"></a>DSK示数解读</h2><table><thead><tr><th style="text-align:center">示数</th><th style="text-align:center">含义</th><th style="text-align:center">例子解读</th></tr></thead><tbody><tr><td style="text-align:center"><strong>vda</strong></td><td style="text-align:center">盘符</td><td style="text-align:center">例子中是系统盘</td></tr><tr><td style="text-align:center"><strong>busy 100%</strong></td><td style="text-align:center">平时是硬盘繁忙情况的百分比</td><td style="text-align:center">磁盘io满了</td></tr><tr><td style="text-align:center"><strong>read 27</strong></td><td style="text-align:center">每秒读取请求的数量</td><td style="text-align:center">每秒27次</td></tr><tr><td style="text-align:center"><strong>write 9</strong></td><td style="text-align:center">每秒写的请求数量</td><td style="text-align:center">每秒9次</td></tr><tr><td style="text-align:center"><strong>KiB/r 4</strong></td><td style="text-align:center">每次读请求所读取的文件大小的平均值</td><td style="text-align:center">4k随机读为主</td></tr><tr><td style="text-align:center"><strong>KiB/w 29</strong></td><td style="text-align:center">每次写请求写的文件大小平均值</td><td style="text-align:center">每次平均写29kB</td></tr><tr><td style="text-align:center"><strong>Mbr/s 0.0</strong></td><td style="text-align:center">每秒读盘的吞吐量</td><td style="text-align:center">四舍五入为0了</td></tr><tr><td style="text-align:center"><strong>Mbw/s 0.0</strong></td><td style="text-align:center">每秒写入的吞吐量</td><td style="text-align:center">同上</td></tr><tr><td style="text-align:center"><strong>avq 1.01</strong></td><td style="text-align:center">平均磁盘读写队列长度</td><td style="text-align:center">1.01个，说明读写不重</td></tr><tr><td style="text-align:center"><strong>avio 278ms</strong></td><td style="text-align:center">平均每个读写请求需要的时间</td><td style="text-align:center">硬盘读写延迟<code>278ms</code>，对于单次io等待，可以说是很高了</td></tr></tbody></table><p>而老蔡刚开始的时候以为是自己的程序磁盘占用太多，把读写单位当做<code>MB/s</code>来理解。<br>现在明白真正该怀疑是什么问题后，才恍然大悟——之前的解读是错的。<br>那么，机智的你，猜到是什么原因导致的宕机了吗？欢迎留言哦。</p>]]></content>
     
     <summary type="html">
     
       &lt;p&gt;上次介绍了&lt;a href=&quot;/linux/atop/&quot;&gt;atop在定位服务器瓶颈、调查宕机事件&lt;/a&gt;上的作用，今天再来具体看看 DSK 示数的含义，&lt;/p&gt;
-&lt;h2 id=&quot;一个悲伤的故事&quot;&gt;&lt;a href=&quot;#一个悲伤的故事&quot; class=&quot;headerlink&quot; title=&quot;一个悲伤的故事&quot;&gt;&lt;/a&gt;一个悲伤的故事&lt;/h2&gt;&lt;p&gt;前天，公司服务器一周内宕机了5次!!!&lt;/p&gt;
-&lt;p&gt;苦苦找寻原因的老蔡，天天就盯着各种监控程序百思不得其解，&lt;br&gt;很巧合地，前天宕机的时候，正巧在服务器上面用atop盯着看监控，于是捕捉到了宕机的那一刻的异常，如下图所示。&lt;/p&gt;
+&lt;h2 id=&quot;一个悲伤的故事&quot;&gt;&lt;a href=&quot;#一个悲伤的故事&quot; class=&quot;headerlink&quot; title=&quot;一个悲伤的故事&quot;&gt;&lt;/a&gt;一个悲伤的故事&lt;/h2&gt;&lt;p&gt;前天，公司服务器一周内第5次宕机!!!&lt;/p&gt;
+&lt;p&gt;苦苦找寻原因的老蔡，天天盯着各种监控程序百思不得其解，&lt;br&gt;很巧合地，这次宕机的时候，老蔡正巧在服务器上面用atop盯着监控，于是捕捉到了宕机的那一刻的异常，如下图所示。&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -167,9 +167,9 @@
     
       <category term="Hexo" scheme="https://www.oldcai.com/tags/Hexo/"/>
     
-      <category term="Ghost" scheme="https://www.oldcai.com/tags/Ghost/"/>
-    
       <category term="WordPress" scheme="https://www.oldcai.com/tags/WordPress/"/>
+    
+      <category term="Ghost" scheme="https://www.oldcai.com/tags/Ghost/"/>
     
   </entry>
   

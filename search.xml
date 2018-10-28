@@ -7,7 +7,7 @@
       <link href="/linux/atop-dsk/"/>
       <url>/linux/atop-dsk/</url>
       
-        <content type="html"><![CDATA[<p>上次介绍了<a href="/linux/atop/">atop在定位服务器瓶颈、调查宕机事件</a>上的作用，今天再来具体看看 DSK 示数的含义，</p><h2 id="一个悲伤的故事"><a href="#一个悲伤的故事" class="headerlink" title="一个悲伤的故事"></a>一个悲伤的故事</h2><p>前天，公司服务器一周内宕机了5次!!!</p><p>苦苦找寻原因的老蔡，天天就盯着各种监控程序百思不得其解，<br>很巧合地，前天宕机的时候，正巧在服务器上面用atop盯着看监控，于是捕捉到了宕机的那一刻的异常，如下图所示。</p><table><thead><tr><th style="text-align:center"><a href="/images/2018/10/ali-atop-busy.jpg"><img src="/images/2018/10/ali-atop-busy.jpg" alt="DSK繁忙示例"></a></th></tr></thead><tbody><tr><td style="text-align:center"><strong>点击可看大图</strong></td></tr></tbody></table><p>可以说，如果早知道atop里面DSK的具体含义，说不定前天就已经“破案”了。<br>可惜老蔡刚开始对这个示数也只有个大致的认知，只知道数字越大就说明读写越高，而具体<code>read</code>和<code>write</code>表示的什么，以及单位是什么，却是不知。<br>还以为是为了紧凑，把明显的KB/s或者MB/s去掉了。<br><a id="more"></a></p><p>那么下面具体来讲解讲解这幅图里面的数值和含义吧</p><h2 id="DSK示数解读"><a href="#DSK示数解读" class="headerlink" title="DSK示数解读"></a>DSK示数解读</h2><table><thead><tr><th style="text-align:center">示数</th><th style="text-align:center">含义</th><th style="text-align:center">例子解读</th></tr></thead><tbody><tr><td style="text-align:center"><strong>vda</strong></td><td style="text-align:center">盘符</td><td style="text-align:center">例子中是系统盘</td></tr><tr><td style="text-align:center"><strong>busy 100%</strong></td><td style="text-align:center">平时是硬盘繁忙情况的百分比</td><td style="text-align:center">磁盘io满了</td></tr><tr><td style="text-align:center"><strong>read 27</strong></td><td style="text-align:center">每秒读取请求的数量</td><td style="text-align:center">每秒27次</td></tr><tr><td style="text-align:center"><strong>write 9</strong></td><td style="text-align:center">每秒写的请求数量</td><td style="text-align:center">每秒9次</td></tr><tr><td style="text-align:center"><strong>KiB/r 4</strong></td><td style="text-align:center">每次读请求所读取的文件大小的平均值</td><td style="text-align:center">4k随机读为主</td></tr><tr><td style="text-align:center"><strong>KiB/w 29</strong></td><td style="text-align:center">每次写请求写的文件大小平均值</td><td style="text-align:center">每次平均写29kB</td></tr><tr><td style="text-align:center"><strong>Mbr/s 0.0</strong></td><td style="text-align:center">每秒读盘的吞吐量</td><td style="text-align:center">四舍五入为0了</td></tr><tr><td style="text-align:center"><strong>Mbw/s 0.0</strong></td><td style="text-align:center">每秒写入的吞吐量</td><td style="text-align:center">同上</td></tr><tr><td style="text-align:center"><strong>avq 1.01</strong></td><td style="text-align:center">平均磁盘读写队列长度</td><td style="text-align:center">1.01个，说明读写不重</td></tr><tr><td style="text-align:center"><strong>avio 278ms</strong></td><td style="text-align:center">平均每个读写请求需要的时间</td><td style="text-align:center">硬盘读写延迟<code>278ms</code>，对于单次io等待，可以说是很高了</td></tr></tbody></table><p>而老蔡刚开始的时候以为是自己的程序磁盘占用太多，把读写单位当做<code>MB/s</code>来理解。<br>现在明白真正该怀疑是什么问题后，才恍然大悟——之前的解读是错的。<br>那么，机智的你，猜到是什么原因导致的宕机了吗？欢迎留言哦。</p>]]></content>
+        <content type="html"><![CDATA[<p>上次介绍了<a href="/linux/atop/">atop在定位服务器瓶颈、调查宕机事件</a>上的作用，今天再来具体看看 DSK 示数的含义，</p><h2 id="一个悲伤的故事"><a href="#一个悲伤的故事" class="headerlink" title="一个悲伤的故事"></a>一个悲伤的故事</h2><p>前天，公司服务器一周内第5次宕机!!!</p><p>苦苦找寻原因的老蔡，天天盯着各种监控程序百思不得其解，<br>很巧合地，这次宕机的时候，老蔡正巧在服务器上面用atop盯着监控，于是捕捉到了宕机的那一刻的异常，如下图所示。</p><table><thead><tr><th style="text-align:center"><a href="/images/2018/10/ali-atop-busy.jpg"><img src="/images/2018/10/ali-atop-busy.jpg" alt="DSK繁忙示例"></a></th></tr></thead><tbody><tr><td style="text-align:center"><strong>点击可看大图</strong></td></tr></tbody></table><p>可以说，如果早知道atop里面DSK的具体含义，说不定前天就已经“破案”了。<br>可惜老蔡刚开始对这个示数也只有个大致的认知，只知道数字越大就说明读写越高，而具体<code>read</code>和<code>write</code>表示的什么，以及单位是什么，却是不知。<br>还以为是为了紧凑，把明显的KB/s或者MB/s去掉了。<br><a id="more"></a></p><p>那么下面具体来讲解讲解这幅图里面的数值和含义吧</p><h2 id="DSK示数解读"><a href="#DSK示数解读" class="headerlink" title="DSK示数解读"></a>DSK示数解读</h2><table><thead><tr><th style="text-align:center">示数</th><th style="text-align:center">含义</th><th style="text-align:center">例子解读</th></tr></thead><tbody><tr><td style="text-align:center"><strong>vda</strong></td><td style="text-align:center">盘符</td><td style="text-align:center">例子中是系统盘</td></tr><tr><td style="text-align:center"><strong>busy 100%</strong></td><td style="text-align:center">平时是硬盘繁忙情况的百分比</td><td style="text-align:center">磁盘io满了</td></tr><tr><td style="text-align:center"><strong>read 27</strong></td><td style="text-align:center">每秒读取请求的数量</td><td style="text-align:center">每秒27次</td></tr><tr><td style="text-align:center"><strong>write 9</strong></td><td style="text-align:center">每秒写的请求数量</td><td style="text-align:center">每秒9次</td></tr><tr><td style="text-align:center"><strong>KiB/r 4</strong></td><td style="text-align:center">每次读请求所读取的文件大小的平均值</td><td style="text-align:center">4k随机读为主</td></tr><tr><td style="text-align:center"><strong>KiB/w 29</strong></td><td style="text-align:center">每次写请求写的文件大小平均值</td><td style="text-align:center">每次平均写29kB</td></tr><tr><td style="text-align:center"><strong>Mbr/s 0.0</strong></td><td style="text-align:center">每秒读盘的吞吐量</td><td style="text-align:center">四舍五入为0了</td></tr><tr><td style="text-align:center"><strong>Mbw/s 0.0</strong></td><td style="text-align:center">每秒写入的吞吐量</td><td style="text-align:center">同上</td></tr><tr><td style="text-align:center"><strong>avq 1.01</strong></td><td style="text-align:center">平均磁盘读写队列长度</td><td style="text-align:center">1.01个，说明读写不重</td></tr><tr><td style="text-align:center"><strong>avio 278ms</strong></td><td style="text-align:center">平均每个读写请求需要的时间</td><td style="text-align:center">硬盘读写延迟<code>278ms</code>，对于单次io等待，可以说是很高了</td></tr></tbody></table><p>而老蔡刚开始的时候以为是自己的程序磁盘占用太多，把读写单位当做<code>MB/s</code>来理解。<br>现在明白真正该怀疑是什么问题后，才恍然大悟——之前的解读是错的。<br>那么，机智的你，猜到是什么原因导致的宕机了吗？欢迎留言哦。</p>]]></content>
       
       
       <categories>
@@ -123,9 +123,9 @@
             
             <tag> Hexo </tag>
             
-            <tag> Ghost </tag>
-            
             <tag> WordPress </tag>
+            
+            <tag> Ghost </tag>
             
         </tags>
       
@@ -700,7 +700,7 @@
       <link href="/archives/940/"/>
       <url>/archives/940/</url>
       
-        <content type="html"><![CDATA[<p>喜欢引述他人的话，或许就是一种自卑的表现：</p><p>“自卑情结指一个人由于不能或不愿进行奋斗而形成的文饰作用。”</p><p>——阿德勒 (心理学家) [奥地利]</p><p>如此说来，自卑和拖延症或许也有千丝万缕的联系：认为自己不行，不去努力，没有完成事情，更加觉得自己不行，如此循环往复。</p><p>老蔡感觉自己就有这样的循环在体内某个地方运作着，但很奇怪的是，有的时候又会很自大。</p><p>比如，偶尔觉得朋友一些想法或者做法令人捉急，就会给他们絮叨一些自己的想法。那个时候，甚至真的会觉得自己就是正确的，即使结尾会加一句“我是这么觉得的，可能是错的，但希望能帮到你”。</p><p>其实自说自话又怎么可能帮到别人呢？</p><p>每个人有自己的处事方式，有自己的道理。在自己这里行得通的道理，拿到别人那里未必可以；现在行得通的道理，过段时间也不一定能够。</p><p>再者，道理说出来人人都懂，即使明白道理也不一定人人都喜欢按常理出牌。每个人有自己的惯性和喜好，做好自己就好，絮叨别人的初衷是改变别人，初心就很幼稚了，虽然是真的很想帮到他们。</p><p>自大大概自大是自卑的心渴望得到认同罢了。</p>]]></content>
+        <content type="html"><![CDATA[<p>喜欢引述，大概也是一种自卑的表现😂——</p><blockquote><p>自卑情结指一个人由于不能或不愿进行奋斗而形成的文饰作用。<br>——阿德勒 (心理学家) [奥地利]</p></blockquote><p>如此说来，自卑和拖延症或许也有千丝万缕的联系：<br>认为自己不行，不去努力，没有完成事情，更加觉得自己不行，如此循环往复。</p><p>老蔡感觉自己就有这样的循环在体内某个地方运作着，但很奇怪的是，有的时候又会很自大。</p><p>比如，偶尔觉得朋友一些想法或者做法令人捉急，就会给他们絮叨一些自己的想法。那个时候，甚至真的会觉得自己就是正确的，即使结尾会加一句“我是这么觉得的，可能是错的，但希望能帮到你”。</p><p>自说自话又怎么可能帮到别人呢？</p><p>每个人有自己的处事方式，有自己的道理。在自己这里行得通的道理，拿到别人那里未必可以；<br>现在行得通的道理，过段时间也不一定能够。</p><p>再者，道理说出来人人都懂，即使明白道理也不一定人人都喜欢按常理出牌。每个人有自己的惯性和喜好，做好自己就好，絮叨别人的初衷是改变别人，初心就很幼稚了，虽然是真的很想帮到他们。</p><p>自大大概自大是自卑的心渴望得到认同罢了。</p>]]></content>
       
       
       <categories>
@@ -1199,9 +1199,9 @@
       
         <tags>
             
-            <tag> kde </tag>
-            
             <tag> gnome </tag>
+            
+            <tag> kde </tag>
             
         </tags>
       

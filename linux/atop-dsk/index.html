@@ -8,19 +8,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="上次介绍了atop在定位服务器瓶颈、调查宕机事件上的作用，今天再来具体看看 DSK 示数的含义， 一个悲伤的故事前天，公司服务器一周内宕机了5次!!! 苦苦找寻原因的老蔡，天天就盯着各种监控程序百思不得其解，很巧合地，前天宕机的时候，正巧在服务器上面用atop盯着看监控，于是捕捉到了宕机的那一刻的异常，如下图所示。         点击可看大图    可以说，如果早知道atop里面DSK的具体含义">
+    <meta name="description" content="上次介绍了atop在定位服务器瓶颈、调查宕机事件上的作用，今天再来具体看看 DSK 示数的含义， 一个悲伤的故事前天，公司服务器一周内第5次宕机!!! 苦苦找寻原因的老蔡，天天盯着各种监控程序百思不得其解，很巧合地，这次宕机的时候，老蔡正巧在服务器上面用atop盯着监控，于是捕捉到了宕机的那一刻的异常，如下图所示。         点击可看大图    可以说，如果早知道atop里面DSK的具体含义">
 <meta name="keywords" content="atop">
 <meta property="og:type" content="article">
 <meta property="og:title" content="atop DSK 示数的含义，帮你捋一捋">
 <meta property="og:url" content="https://www.oldcai.com/linux/atop-dsk/index.html">
 <meta property="og:site_name" content="老蔡博客">
-<meta property="og:description" content="上次介绍了atop在定位服务器瓶颈、调查宕机事件上的作用，今天再来具体看看 DSK 示数的含义， 一个悲伤的故事前天，公司服务器一周内宕机了5次!!! 苦苦找寻原因的老蔡，天天就盯着各种监控程序百思不得其解，很巧合地，前天宕机的时候，正巧在服务器上面用atop盯着看监控，于是捕捉到了宕机的那一刻的异常，如下图所示。         点击可看大图    可以说，如果早知道atop里面DSK的具体含义">
+<meta property="og:description" content="上次介绍了atop在定位服务器瓶颈、调查宕机事件上的作用，今天再来具体看看 DSK 示数的含义， 一个悲伤的故事前天，公司服务器一周内第5次宕机!!! 苦苦找寻原因的老蔡，天天盯着各种监控程序百思不得其解，很巧合地，这次宕机的时候，老蔡正巧在服务器上面用atop盯着监控，于是捕捉到了宕机的那一刻的异常，如下图所示。         点击可看大图    可以说，如果早知道atop里面DSK的具体含义">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://www.oldcai.com/images/2018/10/ali-atop-busy.jpg">
-<meta property="og:updated_time" content="2018-10-27T12:08:54.173Z">
+<meta property="og:updated_time" content="2018-10-28T03:49:37.731Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="atop DSK 示数的含义，帮你捋一捋">
-<meta name="twitter:description" content="上次介绍了atop在定位服务器瓶颈、调查宕机事件上的作用，今天再来具体看看 DSK 示数的含义， 一个悲伤的故事前天，公司服务器一周内宕机了5次!!! 苦苦找寻原因的老蔡，天天就盯着各种监控程序百思不得其解，很巧合地，前天宕机的时候，正巧在服务器上面用atop盯着看监控，于是捕捉到了宕机的那一刻的异常，如下图所示。         点击可看大图    可以说，如果早知道atop里面DSK的具体含义">
+<meta name="twitter:description" content="上次介绍了atop在定位服务器瓶颈、调查宕机事件上的作用，今天再来具体看看 DSK 示数的含义， 一个悲伤的故事前天，公司服务器一周内第5次宕机!!! 苦苦找寻原因的老蔡，天天盯着各种监控程序百思不得其解，很巧合地，这次宕机的时候，老蔡正巧在服务器上面用atop盯着监控，于是捕捉到了宕机的那一刻的异常，如下图所示。         点击可看大图    可以说，如果早知道atop里面DSK的具体含义">
 <meta name="twitter:image" content="https://www.oldcai.com/images/2018/10/ali-atop-busy.jpg">
     
     
@@ -103,8 +103,8 @@
   <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/linux/atop-dsk/&title=atop DSK 示数的含义，帮你捋一捋"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://digg.com/submit?url=https://www.oldcai.com/linux/atop-dsk/&title=atop DSK 示数的含义，帮你捋一捋"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/linux/atop-dsk/&name=atop DSK 示数的含义，帮你捋一捋&description=&lt;p&gt;上次介绍了&lt;a href=&#34;/linux/atop/&#34;&gt;atop在定位服务器瓶颈、调查宕机事件&lt;/a&gt;上的作用，今天再来具体看看 DSK 示数的含义，&lt;/p&gt;
-&lt;h2 id=&#34;一个悲伤的故事&#34;&gt;&lt;a href=&#34;#一个悲伤的故事&#34; class=&#34;headerlink&#34; title=&#34;一个悲伤的故事&#34;&gt;&lt;/a&gt;一个悲伤的故事&lt;/h2&gt;&lt;p&gt;前天，公司服务器一周内宕机了5次!!!&lt;/p&gt;
-&lt;p&gt;苦苦找寻原因的老蔡，天天就盯着各种监控程序百思不得其解，&lt;br&gt;很巧合地，前天宕机的时候，正巧在服务器上面用atop盯着看监控，于是捕捉到了宕机的那一刻的异常，如下图所示。&lt;/p&gt;
+&lt;h2 id=&#34;一个悲伤的故事&#34;&gt;&lt;a href=&#34;#一个悲伤的故事&#34; class=&#34;headerlink&#34; title=&#34;一个悲伤的故事&#34;&gt;&lt;/a&gt;一个悲伤的故事&lt;/h2&gt;&lt;p&gt;前天，公司服务器一周内第5次宕机!!!&lt;/p&gt;
+&lt;p&gt;苦苦找寻原因的老蔡，天天盯着各种监控程序百思不得其解，&lt;br&gt;很巧合地，这次宕机的时候，老蔡正巧在服务器上面用atop盯着监控，于是捕捉到了宕机的那一刻的异常，如下图所示。&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -169,8 +169,8 @@
 
   <div class="content" itemprop="articleBody">
     <p>上次介绍了<a href="/linux/atop/">atop在定位服务器瓶颈、调查宕机事件</a>上的作用，今天再来具体看看 DSK 示数的含义，</p>
-<h2 id="一个悲伤的故事"><a href="#一个悲伤的故事" class="headerlink" title="一个悲伤的故事"></a>一个悲伤的故事</h2><p>前天，公司服务器一周内宕机了5次!!!</p>
-<p>苦苦找寻原因的老蔡，天天就盯着各种监控程序百思不得其解，<br>很巧合地，前天宕机的时候，正巧在服务器上面用atop盯着看监控，于是捕捉到了宕机的那一刻的异常，如下图所示。</p>
+<h2 id="一个悲伤的故事"><a href="#一个悲伤的故事" class="headerlink" title="一个悲伤的故事"></a>一个悲伤的故事</h2><p>前天，公司服务器一周内第5次宕机!!!</p>
+<p>苦苦找寻原因的老蔡，天天盯着各种监控程序百思不得其解，<br>很巧合地，这次宕机的时候，老蔡正巧在服务器上面用atop盯着监控，于是捕捉到了宕机的那一刻的异常，如下图所示。</p>
 <table>
 <thead>
 <tr>
@@ -293,8 +293,8 @@
   <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/linux/atop-dsk/&title=atop DSK 示数的含义，帮你捋一捋"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://digg.com/submit?url=https://www.oldcai.com/linux/atop-dsk/&title=atop DSK 示数的含义，帮你捋一捋"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/linux/atop-dsk/&name=atop DSK 示数的含义，帮你捋一捋&description=&lt;p&gt;上次介绍了&lt;a href=&#34;/linux/atop/&#34;&gt;atop在定位服务器瓶颈、调查宕机事件&lt;/a&gt;上的作用，今天再来具体看看 DSK 示数的含义，&lt;/p&gt;
-&lt;h2 id=&#34;一个悲伤的故事&#34;&gt;&lt;a href=&#34;#一个悲伤的故事&#34; class=&#34;headerlink&#34; title=&#34;一个悲伤的故事&#34;&gt;&lt;/a&gt;一个悲伤的故事&lt;/h2&gt;&lt;p&gt;前天，公司服务器一周内宕机了5次!!!&lt;/p&gt;
-&lt;p&gt;苦苦找寻原因的老蔡，天天就盯着各种监控程序百思不得其解，&lt;br&gt;很巧合地，前天宕机的时候，正巧在服务器上面用atop盯着看监控，于是捕捉到了宕机的那一刻的异常，如下图所示。&lt;/p&gt;
+&lt;h2 id=&#34;一个悲伤的故事&#34;&gt;&lt;a href=&#34;#一个悲伤的故事&#34; class=&#34;headerlink&#34; title=&#34;一个悲伤的故事&#34;&gt;&lt;/a&gt;一个悲伤的故事&lt;/h2&gt;&lt;p&gt;前天，公司服务器一周内第5次宕机!!!&lt;/p&gt;
+&lt;p&gt;苦苦找寻原因的老蔡，天天盯着各种监控程序百思不得其解，&lt;br&gt;很巧合地，这次宕机的时候，老蔡正巧在服务器上面用atop盯着监控，于是捕捉到了宕机的那一刻的异常，如下图所示。&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
