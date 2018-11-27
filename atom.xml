@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.oldcai.com/"/>
-  <updated>2018-10-28T03:49:37.731Z</updated>
+  <updated>2018-11-27T18:40:41.257Z</updated>
   <id>https://www.oldcai.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud</title>
+    <link href="https://www.oldcai.com/server/big-postgresql-database-migration/"/>
+    <id>https://www.oldcai.com/server/big-postgresql-database-migration/</id>
+    <published>2018-11-27T17:05:00.000Z</published>
+    <updated>2018-11-27T18:40:41.257Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="TL-DR"><a href="#TL-DR" class="headerlink" title="TL;DR:"></a>TL;DR:</h2><p>First, setup a master-slave replication for PostgreSQL.<br>Then set the slave server to a master.</p><h2 id="Longer-Story-and-Guiding-Steps"><a href="#Longer-Story-and-Guiding-Steps" class="headerlink" title="Longer Story and Guiding Steps"></a>Longer Story and Guiding Steps</h2><pre><code>To practice as this guide, PostgreSQL version should be at least 9.6</code></pre><p>For services in-production, you would expect it always online.</p><h3 id="Situation"><a href="#Situation" class="headerlink" title="Situation"></a>Situation</h3><p>In our case, the database is bigger than 200GB, it would take at least 3 hours to migrate to a new server, including export, transfer and import.</p><p>Sometimes, it’s acceptable to shutdown sites or apps to maintain for a short time, but what if the data grows bigger and migration takes days or even weeks?<br>Yes, we hope we can keep the service online and switch it in minutes.</p><h3 id="Struggles"><a href="#Struggles" class="headerlink" title="Struggles"></a>Struggles</h3><p>I have checked <a href="https://www.howtoforge.com/tutorial/how-to-set-up-master-slave-replication-for-postgresql-96-on-ubuntu-1604/" target="_blank" rel="noopener">How to Set-Up Master-Slave Replication for PostgreSQL 9.6 on Ubuntu 16.04</a> and tried many times to make a replica on the new server but always fails.<br>It always report the same error: <code>requested WAL segment 00000001000001CD00000055 has already been removed</code>.</p><p>After did some research and I found that’s because my database is too big, transfer would take too much time, and the <code>wal_keep_segments</code> is not enough for that long time of transferring files.</p><h3 id="Quick-Fix"><a href="#Quick-Fix" class="headerlink" title="Quick Fix"></a>Quick Fix</h3><p>Maybe it can be fixed by increase <code>wal_keep_segments</code> to a number big enough, but that introduces another problem: we need to calculate the proper number, big enough for the unsure time of data transferring, and not too big that would slow down the running service.<br>Of course, that’s not <strong>the best solution</strong>.</p><h3 id="Better-Solutions"><a href="#Better-Solutions" class="headerlink" title="Better Solutions"></a>Better Solutions</h3><p>Later, I found a better and more robust solution <a href="https://www.postgresql.org/message-id/8154f0c1-5ac3-8769-d0b6-81c65c666dd7%40dalibo.com" target="_blank" rel="noopener">in PostgreSQL’s mail list</a>:</p><blockquote><p>You could use <code>-X stream</code> instead of <code>--xlog</code> (which is an alias for <code>-X fetch</code>). This consumes two wal senders instead of one, but greatly reduce the probability of having this error.<br>The only way to really prevent this error is using replication slots, but the support for pg_basebackup is only available in 9.6.</p></blockquote><p>I would show you how to use replication slots and use stream to transfer the transaction log files(WAL files).</p><h2 id="Step-1-Enable-Replication-Slots"><a href="#Step-1-Enable-Replication-Slots" class="headerlink" title="Step 1 - Enable Replication Slots"></a>Step 1 - Enable Replication Slots</h2><p>PostgreSQL disabled replication slots by default, we need to add line to <code>/var/lib/pgsql/9.6/data/postgresql.conf</code> below:</p><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">max_replication_slots</span> = <span class="number">1</span></span><br></pre></td></tr></table></figure><p>Then restart the PostgreSQL service by <code>service postgresql-9.6 restart</code>.</p><h2 id="Step-2-Creating-a-Replication-Slot"><a href="#Step-2-Creating-a-Replication-Slot" class="headerlink" title="Step 2 - Creating a Replication Slot"></a>Step 2 - Creating a Replication Slot</h2><p>Connect to PostgreSQL by <code>sudo -u postgres psql</code><br>Then execute<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">select</span> <span class="title">pg_create_physical_replication_slot</span>(<span class="params"><span class="string">'slot1'</span>, <span class="literal">true</span></span>)</span>;</span><br></pre></td></tr></table></figure></p><p>You can check the progress by selecting:<br><figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> pg_replication_slots;</span><br></pre></td></tr></table></figure></p><h2 id="Step-3-Transfer-Data-From-Another-Data-Center"><a href="#Step-3-Transfer-Data-From-Another-Data-Center" class="headerlink" title="Step 3 - Transfer Data From Another Data Center"></a>Step 3 - Transfer Data From Another Data Center</h2><p>Run on the slave server:<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pg_basebackup -h <span class="number">10.10</span>.<span class="number">10.10</span> -p <span class="number">5432</span> -S slot1 -U replica -D /var/<span class="class"><span class="keyword">lib</span>/<span class="title">pgsql</span>/9.6/<span class="title">data</span> -<span class="title">R</span> -<span class="title">P</span> -<span class="title">X</span> <span class="title">stream</span></span></span><br></pre></td></tr></table></figure></p><p>It would ask you for the password, and then wait for it to finish syncing. This step is very time consuming, always takes hours or even days.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;TL-DR&quot;&gt;&lt;a href=&quot;#TL-DR&quot; class=&quot;headerlink&quot; title=&quot;TL;DR:&quot;&gt;&lt;/a&gt;TL;DR:&lt;/h2&gt;&lt;p&gt;First, setup a master-slave replication for PostgreSQL.&lt;
+      
+    
+    </summary>
+    
+      <category term="Server" scheme="https://www.oldcai.com/categories/Server/"/>
+    
+    
+      <category term="postgresql" scheme="https://www.oldcai.com/tags/postgresql/"/>
+    
+  </entry>
   
   <entry>
     <title>atop DSK 示数的含义，帮你捋一捋</title>
@@ -104,11 +129,11 @@
       <category term="解决" scheme="https://www.oldcai.com/categories/%E8%A7%A3%E5%86%B3/"/>
     
     
+      <category term="WordPress" scheme="https://www.oldcai.com/tags/WordPress/"/>
+    
       <category term="博客" scheme="https://www.oldcai.com/tags/%E5%8D%9A%E5%AE%A2/"/>
     
       <category term="Hexo" scheme="https://www.oldcai.com/tags/Hexo/"/>
-    
-      <category term="WordPress" scheme="https://www.oldcai.com/tags/WordPress/"/>
     
   </entry>
   
@@ -163,13 +188,13 @@
       <category term="对比" scheme="https://www.oldcai.com/categories/%E5%AF%B9%E6%AF%94/"/>
     
     
+      <category term="WordPress" scheme="https://www.oldcai.com/tags/WordPress/"/>
+    
       <category term="博客" scheme="https://www.oldcai.com/tags/%E5%8D%9A%E5%AE%A2/"/>
     
       <category term="Hexo" scheme="https://www.oldcai.com/tags/Hexo/"/>
     
       <category term="Ghost" scheme="https://www.oldcai.com/tags/Ghost/"/>
-    
-      <category term="WordPress" scheme="https://www.oldcai.com/tags/WordPress/"/>
     
   </entry>
   
@@ -549,36 +574,6 @@
       
       
         &lt;p&gt;老蔡昨天学习了下Karabiner的使用方法，并&lt;a href=&quot;http://www.oldcai.com/archives/1029&quot; title=&quot;Mac OS X中将失灵的小键盘映射成标准键盘(利用Karabiner)&quot;&gt;用Karabiner将小键盘映射成标准键值&lt;
-      
-    
-    </summary>
-    
-      <category term="Mac" scheme="https://www.oldcai.com/categories/Mac/"/>
-    
-      <category term="软件评测" scheme="https://www.oldcai.com/categories/Mac/%E8%BD%AF%E4%BB%B6%E8%AF%84%E6%B5%8B/"/>
-    
-    
-      <category term="解决办法" scheme="https://www.oldcai.com/tags/%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/"/>
-    
-      <category term="Karabiner" scheme="https://www.oldcai.com/tags/Karabiner/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Mac OS X中将失灵的小键盘映射成标准键盘(利用Karabiner)</title>
-    <link href="https://www.oldcai.com/archives/1029/"/>
-    <id>https://www.oldcai.com/archives/1029/</id>
-    <published>2015-03-15T17:30:34.000Z</published>
-    <updated>2018-10-23T14:45:53.602Z</updated>
-    
-    <content type="html"><![CDATA[<p>用Mac OS X的时候，外接的键盘上面的小键盘(Key Pad)在一些程序上会失灵，比如iTerm2就会无法使用小键盘上面的数字回车加号减号星号斜杠。今天老蔡终于找到了一款可以解决这个问题的软件：Karabiner。</p><p><a href="https://github.com/tekezo/Karabiner" target="_blank" rel="noopener">Karabiner</a>是一款能帮Mac OS X改键的软件，键盘鼠标的键都可以改。</p><p>映射小键盘上面的星号、加号比较不同，需要把键位映射成组合键，其他的都是可以直接映射的。</p><p>至于如何导入配置，可以参考<a href="https://pqrs.org/osx/karabiner/document.html.en#privatexml" target="_blank" rel="noopener">How to add your own settings</a> 配置如下：</p><p>&lt;?xml version=”1.0”?&gt;</p><root><br><item><br><name>Change KeyPad 0 to Num 0</name><br><identifier>private.change_keypad0_to_num0</identifier><br><autogen>__KeyToKey__ KeyCode::KEYPAD_0, KeyCode::KEY_0</autogen><br></item><br><item><br><name>Change KeyPad 1 to Num 1</name><br><identifier>private.change_keypad1_to_num1</identifier><br><autogen>__KeyToKey__ KeyCode::KEYPAD_1, KeyCode::KEY_1</autogen><br></item><br><item><br><name>Change KeyPad 2 to Num 2</name><br><identifier>private.change_keypad2_to_num2</identifier><br><autogen>__KeyToKey__ KeyCode::KEYPAD_2, KeyCode::KEY_2</autogen><br></item><br><item><br><name>Change KeyPad 3 to Num 3</name><br><identifier>private.change_keypad3_to_num3</identifier><br><autogen>__KeyToKey__ KeyCode::KEYPAD_3, KeyCode::KEY_3</autogen><br></item><br><item><br><name>Change KeyPad 4 to Num 4</name><br><identifier>private.change_keypad4_to_num4</identifier><br><autogen>__KeyToKey__ KeyCode::KEYPAD_4, KeyCode::KEY_4</autogen><br></item><br><item><br><name>Change KeyPad 5 to Num 5</name><br><identifier>private.change_keypad5_to_num5</identifier><br><autogen>__KeyToKey__ KeyCode::KEYPAD_5, KeyCode::KEY_5</autogen><br></item><br><item><br><name>Change KeyPad 6 to Num 6</name><br><identifier>private.change_keypad6_to_num6</identifier><br><autogen>__KeyToKey__ KeyCode::KEYPAD_6, KeyCode::KEY_6</autogen><br></item><br><item><br><name>Change KeyPad 7 to Num 7</name><br><identifier>private.change_keypad7_to_num7</identifier><br><autogen>__KeyToKey__ KeyCode::KEYPAD_7, KeyCode::KEY_7</autogen><br></item><br><item><br><name>Change KeyPad 8 to Num 8</name><br><identifier>private.change_keypad8_to_num8</identifier><br><autogen>__KeyToKey__ KeyCode::KEYPAD_8, KeyCode::KEY_8</autogen><br></item><br><item><br><name>Change KeyPad 9 to Num 9</name><br><identifier>private.change_keypad9_to_num9</identifier><br><autogen>__KeyToKey__ KeyCode::KEYPAD_9, KeyCode::KEY_9</autogen><br></item><br><item><br><name>Change KeyPad / to /</name><br><identifier>private.change_keypadslash_to_shift_slash</identifier><br><autogen>__KeyToKey__ KeyCode::KEYPAD_SLASH, KeyCode::SLASH</autogen><br></item><br><item><br><name>Change KeyPad * to shift+8</name><br><identifier>private.change_keypadasterisk_to_shift_shift_8</identifier><br><autogen>__KeyToKey__ KeyCode::KEYPAD_MULTIPLY, KeyCode::KEY_8, ModifierFlag::SHIFT_L</autogen><br></item><br><item><br><name>Change KeyPad - to -</name><br><identifier>private.change_keypadminus_to_shift_minus</identifier><br><autogen>__KeyToKey__ KeyCode::KEYPAD_MINUS, KeyCode::MINUS</autogen><br></item><br><item><br><name>Change KeyPad + to shift+=</name><br><identifier>private.change_keypadplus_to_shift_plus</identifier><br><autogen>__KeyToKey__ KeyCode::KEYPAD_PLUS, KeyCode::EQUAL, ModifierFlag::SHIFT_L</autogen><br></item><br><item><br><name>Change KeyPad Enter to Return</name><br><identifier>private.change_keypad_enter_to_return</identifier><br><autogen>__KeyToKey__ KeyCode::ENTER, KeyCode::RETURN</autogen><br></item><br><item><br><name>Change KeyPad Dot to Dot</name><br><identifier>private.change_keypad_dot_to_dot</identifier><br><autogen>__KeyToKey__ KeyCode::KEYPAD_DOT, KeyCode::DOT</autogen><br></item><br></root><p>本文是受到了oschina上的<a href="http://my.oschina.net/ioslighter" target="_blank" rel="noopener">@yoyoso</a>的一篇不完整的映射方案启发后探索和调试数个小时整理出来的。感谢@yoyoso同学。</p><p>使用发生错误之类的欢迎留言。</p><p>另外如果有兴趣，折腾完了键盘，可以继续折腾一下鼠标：<a href="http://www.oldcai.com/archives/1031" title="Mac OS X上使用Microsoft Sculpt Ergonomic鼠标的Windows键">Karabiner改鼠标上的快捷键</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;用Mac OS X的时候，外接的键盘上面的小键盘(Key Pad)在一些程序上会失灵，比如iTerm2就会无法使用小键盘上面的数字回车加号减号星号斜杠。今天老蔡终于找到了一款可以解决这个问题的软件：Karabiner。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://git
       
     
     </summary>
