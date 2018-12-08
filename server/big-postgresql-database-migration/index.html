@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="老蔡博客">
 <meta property="og:description" content="To practice this guide, PostgreSQL version should be at least 9.6 TL;DR:First, setup a master-slave replication for PostgreSQL.Then switch the slave server to master. Longer StorySituationIn our case,">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-12-03T03:40:20.438Z">
+<meta property="og:updated_time" content="2018-12-08T09:55:57.489Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud">
 <meta name="twitter:description" content="To practice this guide, PostgreSQL version should be at least 9.6 TL;DR:First, setup a master-slave replication for PostgreSQL.Then switch the slave server to master. Longer StorySituationIn our case,">
@@ -151,8 +151,8 @@
   <div class="content" itemprop="articleBody">
     <pre><code>To practice this guide, PostgreSQL version should be at least 9.6
 </code></pre><h2 id="TL-DR"><a href="#TL-DR" class="headerlink" title="TL;DR:"></a>TL;DR:</h2><p>First, setup a master-slave replication for PostgreSQL.<br>Then switch the slave server to master.</p>
-<h2 id="Longer-Story"><a href="#Longer-Story" class="headerlink" title="Longer Story"></a>Longer Story</h2><h3 id="Situation"><a href="#Situation" class="headerlink" title="Situation"></a>Situation</h3><p>In our case, the database is bigger than 200GB, it would take at least 3 hours to migrate to a new server, including export, transfer and import.</p>
-<p>Sometimes, it’s acceptable to shutdown sites or apps to maintain for a short time, but what if the data grows bigger and migration takes days or even weeks?</p>
+<h2 id="Longer-Story"><a href="#Longer-Story" class="headerlink" title="Longer Story"></a>Longer Story</h2><h3 id="Situation"><a href="#Situation" class="headerlink" title="Situation"></a>Situation</h3><p>In our case, the database is almost 300GB, it would take at least 3 hours to migrate to a new server, including export, transfer and import time.</p>
+<p>Sometimes, it’s acceptable to shutdown sites or apps for a short time to do some maintain, but what if the data grows and the migration may takes days or weeks?</p>
 <p>For services in-production, you would expect it always online.</p>
 <p>Yes, we hope we can keep the service online while transferring data and switch it in minutes.</p>
 <h3 id="Struggles"><a href="#Struggles" class="headerlink" title="Struggles"></a>Struggles</h3><p>I have checked <a href="https://www.howtoforge.com/tutorial/how-to-set-up-master-slave-replication-for-postgresql-96-on-ubuntu-1604/" target="_blank" rel="noopener">How to Set-Up Master-Slave Replication for PostgreSQL 9.6 on Ubuntu 16.04</a> and tried many times of making replicas on the new server but always fail.<br>It reports the same error: <code>requested WAL segment 00000001000001CD00000055 has already been removed</code> every time.</p>
