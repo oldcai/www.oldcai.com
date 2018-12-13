@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.oldcai.com/"/>
-  <updated>2018-12-08T09:55:57.489Z</updated>
+  <updated>2018-12-13T21:59:00.584Z</updated>
   <id>https://www.oldcai.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="https://www.oldcai.com/server/logstash-filebeat-cert/"/>
+    <id>https://www.oldcai.com/server/logstash-filebeat-cert/</id>
+    <published>2018-12-13T21:49:36.144Z</published>
+    <updated>2018-12-13T21:59:00.584Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Filebeat-Not-Able-To-Connect-Logstash"><a href="#Filebeat-Not-Able-To-Connect-Logstash" class="headerlink" title="Filebeat Not Able To Connect Logstash"></a>Filebeat Not Able To Connect Logstash</h1><h2 id="Possible-Errors"><a href="#Possible-Errors" class="headerlink" title="Possible Errors:"></a>Possible Errors:</h2><ul><li>Failed to connect to backoff(async(tcp://10.10.10.1:5044)): x509: certificate is valid for 127.0.0.1, not 10.10.10.1</li><li>x509: cannot validate certificate for <code>127.0.0.1</code> because it doesn’t contain any IP SANs</li></ul><h2 id="Step-1-Add-subjectAltName"><a href="#Step-1-Add-subjectAltName" class="headerlink" title="Step 1 - Add subjectAltName"></a>Step 1 - Add subjectAltName</h2><p>Add the line below into file <code>/etc/pki/tls/openssl.cnf</code></p><figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">subjectAltName = <span class="built_in">IP</span>: <span class="number">127.0</span><span class="meta">.0</span><span class="meta">.1</span></span><br></pre></td></tr></table></figure><p>You can change the ip address to your logstash server address</p><h2 id="Step-2-Regenerate-Certification"><a href="#Step-2-Regenerate-Certification" class="headerlink" title="Step 2 - Regenerate Certification"></a>Step 2 - Regenerate Certification</h2><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl req -config <span class="regexp">/etc/</span>pki<span class="regexp">/tls/</span>openssl.cnf -x509 -days <span class="number">3650</span> -batch -nodes -newkey <span class="string">rsa:</span><span class="number">2048</span> -keyout <span class="regexp">/etc/</span>pki<span class="regexp">/tls/</span><span class="keyword">private</span><span class="regexp">/logstash-forwarder.key -out /</span>etc<span class="regexp">/pki/</span>tls<span class="regexp">/certs/</span>logstash-forwarder.crt</span><br></pre></td></tr></table></figure><p>Then you can use the cert file <code>/etc/pki/tls/certs/logstash-forwarder.crt</code> to authorize filebeat to connect to logstash.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Filebeat-Not-Able-To-Connect-Logstash&quot;&gt;&lt;a href=&quot;#Filebeat-Not-Able-To-Connect-Logstash&quot; class=&quot;headerlink&quot; title=&quot;Filebeat Not Able 
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud</title>
@@ -130,11 +151,11 @@
       <category term="解决" scheme="https://www.oldcai.com/categories/%E8%A7%A3%E5%86%B3/"/>
     
     
+      <category term="WordPress" scheme="https://www.oldcai.com/tags/WordPress/"/>
+    
       <category term="博客" scheme="https://www.oldcai.com/tags/%E5%8D%9A%E5%AE%A2/"/>
     
       <category term="Hexo" scheme="https://www.oldcai.com/tags/Hexo/"/>
-    
-      <category term="WordPress" scheme="https://www.oldcai.com/tags/WordPress/"/>
     
   </entry>
   
@@ -189,13 +210,13 @@
       <category term="对比" scheme="https://www.oldcai.com/categories/%E5%AF%B9%E6%AF%94/"/>
     
     
+      <category term="WordPress" scheme="https://www.oldcai.com/tags/WordPress/"/>
+    
       <category term="博客" scheme="https://www.oldcai.com/tags/%E5%8D%9A%E5%AE%A2/"/>
     
       <category term="Hexo" scheme="https://www.oldcai.com/tags/Hexo/"/>
     
       <category term="Ghost" scheme="https://www.oldcai.com/tags/Ghost/"/>
-    
-      <category term="WordPress" scheme="https://www.oldcai.com/tags/WordPress/"/>
     
   </entry>
   
@@ -558,35 +579,6 @@
     
       <category term="搜索引擎" scheme="https://www.oldcai.com/categories/Business/%E6%80%9D%E8%80%83/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>Mac OS X上使用Microsoft Sculpt Ergonomic鼠标的Windows键</title>
-    <link href="https://www.oldcai.com/archives/1031/"/>
-    <id>https://www.oldcai.com/archives/1031/</id>
-    <published>2015-03-16T10:55:22.000Z</published>
-    <updated>2018-10-23T14:45:53.602Z</updated>
-    
-    <content type="html"><![CDATA[<p>老蔡昨天学习了下Karabiner的使用方法，并<a href="http://www.oldcai.com/archives/1029" title="Mac OS X中将失灵的小键盘映射成标准键盘(利用Karabiner)">用Karabiner将小键盘映射成标准键值</a>，也一起解决了微软鼠标上面Win键在Mac下无用的问题。下面来介绍一下如何用Karabiner改键把Microsoft Sculpt Ergonomic（微软小馒头）鼠标改成OS X下面的Mission Control。</p><ol><li>先用系统的“键盘-修饰键”功能，把Microsoft 2.5GHz Transceiver v9.0原先的Command改成Option</li><li>然后用Karabiner把右边的Option改成鼠标5键</li><li>然后在“设置-Mission Control”中把Mission Control启动加上鼠标5键</li></ol><p><strong>这样改键的副作用</strong>是现在右边的Option键不能正常用，可以自行在修饰键中把原⌘</p><p>Command换成自己不常用的右边的键。因为Command+Backspace是删除文件，经常用到的，而右Option则暂时对老蔡没有用处，所以如此设置。</p><item><br>    <name>Change mouse win to button5</name><br>    <identifier>private.change_mousewin_to_button5</identifier><br>    <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::VK_MOUSEKEY_BUTTON_BUTTON5</autogen><br></item><p>Mission Control确实是极好的，此外，老蔡还把鼠标中键设置成了显示桌面，虽然桌面上面是空的，但是内心还是感觉效率提高了好多啊。。。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;老蔡昨天学习了下Karabiner的使用方法，并&lt;a href=&quot;http://www.oldcai.com/archives/1029&quot; title=&quot;Mac OS X中将失灵的小键盘映射成标准键盘(利用Karabiner)&quot;&gt;用Karabiner将小键盘映射成标准键值&lt;
-      
-    
-    </summary>
-    
-      <category term="Mac" scheme="https://www.oldcai.com/categories/Mac/"/>
-    
-      <category term="软件评测" scheme="https://www.oldcai.com/categories/Mac/%E8%BD%AF%E4%BB%B6%E8%AF%84%E6%B5%8B/"/>
-    
-    
-      <category term="解决办法" scheme="https://www.oldcai.com/tags/%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/"/>
-    
-      <category term="Karabiner" scheme="https://www.oldcai.com/tags/Karabiner/"/>
     
   </entry>
   

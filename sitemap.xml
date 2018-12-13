@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.oldcai.com/server/logstash-filebeat-cert/</loc>
+    
+    <lastmod>2018-12-13T21:59:00.584Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.oldcai.com/server/big-postgresql-database-migration/</loc>
     
     <lastmod>2018-12-08T09:55:57.489Z</lastmod>
@@ -702,14 +709,14 @@
   </url>
   
   <url>
-    <loc>https://www.oldcai.com/archives/228/</loc>
+    <loc>https://www.oldcai.com/archives/225/</loc>
     
     <lastmod>2018-10-23T14:45:53.619Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://www.oldcai.com/archives/225/</loc>
+    <loc>https://www.oldcai.com/archives/228/</loc>
     
     <lastmod>2018-10-23T14:45:53.619Z</lastmod>
     
