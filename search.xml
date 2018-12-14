@@ -7,7 +7,7 @@
       <link href="/server/logstash-filebeat-cert/"/>
       <url>/server/logstash-filebeat-cert/</url>
       
-        <content type="html"><![CDATA[<p># </p><h2 id="Possible-Errors"><a href="#Possible-Errors" class="headerlink" title="Possible Errors:"></a>Possible Errors:</h2><ul><li>Failed to connect to backoff(async(tcp://10.10.10.1:5044)): x509: certificate is valid for 127.0.0.1, not 10.10.10.1</li><li>x509: cannot validate certificate for <code>127.0.0.1</code> because it doesn’t contain any IP SANs</li></ul><h2 id="Step-1-Add-subjectAltName"><a href="#Step-1-Add-subjectAltName" class="headerlink" title="Step 1 - Add subjectAltName"></a>Step 1 - Add subjectAltName</h2><p>Add the line below into file <code>/etc/pki/tls/openssl.cnf</code></p><figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">subjectAltName = <span class="built_in">IP</span>: <span class="number">127.0</span><span class="meta">.0</span><span class="meta">.1</span></span><br></pre></td></tr></table></figure><p>You can change the ip address to your logstash server address</p><h2 id="Step-2-Regenerate-Certification"><a href="#Step-2-Regenerate-Certification" class="headerlink" title="Step 2 - Regenerate Certification"></a>Step 2 - Regenerate Certification</h2><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl req -config <span class="regexp">/etc/</span>pki<span class="regexp">/tls/</span>openssl.cnf -x509 -days <span class="number">3650</span> -batch -nodes -newkey <span class="string">rsa:</span><span class="number">2048</span> -keyout <span class="regexp">/etc/</span>pki<span class="regexp">/tls/</span><span class="keyword">private</span><span class="regexp">/logstash-forwarder.key -out /</span>etc<span class="regexp">/pki/</span>tls<span class="regexp">/certs/</span>logstash-forwarder.crt</span><br></pre></td></tr></table></figure><p>Then you can use the cert file <code>/etc/pki/tls/certs/logstash-forwarder.crt</code> to authorize filebeat to connect to logstash.</p>]]></content>
+        <content type="html"><![CDATA[<h2 id="Possible-Errors"><a href="#Possible-Errors" class="headerlink" title="Possible Errors:"></a>Possible Errors:</h2><ul><li>Failed to connect to backoff(async(tcp://10.10.10.1:5044)): x509: certificate is valid for 127.0.0.1, not 10.10.10.1</li><li>x509: cannot validate certificate for <code>127.0.0.1</code> because it doesn’t contain any IP SANs</li></ul><h2 id="Step-1-Add-subjectAltName"><a href="#Step-1-Add-subjectAltName" class="headerlink" title="Step 1 - Add subjectAltName"></a>Step 1 - Add subjectAltName</h2><p>Add the line below into file <code>/etc/pki/tls/openssl.cnf</code></p><figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">subjectAltName = <span class="built_in">IP</span>: <span class="number">127.0</span><span class="meta">.0</span><span class="meta">.1</span></span><br></pre></td></tr></table></figure><p>You can change the ip address to your logstash server address</p><h2 id="Step-2-Regenerate-Certification"><a href="#Step-2-Regenerate-Certification" class="headerlink" title="Step 2 - Regenerate Certification"></a>Step 2 - Regenerate Certification</h2><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl req -config <span class="regexp">/etc/</span>pki<span class="regexp">/tls/</span>openssl.cnf -x509 -days <span class="number">3650</span> -batch -nodes -newkey <span class="string">rsa:</span><span class="number">2048</span> -keyout <span class="regexp">/etc/</span>pki<span class="regexp">/tls/</span><span class="keyword">private</span><span class="regexp">/logstash-forwarder.key -out /</span>etc<span class="regexp">/pki/</span>tls<span class="regexp">/certs/</span>logstash-forwarder.crt</span><br></pre></td></tr></table></figure><p>Then you can use the cert file <code>/etc/pki/tls/certs/logstash-forwarder.crt</code> to authorize filebeat to connect to logstash.</p>]]></content>
       
       
       <categories>
@@ -115,11 +115,11 @@
       
         <tags>
             
+            <tag> WordPress </tag>
+            
             <tag> 博客 </tag>
             
             <tag> Hexo </tag>
-            
-            <tag> WordPress </tag>
             
         </tags>
       
@@ -165,13 +165,13 @@
       
         <tags>
             
+            <tag> WordPress </tag>
+            
             <tag> 博客 </tag>
             
             <tag> Hexo </tag>
             
             <tag> Ghost </tag>
-            
-            <tag> WordPress </tag>
             
         </tags>
       
@@ -481,9 +481,9 @@
       
         <tags>
             
-            <tag> 解决办法 </tag>
-            
             <tag> Karabiner </tag>
+            
+            <tag> 解决办法 </tag>
             
         </tags>
       
@@ -508,9 +508,9 @@
       
         <tags>
             
-            <tag> 解决办法 </tag>
-            
             <tag> Karabiner </tag>
+            
+            <tag> 解决办法 </tag>
             
         </tags>
       
@@ -1818,9 +1818,9 @@
       
         <tags>
             
-            <tag> 博客 </tag>
-            
             <tag> WordPress </tag>
+            
+            <tag> 博客 </tag>
             
             <tag> 升级 </tag>
             
