@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.oldcai.com/"/>
-  <updated>2019-02-19T18:48:48.977Z</updated>
+  <updated>2019-02-19T18:51:47.495Z</updated>
   <id>https://www.oldcai.com/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://www.oldcai.com/server/auto-update-on-my-zsh/"/>
     <id>https://www.oldcai.com/server/auto-update-on-my-zsh/</id>
     <published>2019-02-19T18:29:00.000Z</published>
-    <updated>2019-02-19T18:48:48.977Z</updated>
+    <updated>2019-02-19T18:51:47.495Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="Reason"><a href="#Reason" class="headerlink" title="Reason"></a>Reason</h2><p>Oh My Zsh is a cool zsh configuration set, and it’s very active, updates the code base quite often, which is good.</p><p>But when sometimes we are eager to change the world, it still asks us to update it first. That would be a little bit boring after doing these for several times.</p><h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>We can update Oh My Zsh by adding this line below to crontab.</p><figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">0 </span>   <span class="number">3</span>    *    *    *    zsh -c <span class="comment">'DISABLE_AUTO_UPDATE=true &amp;&amp; export ZSH=$HOME/.oh-my-zsh &amp;&amp; source $ZSH/oh-my-zsh.sh &amp;&amp; upgrade_oh_my_zsh 2&gt;&amp;1' &gt;&gt; /dev/null</span></span><br></pre></td></tr></table></figure><p>Normally, crontab can be modified by command <code>crontab -e</code></p><p>And we can add this line to <code>.zshrc</code> to forbid Oh My Zsh asks us for permitting update.</p><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">DISABLE_AUTO_UPDATE</span>=<span class="literal">true</span></span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<h2 id="Reason"><a href="#Reason" class="headerlink" title="Reason"></a>Reason</h2><p>Oh My Zsh is a cool zsh configuration set, and it’s very active, updates the code base quite often, which is good.</p><p>But when sometimes we are eager to change the world, it still asks us to update it first. That would be a little bit boring after doing these for several times.</p><h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>We can update Oh My Zsh by adding this line below to crontab.</p><p><code>0    3    *    *    *    zsh -c &#39;DISABLE_AUTO_UPDATE=true &amp;&amp; export ZSH=$HOME/.oh-my-zsh &amp;&amp; source $ZSH/oh-my-zsh.sh &amp;&amp; upgrade_oh_my_zsh 2&gt;&amp;1&#39; &gt;&gt; /dev/null</code></p><p>Normally, crontab can be modified by command <code>crontab -e</code></p><p>And we can add this line to <code>.zshrc</code> to forbid Oh My Zsh asks us for permitting update.</p><p><code>DISABLE_AUTO_UPDATE=true</code></p>]]></content>
     
     <summary type="html">
     
