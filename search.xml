@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>Update Oh My Zsh Automatically Using Crontab</title>
+      <link href="/server/auto-update-on-my-zsh/"/>
+      <url>/server/auto-update-on-my-zsh/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Reason"><a href="#Reason" class="headerlink" title="Reason"></a>Reason</h2><p>Oh My Zsh is a cool zsh configuration set, and it’s very active, updates the code base quite often, which is good.</p><p>But when sometimes we are eager to change the world, it still asks us to update it first. That would be a little bit boring after doing these for several times.</p><h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>We can update Oh My Zsh by adding this line below to crontab.</p><figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">0 </span>   <span class="number">3</span>    *    *    *    zsh -c <span class="comment">'DISABLE_AUTO_UPDATE=true &amp;&amp; export ZSH=$HOME/.oh-my-zsh &amp;&amp; source $ZSH/oh-my-zsh.sh &amp;&amp; upgrade_oh_my_zsh 2&gt;&amp;1' &gt;&gt; /dev/null</span></span><br></pre></td></tr></table></figure><p>Normally, crontab can be modified by command <code>crontab -e</code></p><p>And we can add this line to <code>.zshrc</code> to forbid Oh My Zsh asks us for permitting update.</p><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">DISABLE_AUTO_UPDATE</span>=<span class="literal">true</span></span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Server </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> zsh </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>Filebeat Not Able to Connect to Logstash</title>
       <link href="/server/logstash-filebeat-cert/"/>
       <url>/server/logstash-filebeat-cert/</url>
@@ -115,11 +138,11 @@
       
         <tags>
             
-            <tag> WordPress </tag>
-            
             <tag> 博客 </tag>
             
             <tag> Hexo </tag>
+            
+            <tag> WordPress </tag>
             
         </tags>
       
@@ -165,13 +188,13 @@
       
         <tags>
             
-            <tag> WordPress </tag>
-            
             <tag> 博客 </tag>
             
             <tag> Hexo </tag>
             
             <tag> Ghost </tag>
+            
+            <tag> WordPress </tag>
             
         </tags>
       
@@ -481,9 +504,9 @@
       
         <tags>
             
-            <tag> Karabiner </tag>
-            
             <tag> 解决办法 </tag>
+            
+            <tag> Karabiner </tag>
             
         </tags>
       
@@ -508,9 +531,9 @@
       
         <tags>
             
-            <tag> Karabiner </tag>
-            
             <tag> 解决办法 </tag>
+            
+            <tag> Karabiner </tag>
             
         </tags>
       
@@ -1818,9 +1841,9 @@
       
         <tags>
             
-            <tag> WordPress </tag>
-            
             <tag> 博客 </tag>
+            
+            <tag> WordPress </tag>
             
             <tag> 升级 </tag>
             

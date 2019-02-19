@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.oldcai.com/"/>
-  <updated>2018-12-14T07:17:19.298Z</updated>
+  <updated>2019-02-19T18:48:48.977Z</updated>
   <id>https://www.oldcai.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Update Oh My Zsh Automatically Using Crontab</title>
+    <link href="https://www.oldcai.com/server/auto-update-on-my-zsh/"/>
+    <id>https://www.oldcai.com/server/auto-update-on-my-zsh/</id>
+    <published>2019-02-19T18:29:00.000Z</published>
+    <updated>2019-02-19T18:48:48.977Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Reason"><a href="#Reason" class="headerlink" title="Reason"></a>Reason</h2><p>Oh My Zsh is a cool zsh configuration set, and it’s very active, updates the code base quite often, which is good.</p><p>But when sometimes we are eager to change the world, it still asks us to update it first. That would be a little bit boring after doing these for several times.</p><h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>We can update Oh My Zsh by adding this line below to crontab.</p><figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">0 </span>   <span class="number">3</span>    *    *    *    zsh -c <span class="comment">'DISABLE_AUTO_UPDATE=true &amp;&amp; export ZSH=$HOME/.oh-my-zsh &amp;&amp; source $ZSH/oh-my-zsh.sh &amp;&amp; upgrade_oh_my_zsh 2&gt;&amp;1' &gt;&gt; /dev/null</span></span><br></pre></td></tr></table></figure><p>Normally, crontab can be modified by command <code>crontab -e</code></p><p>And we can add this line to <code>.zshrc</code> to forbid Oh My Zsh asks us for permitting update.</p><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">DISABLE_AUTO_UPDATE</span>=<span class="literal">true</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;Reason&quot;&gt;&lt;a href=&quot;#Reason&quot; class=&quot;headerlink&quot; title=&quot;Reason&quot;&gt;&lt;/a&gt;Reason&lt;/h2&gt;&lt;p&gt;Oh My Zsh is a cool zsh configuration set, and it’s ve
+      
+    
+    </summary>
+    
+      <category term="Server" scheme="https://www.oldcai.com/categories/Server/"/>
+    
+    
+      <category term="zsh" scheme="https://www.oldcai.com/tags/zsh/"/>
+    
+  </entry>
   
   <entry>
     <title>Filebeat Not Able to Connect to Logstash</title>
@@ -156,11 +181,11 @@
       <category term="解决" scheme="https://www.oldcai.com/categories/%E8%A7%A3%E5%86%B3/"/>
     
     
-      <category term="WordPress" scheme="https://www.oldcai.com/tags/WordPress/"/>
-    
       <category term="博客" scheme="https://www.oldcai.com/tags/%E5%8D%9A%E5%AE%A2/"/>
     
       <category term="Hexo" scheme="https://www.oldcai.com/tags/Hexo/"/>
+    
+      <category term="WordPress" scheme="https://www.oldcai.com/tags/WordPress/"/>
     
   </entry>
   
@@ -215,13 +240,13 @@
       <category term="对比" scheme="https://www.oldcai.com/categories/%E5%AF%B9%E6%AF%94/"/>
     
     
-      <category term="WordPress" scheme="https://www.oldcai.com/tags/WordPress/"/>
-    
       <category term="博客" scheme="https://www.oldcai.com/tags/%E5%8D%9A%E5%AE%A2/"/>
     
       <category term="Hexo" scheme="https://www.oldcai.com/tags/Hexo/"/>
     
       <category term="Ghost" scheme="https://www.oldcai.com/tags/Ghost/"/>
+    
+      <category term="WordPress" scheme="https://www.oldcai.com/tags/WordPress/"/>
     
   </entry>
   
@@ -557,33 +582,6 @@
     
     
       <category term="小鹤双拼" scheme="https://www.oldcai.com/tags/%E5%B0%8F%E9%B9%A4%E5%8F%8C%E6%8B%BC/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>从Google到Alphabet，是从创造论到进化论。</title>
-    <link href="https://www.oldcai.com/archives/1046/"/>
-    <id>https://www.oldcai.com/archives/1046/</id>
-    <published>2015-08-16T15:18:28.000Z</published>
-    <updated>2018-10-23T14:45:53.603Z</updated>
-    
-    <content type="html"><![CDATA[<p>关闭Google Wave，关闭Google Reader，以及即将关闭的Google Code，过去的很长一段时间内，Google都是在创造和关闭一个个项目中度过的。有人专门整理了<a href="https://qdan.me/list/VQJbSSERPShZYvg9" target="_blank" rel="noopener">一个列表</a>，盘点出Google近几年一共关闭和替换的项目有21个。一度大家认为Google这个Web 1.0时代的巨头已经无法融入Web 2.0时代。</p><p>是什么原因让Google这样靠技术变革爆发的帝国在另一场变革面前接连受挫，而Alphabet接管后可以摆脱逆境？</p><h3 id="第一，避开了Google作为母公司以搜索的中心的公司本能"><a href="#第一，避开了Google作为母公司以搜索的中心的公司本能" class="headerlink" title="第一，避开了Google作为母公司以搜索的中心的公司本能"></a>第一，避开了Google作为母公司以搜索的中心的公司本能</h3><p>公司业务其他项目，比如Android能脱离搜索引擎的束缚，更加旺盛地发展。公司业务能够多样化地繁荣，为进化出卓越的产品提供可能性。</p><h3 id="第二，企业角色由创造者转向投资者"><a href="#第二，企业角色由创造者转向投资者" class="headerlink" title="第二，企业角色由创造者转向投资者"></a>第二，企业角色由创造者转向投资者</h3><p>放弃上帝视角对于事必躬亲，热衷于掌管权利的人来说绝对是反人性的——开车的人大多都喜欢那种驾驭感，甚至坐在副驾驶上都是一种煎熬。</p><p>但是，把企业看做一个生态系统，一家公司看做一个物种，用合理的标准淘汰物种，生态系统才可持续。Google向Alphabet的转变，让每家公司成为了一个独立的生物。让决策者从时时事事的微观决策转向宏观格局的决策的转变，是一个由术向道的飞跃。</p><h3 id="第三，团队领头人由职业经理人转向了创业者"><a href="#第三，团队领头人由职业经理人转向了创业者" class="headerlink" title="第三，团队领头人由职业经理人转向了创业者"></a>第三，团队领头人由职业经理人转向了创业者</h3><p>传统企业经理人的激情远没有创业者高昂。创业者面对的是自己的事业，想做成杰出；经理人面对的是一份工作，想做到没有差错，甚至觉得不是最差就够了。</p><blockquote><p>求其上，得其中；求其中，得其下；求其下，必败。</p></blockquote><p>——</p><p>《孙子兵法》</p><p>一个求其上，一个求其下，结局不言自明。</p><p>祝福Google成功进化，Alphabet中的大G不会孤单。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;关闭Google Wave，关闭Google Reader，以及即将关闭的Google Code，过去的很长一段时间内，Google都是在创造和关闭一个个项目中度过的。有人专门整理了&lt;a href=&quot;https://qdan.me/list/VQJbSSERPShZYvg9
-      
-    
-    </summary>
-    
-      <category term="Business" scheme="https://www.oldcai.com/categories/Business/"/>
-    
-      <category term="思考" scheme="https://www.oldcai.com/categories/Business/%E6%80%9D%E8%80%83/"/>
-    
-      <category term="搜索引擎" scheme="https://www.oldcai.com/categories/Business/%E6%80%9D%E8%80%83/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/"/>
-    
     
   </entry>
   
