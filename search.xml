@@ -7,7 +7,7 @@
       <link href="/server/auto-update-on-my-zsh/"/>
       <url>/server/auto-update-on-my-zsh/</url>
       
-        <content type="html"><![CDATA[<h2 id="Reason"><a href="#Reason" class="headerlink" title="Reason"></a>Reason</h2><p>Oh My Zsh is a cool zsh configuration set, and it’s very active, updates the code base quite often, which is good.</p><p>But when sometimes we are eager to change the world, it still asks us to update it first. That would be a little bit boring after doing these for several times.</p><h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>We can update Oh My Zsh by adding this line below to crontab.</p><p><code>0    3    *    *    *    zsh -c &#39;DISABLE_AUTO_UPDATE=true &amp;&amp; export ZSH=$HOME/.oh-my-zsh &amp;&amp; source $ZSH/oh-my-zsh.sh &amp;&amp; upgrade_oh_my_zsh 2&gt;&amp;1&#39; &gt;&gt; /dev/null</code></p><p>Normally, crontab can be modified by command <code>crontab -e</code></p><p>And we can add this line to <code>.zshrc</code> to forbid Oh My Zsh asks us for permitting update.</p><p><code>DISABLE_AUTO_UPDATE=true</code></p>]]></content>
+        <content type="html"><![CDATA[<h2 id="Reason"><a href="#Reason" class="headerlink" title="Reason"></a>Reason</h2><p>Oh My Zsh is a cool zsh configuration set, and it’s very active, updates the code base quite often, which is good.</p><p>But when sometimes we are eager to change the world, it still asks us to update it first. That would be a little bit boring after doing these for several times.</p><h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>We can update Oh My Zsh by adding this line below to crontab.</p><p><code>0    3    *    *    *    zsh -c &#39;DISABLE_AUTO_UPDATE=true &amp;&amp; export ZSH=$HOME/.oh-my-zsh &amp;&amp; source $ZSH/oh-my-zsh.sh &amp;&amp; upgrade_oh_my_zsh 2&gt;&amp;1&#39; &gt;&gt; /dev/null</code></p><p>Normally, crontab can be modified by command <code>crontab -e</code></p><p><code>DISABLE_AUTO_UPDATE=true</code></p><p>After all, we can add the line above to <code>.zshrc</code> to forbid Oh My Zsh asks us for update.</p>]]></content>
       
       
       <categories>
@@ -192,9 +192,9 @@
             
             <tag> Hexo </tag>
             
-            <tag> Ghost </tag>
-            
             <tag> WordPress </tag>
+            
+            <tag> Ghost </tag>
             
         </tags>
       
@@ -341,7 +341,7 @@
       <link href="/archives/1162/"/>
       <url>/archives/1162/</url>
       
-        <content type="html"><![CDATA[<p>公司的产品对存储和流量比较敏感，老蔡就测试了一下用WebP和jpg有损压缩图片，得出最终结果如下表：</p><p>质量</p><p>JPG大小</p><p>webp大小</p><p>占原图比例</p><p>100 1.6MB 2.4 MB 150%</p><p>90 501 KB 427 KB 85.23%</p><p>85 377 KB 297 KB 78.78%</p><p>80 309 KB 215 KB 69.58%</p><p>可能由于是从jpg转的，所以100质量情况下webp反而会大一点，</p><p>但是总的来说，webp是逐渐减少的，</p><p>而且值得一提的是，随着质量要求越低，webp压缩比越高。</p><p>所以，至少在缩略图用webp是明智之选，</p><p>现在公司产品全部web页面都采用了webp格式的图片。</p>]]></content>
+        <content type="html"><![CDATA[<p>公司的产品对存储和流量比较敏感，老蔡就测试了一下用WebP和jpg有损压缩图片，得出最终结果如下表：</p><table><thead><tr><th style="text-align:center">质量</th><th style="text-align:center">JPG大小</th><th style="text-align:center">webp大小</th><th style="text-align:center">占原图比例</th></tr></thead><tbody><tr><td style="text-align:center">100</td><td style="text-align:center">1.6MB</td><td style="text-align:center">2.4 MB</td><td style="text-align:center">150%</td></tr><tr><td style="text-align:center">90</td><td style="text-align:center">501 KB</td><td style="text-align:center">427 KB</td><td style="text-align:center">85.23%</td></tr><tr><td style="text-align:center">85</td><td style="text-align:center">377 KB</td><td style="text-align:center">297 KB</td><td style="text-align:center">78.78%</td></tr><tr><td style="text-align:center">80</td><td style="text-align:center">309 KB</td><td style="text-align:center">215 KB</td><td style="text-align:center">69.58%</td></tr></tbody></table><p>可能由于是从jpg转的，所以100质量情况下webp反而会大一点，</p><p>但是总的来说，webp是逐渐减少的，</p><p>而且值得一提的是，随着质量要求越低，webp压缩比越高。</p><p>所以，至少在缩略图用webp是明智之选，</p><p>现在公司产品全部web页面都采用了webp格式的图片。</p>]]></content>
       
       
       <categories>
