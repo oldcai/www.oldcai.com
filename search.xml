@@ -192,9 +192,9 @@
             
             <tag> Hexo </tag>
             
-            <tag> WordPress </tag>
-            
             <tag> Ghost </tag>
+            
+            <tag> WordPress </tag>
             
         </tags>
       
@@ -2856,9 +2856,9 @@
       
         <tags>
             
-            <tag> 论文 </tag>
-            
             <tag> 打字 </tag>
+            
+            <tag> 论文 </tag>
             
         </tags>
       
@@ -2881,6 +2881,8 @@
       
         <tags>
             
+            <tag> 论文 </tag>
+            
             <tag> SQL2000 </tag>
             
             <tag> VB </tag>
@@ -2888,8 +2890,6 @@
             <tag> 凑字数 </tag>
             
             <tag> 小型超市管理系统 </tag>
-            
-            <tag> 论文 </tag>
             
         </tags>
       
@@ -2974,11 +2974,11 @@
             
             <tag> C++ </tag>
             
-            <tag> 游戏编程 </tag>
-            
             <tag> hashmap </tag>
             
             <tag> 数据溢出 </tag>
+            
+            <tag> 游戏编程 </tag>
             
             <tag> 程序崩溃 </tag>
             
