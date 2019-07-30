@@ -6,18 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="ReasonI’m using rancher pipeline to deploy my service continually, it always creates a new image but never cleans it. I believe other continuous integration solutions would do the same, so I’m going t">
+    <meta name="description" content="ReasonI’m using rancher pipelines to deploy my service immediately after I push my code to GitHub, it always creates a new image but would never clean it. I guess other continuous integration solution">
 <meta name="keywords" content="CI,Docker,Rancher,Kubernetes">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Remove Docker Images Older Than One week&#x2F;month&#x2F;year Automatically">
 <meta property="og:url" content="https://www.oldcai.com/server/remove-old-docker-images/index.html">
 <meta property="og:site_name" content="老蔡博客">
-<meta property="og:description" content="ReasonI’m using rancher pipeline to deploy my service continually, it always creates a new image but never cleans it. I believe other continuous integration solutions would do the same, so I’m going t">
+<meta property="og:description" content="ReasonI’m using rancher pipelines to deploy my service immediately after I push my code to GitHub, it always creates a new image but would never clean it. I guess other continuous integration solution">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-30T08:51:43.331Z">
+<meta property="og:updated_time" content="2019-07-30T10:35:06.891Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Remove Docker Images Older Than One week&#x2F;month&#x2F;year Automatically">
-<meta name="twitter:description" content="ReasonI’m using rancher pipeline to deploy my service continually, it always creates a new image but never cleans it. I believe other continuous integration solutions would do the same, so I’m going t">
+<meta name="twitter:description" content="ReasonI’m using rancher pipelines to deploy my service immediately after I push my code to GitHub, it always creates a new image but would never clean it. I guess other continuous integration solution">
     
     
         
@@ -103,7 +103,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Reason"><span class="toc-number">1.</span> <span class="toc-text">Reason</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Steps"><span class="toc-number">2.</span> <span class="toc-text">Steps</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Remove-images-older-than-1-week"><span class="toc-number">2.1.</span> <span class="toc-text">Remove images older than 1 week</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Only-remove-images-older-than-1-month"><span class="toc-number">2.2.</span> <span class="toc-text">Only remove images older than 1 month</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#And-clean-images-created-1-year-ago"><span class="toc-number">2.3.</span> <span class="toc-text">And clean images created 1 year ago</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tips"><span class="toc-number">3.</span> <span class="toc-text">Tips</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Reason"><span class="toc-number">1.</span> <span class="toc-text">Reason</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Steps"><span class="toc-number">2.</span> <span class="toc-text">Steps</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Remove-images-older-than-one-week"><span class="toc-number">2.1.</span> <span class="toc-text">Remove images older than one week</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Only-remove-images-earlier-than-one-month"><span class="toc-number">2.2.</span> <span class="toc-text">Only remove images earlier than one month</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#And-clean-images-created-one-year-ago"><span class="toc-number">2.3.</span> <span class="toc-text">And clean images created one year ago</span></a></li></ol></li></ol>
     </div>
   </span>
 </div>
@@ -149,18 +149,19 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h2 id="Reason"><a href="#Reason" class="headerlink" title="Reason"></a>Reason</h2><p>I’m using rancher pipeline to deploy my service continually, it always creates a new image but never cleans it.</p>
-<p>I believe other continuous integration solutions would do the same, so I’m going to share some lines of code to deal with it.</p>
-<h2 id="Steps"><a href="#Steps" class="headerlink" title="Steps"></a>Steps</h2><p>Let’s say, the project I’m going to build is named ‘GetShitDone’.</p>
+    <h2 id="Reason"><a href="#Reason" class="headerlink" title="Reason"></a>Reason</h2><p>I’m using rancher pipelines to deploy my service immediately after I push my code to GitHub, it always creates a new image but would never clean it.</p>
+<p>I guess other continuous integration solutions would do the same.</p>
+<p>Next, I’m going to share some lines of code on how to deal with it.</p>
+<h2 id="Steps"><a href="#Steps" class="headerlink" title="Steps"></a>Steps</h2><p>Let’s say the project I’m going to build is named GetShitDone.</p>
 <p>The way to clear old images is as simple as copy and paste the codes below.</p>
 <blockquote>
 <p>The images that are still in use would be protected and wouldn’t be removed.<br>It’s safe to use these commands.</p>
 </blockquote>
-<h3 id="Remove-images-older-than-1-week"><a href="#Remove-images-older-than-1-week" class="headerlink" title="Remove images older than 1 week"></a>Remove images older than 1 week</h3><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">project_name=GetShitDone</span><br><span class="line">docker images | <span class="type">grep</span> $&#123;project_name&#125; | <span class="type">grep</span> 'weeks ago\|<span class="type">months</span> ago\|<span class="type">years</span> ago' | <span class="type">awk</span> '&#123;print $<span class="number">3</span>&#125;'| <span class="type">xargs</span> docker rmi</span><br></pre></td></tr></table></figure>
+<h3 id="Remove-images-older-than-one-week"><a href="#Remove-images-older-than-one-week" class="headerlink" title="Remove images older than one week"></a>Remove images older than one week</h3><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">project_name=GetShitDone</span><br><span class="line">docker images | <span class="type">grep</span> $&#123;project_name&#125; | <span class="type">grep</span> 'weeks ago\|<span class="type">months</span> ago\|<span class="type">years</span> ago' | <span class="type">awk</span> '&#123;print $<span class="number">3</span>&#125;'| <span class="type">xargs</span> docker rmi</span><br></pre></td></tr></table></figure>
 <p>If you would like to keep the images for months or longer, you can remove the <code>weeks ago</code> and <code>months ago</code> part.</p>
-<h3 id="Only-remove-images-older-than-1-month"><a href="#Only-remove-images-older-than-1-month" class="headerlink" title="Only remove images older than 1 month"></a>Only remove images older than 1 month</h3><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">project_name=GetShitDone</span><br><span class="line">docker images | <span class="type">grep</span> $&#123;project_name&#125; | <span class="type">grep</span> 'months ago\|<span class="type">years</span> ago' | <span class="type">awk</span> '&#123;print $<span class="number">3</span>&#125;'| <span class="type">xargs</span> docker rmi</span><br></pre></td></tr></table></figure>
-<h3 id="And-clean-images-created-1-year-ago"><a href="#And-clean-images-created-1-year-ago" class="headerlink" title="And clean images created 1 year ago"></a>And clean images created 1 year ago</h3><figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">project_name=GetShitDone</span><br><span class="line">docker images | <span class="keyword">grep</span> $&#123;project_name&#125; | <span class="keyword">grep</span> <span class="string">'years ago'</span> | awk <span class="string">'&#123;print $3&#125;'</span>| xargs docker rmi</span><br></pre></td></tr></table></figure>
-<h2 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h2><p>That’s it, cheers.</p>
+<h3 id="Only-remove-images-earlier-than-one-month"><a href="#Only-remove-images-earlier-than-one-month" class="headerlink" title="Only remove images earlier than one month"></a>Only remove images earlier than one month</h3><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">project_name=GetShitDone</span><br><span class="line">docker images | <span class="type">grep</span> $&#123;project_name&#125; | <span class="type">grep</span> 'months ago\|<span class="type">years</span> ago' | <span class="type">awk</span> '&#123;print $<span class="number">3</span>&#125;'| <span class="type">xargs</span> docker rmi</span><br></pre></td></tr></table></figure>
+<h3 id="And-clean-images-created-one-year-ago"><a href="#And-clean-images-created-one-year-ago" class="headerlink" title="And clean images created one year ago"></a>And clean images created one year ago</h3><figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">project_name=GetShitDone</span><br><span class="line">docker images | <span class="keyword">grep</span> $&#123;project_name&#125; | <span class="keyword">grep</span> <span class="string">'years ago'</span> | awk <span class="string">'&#123;print $3&#125;'</span>| xargs docker rmi</span><br></pre></td></tr></table></figure>
+<p>That’s all of it, cheers.</p>
 
   </div>
 </article>
@@ -192,7 +193,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Reason"><span class="toc-number">1.</span> <span class="toc-text">Reason</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Steps"><span class="toc-number">2.</span> <span class="toc-text">Steps</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Remove-images-older-than-1-week"><span class="toc-number">2.1.</span> <span class="toc-text">Remove images older than 1 week</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Only-remove-images-older-than-1-month"><span class="toc-number">2.2.</span> <span class="toc-text">Only remove images older than 1 month</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#And-clean-images-created-1-year-ago"><span class="toc-number">2.3.</span> <span class="toc-text">And clean images created 1 year ago</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tips"><span class="toc-number">3.</span> <span class="toc-text">Tips</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Reason"><span class="toc-number">1.</span> <span class="toc-text">Reason</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Steps"><span class="toc-number">2.</span> <span class="toc-text">Steps</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Remove-images-older-than-one-week"><span class="toc-number">2.1.</span> <span class="toc-text">Remove images older than one week</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Only-remove-images-earlier-than-one-month"><span class="toc-number">2.2.</span> <span class="toc-text">Only remove images earlier than one month</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#And-clean-images-created-one-year-ago"><span class="toc-number">2.3.</span> <span class="toc-text">And clean images created one year ago</span></a></li></ol></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
