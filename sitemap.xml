@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.oldcai.com/server/remove-old-docker-images/</loc>
+    
+    <lastmod>2019-07-30T08:23:28.521Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.oldcai.com/friends/index.html</loc>
     
     <lastmod>2019-04-10T08:21:51.715Z</lastmod>
@@ -30,7 +37,7 @@
   </url>
   
   <url>
-    <loc>https://www.oldcai.com/server/big-postgresql-database-migration/</loc>
+    <loc>https://www.oldcai.com/server/large-postgresql-database-migration/</loc>
     
     <lastmod>2018-12-08T09:55:57.489Z</lastmod>
     
@@ -667,14 +674,14 @@
   </url>
   
   <url>
-    <loc>https://www.oldcai.com/archives/279/</loc>
+    <loc>https://www.oldcai.com/archives/275/</loc>
     
     <lastmod>2018-10-23T14:45:53.623Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://www.oldcai.com/archives/275/</loc>
+    <loc>https://www.oldcai.com/archives/279/</loc>
     
     <lastmod>2018-10-23T14:45:53.623Z</lastmod>
     

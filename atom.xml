@@ -42,6 +42,31 @@
   </entry>
   
   <entry>
+    <title>Remove docker images older than one week/month/year Automaticlly</title>
+    <link href="https://www.oldcai.com/server/remove-old-docker-images/"/>
+    <id>https://www.oldcai.com/server/remove-old-docker-images/</id>
+    <published>2019-02-19T18:29:00.000Z</published>
+    <updated>2019-07-30T08:23:28.521Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Reason"><a href="#Reason" class="headerlink" title="Reason"></a>Reason</h2><p>I’m using rancher pipeline to deploy my service continually, it always creates a new image but never clean it.</p><p>I believe other continuous integration solutions would do the same, so I’m going to share some lines of code to deal with it.</p><h2 id="Steps"><a href="#Steps" class="headerlink" title="Steps"></a>Steps</h2><p>Let’s say, the project I’m going to build is named ‘GetShitDone’.</p><p>The way to clear old images is as simple as copy and paste the codes below.</p><blockquote><p>The images that are still in use would be protected and wouldn’t be removed, so it’s safe to use these commands.</p></blockquote><h3 id="Remove-images-older-than-1-week"><a href="#Remove-images-older-than-1-week" class="headerlink" title="Remove images older than 1 week"></a>Remove images older than 1 week</h3><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">project_name=GetShitDone</span><br><span class="line">docker images | <span class="type">grep</span> $&#123;project_name&#125; | <span class="type">grep</span> 'weeks ago\|<span class="type">months</span> ago\|<span class="type">years</span> ago' | <span class="type">awk</span> '&#123;print $<span class="number">3</span>&#125;'| <span class="type">xargs</span> docker rmi</span><br></pre></td></tr></table></figure><p>If you would like to keep the images for months or longer, you can remove the <code>weeks ago</code> and <code>months ago</code> part.</p><h3 id="Only-remove-images-older-than-1-month"><a href="#Only-remove-images-older-than-1-month" class="headerlink" title="Only remove images older than 1 month"></a>Only remove images older than 1 month</h3><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">project_name=GetShitDone</span><br><span class="line">docker images | <span class="type">grep</span> $&#123;project_name&#125; | <span class="type">grep</span> 'months ago\|<span class="type">years</span> ago' | <span class="type">awk</span> '&#123;print $<span class="number">3</span>&#125;'| <span class="type">xargs</span> docker rmi</span><br></pre></td></tr></table></figure><h3 id="And-clean-images-created-1-year-ago"><a href="#And-clean-images-created-1-year-ago" class="headerlink" title="And clean images created 1 year ago"></a>And clean images created 1 year ago</h3><figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">project_name=GetShitDone</span><br><span class="line">docker images | <span class="keyword">grep</span> $&#123;project_name&#125; | <span class="keyword">grep</span> <span class="string">'years ago'</span> | awk <span class="string">'&#123;print $3&#125;'</span>| xargs docker rmi</span><br></pre></td></tr></table></figure><h2 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h2><p>That’s it, cheers.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;Reason&quot;&gt;&lt;a href=&quot;#Reason&quot; class=&quot;headerlink&quot; title=&quot;Reason&quot;&gt;&lt;/a&gt;Reason&lt;/h2&gt;&lt;p&gt;I’m using rancher pipeline to deploy my service contin
+      
+    
+    </summary>
+    
+      <category term="Server" scheme="https://www.oldcai.com/categories/Server/"/>
+    
+    
+      <category term="zsh" scheme="https://www.oldcai.com/tags/zsh/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Filebeat Not Able to Connect to Logstash</title>
     <link href="https://www.oldcai.com/server/logstash-filebeat-cert/"/>
     <id>https://www.oldcai.com/server/logstash-filebeat-cert/</id>
@@ -69,8 +94,8 @@
   
   <entry>
     <title>Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud</title>
-    <link href="https://www.oldcai.com/server/big-postgresql-database-migration/"/>
-    <id>https://www.oldcai.com/server/big-postgresql-database-migration/</id>
+    <link href="https://www.oldcai.com/server/large-postgresql-database-migration/"/>
+    <id>https://www.oldcai.com/server/large-postgresql-database-migration/</id>
     <published>2018-11-27T17:05:00.000Z</published>
     <updated>2018-12-08T09:55:57.489Z</updated>
     
@@ -553,34 +578,6 @@
     
     
       <category term="docker" scheme="https://www.oldcai.com/tags/docker/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>小鹤双拼形码百度Mac版本的短语库</title>
-    <link href="https://www.oldcai.com/archives/1049/"/>
-    <id>https://www.oldcai.com/archives/1049/</id>
-    <published>2015-08-29T05:53:37.000Z</published>
-    <updated>2018-10-23T15:41:52.388Z</updated>
-    
-    <content type="html"><![CDATA[<p><strong>注意：导入后会导致短暂僵死，并且，再次进入百度输入法的偏好设置就会僵死并退出，无法再次设置；但是形码可以正常使用。</strong></p><p>下载请点击→<a href="/images/2015/08/Mac百度输入法小鹤形码短语库.zip">Mac百度输入法小鹤形码短语库</a></p><p>这个文件是根据小鹤官方提供的百度输入法PC版挂接改的。</p><p>按理说鼠须管输入法也是极好的，所以网上很少看到有人折腾Mac上的其他小鹤输入法的方案，但是我觉得我更习惯有短语输入、大词库、长句输入能力的。</p><p>很早以前用的智能ABC就是小词库，打字上屏的确定性确实很强，但是，后来用了sogou拼音，让算法去把最可能需要上屏的词排在最前排，打字速度才提升了一个等级。我个人似乎是一点都不怀念小词库的。</p><p>百度输入法外挂词组的方案也会存在问题：用百度输入法的时候，单字或许可以使用形码，词组就会把形码当作第二个词的声母。所以一般来说，不是要打需要翻很多页的字基本用不上。</p><p>最后，感谢<a href="https://chojemmy.wordpress.com/2015/08/14/%E6%97%A0%E6%89%80%E4%BA%8B%E4%BA%8B%E7%9A%84%E6%84%9F%E8%A7%89/" target="_blank" rel="noopener">@ChoJemmy</a>，是你成功学习了双拼，才激励得我有兴趣花时间去学习它。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;strong&gt;注意：导入后会导致短暂僵死，并且，再次进入百度输入法的偏好设置就会僵死并退出，无法再次设置；但是形码可以正常使用。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;下载请点击→&lt;a href=&quot;/images/2015/08/Mac百度输入法小鹤形码短语库.zip&quot;&gt;Mac
-      
-    
-    </summary>
-    
-      <category term="Mac" scheme="https://www.oldcai.com/categories/Mac/"/>
-    
-      <category term="工具" scheme="https://www.oldcai.com/categories/Mac/%E5%B7%A5%E5%85%B7/"/>
-    
-    
-      <category term="小鹤双拼" scheme="https://www.oldcai.com/tags/%E5%B0%8F%E9%B9%A4%E5%8F%8C%E6%8B%BC/"/>
     
   </entry>
   

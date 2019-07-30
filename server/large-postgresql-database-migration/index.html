@@ -10,7 +10,7 @@
 <meta name="keywords" content="postgresql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud">
-<meta property="og:url" content="https://www.oldcai.com/server/big-postgresql-database-migration/index.html">
+<meta property="og:url" content="https://www.oldcai.com/server/large-postgresql-database-migration/index.html">
 <meta property="og:site_name" content="老蔡博客">
 <meta property="og:description" content="To practice this guide, PostgreSQL version should be at least 9.6 TL;DR:First, setup a master-slave replication for PostgreSQL.Then switch the slave server to master. Longer StorySituationIn our case,">
 <meta property="og:locale" content="default">
@@ -91,16 +91,16 @@
     <br>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/server/big-postgresql-database-migration/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://www.oldcai.com/server/big-postgresql-database-migration/&text=Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/server/big-postgresql-database-migration/&title=Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/server/big-postgresql-database-migration/&is_video=false&description=Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud&body=Check out this article: https://www.oldcai.com/server/big-postgresql-database-migration/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://www.oldcai.com/server/big-postgresql-database-migration/&title=Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://www.oldcai.com/server/big-postgresql-database-migration/&title=Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/server/big-postgresql-database-migration/&title=Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://www.oldcai.com/server/big-postgresql-database-migration/&title=Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/server/big-postgresql-database-migration/&name=Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/server/large-postgresql-database-migration/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://www.oldcai.com/server/large-postgresql-database-migration/&text=Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/server/large-postgresql-database-migration/&title=Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/server/large-postgresql-database-migration/&is_video=false&description=Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud&body=Check out this article: https://www.oldcai.com/server/large-postgresql-database-migration/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://www.oldcai.com/server/large-postgresql-database-migration/&title=Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://www.oldcai.com/server/large-postgresql-database-migration/&title=Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/server/large-postgresql-database-migration/&title=Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://www.oldcai.com/server/large-postgresql-database-migration/&title=Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/server/large-postgresql-database-migration/&name=Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -217,16 +217,16 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/server/big-postgresql-database-migration/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://www.oldcai.com/server/big-postgresql-database-migration/&text=Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/server/big-postgresql-database-migration/&title=Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/server/big-postgresql-database-migration/&is_video=false&description=Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud&body=Check out this article: https://www.oldcai.com/server/big-postgresql-database-migration/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://www.oldcai.com/server/big-postgresql-database-migration/&title=Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://www.oldcai.com/server/big-postgresql-database-migration/&title=Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/server/big-postgresql-database-migration/&title=Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://www.oldcai.com/server/big-postgresql-database-migration/&title=Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/server/big-postgresql-database-migration/&name=Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/server/large-postgresql-database-migration/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://www.oldcai.com/server/large-postgresql-database-migration/&text=Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/server/large-postgresql-database-migration/&title=Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/server/large-postgresql-database-migration/&is_video=false&description=Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud&body=Check out this article: https://www.oldcai.com/server/large-postgresql-database-migration/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://www.oldcai.com/server/large-postgresql-database-migration/&title=Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://www.oldcai.com/server/large-postgresql-database-migration/&title=Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/server/large-postgresql-database-migration/&title=Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://www.oldcai.com/server/large-postgresql-database-migration/&title=Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/server/large-postgresql-database-migration/&name=Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
