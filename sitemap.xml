@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.oldcai.com/server/cppjieba-service/</loc>
+    
+    <lastmod>2019-07-31T16:52:48.836Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.oldcai.com/archives/34/</loc>
+    
+    <lastmod>2019-07-30T16:58:06.974Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.oldcai.com/server/remove-old-docker-images/</loc>
     
     <lastmod>2019-07-30T10:35:06.891Z</lastmod>
@@ -625,13 +639,6 @@
   </url>
   
   <url>
-    <loc>https://www.oldcai.com/archives/34/</loc>
-    
-    <lastmod>2018-10-23T14:45:53.626Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://www.oldcai.com/archives/341/</loc>
     
     <lastmod>2018-10-23T14:45:53.626Z</lastmod>
@@ -674,14 +681,14 @@
   </url>
   
   <url>
-    <loc>https://www.oldcai.com/archives/279/</loc>
+    <loc>https://www.oldcai.com/archives/275/</loc>
     
     <lastmod>2018-10-23T14:45:53.623Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://www.oldcai.com/archives/275/</loc>
+    <loc>https://www.oldcai.com/archives/279/</loc>
     
     <lastmod>2018-10-23T14:45:53.623Z</lastmod>
     

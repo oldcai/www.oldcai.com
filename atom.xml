@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.oldcai.com/"/>
-  <updated>2019-07-30T10:35:06.891Z</updated>
+  <updated>2019-07-31T16:52:48.836Z</updated>
   <id>https://www.oldcai.com/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>把cppjieba打包成了Docker镜像</title>
+    <link href="https://www.oldcai.com/server/cppjieba-service/"/>
+    <id>https://www.oldcai.com/server/cppjieba-service/</id>
+    <published>2019-07-31T16:52:00.000Z</published>
+    <updated>2019-07-31T16:52:48.836Z</updated>
+    
+    <content type="html"><![CDATA[<p>有需要的朋友，可以使用：</p><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull oldcai/cppjieba-<span class="string">service:</span>latest</span><br></pre></td></tr></table></figure><p>用法：</p><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="keyword">run</span><span class="bash"> -d -p 8008:80 oldcai/cppjieba-service:latest</span></span><br></pre></td></tr></table></figure><figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">curl 'localhost:<span class="number">8008</span>/?key=工信处女干事每月经过下属科室都要亲口交代24口交换机等技术性器件的安装工作'</span><br><span class="line"></span><br><span class="line">Output:</span><br><span class="line">[<span class="string">"工信处"</span>, <span class="string">"女干事"</span>, <span class="string">"每月"</span>, <span class="string">"经过"</span>, <span class="string">"下属"</span>, <span class="string">"科室"</span>, <span class="string">"都"</span>, <span class="string">"要"</span>, <span class="string">"亲口"</span>, <span class="string">"交代"</span>, <span class="string">"2"</span>, <span class="string">"4"</span>, <span class="string">"口"</span>, <span class="string">"交换机"</span>, <span class="string">"等"</span>, <span class="string">"技术性"</span>, <span class="string">"器件"</span>, <span class="string">"的"</span>, <span class="string">"安装"</span>, <span class="string">"工作"</span>]</span><br></pre></td></tr></table></figure><p>有问题或者建议可以到<a href="https://www.oldcai.com/server/cppjieba-service/">老蔡博客</a>留言</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;有需要的朋友，可以使用：&lt;/p&gt;
+&lt;figure class=&quot;highlight groovy&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=
+      
+    
+    </summary>
+    
+      <category term="Server" scheme="https://www.oldcai.com/categories/Server/"/>
+    
+    
+      <category term="docker" scheme="https://www.oldcai.com/tags/docker/"/>
+    
+      <category term="自然语言" scheme="https://www.oldcai.com/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80/"/>
+    
+      <category term="cpp" scheme="https://www.oldcai.com/tags/cpp/"/>
+    
+  </entry>
   
   <entry>
     <title>Remove Docker Images Older Than One week/month/year Automatically</title>
@@ -554,36 +584,6 @@
     
       <category term="服务器运维" scheme="https://www.oldcai.com/categories/linux/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%90%E7%BB%B4/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>Docker的坑——Docker不好、不方便的地方</title>
-    <link href="https://www.oldcai.com/archives/1116/"/>
-    <id>https://www.oldcai.com/archives/1116/</id>
-    <published>2016-06-13T14:01:16.000Z</published>
-    <updated>2018-10-23T14:45:53.605Z</updated>
-    
-    <content type="html"><![CDATA[<p>有太多的人一直在说docker的好处，当然，老蔡也肯定，并且拥抱docker，不过在此记录一点不一样的声音，增加一下多样性。</p><h2 id="一、难以动态映射端口"><a href="#一、难以动态映射端口" class="headerlink" title="一、难以动态映射端口"></a>一、难以动态映射端口</h2><p>老蔡使用docker很大程度上是因为需要水平扩展高系统开销的应用，而想优雅地将水平扩展做到自动化——auto scaling，自动化端口映射就必不可少。</p><p>在docker中，启动一个container可以设置-p参数，指定publish的端口，但是多不同状态的容器就需要额外的管理程序来管理映射。</p><p>举个栗子，如果是一个IDC需要加入利用docker来运行用户的虚拟主机，需要将域名动态映射到端口，这时，一个虚拟主机的网页从服务器接收请求到运行虚拟主机中的程序的中间，就需要二次开发一层管理映射、映射关系的程序，对维护性和性能都有影响。</p><p>如果有管理映射的API直接提供更好。</p><h2 id="二、默认监听IPV6，无法指定IPV4"><a href="#二、默认监听IPV6，无法指定IPV4" class="headerlink" title="二、默认监听IPV6，无法指定IPV4"></a>二、默认监听IPV6，无法指定IPV4</h2><p>想暴露在公网的服务，监听不了0.0.0.0，默认监听的IPV6地址，手动设置都不行，只能通过TCP转发的方式给外网访问。</p><p>设计者大概没考虑过第三世界人民的使用😂</p><h2 id="不过，总体来说，docker还是很棒的"><a href="#不过，总体来说，docker还是很棒的" class="headerlink" title="不过，总体来说，docker还是很棒的"></a>不过，总体来说，docker还是很棒的</h2><p>使用docker的过程中，很意外的，遇到的挫折很少，这在使用linux下的软件的时候是很少见的。</p><p>docker爆炸性增长的社区会带着docker不断完善和进步，在未来，docker会变得更棒。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;有太多的人一直在说docker的好处，当然，老蔡也肯定，并且拥抱docker，不过在此记录一点不一样的声音，增加一下多样性。&lt;/p&gt;
-&lt;h2 id=&quot;一、难以动态映射端口&quot;&gt;&lt;a href=&quot;#一、难以动态映射端口&quot; class=&quot;headerlink&quot; title=&quot;一、
-      
-    
-    </summary>
-    
-      <category term="linux" scheme="https://www.oldcai.com/categories/linux/"/>
-    
-      <category term="工具" scheme="https://www.oldcai.com/categories/linux/%E5%B7%A5%E5%85%B7/"/>
-    
-      <category term="服务器运维" scheme="https://www.oldcai.com/categories/linux/%E5%B7%A5%E5%85%B7/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%90%E7%BB%B4/"/>
-    
-    
-      <category term="docker" scheme="https://www.oldcai.com/tags/docker/"/>
     
   </entry>
   

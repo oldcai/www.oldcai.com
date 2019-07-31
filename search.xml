@@ -3,6 +3,33 @@
   
     
     <entry>
+      <title>把cppjieba打包成了Docker镜像</title>
+      <link href="/server/cppjieba-service/"/>
+      <url>/server/cppjieba-service/</url>
+      
+        <content type="html"><![CDATA[<p>有需要的朋友，可以使用：</p><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull oldcai/cppjieba-<span class="string">service:</span>latest</span><br></pre></td></tr></table></figure><p>用法：</p><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="keyword">run</span><span class="bash"> -d -p 8008:80 oldcai/cppjieba-service:latest</span></span><br></pre></td></tr></table></figure><figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">curl 'localhost:<span class="number">8008</span>/?key=工信处女干事每月经过下属科室都要亲口交代24口交换机等技术性器件的安装工作'</span><br><span class="line"></span><br><span class="line">Output:</span><br><span class="line">[<span class="string">"工信处"</span>, <span class="string">"女干事"</span>, <span class="string">"每月"</span>, <span class="string">"经过"</span>, <span class="string">"下属"</span>, <span class="string">"科室"</span>, <span class="string">"都"</span>, <span class="string">"要"</span>, <span class="string">"亲口"</span>, <span class="string">"交代"</span>, <span class="string">"2"</span>, <span class="string">"4"</span>, <span class="string">"口"</span>, <span class="string">"交换机"</span>, <span class="string">"等"</span>, <span class="string">"技术性"</span>, <span class="string">"器件"</span>, <span class="string">"的"</span>, <span class="string">"安装"</span>, <span class="string">"工作"</span>]</span><br></pre></td></tr></table></figure><p>有问题或者建议可以到<a href="https://www.oldcai.com/server/cppjieba-service/">老蔡博客</a>留言</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Server </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> docker </tag>
+            
+            <tag> 自然语言 </tag>
+            
+            <tag> cpp </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>Remove Docker Images Older Than One week/month/year Automatically</title>
       <link href="/server/remove-old-docker-images/"/>
       <url>/server/remove-old-docker-images/</url>
