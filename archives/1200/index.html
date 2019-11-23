@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
     <!-- so meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,7 +15,7 @@
 <meta property="og:description" content="老蔡正在使用WordPress 4.9.1，试了网上很多办法都无法正常让备案号显示在页脚，而备案托管方坚持不能把备案号放在网站友情链接中，于是自己折腾着解决了。 做到显示备案号2步即可完成。  来到WordPress根目录，比如/var/www/blog 2. 然后，修改文件   ./wp-content/themes/twentyseventeen/template-parts/footer/s">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://www.oldcai.com/images/2017/12/20171212_12.jpg">
-<meta property="og:updated_time" content="2018-10-23T14:45:53.610Z">
+<meta property="og:updated_time" content="2018-10-23T14:45:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="WordPress 4 怎样悬挂备案号">
 <meta name="twitter:description" content="老蔡正在使用WordPress 4.9.1，试了网上很多办法都无法正常让备案号显示在页脚，而备案托管方坚持不能把备案号放在网站友情链接中，于是自己折腾着解决了。 做到显示备案号2步即可完成。  来到WordPress根目录，比如/var/www/blog 2. 然后，修改文件   ./wp-content/themes/twentyseventeen/template-parts/footer/s">
@@ -73,7 +73,7 @@
         
       </ul>
     </span>
-    <br>
+    <br/>
     <span id="actions">
       <ul>
         
@@ -90,7 +90,7 @@
       <span id="i-top" class="info" style="display:none;">Back to top</span>
       <span id="i-share" class="info" style="display:none;">Share post</span>
     </span>
-    <br>
+    <br/>
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/archives/1200/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
@@ -115,7 +115,7 @@
     
     <div class="content index py4">
         
-        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
@@ -125,7 +125,7 @@
 
 
     <div class="meta">
-      <span class="author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
         <span itemprop="name">老蔡博客</span>
       </span>
       
@@ -166,7 +166,7 @@
 <p>修改后文件如下：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">/\*\*</span><br><span class="line"> \* Displays footer site info</span><br><span class="line"> \*</span><br><span class="line"> \* @package WordPress</span><br><span class="line"> \* @subpackage Twenty_Seventeen</span><br><span class="line"> \* @since <span class="number">1.0</span></span><br><span class="line"> \* @version <span class="number">1.0</span></span><br><span class="line"> */</span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line"> &lt;a href=<span class="string">"&lt;?php echo esc\_url( \_\_( 'https://wordpress.org/', 'twentyseventeen'</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">) ); ?&gt;"</span>&gt;<span class="meta">&lt;?php</span> printf( __( <span class="string">'Proudly powered by %s'</span>, <span class="string">'twentyseventeen'</span></span><br><span class="line"></span><br><span class="line">), <span class="string">'WordPress'</span></span><br><span class="line"></span><br><span class="line">); <span class="meta">?&gt;</span>&lt;/a&gt;</span><br><span class="line"> |</span><br><span class="line"> &lt;span&gt;&lt;a href=<span class="string">"http://www.miitbeian.gov.cn/"</span></span><br><span class="line"></span><br><span class="line">rel=<span class="string">"external nofollow"</span></span><br><span class="line"></span><br><span class="line">target=<span class="string">"_blank"</span>&gt;哪ICP备XXXXXXXX号&lt;/a&gt;&lt;/span&gt;</span><br><span class="line">&lt;/div&gt;&lt;!-- .site-info --&gt;</span><br></pre></td></tr></table></figure>
 <p>显示效果如下：</p>
-<p><img src="/images/2017/12/20171212_12.jpg" alt=""> 本方法可能只适用于WordPress 4，以后版本还需要验证，欢迎验证后的朋友留言告知。</p>
+<p><img src="/images/2017/12/20171212_12.jpg" alt> 本方法可能只适用于WordPress 4，以后版本还需要验证，欢迎验证后的朋友留言告知。</p>
 
   </div>
 </article>

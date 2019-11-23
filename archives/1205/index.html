@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
     <!-- so meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,7 +15,7 @@
 <meta property="og:description" content="早前一直用go-ide写golang。最近JetBrains出了GoLand，于是就自动把go-ide不兼容新版本IDE了。老蔡又有点舍不得买JetBrains一年几千块的全家桶，于是想试试Visual Studio Code，写写平时只是玩玩的golang和nodejs。但是就碰到了如图所示的情况——一个简单的hello world都遇到了问题——提示Process exiting with">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://www.oldcai.com/images/2017/12/golang-exiting-null.png">
-<meta property="og:updated_time" content="2018-10-23T14:45:53.610Z">
+<meta property="og:updated_time" content="2018-10-23T14:45:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="VS Code运行golang报错Process exiting with code: null的解决办法">
 <meta name="twitter:description" content="早前一直用go-ide写golang。最近JetBrains出了GoLand，于是就自动把go-ide不兼容新版本IDE了。老蔡又有点舍不得买JetBrains一年几千块的全家桶，于是想试试Visual Studio Code，写写平时只是玩玩的golang和nodejs。但是就碰到了如图所示的情况——一个简单的hello world都遇到了问题——提示Process exiting with">
@@ -73,7 +73,7 @@
         
       </ul>
     </span>
-    <br>
+    <br/>
     <span id="actions">
       <ul>
         
@@ -90,7 +90,7 @@
       <span id="i-top" class="info" style="display:none;">Back to top</span>
       <span id="i-share" class="info" style="display:none;">Share post</span>
     </span>
-    <br>
+    <br/>
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/archives/1205/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
@@ -115,7 +115,7 @@
     
     <div class="content index py4">
         
-        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
@@ -125,7 +125,7 @@
 
 
     <div class="meta">
-      <span class="author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
         <span itemprop="name">老蔡博客</span>
       </span>
       
@@ -153,7 +153,7 @@
   
 
   <div class="content" itemprop="articleBody">
-    <p><img src="/images/2017/12/golang-exiting-null.png" alt=""></p>
+    <p><img src="/images/2017/12/golang-exiting-null.png" alt></p>
 <p>早前一直用<a href="http://go-ide.com/" target="_blank" rel="noopener">go-ide</a>写golang。最近JetBrains出了GoLand，于是就自动把go-ide不兼容新版本IDE了。<br>老蔡又有点舍不得买JetBrains一年几千块的全家桶，于是想试试Visual Studio Code，写写平时只是玩玩的golang和nodejs。<br>但是就碰到了如图所示的情况——一个简单的hello world都遇到了问题——提示<code>Process exiting with code: null</code>。</p>
 <p>这时，可以验证一下是否是golang的调试器dlv出了问题，验证方法如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dlv -h</span><br></pre></td></tr></table></figure>

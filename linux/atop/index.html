@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
     <!-- so meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -74,7 +74,7 @@
         
       </ul>
     </span>
-    <br>
+    <br/>
     <span id="actions">
       <ul>
         
@@ -91,7 +91,7 @@
       <span id="i-top" class="info" style="display:none;">Back to top</span>
       <span id="i-share" class="info" style="display:none;">Share post</span>
     </span>
-    <br>
+    <br/>
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/linux/atop/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
@@ -116,7 +116,7 @@
     
     <div class="content index py4">
         
-        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
@@ -126,7 +126,7 @@
 
 
     <div class="meta">
-      <span class="author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
         <span itemprop="name">老蔡博客</span>
       </span>
       
@@ -156,7 +156,7 @@
   <div class="content" itemprop="articleBody">
     <p>之前服务器偶尔故障，SSH连不上，只能在IDC的后台去重启机器。这就使得调查导致问题的原因变得十分困难。</p>
 <p>于是老蔡查阅“中外典籍”，找到了这个神器：atop atop不仅平时可以帮你自动高亮异常负载（CPU，内存，磁盘，网络），还能每隔15分钟存个档，重启后可以调出来看案发现场是哪个进程出了故障。</p>
-<h2 id="定时保存服务器资源负载数据"><a href="#定时保存服务器资源负载数据" class="headerlink" title="定时保存服务器资源负载数据"></a>定时保存服务器资源负载数据</h2><p><img src="/images/2018/10/memory.jpeg" alt=""></p>
+<h2 id="定时保存服务器资源负载数据"><a href="#定时保存服务器资源负载数据" class="headerlink" title="定时保存服务器资源负载数据"></a>定时保存服务器资源负载数据</h2><p><img src="/images/2018/10/memory.jpeg" alt></p>
 <p>这是老蔡在刚刚不久前通过atop定期记录服务器负载这个功能定位到的一个很低概率发生的内存泄漏导致服务器死机的现场还原截图。</p>
 <p>atop默认有个服务，启动服务后，每15分钟存档一次，以天为单位保存成文件。</p>
 <p>真相永远只有一个，各位新一姬，还原犯罪现场，找出杀死服务器的真凶吧。</p>
@@ -164,7 +164,7 @@
 <p>启动atop记录服务</p>
 <p>atop -r /var/log/atop/atop_20181019</p>
 <p>通过这条命令来查阅记录，进入后，t是下一页，T是上一页，每一页15分钟间隔。</p>
-<h2 id="atop还能自动高亮服务器性能瓶颈"><a href="#atop还能自动高亮服务器性能瓶颈" class="headerlink" title="atop还能自动高亮服务器性能瓶颈"></a>atop还能自动高亮服务器性能瓶颈</h2><p><img src="/images/2018/10/io.jpeg" alt=""> 拿一台磁盘IO基本已经快到顶的服务器举例，atop会自动标红DSK的busy程度。</p>
+<h2 id="atop还能自动高亮服务器性能瓶颈"><a href="#atop还能自动高亮服务器性能瓶颈" class="headerlink" title="atop还能自动高亮服务器性能瓶颈"></a>atop还能自动高亮服务器性能瓶颈</h2><p><img src="/images/2018/10/io.jpeg" alt> 拿一台磁盘IO基本已经快到顶的服务器举例，atop会自动标红DSK的busy程度。</p>
 <p>以往我们排查问题的时候，可能会需要用各种工具查看，比如htop，iotop，iostat，nload，iftop，等等，最后过了半个小时说不定才可以找到问题（还看经验是否丰富），而用atop可以轻松察觉。</p>
 <h2 id="深入了解atop"><a href="#深入了解atop" class="headerlink" title="深入了解atop"></a>深入了解atop</h2><p><a href="/linux/atop-dsk/">atop磁盘的DSK后面的数字都代表什么</a></p>
 
