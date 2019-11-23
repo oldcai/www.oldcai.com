@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.oldcai.com/"/>
-  <updated>2019-11-23T11:41:38.617Z</updated>
+  <updated>2019-11-23T12:33:16.136Z</updated>
   <id>https://www.oldcai.com/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://www.oldcai.com/hackintosh/msi-mag-z390-tomahawk-i5-9600kf/"/>
     <id>https://www.oldcai.com/hackintosh/msi-mag-z390-tomahawk-i5-9600kf/</id>
     <published>2019-11-23T11:39:40.000Z</published>
-    <updated>2019-11-23T11:41:38.617Z</updated>
+    <updated>2019-11-23T12:33:16.136Z</updated>
     
-    <content type="html"><![CDATA[<p>适用系统版本：<code>10.15</code></p><p>下载地址：<br><a href="http://img.oldcai.com/EFIs/z390-i5-9600kf-EFI.zip" target="_blank" rel="noopener">直接下载</a> (不保证长期可以访问）</p><p><a href="https://pan.baidu.com/s/h12JsNLg4tASF1si-ObSO04w" target="_blank" rel="noopener">百度网盘</a><br>提取码: h6vt</p><p>已解决问题：</p><ul><li>能正常关机</li><li>可睿频、可降频到最低1.1GHz。可能还能更低，未观察到</li><li>可正常屏幕睡眠</li><li>可正常休眠</li></ul><p>跑分结果：<br><a href="https://browser.geekbench.com/v5/cpu/653517" target="_blank" rel="noopener">https://browser.geekbench.com/v5/cpu/653517</a></p><p>CPU 观察工具：<a href="https://software.intel.com/en-us/articles/intel-power-gadget" target="_blank" rel="noopener">intel Power Gadget</a><br><img src="media/15745092068276.jpg" alt></p><p>CPU Benchmark跑分工具：<a href="https://www.geekbench.com/" target="_blank" rel="noopener">Geekbench 5试用版</a></p>]]></content>
+    <content type="html"><![CDATA[<p>适用系统版本：<code>10.15</code></p><p>下载地址：<br><a href="http://img.oldcai.com/EFIs/z390-i5-9600kf-EFI.zip" target="_blank" rel="noopener">直接下载</a> (不保证长期可以访问）</p><p><a href="https://pan.baidu.com/s/h12JsNLg4tASF1si-ObSO04w" target="_blank" rel="noopener">百度网盘</a><br>提取码: h6vt</p><p>已解决问题：</p><ul><li>能正常关机</li><li>可睿频、可降频到最低1.1GHz。可能还能更低，未观察到</li><li>可正常屏幕睡眠</li><li>可正常休眠</li></ul><p>跑分结果：<br><a href="https://browser.geekbench.com/v5/cpu/653517" target="_blank" rel="noopener">https://browser.geekbench.com/v5/cpu/653517</a></p><p>CPU 观察工具：<a href="https://software.intel.com/en-us/articles/intel-power-gadget" target="_blank" rel="noopener">intel Power Gadget</a></p><p><img src="http://img.oldcai.com/mweb/15745123442971.jpg" alt></p><p>CPU Benchmark跑分工具：<a href="https://www.geekbench.com/" target="_blank" rel="noopener">Geekbench 5试用版</a></p>]]></content>
     
     <summary type="html">
     
