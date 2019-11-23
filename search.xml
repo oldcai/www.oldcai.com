@@ -53,9 +53,9 @@
       
         <tags>
             
-            <tag> docker </tag>
-            
             <tag> 自然语言 </tag>
+            
+            <tag> docker </tag>
             
             <tag> cpp </tag>
             
@@ -282,9 +282,9 @@
             
             <tag> Hexo </tag>
             
-            <tag> Ghost </tag>
-            
             <tag> WordPress </tag>
+            
+            <tag> Ghost </tag>
             
         </tags>
       
@@ -788,7 +788,7 @@
       <link href="/archives/976/"/>
       <url>/archives/976/</url>
       
-        <content type="html"><![CDATA[<p>之前老蔡装了Ubuntu 14.04后，安装了金山WPS和Google Chrome，发现Chrome的标签页中文会显示不正常，英文和数字却是正常的。</p><p>[caption id=”attachment_979”</p><p>align=”aligncenter”</p><p>width=”383”]<img src="/images/2014/06/chrome-luanma.png" alt="chrome乱码"> chrome乱码</p><p>via <a href="http://www.v2ex.com/member/lihuoqingfly" target="_blank" rel="noopener">@lihuoqingfly</a>[/caption]</p><p>刚开始感觉应该是字体不对，但是网页的页面内显示的中文是正常的，搜了并尝试了很多办法，都不奏效，最后还是尝试着把字库重新安装了一次，竟然问题就解决了。</p><p>安装命令如下：</p><blockquote><p>sudo apt-get install ttf-wqy-microhei ttf-wqy-zenhei xfonts-wqy</p></blockquote>]]></content>
+        <content type="html"><![CDATA[<p>之前老蔡装了Ubuntu 14.04后，安装了金山WPS和Google Chrome，发现Chrome的标签页中文会显示不正常，英文和数字却是正常的。</p><p><img src="/images/2014/06/chrome-luanma.png" alt="chrome乱码"> chrome乱码</p><p>via <a href="http://www.v2ex.com/member/lihuoqingfly" target="_blank" rel="noopener">@lihuoqingfly</a></p><p>刚开始感觉应该是字体不对，但是网页的页面内显示的中文是正常的，搜了并尝试了很多办法，都不奏效，最后还是尝试着把字库重新安装了一次，竟然问题就解决了。</p><p>安装命令如下：</p><blockquote><p>sudo apt-get install ttf-wqy-microhei ttf-wqy-zenhei xfonts-wqy</p></blockquote>]]></content>
       
       
       <categories>
@@ -1134,9 +1134,9 @@
       
         <tags>
             
-            <tag> Sublime Text </tag>
-            
             <tag> 快捷键 </tag>
+            
+            <tag> Sublime Text </tag>
             
             <tag> 编辑器 </tag>
             
@@ -1240,11 +1240,11 @@
             
             <tag> Ruby </tag>
             
+            <tag> 快捷键 </tag>
+            
             <tag> Ruby on Rails </tag>
             
             <tag> Sublime Text </tag>
-            
-            <tag> 快捷键 </tag>
             
             <tag> 编辑器 </tag>
             
@@ -1306,9 +1306,9 @@
             
             <tag> kde </tag>
             
-            <tag> 快捷键 </tag>
-            
             <tag> kubuntu </tag>
+            
+            <tag> 快捷键 </tag>
             
         </tags>
       
