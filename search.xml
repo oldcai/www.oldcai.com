@@ -53,9 +53,9 @@
       
         <tags>
             
-            <tag> 自然语言 </tag>
-            
             <tag> docker </tag>
+            
+            <tag> 自然语言 </tag>
             
             <tag> cpp </tag>
             
@@ -594,9 +594,9 @@
       
         <tags>
             
-            <tag> 解决办法 </tag>
-            
             <tag> Karabiner </tag>
+            
+            <tag> 解决办法 </tag>
             
         </tags>
       
@@ -621,9 +621,9 @@
       
         <tags>
             
-            <tag> 解决办法 </tag>
-            
             <tag> Karabiner </tag>
+            
+            <tag> 解决办法 </tag>
             
         </tags>
       
@@ -3064,11 +3064,11 @@
             
             <tag> C++ </tag>
             
-            <tag> 游戏编程 </tag>
-            
             <tag> hashmap </tag>
             
             <tag> 数据溢出 </tag>
+            
+            <tag> 游戏编程 </tag>
             
             <tag> 程序崩溃 </tag>
             
