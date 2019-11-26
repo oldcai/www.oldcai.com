@@ -1134,9 +1134,9 @@
       
         <tags>
             
-            <tag> 快捷键 </tag>
-            
             <tag> Sublime Text </tag>
+            
+            <tag> 快捷键 </tag>
             
             <tag> 编辑器 </tag>
             
@@ -1240,11 +1240,11 @@
             
             <tag> Ruby </tag>
             
-            <tag> 快捷键 </tag>
-            
             <tag> Ruby on Rails </tag>
             
             <tag> Sublime Text </tag>
+            
+            <tag> 快捷键 </tag>
             
             <tag> 编辑器 </tag>
             
@@ -1306,9 +1306,9 @@
             
             <tag> kde </tag>
             
-            <tag> kubuntu </tag>
-            
             <tag> 快捷键 </tag>
+            
+            <tag> kubuntu </tag>
             
         </tags>
       
@@ -2946,9 +2946,9 @@
       
         <tags>
             
-            <tag> 论文 </tag>
-            
             <tag> 打字 </tag>
+            
+            <tag> 论文 </tag>
             
         </tags>
       
@@ -2971,6 +2971,8 @@
       
         <tags>
             
+            <tag> 论文 </tag>
+            
             <tag> SQL2000 </tag>
             
             <tag> VB </tag>
@@ -2978,8 +2980,6 @@
             <tag> 凑字数 </tag>
             
             <tag> 小型超市管理系统 </tag>
-            
-            <tag> 论文 </tag>
             
         </tags>
       
@@ -3064,11 +3064,11 @@
             
             <tag> C++ </tag>
             
+            <tag> 游戏编程 </tag>
+            
             <tag> hashmap </tag>
             
             <tag> 数据溢出 </tag>
-            
-            <tag> 游戏编程 </tag>
             
             <tag> 程序崩溃 </tag>
             
