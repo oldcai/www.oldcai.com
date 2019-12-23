@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.oldcai.com/server/large-postgresql-database-migration/</loc>
+    
+    <lastmod>2019-12-23T18:52:37.885Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.oldcai.com/hackintosh/msi-mag-z390-tomahawk-i5-9600kf/</loc>
     
     <lastmod>2019-11-26T15:59:22.416Z</lastmod>
@@ -79,13 +86,6 @@
   </url>
   
   <url>
-    <loc>https://www.oldcai.com/server/large-postgresql-database-migration/</loc>
-    
-    <lastmod>2018-12-08T09:55:57.489Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://www.oldcai.com/linux/atop-dsk/</loc>
     
     <lastmod>2018-10-28T03:49:37.731Z</lastmod>
@@ -128,14 +128,14 @@
   </url>
   
   <url>
-    <loc>https://www.oldcai.com/archives/58/</loc>
+    <loc>https://www.oldcai.com/archives/65/</loc>
     
     <lastmod>2018-10-23T18:58:41.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://www.oldcai.com/archives/65/</loc>
+    <loc>https://www.oldcai.com/archives/58/</loc>
     
     <lastmod>2018-10-23T18:58:41.000Z</lastmod>
     
@@ -170,14 +170,14 @@
   </url>
   
   <url>
-    <loc>https://www.oldcai.com/archives/521/</loc>
+    <loc>https://www.oldcai.com/archives/1049/</loc>
     
     <lastmod>2018-10-23T15:41:52.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://www.oldcai.com/archives/1049/</loc>
+    <loc>https://www.oldcai.com/archives/521/</loc>
     
     <lastmod>2018-10-23T15:41:52.000Z</lastmod>
     
@@ -205,21 +205,14 @@
   </url>
   
   <url>
-    <loc>https://www.oldcai.com/archives/137/</loc>
-    
-    <lastmod>2018-10-23T14:45:53.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.oldcai.com/archives/145/</loc>
-    
-    <lastmod>2018-10-23T14:45:53.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://www.oldcai.com/archives/160/</loc>
+    
+    <lastmod>2018-10-23T14:45:53.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.oldcai.com/archives/137/</loc>
     
     <lastmod>2018-10-23T14:45:53.000Z</lastmod>
     
@@ -233,7 +226,7 @@
   </url>
   
   <url>
-    <loc>https://www.oldcai.com/archives/173/</loc>
+    <loc>https://www.oldcai.com/archives/145/</loc>
     
     <lastmod>2018-10-23T14:45:53.000Z</lastmod>
     
@@ -247,14 +240,14 @@
   </url>
   
   <url>
-    <loc>https://www.oldcai.com/archives/188/</loc>
+    <loc>https://www.oldcai.com/archives/173/</loc>
     
     <lastmod>2018-10-23T14:45:53.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://www.oldcai.com/archives/198/</loc>
+    <loc>https://www.oldcai.com/archives/188/</loc>
     
     <lastmod>2018-10-23T14:45:53.000Z</lastmod>
     
@@ -269,6 +262,13 @@
   
   <url>
     <loc>https://www.oldcai.com/archives/195/</loc>
+    
+    <lastmod>2018-10-23T14:45:53.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.oldcai.com/archives/198/</loc>
     
     <lastmod>2018-10-23T14:45:53.000Z</lastmod>
     
@@ -317,14 +317,14 @@
   </url>
   
   <url>
-    <loc>https://www.oldcai.com/archives/228/</loc>
+    <loc>https://www.oldcai.com/archives/248/</loc>
     
     <lastmod>2018-10-23T14:45:53.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://www.oldcai.com/archives/248/</loc>
+    <loc>https://www.oldcai.com/archives/228/</loc>
     
     <lastmod>2018-10-23T14:45:53.000Z</lastmod>
     
@@ -338,14 +338,14 @@
   </url>
   
   <url>
-    <loc>https://www.oldcai.com/archives/268/</loc>
+    <loc>https://www.oldcai.com/archives/251/</loc>
     
     <lastmod>2018-10-23T14:45:53.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://www.oldcai.com/archives/251/</loc>
+    <loc>https://www.oldcai.com/archives/268/</loc>
     
     <lastmod>2018-10-23T14:45:53.000Z</lastmod>
     
@@ -450,13 +450,6 @@
   </url>
   
   <url>
-    <loc>https://www.oldcai.com/archives/426/</loc>
-    
-    <lastmod>2018-10-23T14:45:53.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://www.oldcai.com/archives/447/</loc>
     
     <lastmod>2018-10-23T14:45:53.000Z</lastmod>
@@ -465,6 +458,13 @@
   
   <url>
     <loc>https://www.oldcai.com/archives/453/</loc>
+    
+    <lastmod>2018-10-23T14:45:53.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.oldcai.com/archives/426/</loc>
     
     <lastmod>2018-10-23T14:45:53.000Z</lastmod>
     
@@ -520,14 +520,14 @@
   </url>
   
   <url>
-    <loc>https://www.oldcai.com/archives/512/</loc>
+    <loc>https://www.oldcai.com/archives/499/</loc>
     
     <lastmod>2018-10-23T14:45:53.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://www.oldcai.com/archives/499/</loc>
+    <loc>https://www.oldcai.com/archives/512/</loc>
     
     <lastmod>2018-10-23T14:45:53.000Z</lastmod>
     
@@ -562,14 +562,14 @@
   </url>
   
   <url>
-    <loc>https://www.oldcai.com/archives/525/</loc>
+    <loc>https://www.oldcai.com/archives/546/</loc>
     
     <lastmod>2018-10-23T14:45:53.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://www.oldcai.com/archives/546/</loc>
+    <loc>https://www.oldcai.com/archives/525/</loc>
     
     <lastmod>2018-10-23T14:45:53.000Z</lastmod>
     
@@ -590,13 +590,6 @@
   </url>
   
   <url>
-    <loc>https://www.oldcai.com/archives/565/</loc>
-    
-    <lastmod>2018-10-23T14:45:53.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://www.oldcai.com/archives/1005/</loc>
     
     <lastmod>2018-10-23T14:45:53.000Z</lastmod>
@@ -611,7 +604,7 @@
   </url>
   
   <url>
-    <loc>https://www.oldcai.com/archives/616/</loc>
+    <loc>https://www.oldcai.com/archives/565/</loc>
     
     <lastmod>2018-10-23T14:45:53.000Z</lastmod>
     
@@ -625,6 +618,13 @@
   </url>
   
   <url>
+    <loc>https://www.oldcai.com/archives/616/</loc>
+    
+    <lastmod>2018-10-23T14:45:53.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.oldcai.com/archives/644/</loc>
     
     <lastmod>2018-10-23T14:45:53.000Z</lastmod>
@@ -632,14 +632,14 @@
   </url>
   
   <url>
-    <loc>https://www.oldcai.com/archives/641/</loc>
+    <loc>https://www.oldcai.com/archives/11/</loc>
     
     <lastmod>2018-10-23T14:45:53.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://www.oldcai.com/archives/11/</loc>
+    <loc>https://www.oldcai.com/archives/641/</loc>
     
     <lastmod>2018-10-23T14:45:53.000Z</lastmod>
     
@@ -765,14 +765,14 @@
   </url>
   
   <url>
-    <loc>https://www.oldcai.com/archives/763/</loc>
+    <loc>https://www.oldcai.com/archives/739/</loc>
     
     <lastmod>2018-10-23T14:45:53.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://www.oldcai.com/archives/739/</loc>
+    <loc>https://www.oldcai.com/archives/763/</loc>
     
     <lastmod>2018-10-23T14:45:53.000Z</lastmod>
     
@@ -800,14 +800,14 @@
   </url>
   
   <url>
-    <loc>https://www.oldcai.com/archives/797/</loc>
+    <loc>https://www.oldcai.com/archives/788/</loc>
     
     <lastmod>2018-10-23T14:45:53.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://www.oldcai.com/archives/788/</loc>
+    <loc>https://www.oldcai.com/archives/797/</loc>
     
     <lastmod>2018-10-23T14:45:53.000Z</lastmod>
     
@@ -926,6 +926,13 @@
   </url>
   
   <url>
+    <loc>https://www.oldcai.com/archives/115/</loc>
+    
+    <lastmod>2018-10-23T14:45:53.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.oldcai.com/archives/1150/</loc>
     
     <lastmod>2018-10-23T14:45:53.000Z</lastmod>
@@ -940,13 +947,6 @@
   </url>
   
   <url>
-    <loc>https://www.oldcai.com/archives/115/</loc>
-    
-    <lastmod>2018-10-23T14:45:53.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://www.oldcai.com/archives/497/</loc>
     
     <lastmod>2018-10-23T14:45:53.000Z</lastmod>
@@ -954,7 +954,7 @@
   </url>
   
   <url>
-    <loc>https://www.oldcai.com/archives/1200/</loc>
+    <loc>https://www.oldcai.com/archives/1187/</loc>
     
     <lastmod>2018-10-23T14:45:53.000Z</lastmod>
     
@@ -968,7 +968,7 @@
   </url>
   
   <url>
-    <loc>https://www.oldcai.com/archives/1187/</loc>
+    <loc>https://www.oldcai.com/archives/1205/</loc>
     
     <lastmod>2018-10-23T14:45:53.000Z</lastmod>
     
@@ -989,14 +989,14 @@
   </url>
   
   <url>
-    <loc>https://www.oldcai.com/archives/1205/</loc>
+    <loc>https://www.oldcai.com/archives/1217/</loc>
     
     <lastmod>2018-10-23T14:45:53.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://www.oldcai.com/archives/1217/</loc>
+    <loc>https://www.oldcai.com/archives/1200/</loc>
     
     <lastmod>2018-10-23T14:45:53.000Z</lastmod>
     
