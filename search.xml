@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>01 - Hello World - rust之tokio教程</title>
+      <link href="/rust/tokio-hello-world/"/>
+      <url>/rust/tokio-hello-world/</url>
+      
+        <content type="html"><![CDATA[<h2 id="1-创建项目"><a href="#1-创建项目" class="headerlink" title="1. 创建项目"></a>1. 创建项目</h2><figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cargo <span class="keyword">new</span> <span class="type">hello</span>-tokio</span><br></pre></td></tr></table></figure><h2 id="2-修改文件"><a href="#2-修改文件" class="headerlink" title="2. 修改文件"></a>2. 修改文件</h2><blockquote><p>Cargo.toml</p></blockquote><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[dependencies]</span></span><br><span class="line"><span class="attr">tokio</span> = &#123; version = <span class="string">"0.2"</span>, features = [<span class="string">"full"</span>] &#125;</span><br></pre></td></tr></table></figure><blockquote><p>src/main.rs</p></blockquote><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> tokio::net::TcpStream;</span><br><span class="line"><span class="keyword">use</span> tokio::prelude::*;</span><br><span class="line"></span><br><span class="line"><span class="meta">#[tokio::main]</span></span><br><span class="line">async <span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut</span> stream = TcpStream::connect(<span class="string">"127.0.0.1:6142"</span>).await.unwrap();</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">"created stream"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> result = stream.write(<span class="string">b"hello world\n"</span>).await;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">"wrote to stream; success=&#123;:?&#125;"</span>, result.is_ok());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="3-运行"><a href="#3-运行" class="headerlink" title="3. 运行"></a>3. 运行</h2><h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><h4 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h4><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">telnet <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span> <span class="number">6142</span></span><br></pre></td></tr></table></figure><h4 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h4><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -l <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span> <span class="number">6142</span></span><br></pre></td></tr></table></figure><h3 id="运行代码"><a href="#运行代码" class="headerlink" title="运行代码"></a>运行代码</h3><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cargo <span class="keyword">run</span><span class="bash"></span></span><br></pre></td></tr></table></figure><h3 id="如果出错，则运行"><a href="#如果出错，则运行" class="headerlink" title="如果出错，则运行"></a>如果出错，则运行</h3><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RUST_BACKTRACE=full cargo <span class="keyword">run</span><span class="bash"></span></span><br></pre></td></tr></table></figure><p>可以查看到出错的堆栈</p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>用tokio实现出一个客户端程序<br>实现功能：</p><ol><li>连接到本地6142端口</li><li>发送字符串<code>hello world\n</code></li><li>检测是否发送成功并打印</li></ol><p>可能错误：<br>本地端口监听失败或还未监听，会出现错误：<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">thread 'main' panicked <span class="keyword">at</span> 'called `Result::unwrap()` <span class="keyword">on</span> an `Err` value: Os &#123; code: <span class="number">61</span>, kind: ConnectionRefused, message: <span class="string">"Connection refused"</span> &#125;', src/main.rs:<span class="number">6</span>:<span class="number">22</span></span><br><span class="line">note: <span class="built_in">run</span> <span class="keyword">with</span> `RUST_BACKTRACE=<span class="number">1</span>` environment variable <span class="keyword">to</span> display a backtrace</span><br></pre></td></tr></table></figure></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tokio </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>微星MAG Z390 TOMAHAWK战斧导弹 + i5 9600kf EFI</title>
       <link href="/hackintosh/msi-mag-z390-tomahawk-i5-9600kf/"/>
       <url>/hackintosh/msi-mag-z390-tomahawk-i5-9600kf/</url>
@@ -110,29 +133,6 @@
         <tags>
             
             <tag> zsh </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
-      <title>01 - Hello World - rust之tokio教程</title>
-      <link href="/rust/tokio-hello-world/"/>
-      <url>/rust/tokio-hello-world/</url>
-      
-        <content type="html"><![CDATA[<h2 id="1-创建项目"><a href="#1-创建项目" class="headerlink" title="1. 创建项目"></a>1. 创建项目</h2><figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cargo <span class="keyword">new</span> <span class="type">hello</span>-tokio</span><br></pre></td></tr></table></figure><h2 id="2-修改文件"><a href="#2-修改文件" class="headerlink" title="2. 修改文件"></a>2. 修改文件</h2><blockquote><p>Cargo.toml</p></blockquote><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[dependencies]</span></span><br><span class="line"><span class="attr">tokio</span> = &#123; version = <span class="string">"0.2"</span>, features = [<span class="string">"full"</span>] &#125;</span><br></pre></td></tr></table></figure><blockquote><p>src/main.rs</p></blockquote><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> tokio::net::TcpStream;</span><br><span class="line"><span class="keyword">use</span> tokio::prelude::*;</span><br><span class="line"></span><br><span class="line"><span class="meta">#[tokio::main]</span></span><br><span class="line">async <span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut</span> stream = TcpStream::connect(<span class="string">"127.0.0.1:6142"</span>).await.unwrap();</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">"created stream"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> result = stream.write(<span class="string">b"hello world\n"</span>).await;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">"wrote to stream; success=&#123;:?&#125;"</span>, result.is_ok());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="3-运行"><a href="#3-运行" class="headerlink" title="3. 运行"></a>3. 运行</h2><h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><h4 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h4><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">telnet <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span> <span class="number">6142</span></span><br></pre></td></tr></table></figure><h4 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h4><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -l <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span> <span class="number">6142</span></span><br></pre></td></tr></table></figure><h3 id="运行代码"><a href="#运行代码" class="headerlink" title="运行代码"></a>运行代码</h3><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cargo <span class="keyword">run</span><span class="bash"></span></span><br></pre></td></tr></table></figure><h3 id="如果出错，则运行"><a href="#如果出错，则运行" class="headerlink" title="如果出错，则运行"></a>如果出错，则运行</h3><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RUST_BACKTRACE=full cargo <span class="keyword">run</span><span class="bash"></span></span><br></pre></td></tr></table></figure><p>可以查看到出错的堆栈</p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>用tokio实现出一个客户端程序<br>实现功能：</p><ol><li>连接到本地6142端口</li><li>发送字符串<code>hello world\n</code></li><li>检测是否发送成功并打印</li></ol><p>可能错误：<br>本地端口监听失败或还未监听，会出现错误：<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">thread 'main' panicked <span class="keyword">at</span> 'called `Result::unwrap()` <span class="keyword">on</span> an `Err` value: Os &#123; code: <span class="number">61</span>, kind: ConnectionRefused, message: <span class="string">"Connection refused"</span> &#125;', src/main.rs:<span class="number">6</span>:<span class="number">22</span></span><br><span class="line">note: <span class="built_in">run</span> <span class="keyword">with</span> `RUST_BACKTRACE=<span class="number">1</span>` environment variable <span class="keyword">to</span> display a backtrace</span><br></pre></td></tr></table></figure></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 教程 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> tokio </tag>
             
         </tags>
       
@@ -305,9 +305,9 @@
             
             <tag> Hexo </tag>
             
-            <tag> WordPress </tag>
-            
             <tag> Ghost </tag>
+            
+            <tag> WordPress </tag>
             
         </tags>
       
@@ -2892,9 +2892,9 @@
             
             <tag> C++ </tag>
             
-            <tag> QT </tag>
-            
             <tag> LNK2019 </tag>
+            
+            <tag> QT </tag>
             
         </tags>
       
