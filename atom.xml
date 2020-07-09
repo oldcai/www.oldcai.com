@@ -151,6 +151,31 @@
   </entry>
   
   <entry>
+    <title>01 - Hello World - rust之tokio教程</title>
+    <link href="https://www.oldcai.com/rust/tokio-hello-world/"/>
+    <id>https://www.oldcai.com/rust/tokio-hello-world/</id>
+    <published>2019-02-19T18:29:00.000Z</published>
+    <updated>2020-07-09T22:56:44.686Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="1-创建项目"><a href="#1-创建项目" class="headerlink" title="1. 创建项目"></a>1. 创建项目</h2><figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cargo <span class="keyword">new</span> <span class="type">hello</span>-tokio</span><br></pre></td></tr></table></figure><h2 id="2-修改文件"><a href="#2-修改文件" class="headerlink" title="2. 修改文件"></a>2. 修改文件</h2><blockquote><p>Cargo.toml</p></blockquote><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[dependencies]</span></span><br><span class="line"><span class="attr">tokio</span> = &#123; version = <span class="string">"0.2"</span>, features = [<span class="string">"full"</span>] &#125;</span><br></pre></td></tr></table></figure><blockquote><p>src/main.rs</p></blockquote><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> tokio::net::TcpStream;</span><br><span class="line"><span class="keyword">use</span> tokio::prelude::*;</span><br><span class="line"></span><br><span class="line"><span class="meta">#[tokio::main]</span></span><br><span class="line">async <span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut</span> stream = TcpStream::connect(<span class="string">"127.0.0.1:6142"</span>).await.unwrap();</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">"created stream"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> result = stream.write(<span class="string">b"hello world\n"</span>).await;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">"wrote to stream; success=&#123;:?&#125;"</span>, result.is_ok());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="3-运行"><a href="#3-运行" class="headerlink" title="3. 运行"></a>3. 运行</h2><h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><h4 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h4><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">telnet <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span> <span class="number">6142</span></span><br></pre></td></tr></table></figure><h4 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h4><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -l <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span> <span class="number">6142</span></span><br></pre></td></tr></table></figure><h3 id="运行代码"><a href="#运行代码" class="headerlink" title="运行代码"></a>运行代码</h3><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cargo <span class="keyword">run</span><span class="bash"></span></span><br></pre></td></tr></table></figure><h3 id="如果出错，则运行"><a href="#如果出错，则运行" class="headerlink" title="如果出错，则运行"></a>如果出错，则运行</h3><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RUST_BACKTRACE=full cargo <span class="keyword">run</span><span class="bash"></span></span><br></pre></td></tr></table></figure><p>可以查看到出错的堆栈</p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>用tokio实现出一个客户端程序<br>实现功能：</p><ol><li>连接到本地6142端口</li><li>发送字符串<code>hello world\n</code></li><li>检测是否发送成功并打印</li></ol><p>可能错误：<br>本地端口监听失败或还未监听，会出现错误：<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">thread 'main' panicked <span class="keyword">at</span> 'called `Result::unwrap()` <span class="keyword">on</span> an `Err` value: Os &#123; code: <span class="number">61</span>, kind: ConnectionRefused, message: <span class="string">"Connection refused"</span> &#125;', src/main.rs:<span class="number">6</span>:<span class="number">22</span></span><br><span class="line">note: <span class="built_in">run</span> <span class="keyword">with</span> `RUST_BACKTRACE=<span class="number">1</span>` environment variable <span class="keyword">to</span> display a backtrace</span><br></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;1-创建项目&quot;&gt;&lt;a href=&quot;#1-创建项目&quot; class=&quot;headerlink&quot; title=&quot;1. 创建项目&quot;&gt;&lt;/a&gt;1. 创建项目&lt;/h2&gt;&lt;figure class=&quot;highlight haxe&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gu
+      
+    
+    </summary>
+    
+      <category term="教程" scheme="https://www.oldcai.com/categories/%E6%95%99%E7%A8%8B/"/>
+    
+    
+      <category term="tokio" scheme="https://www.oldcai.com/tags/tokio/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Filebeat Not Able to Connect to Logstash</title>
     <link href="https://www.oldcai.com/server/logstash-filebeat-cert/"/>
     <id>https://www.oldcai.com/server/logstash-filebeat-cert/</id>
@@ -353,9 +378,9 @@
     
       <category term="Hexo" scheme="https://www.oldcai.com/tags/Hexo/"/>
     
-      <category term="Ghost" scheme="https://www.oldcai.com/tags/Ghost/"/>
-    
       <category term="WordPress" scheme="https://www.oldcai.com/tags/WordPress/"/>
+    
+      <category term="Ghost" scheme="https://www.oldcai.com/tags/Ghost/"/>
     
   </entry>
   
@@ -550,32 +575,6 @@
     </summary>
     
       <category term="服务器运维" scheme="https://www.oldcai.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%90%E7%BB%B4/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>你的文件值多少钱</title>
-    <link href="https://www.oldcai.com/archives/1150/"/>
-    <id>https://www.oldcai.com/archives/1150/</id>
-    <published>2017-05-02T18:43:00.000Z</published>
-    <updated>2018-10-23T14:45:53.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="/images/2017/05/1493751258.jpeg" alt></p><p>这个问题需要站在两个角度来看：文件丢失之前，文件丢失之后。比如和家人的照片，丢失之前可能无所谓，换一块几百块钱的硬盘都不一定舍得；丢失之后，可能修理店喊1000块也想恢复过来。</p><p>国外有一家专门做备份的公司，叫BackBlaze。</p><p>之前还是因为在挑选服务器硬盘品牌的时候，找到他们的一篇<a href="https://www.backblaze.com/blog/what-hard-drive-should-i-buy/" target="_blank" rel="noopener">硬盘平均寿命统计</a>的文章，当时感觉他们至少是在对待数据安全性和降低成本上面比别人更认真，就上了贼船。</p><p>又到了一年一度交备份年金的时候了，他们的服务费真的不算贵，每年每台机器$50，但是，但是这不是美元汇率渐涨吗。。好吧，好吧，实话是：但是，50刀已经够吃一顿好吃的了⁄(⁄</p><p>⁄•⁄ω⁄•⁄</p><p>⁄)⁄⁄</p><h2 id="真的需要继续订购BackBlaze吗"><a href="#真的需要继续订购BackBlaze吗" class="headerlink" title="真的需要继续订购BackBlaze吗"></a>真的需要继续订购BackBlaze吗</h2><h3 id="不订购的理由挺多"><a href="#不订购的理由挺多" class="headerlink" title="不订购的理由挺多"></a>不订购的理由挺多</h3><ol><li>过去的几年老蔡好像没有发生任何数据丢失方面的问题，去年买了BackBlaze的备份服务后，backblaze.com网站都没怎么上过。</li><li>老蔡平时用TimeMachine备份数据，就算硬盘坏了，应该也不会出什么大乱子吧。</li><li>代码什么的，基本都会提交到git服务器，所以就算失窃了，也不会丢失太多重要的东西。</li></ol><p>但是老蔡还是继续订购了。并且写下这篇博文，避免以后再次纠结浪费时间。</p><h3 id="继续订购的理由只需要一个"><a href="#继续订购的理由只需要一个" class="headerlink" title="继续订购的理由只需要一个"></a>继续订购的理由只需要一个</h3><ol><li>数据一旦丢失，即使可以通过各种方法找回来，但是至少需要半天时间。</li></ol><p>假设$50是老蔡半天的收入，以后这个占比可能更小，</p><p>而以后多浪费半天的时间在没有意义的事情上面，是极其不划算的。</p><p>这是最主要的原因，当然，也列一下一些其他的理由，以便说服将来的自己。</p><p><img src="/images/2017/05/1493751829_1.jpeg" alt></p><ol><li>作为备选方案，即使家中失窃，也能保证不丢失任何数据。</li></ol><p><img src="/images/2017/05/1493751932_1.jpeg" alt></p><ol><li>想要有个说走就走的旅行？再也不用在临行前还在等待路上可能要用到的办公文件从iMac里拷贝到rMBP里了。</li></ol><p>想明白了这些，老蔡也就不再纠结了，希望以后碰到类似问题的时候重新回忆起这个总结。毕竟人一生不长，就30000天。</p><h2 id="你用的什么备份方案呢？"><a href="#你用的什么备份方案呢？" class="headerlink" title="你用的什么备份方案呢？"></a>你用的什么备份方案呢？</h2><p>通过这个邀请链接注册，可以免费获赠一个月试用：<a href="https://secure.backblaze.com/r/01lm95" target="_blank" rel="noopener">邀请链接</a> 等你觉得满意购买后，我也会有</p><p>1 个月的奖励。</p><p>觉得BackBlaze怎么样？来免费试试<a href="https://secure.backblaze.com/r/01lm95" target="_blank" rel="noopener">BackBlaze</a>吧？</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;img src=&quot;/images/2017/05/1493751258.jpeg&quot; alt&gt;&lt;/p&gt;
-&lt;p&gt;这个问题需要站在两个角度来看：文件丢失之前，文件丢失之后。比如和家人的照片，丢失之前可能无所谓，换一块几百块钱的硬盘都不一定舍得；丢失之后，可能修理店喊1000块也
-      
-    
-    </summary>
-    
-      <category term="思考" scheme="https://www.oldcai.com/categories/%E6%80%9D%E8%80%83/"/>
-    
-      <category term="软件" scheme="https://www.oldcai.com/categories/%E6%80%9D%E8%80%83/%E8%BD%AF%E4%BB%B6/"/>
     
     
   </entry>
