@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="老蔡博客">
 <meta property="og:description" content="1. 创建项目1cargo new --bin echo-server 2. 修改文件 Cargo.toml  123[dependencies]tokio = &amp;#123; version = &quot;0.2&quot;, features = [&quot;full&quot;] &amp;#125;futures = &quot;0.3&quot;  src/main.rs  123456789101112131415161718192021222324">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-07-09T23:28:43.306Z">
+<meta property="og:updated_time" content="2020-07-09T23:41:17.716Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="传回TCP传入字符的Echo Server - rust之tokio教程02">
 <meta name="twitter:description" content="1. 创建项目1cargo new --bin echo-server 2. 修改文件 Cargo.toml  123[dependencies]tokio = &amp;#123; version = &quot;0.2&quot;, features = [&quot;full&quot;] &amp;#125;futures = &quot;0.3&quot;  src/main.rs  123456789101112131415161718192021222324">
@@ -170,11 +170,16 @@
 <blockquote>
 <p>Output: oldcai.com</p>
 </blockquote>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>用tokio实现出一个服务端程序<br>实现功能：</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>用tokio实现出一个服务端程序</p>
+<p>实现功能：</p>
 <ol>
 <li>监听本地6142端口</li>
 <li>收到数据流后，传回同样数据</li>
 </ol>
+<p><code>let (mut reader, mut writer) = sock.split();</code>这句有些意思</p>
+<p>把socket分成写和读两个对象，让处理更加简单了。</p>
+<p><code>tokio::spawn</code>这句是能够并发的关键，没有这句就只能一次处理一个连接</p>
+<p>而加上这句，其实代码逻辑还是和同步编程一样</p>
 
   </div>
 </article>
