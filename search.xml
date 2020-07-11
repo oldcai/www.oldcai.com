@@ -3,7 +3,34 @@
   
     
     <entry>
-      <title>传回TCP传入字符的Echo Server - rust之tokio教程02</title>
+      <title>响应IP的HTTP Server - rust之actix-web - rust教程03</title>
+      <link href="/rust/web-server-echo-ip/"/>
+      <url>/rust/web-server-echo-ip/</url>
+      
+        <content type="html"><![CDATA[<h2 id="1-创建项目"><a href="#1-创建项目" class="headerlink" title="1. 创建项目"></a>1. 创建项目</h2><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cargo <span class="keyword">new</span> <span class="keyword">return</span>-ip</span><br></pre></td></tr></table></figure><h2 id="2-修改文件"><a href="#2-修改文件" class="headerlink" title="2. 修改文件"></a>2. 修改文件</h2><blockquote><p>Cargo.toml</p></blockquote><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[dependencies]</span></span><br><span class="line"><span class="attr">actix-web</span> = <span class="string">"0.7"</span></span><br><span class="line"><span class="attr">clap</span> = <span class="string">"2.33.1"</span></span><br></pre></td></tr></table></figure><blockquote><p>src/main.rs</p></blockquote><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">extern</span> <span class="keyword">crate</span> actix_web;</span><br><span class="line"></span><br><span class="line"><span class="keyword">use</span> actix_web::&#123;App, HttpRequest, Responder, server&#125;;</span><br><span class="line"><span class="keyword">use</span> clap::Arg;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">index</span></span>(_req: &amp;HttpRequest) -&gt; <span class="keyword">impl</span> Responder &#123;</span><br><span class="line">    <span class="keyword">let</span> addr = _req.peer_addr().unwrap();</span><br><span class="line">    <span class="keyword">let</span> ip = addr.ip().to_string();</span><br><span class="line">    <span class="built_in">format!</span>(<span class="string">"&#123;&#125;\n"</span>, ip)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> matches = clap::App::new(<span class="string">"HTTP Proxy"</span>)</span><br><span class="line">        .arg(</span><br><span class="line">            Arg::with_name(<span class="string">"listen_addr"</span>)</span><br><span class="line">                .takes_value(<span class="literal">true</span>)</span><br><span class="line">                .value_name(<span class="string">"LISTEN ADDR"</span>)</span><br><span class="line">                .index(<span class="number">1</span>)</span><br><span class="line">                .required(<span class="literal">true</span>),</span><br><span class="line">        )</span><br><span class="line">        .get_matches();</span><br><span class="line">    <span class="keyword">let</span> listen_addr = matches.value_of(<span class="string">"listen_addr"</span>).unwrap();</span><br><span class="line">    server::new(|| App::new().resource(<span class="string">"/"</span>, |r| r.f(index)))</span><br><span class="line">        .bind(listen_addr)</span><br><span class="line">        .unwrap()</span><br><span class="line">        .run();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="3-运行"><a href="#3-运行" class="headerlink" title="3. 运行"></a>3. 运行</h2><h3 id="运行代码"><a href="#运行代码" class="headerlink" title="运行代码"></a>运行代码</h3><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cargo <span class="keyword">run</span><span class="bash"> :::8000</span></span><br></pre></td></tr></table></figure><h3 id="如果只需要ipv4，则运行"><a href="#如果只需要ipv4，则运行" class="headerlink" title="如果只需要ipv4，则运行"></a>如果只需要ipv4，则运行</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">cargo</span> <span class="selector-tag">run</span> 127<span class="selector-class">.0</span><span class="selector-class">.0</span><span class="selector-class">.1</span><span class="selector-pseudo">:8000</span></span><br></pre></td></tr></table></figure><h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">curl localhost:<span class="number">8000</span></span><br><span class="line"></span><br><span class="line"><span class="meta"># 或者指定 IPV6 地址请求</span></span><br><span class="line">curl -g -<span class="number">6</span> 'http://[::1]:<span class="number">8000</span>/'</span><br></pre></td></tr></table></figure><p>或者直接打开 <a href="http://localhost:8000" target="_blank" rel="noopener">http://localhost:8000</a></p><h4 id="返回结果"><a href="#返回结果" class="headerlink" title="返回结果"></a>返回结果</h4><blockquote><p>IPV4返回： 127.0.0.1<br>IPV6返回： ::1</p></blockquote><h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>用actix实现出一个http服务端程序</p><p>用到模块：</p><ol><li>actix-web, 提供http</li><li>clap, 解析命令行参数</li></ol><p>实现功能：</p><ol><li>获取传入的绑定ip地址</li><li>绑定到地址后提供http服务</li><li>返回请求端的ip地址</li></ol><h2 id="benchmark测试"><a href="#benchmark测试" class="headerlink" title="benchmark测试"></a>benchmark测试</h2><p>打开release后，actix-web benchmark测试得16.14k</p><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Running <span class="number">30</span>s test @ <span class="keyword">http</span>://<span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">8000</span>/</span><br><span class="line">  <span class="number">12</span> threads <span class="keyword">and</span> <span class="number">400</span> connections</span><br><span class="line">    Thread Stats   Avg      Stdev     Max   +/- Stdev</span><br><span class="line">    Latency     <span class="number">1.11</span>ms  <span class="number">201.40</span>us  <span class="number">15.62</span>ms   <span class="number">97.33</span>%</span><br><span class="line">    Req/Sec    <span class="number">16.14</span>k     <span class="number">4.92</span>k   <span class="number">24.15</span>k    <span class="number">66.61</span>%</span><br><span class="line">  <span class="number">3044704</span> requests <span class="keyword">in</span> <span class="number">15.80</span>s, <span class="number">389.09</span>MB <span class="built_in">read</span></span><br><span class="line">  Socket errors: connect <span class="number">155</span>, <span class="built_in">read</span> <span class="number">122</span>, <span class="built_in">write</span> <span class="number">0</span>, timeout <span class="number">0</span></span><br><span class="line">Requests/<span class="built_in">sec</span>: <span class="number">192666.29</span></span><br><span class="line">Transfer/<span class="built_in">sec</span>:     <span class="number">24.62</span>MB</span><br></pre></td></tr></table></figure><p>debug模式时，actix-web QPS为6.21k</p><p>奇怪得是IPV6或者IPV4的选择也会影响QPS，</p><p>当用IPV6进行访问时，</p><p>release版本也会掉到10.86k左右，debug版本反而没啥变化。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程 </category>
+          
+          <category> rust </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> actix </tag>
+            
+            <tag> server </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>传回TCP传入字符的Echo Server - rust之tokio - rust教程02</title>
       <link href="/rust/echo-server/"/>
       <url>/rust/echo-server/</url>
       
@@ -13,6 +40,8 @@
       <categories>
           
           <category> 教程 </category>
+          
+          <category> rust </category>
           
       </categories>
       
@@ -26,7 +55,7 @@
     </entry>
     
     <entry>
-      <title>Hello World - rust之tokio教程01</title>
+      <title>Hello World - rust之tokio- rust教程01</title>
       <link href="/rust/tokio-hello-world/"/>
       <url>/rust/tokio-hello-world/</url>
       
@@ -36,6 +65,8 @@
       <categories>
           
           <category> 教程 </category>
+          
+          <category> rust </category>
           
       </categories>
       
@@ -274,11 +305,11 @@
       
         <tags>
             
-            <tag> WordPress </tag>
-            
             <tag> 博客 </tag>
             
             <tag> Hexo </tag>
+            
+            <tag> WordPress </tag>
             
         </tags>
       
@@ -324,13 +355,13 @@
       
         <tags>
             
-            <tag> WordPress </tag>
-            
             <tag> 博客 </tag>
             
             <tag> Hexo </tag>
             
             <tag> Ghost </tag>
+            
+            <tag> WordPress </tag>
             
         </tags>
       
@@ -1180,9 +1211,9 @@
       
         <tags>
             
-            <tag> 快捷键 </tag>
-            
             <tag> Sublime Text </tag>
+            
+            <tag> 快捷键 </tag>
             
             <tag> 编辑器 </tag>
             
@@ -1286,11 +1317,11 @@
             
             <tag> Ruby </tag>
             
-            <tag> 快捷键 </tag>
-            
             <tag> Ruby on Rails </tag>
             
             <tag> Sublime Text </tag>
+            
+            <tag> 快捷键 </tag>
             
             <tag> 编辑器 </tag>
             
@@ -1352,9 +1383,9 @@
             
             <tag> kde </tag>
             
-            <tag> kubuntu </tag>
-            
             <tag> 快捷键 </tag>
+            
+            <tag> kubuntu </tag>
             
         </tags>
       
@@ -1977,9 +2008,9 @@
       
         <tags>
             
-            <tag> WordPress </tag>
-            
             <tag> 博客 </tag>
+            
+            <tag> WordPress </tag>
             
             <tag> 升级 </tag>
             
@@ -2915,9 +2946,9 @@
             
             <tag> C++ </tag>
             
-            <tag> QT </tag>
-            
             <tag> LNK2019 </tag>
+            
+            <tag> QT </tag>
             
         </tags>
       
@@ -3110,11 +3141,11 @@
             
             <tag> C++ </tag>
             
+            <tag> 游戏编程 </tag>
+            
             <tag> hashmap </tag>
             
             <tag> 数据溢出 </tag>
-            
-            <tag> 游戏编程 </tag>
             
             <tag> 程序崩溃 </tag>
             

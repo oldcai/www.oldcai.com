@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.oldcai.com/"/>
-  <updated>2020-07-09T23:41:17.716Z</updated>
+  <updated>2020-07-11T17:18:43.989Z</updated>
   <id>https://www.oldcai.com/</id>
   
   <author>
@@ -17,11 +17,40 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>传回TCP传入字符的Echo Server - rust之tokio教程02</title>
+    <title>响应IP的HTTP Server - rust之actix-web - rust教程03</title>
+    <link href="https://www.oldcai.com/rust/web-server-echo-ip/"/>
+    <id>https://www.oldcai.com/rust/web-server-echo-ip/</id>
+    <published>2020-07-11T16:52:00.000Z</published>
+    <updated>2020-07-11T17:18:43.989Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="1-创建项目"><a href="#1-创建项目" class="headerlink" title="1. 创建项目"></a>1. 创建项目</h2><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cargo <span class="keyword">new</span> <span class="keyword">return</span>-ip</span><br></pre></td></tr></table></figure><h2 id="2-修改文件"><a href="#2-修改文件" class="headerlink" title="2. 修改文件"></a>2. 修改文件</h2><blockquote><p>Cargo.toml</p></blockquote><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[dependencies]</span></span><br><span class="line"><span class="attr">actix-web</span> = <span class="string">"0.7"</span></span><br><span class="line"><span class="attr">clap</span> = <span class="string">"2.33.1"</span></span><br></pre></td></tr></table></figure><blockquote><p>src/main.rs</p></blockquote><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">extern</span> <span class="keyword">crate</span> actix_web;</span><br><span class="line"></span><br><span class="line"><span class="keyword">use</span> actix_web::&#123;App, HttpRequest, Responder, server&#125;;</span><br><span class="line"><span class="keyword">use</span> clap::Arg;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">index</span></span>(_req: &amp;HttpRequest) -&gt; <span class="keyword">impl</span> Responder &#123;</span><br><span class="line">    <span class="keyword">let</span> addr = _req.peer_addr().unwrap();</span><br><span class="line">    <span class="keyword">let</span> ip = addr.ip().to_string();</span><br><span class="line">    <span class="built_in">format!</span>(<span class="string">"&#123;&#125;\n"</span>, ip)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> matches = clap::App::new(<span class="string">"HTTP Proxy"</span>)</span><br><span class="line">        .arg(</span><br><span class="line">            Arg::with_name(<span class="string">"listen_addr"</span>)</span><br><span class="line">                .takes_value(<span class="literal">true</span>)</span><br><span class="line">                .value_name(<span class="string">"LISTEN ADDR"</span>)</span><br><span class="line">                .index(<span class="number">1</span>)</span><br><span class="line">                .required(<span class="literal">true</span>),</span><br><span class="line">        )</span><br><span class="line">        .get_matches();</span><br><span class="line">    <span class="keyword">let</span> listen_addr = matches.value_of(<span class="string">"listen_addr"</span>).unwrap();</span><br><span class="line">    server::new(|| App::new().resource(<span class="string">"/"</span>, |r| r.f(index)))</span><br><span class="line">        .bind(listen_addr)</span><br><span class="line">        .unwrap()</span><br><span class="line">        .run();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="3-运行"><a href="#3-运行" class="headerlink" title="3. 运行"></a>3. 运行</h2><h3 id="运行代码"><a href="#运行代码" class="headerlink" title="运行代码"></a>运行代码</h3><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cargo <span class="keyword">run</span><span class="bash"> :::8000</span></span><br></pre></td></tr></table></figure><h3 id="如果只需要ipv4，则运行"><a href="#如果只需要ipv4，则运行" class="headerlink" title="如果只需要ipv4，则运行"></a>如果只需要ipv4，则运行</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">cargo</span> <span class="selector-tag">run</span> 127<span class="selector-class">.0</span><span class="selector-class">.0</span><span class="selector-class">.1</span><span class="selector-pseudo">:8000</span></span><br></pre></td></tr></table></figure><h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">curl localhost:<span class="number">8000</span></span><br><span class="line"></span><br><span class="line"><span class="meta"># 或者指定 IPV6 地址请求</span></span><br><span class="line">curl -g -<span class="number">6</span> 'http://[::1]:<span class="number">8000</span>/'</span><br></pre></td></tr></table></figure><p>或者直接打开 <a href="http://localhost:8000" target="_blank" rel="noopener">http://localhost:8000</a></p><h4 id="返回结果"><a href="#返回结果" class="headerlink" title="返回结果"></a>返回结果</h4><blockquote><p>IPV4返回： 127.0.0.1<br>IPV6返回： ::1</p></blockquote><h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>用actix实现出一个http服务端程序</p><p>用到模块：</p><ol><li>actix-web, 提供http</li><li>clap, 解析命令行参数</li></ol><p>实现功能：</p><ol><li>获取传入的绑定ip地址</li><li>绑定到地址后提供http服务</li><li>返回请求端的ip地址</li></ol><h2 id="benchmark测试"><a href="#benchmark测试" class="headerlink" title="benchmark测试"></a>benchmark测试</h2><p>打开release后，actix-web benchmark测试得16.14k</p><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Running <span class="number">30</span>s test @ <span class="keyword">http</span>://<span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">8000</span>/</span><br><span class="line">  <span class="number">12</span> threads <span class="keyword">and</span> <span class="number">400</span> connections</span><br><span class="line">    Thread Stats   Avg      Stdev     Max   +/- Stdev</span><br><span class="line">    Latency     <span class="number">1.11</span>ms  <span class="number">201.40</span>us  <span class="number">15.62</span>ms   <span class="number">97.33</span>%</span><br><span class="line">    Req/Sec    <span class="number">16.14</span>k     <span class="number">4.92</span>k   <span class="number">24.15</span>k    <span class="number">66.61</span>%</span><br><span class="line">  <span class="number">3044704</span> requests <span class="keyword">in</span> <span class="number">15.80</span>s, <span class="number">389.09</span>MB <span class="built_in">read</span></span><br><span class="line">  Socket errors: connect <span class="number">155</span>, <span class="built_in">read</span> <span class="number">122</span>, <span class="built_in">write</span> <span class="number">0</span>, timeout <span class="number">0</span></span><br><span class="line">Requests/<span class="built_in">sec</span>: <span class="number">192666.29</span></span><br><span class="line">Transfer/<span class="built_in">sec</span>:     <span class="number">24.62</span>MB</span><br></pre></td></tr></table></figure><p>debug模式时，actix-web QPS为6.21k</p><p>奇怪得是IPV6或者IPV4的选择也会影响QPS，</p><p>当用IPV6进行访问时，</p><p>release版本也会掉到10.86k左右，debug版本反而没啥变化。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;1-创建项目&quot;&gt;&lt;a href=&quot;#1-创建项目&quot; class=&quot;headerlink&quot; title=&quot;1. 创建项目&quot;&gt;&lt;/a&gt;1. 创建项目&lt;/h2&gt;&lt;figure class=&quot;highlight actionscript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td c
+      
+    
+    </summary>
+    
+      <category term="教程" scheme="https://www.oldcai.com/categories/%E6%95%99%E7%A8%8B/"/>
+    
+      <category term="rust" scheme="https://www.oldcai.com/categories/%E6%95%99%E7%A8%8B/rust/"/>
+    
+    
+      <category term="actix" scheme="https://www.oldcai.com/tags/actix/"/>
+    
+      <category term="server" scheme="https://www.oldcai.com/tags/server/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>传回TCP传入字符的Echo Server - rust之tokio - rust教程02</title>
     <link href="https://www.oldcai.com/rust/echo-server/"/>
     <id>https://www.oldcai.com/rust/echo-server/</id>
     <published>2020-07-09T23:24:02.000Z</published>
-    <updated>2020-07-09T23:41:17.716Z</updated>
+    <updated>2020-07-11T17:18:54.062Z</updated>
     
     <content type="html"><![CDATA[<h2 id="1-创建项目"><a href="#1-创建项目" class="headerlink" title="1. 创建项目"></a>1. 创建项目</h2><figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cargo <span class="keyword">new</span> <span class="comment">--bin echo-server</span></span><br></pre></td></tr></table></figure><h2 id="2-修改文件"><a href="#2-修改文件" class="headerlink" title="2. 修改文件"></a>2. 修改文件</h2><blockquote><p>Cargo.toml</p></blockquote><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[dependencies]</span></span><br><span class="line"><span class="attr">tokio</span> = &#123; version = <span class="string">"0.2"</span>, features = [<span class="string">"full"</span>] &#125;</span><br><span class="line"><span class="attr">futures</span> = <span class="string">"0.3"</span></span><br></pre></td></tr></table></figure><blockquote><p>src/main.rs</p></blockquote><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> tokio::net::TcpListener;</span><br><span class="line"><span class="keyword">use</span> tokio::prelude::*;</span><br><span class="line"><span class="keyword">use</span> futures::stream::StreamExt;</span><br><span class="line"></span><br><span class="line"><span class="meta">#[tokio::main]</span></span><br><span class="line">async <span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> addr = <span class="string">"127.0.0.1:6142"</span>;</span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut</span> listener = TcpListener::bind(addr).await.unwrap();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Here we convert the `TcpListener` to a stream of incoming connections</span></span><br><span class="line">    <span class="comment">// with the `incoming` method.</span></span><br><span class="line">    <span class="keyword">let</span> server = &#123;</span><br><span class="line">        async <span class="keyword">move</span> &#123;</span><br><span class="line">            <span class="keyword">let</span> <span class="keyword">mut</span> incoming = listener.incoming();</span><br><span class="line">            <span class="keyword">while</span> <span class="keyword">let</span> <span class="literal">Some</span>(conn) = incoming.next().await &#123;</span><br><span class="line">                <span class="keyword">match</span> conn &#123;</span><br><span class="line">                    <span class="literal">Err</span>(e) =&gt; eprintln!(<span class="string">"accept failed = &#123;:?&#125;"</span>, e),</span><br><span class="line">                    <span class="literal">Ok</span>(<span class="keyword">mut</span> sock) =&gt; &#123;</span><br><span class="line">                        <span class="comment">// Spawn the future that echos the data and returns how</span></span><br><span class="line">                        <span class="comment">// many bytes were copied as a concurrent task.</span></span><br><span class="line">                        tokio::spawn(async <span class="keyword">move</span> &#123;</span><br><span class="line">                            <span class="comment">// Split up the reading and writing parts of the</span></span><br><span class="line">                            <span class="comment">// socket.</span></span><br><span class="line">                            <span class="keyword">let</span> (<span class="keyword">mut</span> reader, <span class="keyword">mut</span> writer) = sock.split();</span><br><span class="line"></span><br><span class="line">                            <span class="keyword">match</span> tokio::io::copy(&amp;<span class="keyword">mut</span> reader, &amp;<span class="keyword">mut</span> writer).await &#123;</span><br><span class="line">                                <span class="literal">Ok</span>(amt) =&gt; &#123;</span><br><span class="line">                                    <span class="built_in">println!</span>(<span class="string">"wrote &#123;&#125; bytes"</span>, amt);</span><br><span class="line">                                &#125;</span><br><span class="line">                                <span class="literal">Err</span>(err) =&gt; &#123;</span><br><span class="line">                                    eprintln!(<span class="string">"IO error &#123;:?&#125;"</span>, err);</span><br><span class="line">                                &#125;</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">"Server running on localhost:6142"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Start the server and block this async fn until `server` spins down.</span></span><br><span class="line">    server.await;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="3-运行"><a href="#3-运行" class="headerlink" title="3. 运行"></a>3. 运行</h2><h3 id="运行代码"><a href="#运行代码" class="headerlink" title="运行代码"></a>运行代码</h3><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cargo <span class="keyword">run</span><span class="bash"></span></span><br></pre></td></tr></table></figure><h3 id="如果出错，则运行"><a href="#如果出错，则运行" class="headerlink" title="如果出错，则运行"></a>如果出错，则运行</h3><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RUST_BACKTRACE=full cargo <span class="keyword">run</span><span class="bash"></span></span><br></pre></td></tr></table></figure><p>可以查看到出错的堆栈</p><h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><h4 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h4><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">telnet <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span> <span class="number">6142</span></span><br></pre></td></tr></table></figure><h4 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h4><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span> <span class="number">6142</span></span><br></pre></td></tr></table></figure><h4 id="然后"><a href="#然后" class="headerlink" title="然后"></a>然后</h4><p>随便输入数据后，回车，会看到传回数据</p><blockquote><p>Input: oldcai.com</p></blockquote><blockquote><p>Output: oldcai.com</p></blockquote><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>用tokio实现出一个服务端程序</p><p>实现功能：</p><ol><li>监听本地6142端口</li><li>收到数据流后，传回同样数据</li></ol><p><code>let (mut reader, mut writer) = sock.split();</code>这句有些意思</p><p>把socket分成写和读两个对象，让处理更加简单了。</p><p><code>tokio::spawn</code>这句是能够并发的关键，没有这句就只能一次处理一个连接</p><p>而加上这句，其实代码逻辑还是和同步编程一样</p>]]></content>
     
@@ -36,17 +65,19 @@
     
       <category term="教程" scheme="https://www.oldcai.com/categories/%E6%95%99%E7%A8%8B/"/>
     
+      <category term="rust" scheme="https://www.oldcai.com/categories/%E6%95%99%E7%A8%8B/rust/"/>
+    
     
       <category term="tokio" scheme="https://www.oldcai.com/tags/tokio/"/>
     
   </entry>
   
   <entry>
-    <title>Hello World - rust之tokio教程01</title>
+    <title>Hello World - rust之tokio- rust教程01</title>
     <link href="https://www.oldcai.com/rust/tokio-hello-world/"/>
     <id>https://www.oldcai.com/rust/tokio-hello-world/</id>
     <published>2020-07-09T22:57:53.000Z</published>
-    <updated>2020-07-09T23:07:15.878Z</updated>
+    <updated>2020-07-11T17:18:33.605Z</updated>
     
     <content type="html"><![CDATA[<h2 id="1-创建项目"><a href="#1-创建项目" class="headerlink" title="1. 创建项目"></a>1. 创建项目</h2><figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cargo <span class="keyword">new</span> <span class="type">hello</span>-tokio</span><br></pre></td></tr></table></figure><h2 id="2-修改文件"><a href="#2-修改文件" class="headerlink" title="2. 修改文件"></a>2. 修改文件</h2><blockquote><p>Cargo.toml</p></blockquote><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[dependencies]</span></span><br><span class="line"><span class="attr">tokio</span> = &#123; version = <span class="string">"0.2"</span>, features = [<span class="string">"full"</span>] &#125;</span><br></pre></td></tr></table></figure><blockquote><p>src/main.rs</p></blockquote><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> tokio::net::TcpStream;</span><br><span class="line"><span class="keyword">use</span> tokio::prelude::*;</span><br><span class="line"></span><br><span class="line"><span class="meta">#[tokio::main]</span></span><br><span class="line">async <span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut</span> stream = TcpStream::connect(<span class="string">"127.0.0.1:6142"</span>).await.unwrap();</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">"created stream"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> result = stream.write(<span class="string">b"hello world\n"</span>).await;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">"wrote to stream; success=&#123;:?&#125;"</span>, result.is_ok());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="3-运行"><a href="#3-运行" class="headerlink" title="3. 运行"></a>3. 运行</h2><h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><h4 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h4><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">telnet <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span> <span class="number">6142</span></span><br></pre></td></tr></table></figure><h4 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h4><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -l <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span> <span class="number">6142</span></span><br></pre></td></tr></table></figure><h3 id="运行代码"><a href="#运行代码" class="headerlink" title="运行代码"></a>运行代码</h3><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cargo <span class="keyword">run</span><span class="bash"></span></span><br></pre></td></tr></table></figure><h3 id="如果出错，则运行"><a href="#如果出错，则运行" class="headerlink" title="如果出错，则运行"></a>如果出错，则运行</h3><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RUST_BACKTRACE=full cargo <span class="keyword">run</span><span class="bash"></span></span><br></pre></td></tr></table></figure><p>可以查看到出错的堆栈</p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>用tokio实现出一个客户端程序<br>实现功能：</p><ol><li>连接到本地6142端口</li><li>发送字符串<code>hello world\n</code></li><li>检测是否发送成功并打印</li></ol><p>可能错误：<br>本地端口监听失败或还未监听，会出现错误：<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">thread 'main' panicked <span class="keyword">at</span> 'called `Result::unwrap()` <span class="keyword">on</span> an `Err` value: Os &#123; code: <span class="number">61</span>, kind: ConnectionRefused, message: <span class="string">"Connection refused"</span> &#125;', src/main.rs:<span class="number">6</span>:<span class="number">22</span></span><br><span class="line">note: <span class="built_in">run</span> <span class="keyword">with</span> `RUST_BACKTRACE=<span class="number">1</span>` environment variable <span class="keyword">to</span> display a backtrace</span><br></pre></td></tr></table></figure></p>]]></content>
     
@@ -60,6 +91,8 @@
     </summary>
     
       <category term="教程" scheme="https://www.oldcai.com/categories/%E6%95%99%E7%A8%8B/"/>
+    
+      <category term="rust" scheme="https://www.oldcai.com/categories/%E6%95%99%E7%A8%8B/rust/"/>
     
     
       <category term="tokio" scheme="https://www.oldcai.com/tags/tokio/"/>
@@ -340,11 +373,11 @@
       <category term="解决" scheme="https://www.oldcai.com/categories/%E8%A7%A3%E5%86%B3/"/>
     
     
-      <category term="WordPress" scheme="https://www.oldcai.com/tags/WordPress/"/>
-    
       <category term="博客" scheme="https://www.oldcai.com/tags/%E5%8D%9A%E5%AE%A2/"/>
     
       <category term="Hexo" scheme="https://www.oldcai.com/tags/Hexo/"/>
+    
+      <category term="WordPress" scheme="https://www.oldcai.com/tags/WordPress/"/>
     
   </entry>
   
@@ -399,13 +432,13 @@
       <category term="对比" scheme="https://www.oldcai.com/categories/%E5%AF%B9%E6%AF%94/"/>
     
     
-      <category term="WordPress" scheme="https://www.oldcai.com/tags/WordPress/"/>
-    
       <category term="博客" scheme="https://www.oldcai.com/tags/%E5%8D%9A%E5%AE%A2/"/>
     
       <category term="Hexo" scheme="https://www.oldcai.com/tags/Hexo/"/>
     
       <category term="Ghost" scheme="https://www.oldcai.com/tags/Ghost/"/>
+    
+      <category term="WordPress" scheme="https://www.oldcai.com/tags/WordPress/"/>
     
   </entry>
   
@@ -540,39 +573,6 @@
     
       <category term="人工智能" scheme="https://www.oldcai.com/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>F-Stack这个高性能网络库是用来干什么的</title>
-    <link href="https://www.oldcai.com/archives/1165/"/>
-    <id>https://www.oldcai.com/archives/1165/</id>
-    <published>2017-05-10T08:43:00.000Z</published>
-    <updated>2018-10-23T14:45:53.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>F-Stack文档和翻译得有些不足，老蔡认真阅读了几遍才发现自己好像还用不上。为了让以后探索它的同学更容易理解，在此整理了一下对它使用范围的描述。</p><ol><li><p><a href="http://www.f-stack.org/" target="_blank" rel="noopener">F-Stack</a>是一个用<a href="http://dpdk.org/" target="_blank" rel="noopener">Data Plane Development Kit</a>实现的，更高效利用网卡的，实现网络io模型的库，所以本身基于DPDK开发的项目可以在F-Stack基础上有个更好的接口来开发。</p></li><li><p>可以用在直接利用Posxi的程序中，比如Nginx，所以一些大型网站提高服务器性能也可以用到。</p></li><li><p>F-Stack是网络出现瓶颈后，能更高效利用网卡的一个库，所以，对基于网络的服务的提供商，比如CDN，DNS这种服务的提供商很有用。</p></li></ol><p>同类库中，更成熟的<a href="http://www.seastar-project.org/" target="_blank" rel="noopener">Seastar</a>也可以作为参考，该项目是<a href="http://www.scylladb.com/" target="_blank" rel="noopener">号称下一代Cassandra数据库ScyllaDB</a>的副产品。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;F-Stack文档和翻译得有些不足，老蔡认真阅读了几遍才发现自己好像还用不上。为了让以后探索它的同学更容易理解，在此整理了一下对它使用范围的描述。&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://www.f-stack.org/&quot; target=&quot;_blan
-      
-    
-    </summary>
-    
-      <category term="服务器运维" scheme="https://www.oldcai.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%90%E7%BB%B4/"/>
-    
-      <category term="构架" scheme="https://www.oldcai.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%90%E7%BB%B4/%E6%9E%84%E6%9E%B6/"/>
-    
-      <category term="软件评测" scheme="https://www.oldcai.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%90%E7%BB%B4/%E6%9E%84%E6%9E%B6/%E8%BD%AF%E4%BB%B6%E8%AF%84%E6%B5%8B/"/>
-    
-    
-      <category term="F-Stack" scheme="https://www.oldcai.com/tags/F-Stack/"/>
-    
-      <category term="高性能" scheme="https://www.oldcai.com/tags/%E9%AB%98%E6%80%A7%E8%83%BD/"/>
     
   </entry>
   
