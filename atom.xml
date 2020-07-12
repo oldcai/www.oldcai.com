@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.oldcai.com/"/>
-  <updated>2020-07-11T17:18:43.989Z</updated>
+  <updated>2020-07-12T01:10:06.207Z</updated>
   <id>https://www.oldcai.com/</id>
   
   <author>
@@ -15,6 +15,58 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2个命令清理至少10GB CentOS磁盘</title>
+    <link href="https://www.oldcai.com/linux/free-centos-disk-cn/"/>
+    <id>https://www.oldcai.com/linux/free-centos-disk-cn/</id>
+    <published>2020-07-12T01:07:45.000Z</published>
+    <updated>2020-07-12T01:10:06.207Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>我有一个VPS已经运行了将近两年，其磁盘使用率已超过90％。</p><p>因为没有什么业务在上面，所以也不想增加预算。</p><p>于是，我开始研究占用磁盘的目录，并最终找出了是谁占用了这么多磁盘。</p><p>好消息是，清洁它们既没啥风险也不费劲。</p><p>下面是清空磁盘的命令:</p><h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><ol><li><figure class="highlight plain"><figcaption><span>--vacuum-size</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2. ```yum clean all</span><br></pre></td></tr></table></figure></li></ol><h2 id="一点解释"><a href="#一点解释" class="headerlink" title="一点解释"></a>一点解释</h2><p>第一个命令，由于长时间运行，系统可能具有数十GB的日志，让日记服务的大小保持在特定大小是个好主意。</p><p>第二个是清理yum缓存，这个在我这边也超过10GB。</p><p>运行这些命令后，我的VPS系统释放了大约12GB的空间，然后又重新满血复活。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot; title=&quot;介绍&quot;&gt;&lt;/a&gt;介绍&lt;/h2&gt;&lt;p&gt;我有一个VPS已经运行了将近两年，其磁盘使用率已超过90％。&lt;/p&gt;
+&lt;p&gt;因为没有什么业务在上面，所以也不想增加预算。&lt;/p&gt;
+&lt;p&gt;于是
+      
+    
+    </summary>
+    
+      <category term="Linux" scheme="https://www.oldcai.com/categories/Linux/"/>
+    
+    
+      <category term="CentOS" scheme="https://www.oldcai.com/tags/CentOS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Free CentOS Disk for 10G in 2 Commands</title>
+    <link href="https://www.oldcai.com/linux/free-centos-disk/"/>
+    <id>https://www.oldcai.com/linux/free-centos-disk/</id>
+    <published>2020-07-12T00:54:45.000Z</published>
+    <updated>2020-07-12T01:09:11.169Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>I have a personal VPS had been running for almost two years, and its disk usage is getting to 90%.</p><p>Increase the budget is not necessary because there isn’t any serious business running on it.</p><p>Then I started to investigate the disk-consuming directories and finally found out who was responsible for high disk usage, and .</p><p>The good thing is, there is no risk or any effort to exert for cleaning them.</p><p>Here are the commands to free those disk:</p><h2 id="Steps"><a href="#Steps" class="headerlink" title="Steps"></a>Steps</h2><ol><li><figure class="highlight plain"><figcaption><span>--vacuum-size</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2. ```yum clean all</span><br></pre></td></tr></table></figure></li></ol><h2 id="A-Little-Explanation"><a href="#A-Little-Explanation" class="headerlink" title="A Little Explanation"></a>A Little Explanation</h2><p>For the first command, because a long run system could have tens of GBs of log archives, making journal service keep its size below a specific size is always a good idea.</p><p>The second one is cleaning the yum cache, which is also above 10GBs on my side.</p><p>After running those commands, my VPS system had freed about 12GBs and back to bouncing again.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;Introduction&quot;&gt;&lt;a href=&quot;#Introduction&quot; class=&quot;headerlink&quot; title=&quot;Introduction&quot;&gt;&lt;/a&gt;Introduction&lt;/h2&gt;&lt;p&gt;I have a personal VPS had been
+      
+    
+    </summary>
+    
+      <category term="Linux" scheme="https://www.oldcai.com/categories/Linux/"/>
+    
+    
+      <category term="CentOS" scheme="https://www.oldcai.com/tags/CentOS/"/>
+    
+  </entry>
   
   <entry>
     <title>响应IP的HTTP Server - rust之actix-web - rust教程03</title>
@@ -169,9 +221,9 @@
       <category term="Server" scheme="https://www.oldcai.com/categories/Server/"/>
     
     
-      <category term="自然语言" scheme="https://www.oldcai.com/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80/"/>
-    
       <category term="docker" scheme="https://www.oldcai.com/tags/docker/"/>
+    
+      <category term="自然语言" scheme="https://www.oldcai.com/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80/"/>
     
       <category term="cpp" scheme="https://www.oldcai.com/tags/cpp/"/>
     
@@ -373,11 +425,11 @@
       <category term="解决" scheme="https://www.oldcai.com/categories/%E8%A7%A3%E5%86%B3/"/>
     
     
+      <category term="WordPress" scheme="https://www.oldcai.com/tags/WordPress/"/>
+    
       <category term="博客" scheme="https://www.oldcai.com/tags/%E5%8D%9A%E5%AE%A2/"/>
     
       <category term="Hexo" scheme="https://www.oldcai.com/tags/Hexo/"/>
-    
-      <category term="WordPress" scheme="https://www.oldcai.com/tags/WordPress/"/>
     
   </entry>
   
@@ -432,11 +484,11 @@
       <category term="对比" scheme="https://www.oldcai.com/categories/%E5%AF%B9%E6%AF%94/"/>
     
     
+      <category term="WordPress" scheme="https://www.oldcai.com/tags/WordPress/"/>
+    
       <category term="博客" scheme="https://www.oldcai.com/tags/%E5%8D%9A%E5%AE%A2/"/>
     
       <category term="Hexo" scheme="https://www.oldcai.com/tags/Hexo/"/>
-    
-      <category term="WordPress" scheme="https://www.oldcai.com/tags/WordPress/"/>
     
       <category term="Ghost" scheme="https://www.oldcai.com/tags/Ghost/"/>
     
@@ -520,59 +572,6 @@
     
     
       <category term="golang" scheme="https://www.oldcai.com/tags/golang/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>WordPress 4 怎样悬挂备案号</title>
-    <link href="https://www.oldcai.com/archives/1200/"/>
-    <id>https://www.oldcai.com/archives/1200/</id>
-    <published>2017-12-12T10:17:31.000Z</published>
-    <updated>2018-10-23T14:45:53.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>老蔡正在使用WordPress 4.9.1，试了网上很多办法都无法正常让备案号显示在页脚，而备案托管方坚持不能把备案号放在网站友情链接中，于是自己折腾着解决了。</p><p>做到显示备案号2步即可完成。</p><ol><li>来到WordPress根目录，比如<code>/var/www/blog</code> 2. 然后，修改文件</li></ol><blockquote><p>./wp-content/themes/twentyseventeen/template-parts/footer/site-info.php</p></blockquote><p>原文件如下：</p><figure class="highlight php"><figcaption><span>找到以下代码</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">/\*\*</span><br><span class="line"> \* Displays footer site info</span><br><span class="line"> \*</span><br><span class="line"> \* @package WordPress</span><br><span class="line"> \* @subpackage Twenty_Seventeen</span><br><span class="line"> \* @since <span class="number">1.0</span></span><br><span class="line"> \* @version <span class="number">1.0</span></span><br><span class="line"> */</span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line"> &lt;a href=<span class="string">"&lt;?php echo esc\_url( \_\_( 'https://wordpress.org/', 'twentyseventeen'</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">) ); ?&gt;"</span>&gt;<span class="meta">&lt;?php</span> printf( __( <span class="string">'Proudly powered by %s'</span>, <span class="string">'twentyseventeen'</span></span><br><span class="line"></span><br><span class="line">), <span class="string">'WordPress'</span></span><br><span class="line"></span><br><span class="line">); <span class="meta">?&gt;</span>&lt;/a&gt;</span><br><span class="line">&lt;/div&gt;&lt;!-- .site-info --&gt;</span><br></pre></td></tr></table></figure><p>修改后文件如下：</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">/\*\*</span><br><span class="line"> \* Displays footer site info</span><br><span class="line"> \*</span><br><span class="line"> \* @package WordPress</span><br><span class="line"> \* @subpackage Twenty_Seventeen</span><br><span class="line"> \* @since <span class="number">1.0</span></span><br><span class="line"> \* @version <span class="number">1.0</span></span><br><span class="line"> */</span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line"> &lt;a href=<span class="string">"&lt;?php echo esc\_url( \_\_( 'https://wordpress.org/', 'twentyseventeen'</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">) ); ?&gt;"</span>&gt;<span class="meta">&lt;?php</span> printf( __( <span class="string">'Proudly powered by %s'</span>, <span class="string">'twentyseventeen'</span></span><br><span class="line"></span><br><span class="line">), <span class="string">'WordPress'</span></span><br><span class="line"></span><br><span class="line">); <span class="meta">?&gt;</span>&lt;/a&gt;</span><br><span class="line"> |</span><br><span class="line"> &lt;span&gt;&lt;a href=<span class="string">"http://www.miitbeian.gov.cn/"</span></span><br><span class="line"></span><br><span class="line">rel=<span class="string">"external nofollow"</span></span><br><span class="line"></span><br><span class="line">target=<span class="string">"_blank"</span>&gt;哪ICP备XXXXXXXX号&lt;/a&gt;&lt;/span&gt;</span><br><span class="line">&lt;/div&gt;&lt;!-- .site-info --&gt;</span><br></pre></td></tr></table></figure><p>显示效果如下：</p><p><img src="/images/2017/12/20171212_12.jpg" alt> 本方法可能只适用于WordPress 4，以后版本还需要验证，欢迎验证后的朋友留言告知。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;老蔡正在使用WordPress 4.9.1，试了网上很多办法都无法正常让备案号显示在页脚，而备案托管方坚持不能把备案号放在网站友情链接中，于是自己折腾着解决了。&lt;/p&gt;
-&lt;p&gt;做到显示备案号2步即可完成。&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;来到WordPress根目录，比如&lt;cod
-      
-    
-    </summary>
-    
-      <category term="程序修改" scheme="https://www.oldcai.com/categories/%E7%A8%8B%E5%BA%8F%E4%BF%AE%E6%94%B9/"/>
-    
-    
-      <category term="WordPress" scheme="https://www.oldcai.com/tags/WordPress/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>图灵测试只能测假装是人类的人工智能</title>
-    <link href="https://www.oldcai.com/archives/1187/"/>
-    <id>https://www.oldcai.com/archives/1187/</id>
-    <published>2017-11-11T14:44:57.000Z</published>
-    <updated>2018-10-23T14:45:53.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>每个人都是有利己性和利他性的。我不相信一个只有利他性的生物能够存活。</p><p>基于工具用途的人工智能，是在不断地在发展AI的功用性，也就是在不断发展利他性。没有人愿意做出一台“有私心”的机器，因为一怕驾驭不了，二来没利可图。</p><p>这么看，无论人工智能技术如何发展，都无法让机器有自我的意识，像人一样地思考。</p><h2 id="机器不一定要像人一样思考"><a href="#机器不一定要像人一样思考" class="headerlink" title="机器不一定要像人一样思考"></a>机器不一定要像人一样思考</h2><p>不过或许，要机器像人一样地思考，出发点就不是正确的。就像教现在的孩子生火、打猎，也不是不可以，偶尔还是一点生活的乐趣，只是很不必要。</p><p>人类的智慧源自远古而残酷的优胜劣汰——据我所信。那么它出生时所带的固件是更适应于太阳系中的地球这一隅的环境的，如果放到宇宙中其他环境中，就有着极大的不确定性。</p><h2 id="人类总体寿命和总体知识的赛跑"><a href="#人类总体寿命和总体知识的赛跑" class="headerlink" title="人类总体寿命和总体知识的赛跑"></a>人类总体寿命和总体知识的赛跑</h2><p>一个人一生能积累的知识、付出的行动是极为有限的。虽然人类可以通过不断延长寿命和教育继承来承载亘古以来的文明，但是几千年的文明已经让“裸机”们需要用掉近1/3有清晰意识的生命来刷入基础知识；而如果要研究到人类认知的尽头并试图推进，则通常至少要用到1/2或者更多的生命抵达。</p><h2 id="如何突破困境"><a href="#如何突破困境" class="headerlink" title="如何突破困境"></a>如何突破困境</h2><p>人类的硬件已经到了一个局部最优解，如果排开一切风险，难以再有进步了。而传承人类的知识甚至意志的，必将是另一种形式。</p><p>我不相信会再有一轮更激烈优胜劣汰，而将会有一种温和的方式升级智能的单位上限。</p><p>目前方法有两条科技树：</p><ul><li>在硅基上用程序模拟人脑，像上帝一样创造一个自我意识</li><li>在碳基上的编辑DNA序列，优化人类物种本身</li></ul><p>都很艰难，哪种更难？都是险招，但是哪种风险更小？</p><h2 id="图灵测试为何无效？"><a href="#图灵测试为何无效？" class="headerlink" title="图灵测试为何无效？"></a>图灵测试为何无效？</h2><p>按照图灵测试的“考纲”，能通过的AI，必然是有一定智慧的——只是这个考试太过站在人类的立场了。</p><p>同一个人因为不同的目的，对同一件事也会有截然不同的反应。如果图灵测试中的人类目的是不通过测试，而机器的目的是通过测试，那么不需要具备太高的智能，机器就能比人类更有机会被通过测试。</p><h2 id="硅基模拟面临的问题"><a href="#硅基模拟面临的问题" class="headerlink" title="硅基模拟面临的问题"></a>硅基模拟面临的问题</h2><p>而人类最终追求的是什么？最终生存并超越人类的AI，他的最终追求又会是什么？是人类给他设定的还是它自己产生的？</p><p>我想在没有根本理解清楚这些问题之前，通过硅基模拟人脑，很难创造出有自我意识的思维体，而且即使创造出来了，也是对人类有高度危险的。</p><h2 id="编辑DNA面临的问题"><a href="#编辑DNA面临的问题" class="headerlink" title="编辑DNA面临的问题"></a>编辑DNA面临的问题</h2><p>而编辑DNA，存在的问题也是很多。首先，人类还没有理解基因序列，对于现有样本的统计和归纳，得不出创造的办法；而基于随机的尝试，又面临调试周期太长，和不人道的问题。</p><h2 id="终极的人工智能会是怎样？"><a href="#终极的人工智能会是怎样？" class="headerlink" title="终极的人工智能会是怎样？"></a>终极的人工智能会是怎样？</h2><p>这个问题在人类总体知识的积累超过人类总体寿命的时候，才会变得尖锐，才必须解决。<br>由此看来，整个人类都是个巨大的拖延症侯群啊。</p><h2 id="人际关系发展阶段"><a href="#人际关系发展阶段" class="headerlink" title="人际关系发展阶段"></a>人际关系发展阶段</h2><p>如果人类能活到未来，两条科技树都很高级别，并且能融洽相处，可能会有的形态：</p><h3 id="新奴隶社会"><a href="#新奴隶社会" class="headerlink" title="新奴隶社会"></a>新奴隶社会</h3><p>人类不断地温和演进基因，并且大脑可以外挂芯片；<br>具有简单意识的利他性机器人为人类服务。</p><h3 id="人机平等社会"><a href="#人机平等社会" class="headerlink" title="人机平等社会"></a>人机平等社会</h3><p>人类通过基因修改，智力再次达到上限；<br>由于某种目的，给机器人创造了利己性等自我的意识；<br>部分机器人真正成为了独立个体，不只为人类服务，也有了自己的目标；<br>极端的机器被消灭，温和的具有自我意识的机器逐渐被那时的人类接受。</p><h3 id="人类被机器全面超越"><a href="#人类被机器全面超越" class="headerlink" title="人类被机器全面超越"></a>人类被机器全面超越</h3><p>人类的硬件已经无法再基于原有的底层的神经元结构做出任何优化；<br>机器的配置可以随心所欲地替换升级，一部分具有意识的机器掌控了大量的资源，开始主导整个社会的发展。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;每个人都是有利己性和利他性的。我不相信一个只有利他性的生物能够存活。&lt;/p&gt;
-&lt;p&gt;基于工具用途的人工智能，是在不断地在发展AI的功用性，也就是在不断发展利他性。没有人愿意做出一台“有私心”的机器，因为一怕驾驭不了，二来没利可图。&lt;/p&gt;
-&lt;p&gt;这么看，无论人工智能技术如何
-      
-    
-    </summary>
-    
-      <category term="人工智能" scheme="https://www.oldcai.com/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/"/>
-    
     
   </entry>
   

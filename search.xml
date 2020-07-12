@@ -3,6 +3,52 @@
   
     
     <entry>
+      <title>2个命令清理至少10GB CentOS磁盘</title>
+      <link href="/linux/free-centos-disk-cn/"/>
+      <url>/linux/free-centos-disk-cn/</url>
+      
+        <content type="html"><![CDATA[<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>我有一个VPS已经运行了将近两年，其磁盘使用率已超过90％。</p><p>因为没有什么业务在上面，所以也不想增加预算。</p><p>于是，我开始研究占用磁盘的目录，并最终找出了是谁占用了这么多磁盘。</p><p>好消息是，清洁它们既没啥风险也不费劲。</p><p>下面是清空磁盘的命令:</p><h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><ol><li><figure class="highlight plain"><figcaption><span>--vacuum-size</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2. ```yum clean all</span><br></pre></td></tr></table></figure></li></ol><h2 id="一点解释"><a href="#一点解释" class="headerlink" title="一点解释"></a>一点解释</h2><p>第一个命令，由于长时间运行，系统可能具有数十GB的日志，让日记服务的大小保持在特定大小是个好主意。</p><p>第二个是清理yum缓存，这个在我这边也超过10GB。</p><p>运行这些命令后，我的VPS系统释放了大约12GB的空间，然后又重新满血复活。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> CentOS </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>Free CentOS Disk for 10G in 2 Commands</title>
+      <link href="/linux/free-centos-disk/"/>
+      <url>/linux/free-centos-disk/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>I have a personal VPS had been running for almost two years, and its disk usage is getting to 90%.</p><p>Increase the budget is not necessary because there isn’t any serious business running on it.</p><p>Then I started to investigate the disk-consuming directories and finally found out who was responsible for high disk usage, and .</p><p>The good thing is, there is no risk or any effort to exert for cleaning them.</p><p>Here are the commands to free those disk:</p><h2 id="Steps"><a href="#Steps" class="headerlink" title="Steps"></a>Steps</h2><ol><li><figure class="highlight plain"><figcaption><span>--vacuum-size</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2. ```yum clean all</span><br></pre></td></tr></table></figure></li></ol><h2 id="A-Little-Explanation"><a href="#A-Little-Explanation" class="headerlink" title="A Little Explanation"></a>A Little Explanation</h2><p>For the first command, because a long run system could have tens of GBs of log archives, making journal service keep its size below a specific size is always a good idea.</p><p>The second one is cleaning the yum cache, which is also above 10GBs on my side.</p><p>After running those commands, my VPS system had freed about 12GBs and back to bouncing again.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> CentOS </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>响应IP的HTTP Server - rust之actix-web - rust教程03</title>
       <link href="/rust/web-server-response-ip/"/>
       <url>/rust/web-server-response-ip/</url>
@@ -130,9 +176,9 @@
       
         <tags>
             
-            <tag> 自然语言 </tag>
-            
             <tag> docker </tag>
+            
+            <tag> 自然语言 </tag>
             
             <tag> cpp </tag>
             
@@ -305,11 +351,11 @@
       
         <tags>
             
+            <tag> WordPress </tag>
+            
             <tag> 博客 </tag>
             
             <tag> Hexo </tag>
-            
-            <tag> WordPress </tag>
             
         </tags>
       
@@ -355,11 +401,11 @@
       
         <tags>
             
+            <tag> WordPress </tag>
+            
             <tag> 博客 </tag>
             
             <tag> Hexo </tag>
-            
-            <tag> WordPress </tag>
             
             <tag> Ghost </tag>
             
@@ -2008,9 +2054,9 @@
       
         <tags>
             
-            <tag> 博客 </tag>
-            
             <tag> WordPress </tag>
+            
+            <tag> 博客 </tag>
             
             <tag> 升级 </tag>
             
@@ -2102,9 +2148,9 @@
             
             <tag> C++ </tag>
             
-            <tag> C++ Builder </tag>
-            
             <tag> access </tag>
+            
+            <tag> C++ Builder </tag>
             
         </tags>
       
@@ -3023,9 +3069,9 @@
       
         <tags>
             
-            <tag> 论文 </tag>
-            
             <tag> 打字 </tag>
+            
+            <tag> 论文 </tag>
             
         </tags>
       
@@ -3048,6 +3094,8 @@
       
         <tags>
             
+            <tag> 论文 </tag>
+            
             <tag> SQL2000 </tag>
             
             <tag> VB </tag>
@@ -3055,8 +3103,6 @@
             <tag> 凑字数 </tag>
             
             <tag> 小型超市管理系统 </tag>
-            
-            <tag> 论文 </tag>
             
         </tags>
       
