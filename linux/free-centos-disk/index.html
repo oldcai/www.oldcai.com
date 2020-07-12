@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="老蔡博客">
 <meta property="og:description" content="IntroductionI have a personal VPS had been running for almost two years, and its disk usage is getting to 90%. Increase the budget is not necessary because there isn’t any serious business running on">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-07-12T01:09:11.169Z">
+<meta property="og:updated_time" content="2020-07-12T01:21:28.740Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Free CentOS Disk for 10G in 2 Commands">
 <meta name="twitter:description" content="IntroductionI have a personal VPS had been running for almost two years, and its disk usage is getting to 90%. Increase the budget is not necessary because there isn’t any serious business running on">
@@ -156,10 +156,7 @@
 <p>Then I started to investigate the disk-consuming directories and finally found out who was responsible for high disk usage, and .</p>
 <p>The good thing is, there is no risk or any effort to exert for cleaning them.</p>
 <p>Here are the commands to free those disk:</p>
-<h2 id="Steps"><a href="#Steps" class="headerlink" title="Steps"></a>Steps</h2><ol>
-<li><figure class="highlight plain"><figcaption><span>--vacuum-size</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2. ```yum clean all</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
+<h2 id="Steps"><a href="#Steps" class="headerlink" title="Steps"></a>Steps</h2><figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">journalctl <span class="comment">--vacuum-size=1G</span></span><br><span class="line">yum clean <span class="keyword">all</span></span><br></pre></td></tr></table></figure>
 <h2 id="A-Little-Explanation"><a href="#A-Little-Explanation" class="headerlink" title="A Little Explanation"></a>A Little Explanation</h2><p>For the first command, because a long run system could have tens of GBs of log archives, making journal service keep its size below a specific size is always a good idea.</p>
 <p>The second one is cleaning the yum cache, which is also above 10GBs on my side.</p>
 <p>After running those commands, my VPS system had freed about 12GBs and back to bouncing again.</p>
