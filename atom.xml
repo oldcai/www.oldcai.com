@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.oldcai.com/"/>
-  <updated>2020-07-12T01:19:10.714Z</updated>
+  <updated>2020-07-12T02:24:31.945Z</updated>
   <id>https://www.oldcai.com/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://www.oldcai.com/linux/free-centos-disk-cn/"/>
     <id>https://www.oldcai.com/linux/free-centos-disk-cn/</id>
     <published>2020-07-12T01:07:45.000Z</published>
-    <updated>2020-07-12T01:19:10.714Z</updated>
+    <updated>2020-07-12T02:24:31.945Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>我有一个VPS已经运行了将近两年，其磁盘使用率已超过90％。</p><p>因为没有什么业务在上面，所以也不想增加预算。</p><p>于是，我开始研究占用磁盘的目录，并最终找出了是谁占用了这么多磁盘。</p><p>好消息是，清洁它们既没啥风险也不费劲。</p><p>下面是清空磁盘的命令:</p><h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><h3 id="第一个命令"><a href="#第一个命令" class="headerlink" title="第一个命令"></a>第一个命令</h3><p>由于长时间运行，系统可能具有数十GB的日志，让日记服务的大小保持在特定大小是个好主意。</p><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">journalctl <span class="attribute">--vacuum-size</span>=1G</span><br></pre></td></tr></table></figure><h3 id="第二个命令"><a href="#第二个命令" class="headerlink" title="第二个命令"></a>第二个命令</h3><p>清理yum缓存，这个在我这边也超过10GB。</p><figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum clean <span class="keyword">all</span></span><br></pre></td></tr></table></figure><p>运行这些命令后，我的VPS系统释放了大约12GB的空间，然后又重新满血复活。</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>我有一个VPS已经运行了将近两年，其磁盘使用率已超过90％。</p><p>因为没有什么业务在上面，所以也不想增加预算。</p><p>于是，我开始研究占用磁盘的目录，并最终找出了是谁占用了这么多磁盘。</p><p>不过好在清理它们没啥风险，并且也不费劲。</p><p>下面是清空磁盘的命令:</p><h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><h3 id="第一个命令"><a href="#第一个命令" class="headerlink" title="第一个命令"></a>第一个命令</h3><p>由于长时间运行，系统可能具有数十GB的日志，让日记服务的大小保持在特定大小是个好主意。</p><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">journalctl <span class="attribute">--vacuum-size</span>=1G</span><br></pre></td></tr></table></figure><h3 id="第二个命令"><a href="#第二个命令" class="headerlink" title="第二个命令"></a>第二个命令</h3><p>清理yum缓存，这个在我这边也超过10GB。</p><figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum clean <span class="keyword">all</span></span><br></pre></td></tr></table></figure><p>运行这些命令后，我的VPS系统释放了大约12GB的空间，然后又重新满血复活。</p>]]></content>
     
     <summary type="html">
     
