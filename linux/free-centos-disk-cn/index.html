@@ -6,18 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="介绍我有一个VPS已经运行了将近两年，其磁盘使用率已超过90％。 因为没有什么业务在上面，所以也不想增加预算。 于是，我开始研究占用磁盘的目录，并最终找出了是谁占用了这么多磁盘。 好消息是，清洁它们既没啥风险也不费劲。 下面是清空磁盘的命令: 命令 --vacuum-size12. ```yum clean all   一点解释第一个命令，由于长时间运行，系统可能具有数十GB的日志，让日记服务的大">
+    <meta name="description" content="介绍我有一个VPS已经运行了将近两年，其磁盘使用率已超过90％。 因为没有什么业务在上面，所以也不想增加预算。 于是，我开始研究占用磁盘的目录，并最终找出了是谁占用了这么多磁盘。 好消息是，清洁它们既没啥风险也不费劲。 下面是清空磁盘的命令: 命令第一个命令由于长时间运行，系统可能具有数十GB的日志，让日记服务的大小保持在特定大小是个好主意。 --vacuum-size1234### 第二个命令清">
 <meta name="keywords" content="CentOS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2个命令清理至少10GB CentOS磁盘">
 <meta property="og:url" content="https://www.oldcai.com/linux/free-centos-disk-cn/index.html">
 <meta property="og:site_name" content="老蔡博客">
-<meta property="og:description" content="介绍我有一个VPS已经运行了将近两年，其磁盘使用率已超过90％。 因为没有什么业务在上面，所以也不想增加预算。 于是，我开始研究占用磁盘的目录，并最终找出了是谁占用了这么多磁盘。 好消息是，清洁它们既没啥风险也不费劲。 下面是清空磁盘的命令: 命令 --vacuum-size12. ```yum clean all   一点解释第一个命令，由于长时间运行，系统可能具有数十GB的日志，让日记服务的大">
+<meta property="og:description" content="介绍我有一个VPS已经运行了将近两年，其磁盘使用率已超过90％。 因为没有什么业务在上面，所以也不想增加预算。 于是，我开始研究占用磁盘的目录，并最终找出了是谁占用了这么多磁盘。 好消息是，清洁它们既没啥风险也不费劲。 下面是清空磁盘的命令: 命令第一个命令由于长时间运行，系统可能具有数十GB的日志，让日记服务的大小保持在特定大小是个好主意。 --vacuum-size1234### 第二个命令清">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-07-12T01:10:06.207Z">
+<meta property="og:updated_time" content="2020-07-12T01:16:43.638Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2个命令清理至少10GB CentOS磁盘">
-<meta name="twitter:description" content="介绍我有一个VPS已经运行了将近两年，其磁盘使用率已超过90％。 因为没有什么业务在上面，所以也不想增加预算。 于是，我开始研究占用磁盘的目录，并最终找出了是谁占用了这么多磁盘。 好消息是，清洁它们既没啥风险也不费劲。 下面是清空磁盘的命令: 命令 --vacuum-size12. ```yum clean all   一点解释第一个命令，由于长时间运行，系统可能具有数十GB的日志，让日记服务的大">
+<meta name="twitter:description" content="介绍我有一个VPS已经运行了将近两年，其磁盘使用率已超过90％。 因为没有什么业务在上面，所以也不想增加预算。 于是，我开始研究占用磁盘的目录，并最终找出了是谁占用了这么多磁盘。 好消息是，清洁它们既没啥风险也不费劲。 下面是清空磁盘的命令: 命令第一个命令由于长时间运行，系统可能具有数十GB的日志，让日记服务的大小保持在特定大小是个好主意。 --vacuum-size1234### 第二个命令清">
     
     
         
@@ -103,7 +103,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#介绍"><span class="toc-number">1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#命令"><span class="toc-number">2.</span> <span class="toc-text">命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一点解释"><span class="toc-number">3.</span> <span class="toc-text">一点解释</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#介绍"><span class="toc-number">1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#命令"><span class="toc-number">2.</span> <span class="toc-text">命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#第一个命令"><span class="toc-number">2.1.</span> <span class="toc-text">第一个命令</span></a></li></ol></li></ol>
     </div>
   </span>
 </div>
@@ -154,12 +154,9 @@
 <p>于是，我开始研究占用磁盘的目录，并最终找出了是谁占用了这么多磁盘。</p>
 <p>好消息是，清洁它们既没啥风险也不费劲。</p>
 <p>下面是清空磁盘的命令:</p>
-<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><ol>
-<li><figure class="highlight plain"><figcaption><span>--vacuum-size</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2. ```yum clean all</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h2 id="一点解释"><a href="#一点解释" class="headerlink" title="一点解释"></a>一点解释</h2><p>第一个命令，由于长时间运行，系统可能具有数十GB的日志，让日记服务的大小保持在特定大小是个好主意。</p>
-<p>第二个是清理yum缓存，这个在我这边也超过10GB。</p>
+<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><h3 id="第一个命令"><a href="#第一个命令" class="headerlink" title="第一个命令"></a>第一个命令</h3><p>由于长时间运行，系统可能具有数十GB的日志，让日记服务的大小保持在特定大小是个好主意。</p>
+<figure class="highlight plain"><figcaption><span>--vacuum-size</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 第二个命令</span><br><span class="line"></span><br><span class="line">清理yum缓存，这个在我这边也超过10GB。</span><br></pre></td></tr></table></figure>
+<p>yum clean all<br><code>`</code></p>
 <p>运行这些命令后，我的VPS系统释放了大约12GB的空间，然后又重新满血复活。</p>
 
   </div>
@@ -192,7 +189,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#介绍"><span class="toc-number">1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#命令"><span class="toc-number">2.</span> <span class="toc-text">命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一点解释"><span class="toc-number">3.</span> <span class="toc-text">一点解释</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#介绍"><span class="toc-number">1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#命令"><span class="toc-number">2.</span> <span class="toc-text">命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#第一个命令"><span class="toc-number">2.1.</span> <span class="toc-text">第一个命令</span></a></li></ol></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
