@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.oldcai.com/"/>
-  <updated>2020-07-15T17:31:00.992Z</updated>
+  <updated>2020-07-15T17:46:00.067Z</updated>
   <id>https://www.oldcai.com/</id>
   
   <author>
@@ -17,13 +17,13 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>创建只有30M大小的docker镜像 - rust之actix-web - rust教程04</title>
+    <title>创建只有 10MB 左右大小的docker镜像 - rust之actix-web - rust教程04</title>
     <link href="https://www.oldcai.com/rust/small-docker-image/"/>
     <id>https://www.oldcai.com/rust/small-docker-image/</id>
     <published>2020-07-15T17:30:58.000Z</published>
-    <updated>2020-07-15T17:31:00.992Z</updated>
+    <updated>2020-07-15T17:46:00.067Z</updated>
     
-    <content type="html"><![CDATA[<p>该文章为<a href="https://www.oldcai.com/rust/web-server-response-ip/">构建 actix web</a>服务的后续，旨在利用 Dockerfile 给 rust 构建的 web 程序制作一个最小镜像。</p><p>利用 Dockerfile 制作 rust 程序的镜像，难点在于在一个 docker 容器中交叉编译、构建，生成的docker镜像又要打包到另一个容器。</p><p>好在 docker 已经提供了相关的支持，完成后的 Dockerfile 如下：</p><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> oldcai/rust-musl-builder:latest as build</span><br><span class="line"><span class="keyword">ADD</span><span class="bash"> . /home/rust/src</span></span><br><span class="line"><span class="bash">WORKDIR /home/rust/src</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment">#RUN apk add --no-cache ca-certificates gcc mingw-w64-gcc libc-dev musl-dev</span></span></span><br><span class="line"><span class="bash"><span class="comment">#RUN rustup target add x86_64-unknown-linux-musl</span></span></span><br><span class="line"><span class="bash">RUN cargo build --release</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash">FROM alpine:latest</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash">WORKDIR /web/</span></span><br><span class="line"><span class="bash">COPY --from=build /home/rust/src/target/x86_64-unknown-linux-musl/release/httpapi /web/</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash">CMD [<span class="string">"./httpapi"</span>, <span class="string">"0.0.0.0:80"</span>]</span></span><br></pre></td></tr></table></figure><p>注解的部分是如果不用老蔡提供的这个镜像，可能需要装的一些库。</p><p>运行程序的基础镜像选择的最新版本的 alpine，本身只有不到30M大小，很适合golang、rust编译的、没什么依赖项的程序运行。</p>]]></content>
+    <content type="html"><![CDATA[<p>该文章为<a href="https://www.oldcai.com/rust/web-server-response-ip/">构建 actix web</a>服务的后续，旨在利用 Dockerfile 给 rust 构建的 web 程序制作一个最小镜像。</p><p>利用 Dockerfile 制作 rust 程序的镜像，难点在于在一个 docker 容器中交叉编译、构建，生成的docker镜像又要打包到另一个容器。</p><p>好在 docker 已经提供了相关的支持，完成后的 Dockerfile 如下：</p><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> oldcai/rust-musl-builder:latest as build</span><br><span class="line"><span class="keyword">ADD</span><span class="bash"> . /home/rust/src</span></span><br><span class="line"><span class="bash">WORKDIR /home/rust/src</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment">#RUN apk add --no-cache ca-certificates gcc mingw-w64-gcc libc-dev musl-dev</span></span></span><br><span class="line"><span class="bash"><span class="comment">#RUN rustup target add x86_64-unknown-linux-musl</span></span></span><br><span class="line"><span class="bash">RUN cargo build --release</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash">FROM alpine:latest</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash">WORKDIR /web/</span></span><br><span class="line"><span class="bash">COPY --from=build /home/rust/src/target/x86_64-unknown-linux-musl/release/httpapi /web/</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash">CMD [<span class="string">"./httpapi"</span>, <span class="string">"0.0.0.0:80"</span>]</span></span><br></pre></td></tr></table></figure><p>注解的部分是如果不用老蔡提供的这个镜像，可能需要装的一些库。</p><p>运行程序的基础镜像选择的最新版本的 alpine，镜像本身只有 5.57MB 大小，很适合golang、rust编译的、没什么依赖项的程序运行。</p><p>打包完毕后，总大小才13.5MB</p>]]></content>
     
     <summary type="html">
     
@@ -40,9 +40,9 @@
       <category term="rust" scheme="https://www.oldcai.com/categories/%E6%95%99%E7%A8%8B/rust/"/>
     
     
-      <category term="actix" scheme="https://www.oldcai.com/tags/actix/"/>
-    
       <category term="docker" scheme="https://www.oldcai.com/tags/docker/"/>
+    
+      <category term="actix" scheme="https://www.oldcai.com/tags/actix/"/>
     
       <category term="rancher" scheme="https://www.oldcai.com/tags/rancher/"/>
     
@@ -522,9 +522,9 @@
     
       <category term="Hexo" scheme="https://www.oldcai.com/tags/Hexo/"/>
     
-      <category term="WordPress" scheme="https://www.oldcai.com/tags/WordPress/"/>
-    
       <category term="Ghost" scheme="https://www.oldcai.com/tags/Ghost/"/>
+    
+      <category term="WordPress" scheme="https://www.oldcai.com/tags/WordPress/"/>
     
   </entry>
   

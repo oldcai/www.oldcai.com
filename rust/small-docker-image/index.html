@@ -7,16 +7,16 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="该文章为构建 actix web服务的后续，旨在利用 Dockerfile 给 rust 构建的 web 程序制作一个最小镜像。 利用 Dockerfile 制作 rust 程序的镜像，难点在于在一个 docker 容器中交叉编译、构建，生成的docker镜像又要打包到另一个容器。 好在 docker 已经提供了相关的支持，完成后的 Dockerfile 如下： 12345678910111213">
-<meta name="keywords" content="actix,docker,rancher,server">
+<meta name="keywords" content="docker,actix,rancher,server">
 <meta property="og:type" content="article">
-<meta property="og:title" content="创建只有30M大小的docker镜像 - rust之actix-web - rust教程04">
+<meta property="og:title" content="创建只有 10MB 左右大小的docker镜像 - rust之actix-web - rust教程04">
 <meta property="og:url" content="https://www.oldcai.com/rust/small-docker-image/index.html">
 <meta property="og:site_name" content="老蔡博客">
 <meta property="og:description" content="该文章为构建 actix web服务的后续，旨在利用 Dockerfile 给 rust 构建的 web 程序制作一个最小镜像。 利用 Dockerfile 制作 rust 程序的镜像，难点在于在一个 docker 容器中交叉编译、构建，生成的docker镜像又要打包到另一个容器。 好在 docker 已经提供了相关的支持，完成后的 Dockerfile 如下： 12345678910111213">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-07-15T17:31:00.992Z">
+<meta property="og:updated_time" content="2020-07-15T17:46:00.067Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="创建只有30M大小的docker镜像 - rust之actix-web - rust教程04">
+<meta name="twitter:title" content="创建只有 10MB 左右大小的docker镜像 - rust之actix-web - rust教程04">
 <meta name="twitter:description" content="该文章为构建 actix web服务的后续，旨在利用 Dockerfile 给 rust 构建的 web 程序制作一个最小镜像。 利用 Dockerfile 制作 rust 程序的镜像，难点在于在一个 docker 容器中交叉编译、构建，生成的docker镜像又要打包到另一个容器。 好在 docker 已经提供了相关的支持，完成后的 Dockerfile 如下： 12345678910111213">
     
     
@@ -37,7 +37,7 @@
         
     
     <!-- title -->
-    <title>创建只有30M大小的docker镜像 - rust之actix-web - rust教程04</title>
+    <title>创建只有 10MB 左右大小的docker镜像 - rust之actix-web - rust教程04</title>
     <!-- styles -->
     <link rel="stylesheet" href="/css/style.css">
     <!-- persian styles -->
@@ -90,15 +90,15 @@
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/rust/small-docker-image/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://www.oldcai.com/rust/small-docker-image/&text=创建只有30M大小的docker镜像 - rust之actix-web - rust教程04"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/rust/small-docker-image/&title=创建只有30M大小的docker镜像 - rust之actix-web - rust教程04"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/rust/small-docker-image/&is_video=false&description=创建只有30M大小的docker镜像 - rust之actix-web - rust教程04"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=创建只有30M大小的docker镜像 - rust之actix-web - rust教程04&body=Check out this article: https://www.oldcai.com/rust/small-docker-image/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://www.oldcai.com/rust/small-docker-image/&title=创建只有30M大小的docker镜像 - rust之actix-web - rust教程04"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://www.oldcai.com/rust/small-docker-image/&title=创建只有30M大小的docker镜像 - rust之actix-web - rust教程04"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/rust/small-docker-image/&title=创建只有30M大小的docker镜像 - rust之actix-web - rust教程04"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://www.oldcai.com/rust/small-docker-image/&title=创建只有30M大小的docker镜像 - rust之actix-web - rust教程04"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/rust/small-docker-image/&name=创建只有30M大小的docker镜像 - rust之actix-web - rust教程04&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://www.oldcai.com/rust/small-docker-image/&text=创建只有 10MB 左右大小的docker镜像 - rust之actix-web - rust教程04"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/rust/small-docker-image/&title=创建只有 10MB 左右大小的docker镜像 - rust之actix-web - rust教程04"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/rust/small-docker-image/&is_video=false&description=创建只有 10MB 左右大小的docker镜像 - rust之actix-web - rust教程04"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=创建只有 10MB 左右大小的docker镜像 - rust之actix-web - rust教程04&body=Check out this article: https://www.oldcai.com/rust/small-docker-image/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://www.oldcai.com/rust/small-docker-image/&title=创建只有 10MB 左右大小的docker镜像 - rust之actix-web - rust教程04"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://www.oldcai.com/rust/small-docker-image/&title=创建只有 10MB 左右大小的docker镜像 - rust之actix-web - rust教程04"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/rust/small-docker-image/&title=创建只有 10MB 左右大小的docker镜像 - rust之actix-web - rust教程04"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://www.oldcai.com/rust/small-docker-image/&title=创建只有 10MB 左右大小的docker镜像 - rust之actix-web - rust教程04"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/rust/small-docker-image/&name=创建只有 10MB 左右大小的docker镜像 - rust之actix-web - rust教程04&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -115,7 +115,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        创建只有30M大小的docker镜像 - rust之actix-web - rust教程04
+        创建只有 10MB 左右大小的docker镜像 - rust之actix-web - rust教程04
     </h1>
 
 
@@ -154,7 +154,8 @@
 <p>好在 docker 已经提供了相关的支持，完成后的 Dockerfile 如下：</p>
 <figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> oldcai/rust-musl-builder:latest as build</span><br><span class="line"><span class="keyword">ADD</span><span class="bash"> . /home/rust/src</span></span><br><span class="line"><span class="bash">WORKDIR /home/rust/src</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment">#RUN apk add --no-cache ca-certificates gcc mingw-w64-gcc libc-dev musl-dev</span></span></span><br><span class="line"><span class="bash"><span class="comment">#RUN rustup target add x86_64-unknown-linux-musl</span></span></span><br><span class="line"><span class="bash">RUN cargo build --release</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash">FROM alpine:latest</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash">WORKDIR /web/</span></span><br><span class="line"><span class="bash">COPY --from=build /home/rust/src/target/x86_64-unknown-linux-musl/release/httpapi /web/</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash">CMD [<span class="string">"./httpapi"</span>, <span class="string">"0.0.0.0:80"</span>]</span></span><br></pre></td></tr></table></figure>
 <p>注解的部分是如果不用老蔡提供的这个镜像，可能需要装的一些库。</p>
-<p>运行程序的基础镜像选择的最新版本的 alpine，本身只有不到30M大小，很适合golang、rust编译的、没什么依赖项的程序运行。</p>
+<p>运行程序的基础镜像选择的最新版本的 alpine，镜像本身只有 5.57MB 大小，很适合golang、rust编译的、没什么依赖项的程序运行。</p>
+<p>打包完毕后，总大小才13.5MB</p>
 
   </div>
 </article>
@@ -192,15 +193,15 @@
     <div id="share-footer" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/rust/small-docker-image/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://www.oldcai.com/rust/small-docker-image/&text=创建只有30M大小的docker镜像 - rust之actix-web - rust教程04"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/rust/small-docker-image/&title=创建只有30M大小的docker镜像 - rust之actix-web - rust教程04"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/rust/small-docker-image/&is_video=false&description=创建只有30M大小的docker镜像 - rust之actix-web - rust教程04"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=创建只有30M大小的docker镜像 - rust之actix-web - rust教程04&body=Check out this article: https://www.oldcai.com/rust/small-docker-image/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://www.oldcai.com/rust/small-docker-image/&title=创建只有30M大小的docker镜像 - rust之actix-web - rust教程04"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://www.oldcai.com/rust/small-docker-image/&title=创建只有30M大小的docker镜像 - rust之actix-web - rust教程04"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/rust/small-docker-image/&title=创建只有30M大小的docker镜像 - rust之actix-web - rust教程04"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://www.oldcai.com/rust/small-docker-image/&title=创建只有30M大小的docker镜像 - rust之actix-web - rust教程04"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/rust/small-docker-image/&name=创建只有30M大小的docker镜像 - rust之actix-web - rust教程04&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://www.oldcai.com/rust/small-docker-image/&text=创建只有 10MB 左右大小的docker镜像 - rust之actix-web - rust教程04"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/rust/small-docker-image/&title=创建只有 10MB 左右大小的docker镜像 - rust之actix-web - rust教程04"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/rust/small-docker-image/&is_video=false&description=创建只有 10MB 左右大小的docker镜像 - rust之actix-web - rust教程04"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=创建只有 10MB 左右大小的docker镜像 - rust之actix-web - rust教程04&body=Check out this article: https://www.oldcai.com/rust/small-docker-image/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://www.oldcai.com/rust/small-docker-image/&title=创建只有 10MB 左右大小的docker镜像 - rust之actix-web - rust教程04"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://www.oldcai.com/rust/small-docker-image/&title=创建只有 10MB 左右大小的docker镜像 - rust之actix-web - rust教程04"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/rust/small-docker-image/&title=创建只有 10MB 左右大小的docker镜像 - rust之actix-web - rust教程04"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://www.oldcai.com/rust/small-docker-image/&title=创建只有 10MB 左右大小的docker镜像 - rust之actix-web - rust教程04"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/rust/small-docker-image/&name=创建只有 10MB 左右大小的docker镜像 - rust之actix-web - rust教程04&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
