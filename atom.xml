@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.oldcai.com/"/>
-  <updated>2020-07-15T17:46:00.067Z</updated>
+  <updated>2020-08-26T10:49:03.771Z</updated>
   <id>https://www.oldcai.com/</id>
   
   <author>
@@ -17,36 +17,28 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>创建只有 10MB 左右大小的docker镜像 - rust之actix-web - rust教程04</title>
-    <link href="https://www.oldcai.com/rust/small-docker-image/"/>
-    <id>https://www.oldcai.com/rust/small-docker-image/</id>
-    <published>2020-07-15T17:30:58.000Z</published>
-    <updated>2020-07-15T17:46:00.067Z</updated>
+    <title>同一GitHub账号GitHub Pages绑定多个域名操作步骤</title>
+    <link href="https://www.oldcai.com/hexo/github-pages/"/>
+    <id>https://www.oldcai.com/hexo/github-pages/</id>
+    <published>2020-08-26T10:48:00.000Z</published>
+    <updated>2020-08-26T10:49:03.771Z</updated>
     
-    <content type="html"><![CDATA[<p>该文章为<a href="https://www.oldcai.com/rust/web-server-response-ip/">构建 actix web</a>服务的后续，旨在利用 Dockerfile 给 rust 构建的 web 程序制作一个最小镜像。</p><p>利用 Dockerfile 制作 rust 程序的镜像，难点在于在一个 docker 容器中交叉编译、构建，生成的docker镜像又要打包到另一个容器。</p><p>好在 docker 已经提供了相关的支持，完成后的 Dockerfile 如下：</p><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> oldcai/rust-musl-builder:latest as build</span><br><span class="line"><span class="keyword">ADD</span><span class="bash"> . /home/rust/src</span></span><br><span class="line"><span class="bash">WORKDIR /home/rust/src</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment">#RUN apk add --no-cache ca-certificates gcc mingw-w64-gcc libc-dev musl-dev</span></span></span><br><span class="line"><span class="bash"><span class="comment">#RUN rustup target add x86_64-unknown-linux-musl</span></span></span><br><span class="line"><span class="bash">RUN cargo build --release</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash">FROM alpine:latest</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash">WORKDIR /web/</span></span><br><span class="line"><span class="bash">COPY --from=build /home/rust/src/target/x86_64-unknown-linux-musl/release/httpapi /web/</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash">CMD [<span class="string">"./httpapi"</span>, <span class="string">"0.0.0.0:80"</span>]</span></span><br></pre></td></tr></table></figure><p>注解的部分是如果不用老蔡提供的这个镜像，可能需要装的一些库。</p><p>运行程序的基础镜像选择的最新版本的 alpine，镜像本身只有 5.57MB 大小，很适合golang、rust编译的、没什么依赖项的程序运行。</p><p>打包完毕后，总大小才13.5MB</p>]]></content>
+    <content type="html"><![CDATA[<p>国内的互联网偏向保守，像GitHub这么慷慨的举动确实不多，以至于老蔡刚开始也以为GitHub只能绑定一个域名，建一个网站。</p><p>但是，实际上GitHub Pages是支持绑定多个域名的，不过在他们的服务条款中禁止滥用，也就是说只要不是容易引发争议、违反美国法律的内容，应该都是没有问题的。</p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>长话短说，建立多个网站其实就是建立多个repository，并打开网站功能</p><p>短话长说，分为2步</p><p>注：图片使用imgur存放，看不到请搬梯子</p><p>下面是小白操作步骤，详细到哭</p><h3 id="前提条件"><a href="#前提条件" class="headerlink" title="前提条件"></a>前提条件</h3><ol><li>本地装好git命令</li><li>有一个可以登陆的GitHub账号</li></ol><h3 id="第一步，建立repo"><a href="#第一步，建立repo" class="headerlink" title="第一步，建立repo"></a>第一步，建立repo</h3><h4 id="1-1-新建"><a href="#1-1-新建" class="headerlink" title="1.1 新建"></a>1.1 新建</h4><p><img src="https://i.imgur.com/EGRwXZB.jpg" alt="2020-08-26 at 3.49 pm"><br>右上角，点New repository</p><h4 id="1-2-给项目取名"><a href="#1-2-给项目取名" class="headerlink" title="1.2 给项目取名"></a>1.2 给项目取名</h4><p><img src="https://i.imgur.com/pwt8cXC.jpg" alt="2020-08-26 at 5.13 pm"></p><p>因为每个项目名需要保证唯一性，而担心创建的网站太多，名字弄混，老蔡就干脆把repository name写成想绑定的网站域名了。</p><p>这一步不影响最终的域名绑定，只是GitHub代码仓库的地址。</p><p>填好后点最下面的Create repository，创建代码仓库。<br>此时会自动跳转到下一个GitHub页面，先不要任何操作（不要刷新、关闭网页）<br>打开控制台，继续下面的操作</p><h3 id="第二步，创建本地网页目录"><a href="#第二步，创建本地网页目录" class="headerlink" title="第二步，创建本地网页目录"></a>第二步，创建本地网页目录</h3><p>在控制台中，cd到准备用作本地网页目录的路径。</p><h4 id="2-1-创建域名解析配置文件"><a href="#2-1-创建域名解析配置文件" class="headerlink" title="2.1 创建域名解析配置文件"></a>2.1 创建域名解析配置文件</h4> <figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo <span class="string">"githubpages.maintainless.com"</span> <span class="meta">&gt;&gt; </span>CNAME</span><br></pre></td></tr></table></figure><p> 如果你用的是其他域名，要记得改成自己的。</p><h4 id="2-2-创建git项目"><a href="#2-2-创建git项目" class="headerlink" title="2.2 创建git项目"></a>2.2 创建git项目</h4><p>复制下面的命令，在命令行中运行</p><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">echo <span class="string">"Hello world"</span> &gt;&gt; index.html</span><br><span class="line">git init</span><br><span class="line">git add index.html</span><br><span class="line">git add index.html</span><br><span class="line">git commit -m <span class="string">"first commit"</span></span><br></pre></td></tr></table></figure><h4 id="2-3-关联刚才创建的GitHub-repo"><a href="#2-3-关联刚才创建的GitHub-repo" class="headerlink" title="2.3 关联刚才创建的GitHub repo"></a>2.3 关联刚才创建的GitHub repo</h4><p>从刚才的GitHub页面中，复制下面的命令<br><img src="https://i.imgur.com/JedJClJ.jpg" alt="2020-08-26 at 5.22 pm"></p><p>在刚才的命令行中运行</p><h3 id="第三步，打开GitHub网页功能"><a href="#第三步，打开GitHub网页功能" class="headerlink" title="第三步，打开GitHub网页功能"></a>第三步，打开GitHub网页功能</h3><p>没有打开GitHub网页功能之前，GitHub是不会自动关联网页到域名的，这需要注意。</p><p>刷新刚才复制命令的网页，如果内容已经变了，就说明以上步骤是成功的。</p><h4 id="3-1-进入设置"><a href="#3-1-进入设置" class="headerlink" title="3.1 进入设置"></a>3.1 进入设置</h4><p><img src="https://i.imgur.com/jHAEviD.jpg" alt="2020-08-26 at 6.23 pm"></p><p>然后点击Settings，进行设置</p><h4 id="3-2-选择分支"><a href="#3-2-选择分支" class="headerlink" title="3.2 选择分支"></a>3.2 选择分支</h4><p><img src="https://i.imgur.com/1VFWDBl.jpg" alt="2020-08-26 at 6.21 pm"></p><p>选择分支后点Save<br><img src="https://i.imgur.com/ARW5pQR.jpg" alt="2020-08-26 at 6.28 pm"></p><p>就打开了GitHub网页功能</p><p><img src="https://i.imgur.com/CdS892U.jpg" alt="2020-08-26 at 6.37 pm"></p><p>记住这个地址，下面解析需要用到。如果GitHub改版，可以尝试 {<strong>GitHub用户名</strong>}.github.io</p><h3 id="第四步，解析域名"><a href="#第四步，解析域名" class="headerlink" title="第四步，解析域名"></a>第四步，解析域名</h3><p>通常来说，解析域名只用在dns服务器中解析即可。</p><p>但是如果需要加速/防墙，建议使用CloudFlare。</p><p><img src="https://i.imgur.com/LlksDfq.jpg" alt="2020-08-26 at 6.40 pm"></p><p><img src="https://i.imgur.com/ZFdsCL1.jpg" alt="2020-08-26 at 6.40 pm"></p><p>在域名解析中，用CNAME解析方式，解析到刚才的记住的地址中的域名部分即可</p><h3 id="第五步，打开网页查看"><a href="#第五步，打开网页查看" class="headerlink" title="第五步，打开网页查看"></a>第五步，打开网页查看</h3><p>打开<a href="https://githubpages.maintainless.com/" target="_blank" rel="noopener">测试地址</a>查看</p><p><img src="https://i.imgur.com/fJSwZKM.jpg" alt="2020-08-26 at 6.42 pm"></p><p>如果没有马上生效，等5分钟再看看。</p><p>以上就是小白版本GitHub Pages创建教程，同一个账号支持多个域名。</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;该文章为&lt;a href=&quot;https://www.oldcai.com/rust/web-server-response-ip/&quot;&gt;构建 actix web&lt;/a&gt;服务的后续，旨在利用 Dockerfile 给 rust 构建的 web 程序制作一个最小镜像。&lt;/p&gt;
-&lt;p
+        &lt;p&gt;国内的互联网偏向保守，像GitHub这么慷慨的举动确实不多，以至于老蔡刚开始也以为GitHub只能绑定一个域名，建一个网站。&lt;/p&gt;
+&lt;p&gt;但是，实际上GitHub Pages是支持绑定多个域名的，不过在他们的服务条款中禁止滥用，也就是说只要不是容易引发争议、违反美国法律的
       
     
     </summary>
     
       <category term="教程" scheme="https://www.oldcai.com/categories/%E6%95%99%E7%A8%8B/"/>
     
-      <category term="rust" scheme="https://www.oldcai.com/categories/%E6%95%99%E7%A8%8B/rust/"/>
     
-    
-      <category term="docker" scheme="https://www.oldcai.com/tags/docker/"/>
-    
-      <category term="actix" scheme="https://www.oldcai.com/tags/actix/"/>
-    
-      <category term="rancher" scheme="https://www.oldcai.com/tags/rancher/"/>
-    
-      <category term="server" scheme="https://www.oldcai.com/tags/server/"/>
+      <category term="GitHub" scheme="https://www.oldcai.com/tags/GitHub/"/>
     
   </entry>
   
@@ -55,9 +47,9 @@
     <link href="https://www.oldcai.com/linux/free-centos-disk-cn/"/>
     <id>https://www.oldcai.com/linux/free-centos-disk-cn/</id>
     <published>2020-07-12T01:07:45.000Z</published>
-    <updated>2020-07-12T02:24:31.945Z</updated>
+    <updated>2020-08-26T10:48:37.457Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>我有一个VPS已经运行了将近两年，其磁盘使用率已超过90％。</p><p>因为没有什么业务在上面，所以也不想增加预算。</p><p>于是，我开始研究占用磁盘的目录，并最终找出了是谁占用了这么多磁盘。</p><p>不过好在清理它们没啥风险，并且也不费劲。</p><p>下面是清空磁盘的命令:</p><h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><h3 id="第一个命令"><a href="#第一个命令" class="headerlink" title="第一个命令"></a>第一个命令</h3><p>由于长时间运行，系统可能具有数十GB的日志，让日记服务的大小保持在特定大小是个好主意。</p><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">journalctl <span class="attribute">--vacuum-size</span>=1G</span><br></pre></td></tr></table></figure><h3 id="第二个命令"><a href="#第二个命令" class="headerlink" title="第二个命令"></a>第二个命令</h3><p>清理yum缓存，这个在我这边也超过10GB。</p><figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum clean <span class="keyword">all</span></span><br></pre></td></tr></table></figure><p>运行这些命令后，我的VPS系统释放了大约12GB的空间，然后又重新满血复活。</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>我有一个VPS已经运行了将近两年，其磁盘使用率已超过90％。</p><p>因为没有什么业务在上面，所以也不想增加预算。</p><p>于是，我开始研究占用磁盘的目录，并最终找出了是谁占用了这么多磁盘。</p><p>好消息是，清洁它们既没啥风险也不费劲。</p><p>下面是清空磁盘的命令:</p><h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><h3 id="第一个命令"><a href="#第一个命令" class="headerlink" title="第一个命令"></a>第一个命令</h3><p>由于长时间运行，系统可能具有数十GB的日志，让日记服务的大小保持在特定大小是个好主意。</p><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">journalctl <span class="attribute">--vacuum-size</span>=1G</span><br></pre></td></tr></table></figure><h3 id="第二个命令"><a href="#第二个命令" class="headerlink" title="第二个命令"></a>第二个命令</h3><p>清理yum缓存，这个在我这边也超过10GB。</p><figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum clean <span class="keyword">all</span></span><br></pre></td></tr></table></figure><p>运行这些命令后，我的VPS系统释放了大约12GB的空间，然后又重新满血复活。</p>]]></content>
     
     <summary type="html">
     
