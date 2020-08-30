@@ -43,13 +43,77 @@
   </entry>
   
   <entry>
+    <title>经济下行，为何股价还屡创新高？</title>
+    <link href="https://www.oldcai.com/investing/inflation/"/>
+    <id>https://www.oldcai.com/investing/inflation/</id>
+    <published>2020-08-25T17:30:58.000Z</published>
+    <updated>2020-08-30T21:57:54.353Z</updated>
+    
+    <content type="html"><![CDATA[<p>今天思考了下现阶段消费类股票涨上天的合理性。</p><p>以前的经济周期中衰退的时候，是资产贬值，现金增值的。</p><p>现在全球都是用“看得见的手”来操控，经济下行就印钞，所以过往很多经验不一定行得通了。</p><p>以前经济下行的时候现金为王，现在现金都不再有避险性，大家都去买黄金。</p><p>目前体现在股市上的情况是，经济下行，政府就通过增发货币做宏观调控，推高股市整体市盈率。</p><p>理想状况是以后货币的购买力下降后，企业赚更多的面额的货币，把PE给挣下去。</p><p>感觉如果能再看远一步，就能从中赚到钱，可惜我还看不见。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;今天思考了下现阶段消费类股票涨上天的合理性。&lt;/p&gt;
+&lt;p&gt;以前的经济周期中衰退的时候，是资产贬值，现金增值的。&lt;/p&gt;
+&lt;p&gt;现在全球都是用“看得见的手”来操控，经济下行就印钞，所以过往很多经验不一定行得通了。&lt;/p&gt;
+&lt;p&gt;以前经济下行的时候现金为王，现在现金都不再有避
+      
+    
+    </summary>
+    
+      <category term="投资" scheme="https://www.oldcai.com/categories/%E6%8A%95%E8%B5%84/"/>
+    
+    
+      <category term="泡沫" scheme="https://www.oldcai.com/tags/%E6%B3%A1%E6%B2%AB/"/>
+    
+      <category term="通胀" scheme="https://www.oldcai.com/tags/%E9%80%9A%E8%83%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>创建只有 10MB 左右大小的docker镜像 - rust之actix-web - rust教程04</title>
+    <link href="https://www.oldcai.com/rust/small-docker-image/"/>
+    <id>https://www.oldcai.com/rust/small-docker-image/</id>
+    <published>2020-07-15T17:30:58.000Z</published>
+    <updated>2020-08-29T11:15:19.532Z</updated>
+    
+    <content type="html"><![CDATA[<p>该文章为<a href="https://www.oldcai.com/rust/web-server-response-ip/">构建 actix web</a>服务的后续，旨在利用 Dockerfile 给 rust 构建的 web 程序制作一个最小镜像。</p><p>利用 Dockerfile 制作 rust 程序的镜像，难点在于在一个 docker 容器中交叉编译、构建，生成的docker镜像又要打包到另一个容器。</p><p>好在 docker 已经提供了相关的支持，完成后的 Dockerfile 如下：</p><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> oldcai/rust-musl-builder:latest as build</span><br><span class="line"><span class="keyword">ADD</span><span class="bash"> . /home/rust/src</span></span><br><span class="line"><span class="bash">WORKDIR /home/rust/src</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment">#RUN apk add --no-cache ca-certificates gcc mingw-w64-gcc libc-dev musl-dev</span></span></span><br><span class="line"><span class="bash"><span class="comment">#RUN rustup target add x86_64-unknown-linux-musl</span></span></span><br><span class="line"><span class="bash">RUN cargo build --release</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash">FROM alpine:latest</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash">WORKDIR /web/</span></span><br><span class="line"><span class="bash">COPY --from=build /home/rust/src/target/x86_64-unknown-linux-musl/release/httpapi /web/</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash">CMD [<span class="string">"./httpapi"</span>, <span class="string">"0.0.0.0:80"</span>]</span></span><br></pre></td></tr></table></figure><p>注解的部分是如果不用老蔡提供的这个镜像，可能需要装的一些库。</p><p>运行程序的基础镜像选择的最新版本的 alpine，镜像本身只有 5.57MB 大小，很适合golang、rust编译的、没什么依赖项的程序运行。</p><p>打包完毕后，总大小才13.5MB</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;该文章为&lt;a href=&quot;https://www.oldcai.com/rust/web-server-response-ip/&quot;&gt;构建 actix web&lt;/a&gt;服务的后续，旨在利用 Dockerfile 给 rust 构建的 web 程序制作一个最小镜像。&lt;/p&gt;
+&lt;p
+      
+    
+    </summary>
+    
+      <category term="教程" scheme="https://www.oldcai.com/categories/%E6%95%99%E7%A8%8B/"/>
+    
+      <category term="rust" scheme="https://www.oldcai.com/categories/%E6%95%99%E7%A8%8B/rust/"/>
+    
+    
+      <category term="docker" scheme="https://www.oldcai.com/tags/docker/"/>
+    
+      <category term="actix" scheme="https://www.oldcai.com/tags/actix/"/>
+    
+      <category term="rancher" scheme="https://www.oldcai.com/tags/rancher/"/>
+    
+      <category term="server" scheme="https://www.oldcai.com/tags/server/"/>
+    
+  </entry>
+  
+  <entry>
     <title>2个命令清理至少10GB CentOS磁盘</title>
     <link href="https://www.oldcai.com/linux/free-centos-disk-cn/"/>
     <id>https://www.oldcai.com/linux/free-centos-disk-cn/</id>
     <published>2020-07-12T01:07:45.000Z</published>
-    <updated>2020-08-26T10:48:37.457Z</updated>
+    <updated>2020-08-29T11:15:19.531Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>我有一个VPS已经运行了将近两年，其磁盘使用率已超过90％。</p><p>因为没有什么业务在上面，所以也不想增加预算。</p><p>于是，我开始研究占用磁盘的目录，并最终找出了是谁占用了这么多磁盘。</p><p>好消息是，清洁它们既没啥风险也不费劲。</p><p>下面是清空磁盘的命令:</p><h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><h3 id="第一个命令"><a href="#第一个命令" class="headerlink" title="第一个命令"></a>第一个命令</h3><p>由于长时间运行，系统可能具有数十GB的日志，让日记服务的大小保持在特定大小是个好主意。</p><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">journalctl <span class="attribute">--vacuum-size</span>=1G</span><br></pre></td></tr></table></figure><h3 id="第二个命令"><a href="#第二个命令" class="headerlink" title="第二个命令"></a>第二个命令</h3><p>清理yum缓存，这个在我这边也超过10GB。</p><figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum clean <span class="keyword">all</span></span><br></pre></td></tr></table></figure><p>运行这些命令后，我的VPS系统释放了大约12GB的空间，然后又重新满血复活。</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>我有一个VPS已经运行了将近两年，其磁盘使用率已超过90％。</p><p>因为没有什么业务在上面，所以也不想增加预算。</p><p>于是，我开始研究占用磁盘的目录，并最终找出了是谁占用了这么多磁盘。</p><p>不过好在清理它们没啥风险，并且也不费劲。</p><p>下面是清空磁盘的命令:</p><h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><h3 id="第一个命令"><a href="#第一个命令" class="headerlink" title="第一个命令"></a>第一个命令</h3><p>由于长时间运行，系统可能具有数十GB的日志，让日记服务的大小保持在特定大小是个好主意。</p><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">journalctl <span class="attribute">--vacuum-size</span>=1G</span><br></pre></td></tr></table></figure><h3 id="第二个命令"><a href="#第二个命令" class="headerlink" title="第二个命令"></a>第二个命令</h3><p>清理yum缓存，这个在我这边也超过10GB。</p><figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum clean <span class="keyword">all</span></span><br></pre></td></tr></table></figure><p>运行这些命令后，我的VPS系统释放了大约12GB的空间，然后又重新满血复活。</p>]]></content>
     
     <summary type="html">
     
@@ -517,61 +581,6 @@
       <category term="Hexo" scheme="https://www.oldcai.com/tags/Hexo/"/>
     
       <category term="Ghost" scheme="https://www.oldcai.com/tags/Ghost/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>atop，调查服务器宕机事件的神器</title>
-    <link href="https://www.oldcai.com/linux/atop/"/>
-    <id>https://www.oldcai.com/linux/atop/</id>
-    <published>2018-10-20T09:44:52.000Z</published>
-    <updated>2018-10-27T12:24:39.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>之前服务器偶尔故障，SSH连不上，只能在IDC的后台去重启机器。这就使得调查导致问题的原因变得十分困难。</p><p>于是老蔡查阅“中外典籍”，找到了这个神器：atop atop不仅平时可以帮你自动高亮异常负载（CPU，内存，磁盘，网络），还能每隔15分钟存个档，重启后可以调出来看案发现场是哪个进程出了故障。</p><h2 id="定时保存服务器资源负载数据"><a href="#定时保存服务器资源负载数据" class="headerlink" title="定时保存服务器资源负载数据"></a>定时保存服务器资源负载数据</h2><p><img src="/images/2018/10/memory.jpeg" alt></p><p>这是老蔡在刚刚不久前通过atop定期记录服务器负载这个功能定位到的一个很低概率发生的内存泄漏导致服务器死机的现场还原截图。</p><p>atop默认有个服务，启动服务后，每15分钟存档一次，以天为单位保存成文件。</p><p>真相永远只有一个，各位新一姬，还原犯罪现场，找出杀死服务器的真凶吧。</p><p>service atop restart</p><p>启动atop记录服务</p><p>atop -r /var/log/atop/atop_20181019</p><p>通过这条命令来查阅记录，进入后，t是下一页，T是上一页，每一页15分钟间隔。</p><h2 id="atop还能自动高亮服务器性能瓶颈"><a href="#atop还能自动高亮服务器性能瓶颈" class="headerlink" title="atop还能自动高亮服务器性能瓶颈"></a>atop还能自动高亮服务器性能瓶颈</h2><p><img src="/images/2018/10/io.jpeg" alt> 拿一台磁盘IO基本已经快到顶的服务器举例，atop会自动标红DSK的busy程度。</p><p>以往我们排查问题的时候，可能会需要用各种工具查看，比如htop，iotop，iostat，nload，iftop，等等，最后过了半个小时说不定才可以找到问题（还看经验是否丰富），而用atop可以轻松察觉。</p><h2 id="深入了解atop"><a href="#深入了解atop" class="headerlink" title="深入了解atop"></a>深入了解atop</h2><p><a href="/linux/atop-dsk/">atop磁盘的DSK后面的数字都代表什么</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;之前服务器偶尔故障，SSH连不上，只能在IDC的后台去重启机器。这就使得调查导致问题的原因变得十分困难。&lt;/p&gt;
-&lt;p&gt;于是老蔡查阅“中外典籍”，找到了这个神器：atop atop不仅平时可以帮你自动高亮异常负载（CPU，内存，磁盘，网络），还能每隔15分钟存个档，重启后可
-      
-    
-    </summary>
-    
-      <category term="linux" scheme="https://www.oldcai.com/categories/linux/"/>
-    
-      <category term="服务器运维" scheme="https://www.oldcai.com/categories/linux/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%90%E7%BB%B4/"/>
-    
-      <category term="软件评测" scheme="https://www.oldcai.com/categories/linux/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%90%E7%BB%B4/%E8%BD%AF%E4%BB%B6%E8%AF%84%E6%B5%8B/"/>
-    
-    
-      <category term="atop" scheme="https://www.oldcai.com/tags/atop/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>更大的标尺</title>
-    <link href="https://www.oldcai.com/archives/1217/"/>
-    <id>https://www.oldcai.com/archives/1217/</id>
-    <published>2018-06-29T17:51:40.000Z</published>
-    <updated>2018-10-23T14:45:53.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><strong>以百年为标尺</strong><br>往回看，中国的历史上，文化是最清晰的脉络。<br>商周的诗经，先秦的诸子百家，到唐宋的诗词，都是一个个刻度。</p><p><strong>以光年为标尺</strong></p><p>放到整个宇宙，文明，是我们最在意的标尺。<br>产生生物，石器，铁器，工业，热核，星际文明……</p><p><strong>善政恶政</strong></p><p>政体的好坏，看它是否能过滤出好的政策，并持续地贯彻政策。<br>政策的善恶，看它是否能在大的标尺上向人类终极目标迈进。<br>假设，<br>剔除掉无效政策，每个政策要么推进文明，要么让文明倒退。<br>最好的政体形式，出现推进文明的政策概率为1<br>最坏的政体形式，出现倒退文明的政策概率为1<br>每个政体出新政的速度都一致</p><p>恶政比率&gt;50%的政体形式，最终必然消亡，时间长短看运气。<br>而善政比率&gt;50%的才有更高概率让文明发展，进而存在得更久。</p><p><strong>观测</strong><br>这个模型，在不量化文明指标的情况下，外界能观察到，最直观的就是政权能持续时间长度。</p><p><strong>比较</strong><br>被批的最多的封建社会，<br>统计学上去掉最长的周朝800年，<br>唐宋明清，文明交融、科技发展，社会发展变快，但也都差不多有300年；<br>再看看<br>目前为止，最长寿的，苏联存在总共才多少年？69年。<br>红色高棉，31年；<br>东德，41年。<br>比起封建社会，还差了个数量级。<br>当然，明年（2019）开始，最长寿的就换人了，如果不承认改革开放已经改变了政体的话。<br>又算了算，距离英国君主立宪到现在，刚好330年了。<br>虽然不是理想状态中善政率100%的最好的政体形式，但这330年里，从这一支文明里分出来的枝干一直在带领整个人类文明飞速发展。</p><p>最后，引用一句他们的前首相在上个世纪说的一句话：<br>Democracy is the worst form of government, except for all the others.</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;strong&gt;以百年为标尺&lt;/strong&gt;&lt;br&gt;往回看，中国的历史上，文化是最清晰的脉络。&lt;br&gt;商周的诗经，先秦的诸子百家，到唐宋的诗词，都是一个个刻度。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;以光年为标尺&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;放到整个宇宙，文明，是我们最在意的
-      
-    
-    </summary>
-    
-      <category term="思考" scheme="https://www.oldcai.com/categories/%E6%80%9D%E8%80%83/"/>
-    
     
   </entry>
   

@@ -6,18 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="介绍我有一个VPS已经运行了将近两年，其磁盘使用率已超过90％。 因为没有什么业务在上面，所以也不想增加预算。 于是，我开始研究占用磁盘的目录，并最终找出了是谁占用了这么多磁盘。 好消息是，清洁它们既没啥风险也不费劲。 下面是清空磁盘的命令: 命令第一个命令由于长时间运行，系统可能具有数十GB的日志，让日记服务的大小保持在特定大小是个好主意。 1journalctl --vacuum-size=1">
+    <meta name="description" content="介绍我有一个VPS已经运行了将近两年，其磁盘使用率已超过90％。 因为没有什么业务在上面，所以也不想增加预算。 于是，我开始研究占用磁盘的目录，并最终找出了是谁占用了这么多磁盘。 不过好在清理它们没啥风险，并且也不费劲。 下面是清空磁盘的命令: 命令第一个命令由于长时间运行，系统可能具有数十GB的日志，让日记服务的大小保持在特定大小是个好主意。 1journalctl --vacuum-size=">
 <meta name="keywords" content="CentOS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2个命令清理至少10GB CentOS磁盘">
 <meta property="og:url" content="https://www.oldcai.com/linux/free-centos-disk-cn/index.html">
 <meta property="og:site_name" content="老蔡博客">
-<meta property="og:description" content="介绍我有一个VPS已经运行了将近两年，其磁盘使用率已超过90％。 因为没有什么业务在上面，所以也不想增加预算。 于是，我开始研究占用磁盘的目录，并最终找出了是谁占用了这么多磁盘。 好消息是，清洁它们既没啥风险也不费劲。 下面是清空磁盘的命令: 命令第一个命令由于长时间运行，系统可能具有数十GB的日志，让日记服务的大小保持在特定大小是个好主意。 1journalctl --vacuum-size=1">
+<meta property="og:description" content="介绍我有一个VPS已经运行了将近两年，其磁盘使用率已超过90％。 因为没有什么业务在上面，所以也不想增加预算。 于是，我开始研究占用磁盘的目录，并最终找出了是谁占用了这么多磁盘。 不过好在清理它们没啥风险，并且也不费劲。 下面是清空磁盘的命令: 命令第一个命令由于长时间运行，系统可能具有数十GB的日志，让日记服务的大小保持在特定大小是个好主意。 1journalctl --vacuum-size=">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-08-26T10:48:37.457Z">
+<meta property="og:updated_time" content="2020-08-29T11:15:19.531Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2个命令清理至少10GB CentOS磁盘">
-<meta name="twitter:description" content="介绍我有一个VPS已经运行了将近两年，其磁盘使用率已超过90％。 因为没有什么业务在上面，所以也不想增加预算。 于是，我开始研究占用磁盘的目录，并最终找出了是谁占用了这么多磁盘。 好消息是，清洁它们既没啥风险也不费劲。 下面是清空磁盘的命令: 命令第一个命令由于长时间运行，系统可能具有数十GB的日志，让日记服务的大小保持在特定大小是个好主意。 1journalctl --vacuum-size=1">
+<meta name="twitter:description" content="介绍我有一个VPS已经运行了将近两年，其磁盘使用率已超过90％。 因为没有什么业务在上面，所以也不想增加预算。 于是，我开始研究占用磁盘的目录，并最终找出了是谁占用了这么多磁盘。 不过好在清理它们没啥风险，并且也不费劲。 下面是清空磁盘的命令: 命令第一个命令由于长时间运行，系统可能具有数十GB的日志，让日记服务的大小保持在特定大小是个好主意。 1journalctl --vacuum-size=">
     
     
         
@@ -75,7 +75,7 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" href="/hexo/github-pages/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        <li><a class="icon" href="/rust/small-docker-image/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
         <li><a class="icon" href="/linux/free-centos-disk/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
@@ -154,7 +154,7 @@
     <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>我有一个VPS已经运行了将近两年，其磁盘使用率已超过90％。</p>
 <p>因为没有什么业务在上面，所以也不想增加预算。</p>
 <p>于是，我开始研究占用磁盘的目录，并最终找出了是谁占用了这么多磁盘。</p>
-<p>好消息是，清洁它们既没啥风险也不费劲。</p>
+<p>不过好在清理它们没啥风险，并且也不费劲。</p>
 <p>下面是清空磁盘的命令:</p>
 <h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><h3 id="第一个命令"><a href="#第一个命令" class="headerlink" title="第一个命令"></a>第一个命令</h3><p>由于长时间运行，系统可能具有数十GB的日志，让日记服务的大小保持在特定大小是个好主意。</p>
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">journalctl <span class="attribute">--vacuum-size</span>=1G</span><br></pre></td></tr></table></figure>

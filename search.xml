@@ -26,11 +26,67 @@
     </entry>
     
     <entry>
+      <title>经济下行，为何股价还屡创新高？</title>
+      <link href="/investing/inflation/"/>
+      <url>/investing/inflation/</url>
+      
+        <content type="html"><![CDATA[<p>今天思考了下现阶段消费类股票涨上天的合理性。</p><p>以前的经济周期中衰退的时候，是资产贬值，现金增值的。</p><p>现在全球都是用“看得见的手”来操控，经济下行就印钞，所以过往很多经验不一定行得通了。</p><p>以前经济下行的时候现金为王，现在现金都不再有避险性，大家都去买黄金。</p><p>目前体现在股市上的情况是，经济下行，政府就通过增发货币做宏观调控，推高股市整体市盈率。</p><p>理想状况是以后货币的购买力下降后，企业赚更多的面额的货币，把PE给挣下去。</p><p>感觉如果能再看远一步，就能从中赚到钱，可惜我还看不见。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 投资 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 泡沫 </tag>
+            
+            <tag> 通胀 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>创建只有 10MB 左右大小的docker镜像 - rust之actix-web - rust教程04</title>
+      <link href="/rust/small-docker-image/"/>
+      <url>/rust/small-docker-image/</url>
+      
+        <content type="html"><![CDATA[<p>该文章为<a href="https://www.oldcai.com/rust/web-server-response-ip/">构建 actix web</a>服务的后续，旨在利用 Dockerfile 给 rust 构建的 web 程序制作一个最小镜像。</p><p>利用 Dockerfile 制作 rust 程序的镜像，难点在于在一个 docker 容器中交叉编译、构建，生成的docker镜像又要打包到另一个容器。</p><p>好在 docker 已经提供了相关的支持，完成后的 Dockerfile 如下：</p><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> oldcai/rust-musl-builder:latest as build</span><br><span class="line"><span class="keyword">ADD</span><span class="bash"> . /home/rust/src</span></span><br><span class="line"><span class="bash">WORKDIR /home/rust/src</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment">#RUN apk add --no-cache ca-certificates gcc mingw-w64-gcc libc-dev musl-dev</span></span></span><br><span class="line"><span class="bash"><span class="comment">#RUN rustup target add x86_64-unknown-linux-musl</span></span></span><br><span class="line"><span class="bash">RUN cargo build --release</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash">FROM alpine:latest</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash">WORKDIR /web/</span></span><br><span class="line"><span class="bash">COPY --from=build /home/rust/src/target/x86_64-unknown-linux-musl/release/httpapi /web/</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash">CMD [<span class="string">"./httpapi"</span>, <span class="string">"0.0.0.0:80"</span>]</span></span><br></pre></td></tr></table></figure><p>注解的部分是如果不用老蔡提供的这个镜像，可能需要装的一些库。</p><p>运行程序的基础镜像选择的最新版本的 alpine，镜像本身只有 5.57MB 大小，很适合golang、rust编译的、没什么依赖项的程序运行。</p><p>打包完毕后，总大小才13.5MB</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程 </category>
+          
+          <category> rust </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> docker </tag>
+            
+            <tag> actix </tag>
+            
+            <tag> rancher </tag>
+            
+            <tag> server </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>2个命令清理至少10GB CentOS磁盘</title>
       <link href="/linux/free-centos-disk-cn/"/>
       <url>/linux/free-centos-disk-cn/</url>
       
-        <content type="html"><![CDATA[<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>我有一个VPS已经运行了将近两年，其磁盘使用率已超过90％。</p><p>因为没有什么业务在上面，所以也不想增加预算。</p><p>于是，我开始研究占用磁盘的目录，并最终找出了是谁占用了这么多磁盘。</p><p>好消息是，清洁它们既没啥风险也不费劲。</p><p>下面是清空磁盘的命令:</p><h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><h3 id="第一个命令"><a href="#第一个命令" class="headerlink" title="第一个命令"></a>第一个命令</h3><p>由于长时间运行，系统可能具有数十GB的日志，让日记服务的大小保持在特定大小是个好主意。</p><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">journalctl <span class="attribute">--vacuum-size</span>=1G</span><br></pre></td></tr></table></figure><h3 id="第二个命令"><a href="#第二个命令" class="headerlink" title="第二个命令"></a>第二个命令</h3><p>清理yum缓存，这个在我这边也超过10GB。</p><figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum clean <span class="keyword">all</span></span><br></pre></td></tr></table></figure><p>运行这些命令后，我的VPS系统释放了大约12GB的空间，然后又重新满血复活。</p>]]></content>
+        <content type="html"><![CDATA[<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>我有一个VPS已经运行了将近两年，其磁盘使用率已超过90％。</p><p>因为没有什么业务在上面，所以也不想增加预算。</p><p>于是，我开始研究占用磁盘的目录，并最终找出了是谁占用了这么多磁盘。</p><p>不过好在清理它们没啥风险，并且也不费劲。</p><p>下面是清空磁盘的命令:</p><h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><h3 id="第一个命令"><a href="#第一个命令" class="headerlink" title="第一个命令"></a>第一个命令</h3><p>由于长时间运行，系统可能具有数十GB的日志，让日记服务的大小保持在特定大小是个好主意。</p><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">journalctl <span class="attribute">--vacuum-size</span>=1G</span><br></pre></td></tr></table></figure><h3 id="第二个命令"><a href="#第二个命令" class="headerlink" title="第二个命令"></a>第二个命令</h3><p>清理yum缓存，这个在我这边也超过10GB。</p><figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum clean <span class="keyword">all</span></span><br></pre></td></tr></table></figure><p>运行这些命令后，我的VPS系统释放了大约12GB的空间，然后又重新满血复活。</p>]]></content>
       
       
       <categories>
@@ -2534,9 +2590,9 @@
             
             <tag> C++ </tag>
             
-            <tag> 程序崩溃 </tag>
-            
             <tag> QT </tag>
+            
+            <tag> 程序崩溃 </tag>
             
             <tag> OpenSSL </tag>
             
@@ -3015,9 +3071,9 @@
             
             <tag> C++ </tag>
             
-            <tag> LNK2019 </tag>
-            
             <tag> QT </tag>
+            
+            <tag> LNK2019 </tag>
             
         </tags>
       
