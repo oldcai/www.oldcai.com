@@ -122,9 +122,9 @@
       <category term="rust" scheme="https://www.oldcai.com/categories/%E6%95%99%E7%A8%8B/rust/"/>
     
     
-      <category term="docker" scheme="https://www.oldcai.com/tags/docker/"/>
-    
       <category term="actix" scheme="https://www.oldcai.com/tags/actix/"/>
+    
+      <category term="docker" scheme="https://www.oldcai.com/tags/docker/"/>
     
       <category term="rancher" scheme="https://www.oldcai.com/tags/rancher/"/>
     
@@ -541,11 +541,11 @@
       <category term="解决" scheme="https://www.oldcai.com/categories/%E8%A7%A3%E5%86%B3/"/>
     
     
-      <category term="WordPress" scheme="https://www.oldcai.com/tags/WordPress/"/>
-    
       <category term="博客" scheme="https://www.oldcai.com/tags/%E5%8D%9A%E5%AE%A2/"/>
     
       <category term="Hexo" scheme="https://www.oldcai.com/tags/Hexo/"/>
+    
+      <category term="WordPress" scheme="https://www.oldcai.com/tags/WordPress/"/>
     
   </entry>
   
