@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.oldcai.com/"/>
-  <updated>2020-09-01T07:12:32.994Z</updated>
+  <updated>2020-10-16T04:13:52.554Z</updated>
   <id>https://www.oldcai.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>台积电的买入逻辑</title>
+    <link href="https://www.oldcai.com/investing/tsm-2020-10-16/"/>
+    <id>https://www.oldcai.com/investing/tsm-2020-10-16/</id>
+    <published>2020-10-16T04:13:51.000Z</published>
+    <updated>2020-10-16T04:13:52.554Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="操作记录"><a href="#操作记录" class="headerlink" title="操作记录"></a>操作记录</h2><p>前天因为感觉到大盘会调整，所以减了很多仓位，也顺便把台积电清空了。</p><p>之前到思考是，台积电这种重资产的企业，受产能制约很难飞速发展。</p><p>这几天虽然如预期一样有调整，但是没看出恐慌情绪，想补一些仓位，考虑再三，还是把台积电（TSM）补加回来了一些，目前占5%仓位。</p><p>因为今年订立的目标是，由短线转为长线交易，而这次在短期内（2天内）的频繁操作，并不是出于短线考虑，所以值得记录一下。</p><h2 id="格局"><a href="#格局" class="headerlink" title="格局"></a>格局</h2><p>现在的芯片产业格局，台积电处于高端芯片不可替代的上游产业。</p><p>从断供华为后麒麟就飞不起来了这件事情上，就可以看出，台积电把控着芯片产业的命脉，就像当年的锂矿把握锂电命脉一样。</p><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>在英特尔（INTC）重新扳回5nm制程这一局之前，其他芯片厂商，如AMD和改换ARM芯片的苹果想抢夺这个窗口期来抢夺芯片市场，就必须在台积电争夺产能。</p><p>而5nm制程芯片本来在移动ARM芯片领域中就因为节能和高性能就炙手可热了，而如今更是因为PC端芯片厂的加入而更加紧缺。</p><p>而通过什么来争夺资源呢？在有效市场中，是靠价格。</p><p>这个趋势反映到公司运营数据上，就是巨幅增加台积电下几个财报周期的盈利。</p><p>这也是台积电到目前为止已经翻倍的内在原因之一。</p><p>不过仍需注意的是，市场其实知道台积电的产能不足，也已经反映了对芯片代工的价格上涨的预期，否则营收个位数的增长不可能支撑3月到现在翻倍的涨幅。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;操作记录&quot;&gt;&lt;a href=&quot;#操作记录&quot; class=&quot;headerlink&quot; title=&quot;操作记录&quot;&gt;&lt;/a&gt;操作记录&lt;/h2&gt;&lt;p&gt;前天因为感觉到大盘会调整，所以减了很多仓位，也顺便把台积电清空了。&lt;/p&gt;
+&lt;p&gt;之前到思考是，台积电这种重资产的企业，受产
+      
+    
+    </summary>
+    
+      <category term="投资" scheme="https://www.oldcai.com/categories/%E6%8A%95%E8%B5%84/"/>
+    
+      <category term="美股" scheme="https://www.oldcai.com/categories/%E6%8A%95%E8%B5%84/%E7%BE%8E%E8%82%A1/"/>
+    
+    
+      <category term="台积电" scheme="https://www.oldcai.com/tags/%E5%8F%B0%E7%A7%AF%E7%94%B5/"/>
+    
+  </entry>
   
   <entry>
     <title>一笔美元转账记录，手续费、额度、耗时</title>
@@ -546,36 +574,6 @@
       <category term="Hexo" scheme="https://www.oldcai.com/tags/Hexo/"/>
     
       <category term="WordPress" scheme="https://www.oldcai.com/tags/WordPress/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>正则表达式进阶，零宽正回顾断言，零宽负回顾断言</title>
-    <link href="https://www.oldcai.com/programing/regex/"/>
-    <id>https://www.oldcai.com/programing/regex/</id>
-    <published>2018-10-21T13:19:01.000Z</published>
-    <updated>2018-10-27T12:22:24.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>零宽断言，表示匹配字符的时候再添加一些定位条件，使匹配更精准，但又不匹配到字符串。</p><table><thead><tr><th style="text-align:center">举例</th><th style="text-align:center">解释</th></tr></thead><tbody><tr><td style="text-align:center"><code>\w+(?=ing)</code></td><td style="text-align:center">匹配以ing结尾的单词前缀（不包括ing），<code>talking</code>匹配到<code>talk</code></td></tr><tr><td style="text-align:center"><code>\w+(?!ing)</code></td><td style="text-align:center">匹配不是以ing结尾的多个字符，<code>do talking</code>匹配到<code>do</code></td></tr><tr><td style="text-align:center"><code>(?&lt;=re)\w+</code></td><td style="text-align:center">匹配以re开头的多个字符（不包括re），<code>redo</code>匹配到<code>do</code></td></tr><tr><td style="text-align:center"><code>(?&lt;!re)\w+</code></td><td style="text-align:center">匹配排除re开头的单词外的其他单词，<code>refreshing wether</code>匹配到<code>weather</code></td></tr></tbody></table><p>组合起来使用<br><code>(?&lt;=\s)\d+(?=\s)</code> 匹配两边是空白符的数字，不包括空白符，相当于Vim中在单词上按下<code>*</code>号的结果</p><p>另外，推荐一个测试正则表达式的网站: <a href="https://regexr.com/" target="_blank" rel="noopener">Regexr</a><br>regex，是正则regular expression的缩写，加上r就当是被正则坑的人的意思吧😂</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;零宽断言，表示匹配字符的时候再添加一些定位条件，使匹配更精准，但又不匹配到字符串。&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th style=&quot;text-align:center&quot;&gt;举例&lt;/th&gt;
-&lt;th style=&quot;text-align:center&quot;&gt;解释
-      
-    
-    </summary>
-    
-      <category term="编程" scheme="https://www.oldcai.com/categories/%E7%BC%96%E7%A8%8B/"/>
-    
-    
-      <category term="代码高亮" scheme="https://www.oldcai.com/tags/%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE/"/>
     
   </entry>
   
