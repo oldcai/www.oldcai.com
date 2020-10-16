@@ -7,7 +7,7 @@
       <link href="/politics/trump-win-token/"/>
       <url>/politics/trump-win-token/</url>
       
-        <content type="html"><![CDATA[<p>按我个人对政治肤浅的见解，川普这次连任应该概率是很大的。</p><p>在和一些小朋友探讨后，他们怂恿我去买一个基于加密货币的金融衍生品，一个叫做TRUMPWIN的token。看了一下，赔率是1/0.361=2.77的样子</p><p>其实在传统博彩网站上，早就有类似的盘口。</p><p>参考<a href="https://www.betfair.com/sport/politics/2020-us-presidential-election/10393583" target="_blank" rel="noopener">betfair</a>上的押注情况，川普目前赔率在2.88，拜登在1.4</p><h2 id="这就很有趣了"><a href="#这就很有趣了" class="headerlink" title="这就很有趣了"></a>这就很有趣了</h2><p>即使川普拜登两边胜率在50%：50%</p><p>按凯利公式计算，投注比例32.01%，也有13.35%收益率。</p><p>而到大选还只有不到一个月了，这样的收益期望相当可观。</p><p>当然，选举结果这种东西有高不确定性，小赌怡情就好。</p><h2 id="更远一点的思考"><a href="#更远一点的思考" class="headerlink" title="更远一点的思考"></a>更远一点的思考</h2><p>这个偏差是什么原因导致的？</p><p>因为我所掌握的信息是被扭曲的（实际上川普没那么大胜算，甚至快输了）？</p><p>还是投注的人来自的社会圈子有共性（都是不支持川普的人）？</p><p>或者是媒体在一次次民调中的预测所起到的影响导致的？</p>]]></content>
+        <content type="html"><![CDATA[<p>按我个人对政治肤浅的见解，川普这次连任应该概率是很大的。</p><p>在和一些小朋友探讨后，他们怂恿我去买一个基于加密货币的金融衍生品，一个叫做TRUMPWIN的token。看了一下，赔率是1/0.361=2.77的样子</p><p><a href="https://support.poloniex.com/hc/en-us/articles/360052070213-TRUMPWIN-TRUMPLOSE-Are-Now-on-Poloniex" target="_blank" rel="noopener">点这里看token介绍</a></p><p><a href="https://poloniex.com/exchange/USDT_TRUMPWIN" target="_blank" rel="noopener">点这里进交易页面</a></p><p>其实在传统博彩网站上，早就有类似的盘口。</p><p>参考<a href="https://www.betfair.com/sport/politics/2020-us-presidential-election/10393583" target="_blank" rel="noopener">betfair</a>上的押注情况，川普目前赔率在2.88，拜登在1.4</p><h2 id="这就很有趣了"><a href="#这就很有趣了" class="headerlink" title="这就很有趣了"></a>这就很有趣了</h2><p>即使川普拜登两边胜率在50%：50%</p><p>按凯利公式计算，投注比例32.01%，也有13.35%收益率。</p><p>而到大选还只有不到一个月了，这样的收益期望相当可观。</p><p>当然，选举结果这种东西有高不确定性，小赌怡情就好。</p><h2 id="更远一点的思考"><a href="#更远一点的思考" class="headerlink" title="更远一点的思考"></a>更远一点的思考</h2><p>这个偏差是什么原因导致的？</p><p>因为我所掌握的信息是被扭曲的（实际上川普没那么大胜算，甚至快输了）？</p><p>还是投注的人来自的社会圈子有共性（都是不支持川普的人）？</p><p>或者是媒体在一次次民调中的预测所起到的影响导致的？</p>]]></content>
       
       
       <categories>
@@ -142,9 +142,9 @@
       
         <tags>
             
-            <tag> actix </tag>
-            
             <tag> docker </tag>
+            
+            <tag> actix </tag>
             
             <tag> rancher </tag>
             
@@ -503,11 +503,11 @@
       
         <tags>
             
+            <tag> WordPress </tag>
+            
             <tag> 博客 </tag>
             
             <tag> Hexo </tag>
-            
-            <tag> WordPress </tag>
             
         </tags>
       
@@ -553,13 +553,13 @@
       
         <tags>
             
+            <tag> WordPress </tag>
+            
             <tag> 博客 </tag>
             
             <tag> Hexo </tag>
             
             <tag> Ghost </tag>
-            
-            <tag> WordPress </tag>
             
         </tags>
       
@@ -869,9 +869,9 @@
       
         <tags>
             
-            <tag> Karabiner </tag>
-            
             <tag> 解决办法 </tag>
+            
+            <tag> Karabiner </tag>
             
         </tags>
       
@@ -896,9 +896,9 @@
       
         <tags>
             
-            <tag> Karabiner </tag>
-            
             <tag> 解决办法 </tag>
+            
+            <tag> Karabiner </tag>
             
         </tags>
       
@@ -2206,9 +2206,9 @@
       
         <tags>
             
-            <tag> 博客 </tag>
-            
             <tag> WordPress </tag>
+            
+            <tag> 博客 </tag>
             
             <tag> 升级 </tag>
             
@@ -2300,9 +2300,9 @@
             
             <tag> C++ </tag>
             
-            <tag> C++ Builder </tag>
-            
             <tag> access </tag>
+            
+            <tag> C++ Builder </tag>
             
         </tags>
       
@@ -3144,9 +3144,9 @@
             
             <tag> C++ </tag>
             
-            <tag> QT </tag>
-            
             <tag> LNK2019 </tag>
+            
+            <tag> QT </tag>
             
         </tags>
       
