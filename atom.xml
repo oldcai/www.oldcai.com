@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.oldcai.com/"/>
-  <updated>2020-10-16T04:13:52.554Z</updated>
+  <updated>2020-10-16T04:42:45.736Z</updated>
   <id>https://www.oldcai.com/</id>
   
   <author>
@@ -17,20 +17,48 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>台积电的买入逻辑</title>
-    <link href="https://www.oldcai.com/investing/tsm-2020-10-16/"/>
-    <id>https://www.oldcai.com/investing/tsm-2020-10-16/</id>
-    <published>2020-10-16T04:13:51.000Z</published>
-    <updated>2020-10-16T04:13:52.554Z</updated>
+    <title>赌川普赢，赔率接近3倍</title>
+    <link href="https://www.oldcai.com/politics/trump-win-token/"/>
+    <id>https://www.oldcai.com/politics/trump-win-token/</id>
+    <published>2020-10-16T04:42:44.000Z</published>
+    <updated>2020-10-16T04:42:45.736Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="操作记录"><a href="#操作记录" class="headerlink" title="操作记录"></a>操作记录</h2><p>前天因为感觉到大盘会调整，所以减了很多仓位，也顺便把台积电清空了。</p><p>之前到思考是，台积电这种重资产的企业，受产能制约很难飞速发展。</p><p>这几天虽然如预期一样有调整，但是没看出恐慌情绪，想补一些仓位，考虑再三，还是把台积电（TSM）补加回来了一些，目前占5%仓位。</p><p>因为今年订立的目标是，由短线转为长线交易，而这次在短期内（2天内）的频繁操作，并不是出于短线考虑，所以值得记录一下。</p><h2 id="格局"><a href="#格局" class="headerlink" title="格局"></a>格局</h2><p>现在的芯片产业格局，台积电处于高端芯片不可替代的上游产业。</p><p>从断供华为后麒麟就飞不起来了这件事情上，就可以看出，台积电把控着芯片产业的命脉，就像当年的锂矿把握锂电命脉一样。</p><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>在英特尔（INTC）重新扳回5nm制程这一局之前，其他芯片厂商，如AMD和改换ARM芯片的苹果想抢夺这个窗口期来抢夺芯片市场，就必须在台积电争夺产能。</p><p>而5nm制程芯片本来在移动ARM芯片领域中就因为节能和高性能就炙手可热了，而如今更是因为PC端芯片厂的加入而更加紧缺。</p><p>而通过什么来争夺资源呢？在有效市场中，是靠价格。</p><p>这个趋势反映到公司运营数据上，就是巨幅增加台积电下几个财报周期的盈利。</p><p>这也是台积电到目前为止已经翻倍的内在原因之一。</p><p>不过仍需注意的是，市场其实知道台积电的产能不足，也已经反映了对芯片代工的价格上涨的预期，否则营收个位数的增长不可能支撑3月到现在翻倍的涨幅。</p>]]></content>
+    <content type="html"><![CDATA[<p>按我个人对政治肤浅的见解，川普这次连任应该概率是很大的。</p><p>在和一些小朋友探讨后，他们怂恿我去买一个基于加密货币的金融衍生品，一个叫做TRUMPWIN的token。看了一下，赔率是1/0.361=2.77的样子</p><p>其实在传统博彩网站上，早就有类似的盘口。</p><p>参考<a href="https://www.betfair.com/sport/politics/2020-us-presidential-election/10393583" target="_blank" rel="noopener">betfair</a>上的押注情况，川普目前赔率在2.88，拜登在1.4</p><h2 id="这就很有趣了"><a href="#这就很有趣了" class="headerlink" title="这就很有趣了"></a>这就很有趣了</h2><p>即使川普拜登两边胜率在50%：50%</p><p>按凯利公式计算，投注比例32.01%，也有13.35%收益率。</p><p>而到大选还只有不到一个月了，这样的收益期望相当可观。</p><p>当然，选举结果这种东西有高不确定性，小赌怡情就好。</p><h2 id="更远一点的思考"><a href="#更远一点的思考" class="headerlink" title="更远一点的思考"></a>更远一点的思考</h2><p>这个偏差是什么原因导致的？</p><p>因为我所掌握的信息是被扭曲的（实际上川普没那么大胜算，甚至快输了）？</p><p>还是投注的人来自的社会圈子有共性（都是不支持川普的人）？</p><p>或者是媒体在一次次民调中的预测所起到的影响导致的？</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h2 id=&quot;操作记录&quot;&gt;&lt;a href=&quot;#操作记录&quot; class=&quot;headerlink&quot; title=&quot;操作记录&quot;&gt;&lt;/a&gt;操作记录&lt;/h2&gt;&lt;p&gt;前天因为感觉到大盘会调整，所以减了很多仓位，也顺便把台积电清空了。&lt;/p&gt;
-&lt;p&gt;之前到思考是，台积电这种重资产的企业，受产
+        &lt;p&gt;按我个人对政治肤浅的见解，川普这次连任应该概率是很大的。&lt;/p&gt;
+&lt;p&gt;在和一些小朋友探讨后，他们怂恿我去买一个基于加密货币的金融衍生品，一个叫做TRUMPWIN的token。看了一下，赔率是1/0.361=2.77的样子&lt;/p&gt;
+&lt;p&gt;其实在传统博彩网站上，早就有类似的盘
+      
+    
+    </summary>
+    
+      <category term="赌博" scheme="https://www.oldcai.com/categories/%E8%B5%8C%E5%8D%9A/"/>
+    
+    
+      <category term="token" scheme="https://www.oldcai.com/tags/token/"/>
+    
+      <category term="Trump" scheme="https://www.oldcai.com/tags/Trump/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>计划台积电中长期持有，聊聊最浅显的买入逻辑</title>
+    <link href="https://www.oldcai.com/investing/tsm-2020-10-16/"/>
+    <id>https://www.oldcai.com/investing/tsm-2020-10-16/</id>
+    <published>2020-10-16T04:13:51.000Z</published>
+    <updated>2020-10-16T04:27:20.613Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="操作记录"><a href="#操作记录" class="headerlink" title="操作记录"></a>操作记录</h2><p>因为今年订立的目标是，由短线转为长线交易，但这次对台积电（TSM）在短期内的操作，并不是出于短线考虑，所以值得记录一下。</p><p>前几天因为感觉到大盘会调整，所以减了很多股票的仓位，台积电也是其中之一，不过不是减仓而是清仓。</p><p>之前的思考是，台积电这种重资产的企业，受产能制约很难飞速发展。近几年的销售收入增幅只有3%，5%，4%，比起手上其他的如NET，BILI这样动辄50%增长的小妖精，真的是太不性感了。</p><p>这几天虽然如预期一样有调整，但是没看出恐慌情绪，对后市的预期变好，所以想补一些仓位，考虑再三，还是选择了台积电（TSM）。</p><p>补加回来了一些，目前占5%仓位，计划持有至少3个月。</p><h2 id="格局"><a href="#格局" class="headerlink" title="格局"></a>格局</h2><p>现在的芯片产业格局，台积电处于高端芯片不可替代的上游产业。</p><p>从断供华为后麒麟就飞不起来了这件事情上，就可以看出，台积电把控着芯片产业的命脉，就像当年的锂矿把握锂电命脉一样。</p><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>在英特尔（INTC）重新扳回5nm制程这一局之前，其他芯片厂商，如AMD和改换ARM芯片的苹果想抢夺这个窗口期来抢夺芯片市场，就必须在台积电争夺产能。</p><p>而5nm制程芯片本来在移动ARM芯片领域中就因为节能和高性能就炙手可热了，而如今更是因为PC端芯片厂的加入而更加紧缺。</p><p>而通过什么来争夺资源呢？在有效市场中，是靠价格。</p><p>这个趋势反映到公司运营数据上，就是巨幅增加台积电下几个财报周期的盈利。</p><p>这也是台积电到目前为止已经翻倍的内在原因之一。</p><p>不过仍需注意的是，市场其实知道台积电的产能不足，也已经反映了对芯片代工的价格上涨的预期，否则营收个位数的增长不可能支撑3月到现在翻倍的涨幅。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;操作记录&quot;&gt;&lt;a href=&quot;#操作记录&quot; class=&quot;headerlink&quot; title=&quot;操作记录&quot;&gt;&lt;/a&gt;操作记录&lt;/h2&gt;&lt;p&gt;因为今年订立的目标是，由短线转为长线交易，但这次对台积电（TSM）在短期内的操作，并不是出于短线考虑，所以值得记录一下。&lt;/
       
     
     </summary>
@@ -150,9 +178,9 @@
       <category term="rust" scheme="https://www.oldcai.com/categories/%E6%95%99%E7%A8%8B/rust/"/>
     
     
-      <category term="docker" scheme="https://www.oldcai.com/tags/docker/"/>
-    
       <category term="actix" scheme="https://www.oldcai.com/tags/actix/"/>
+    
+      <category term="docker" scheme="https://www.oldcai.com/tags/docker/"/>
     
       <category term="rancher" scheme="https://www.oldcai.com/tags/rancher/"/>
     
@@ -544,36 +572,6 @@
       <category term="xinetd" scheme="https://www.oldcai.com/tags/xinetd/"/>
     
       <category term="rsync" scheme="https://www.oldcai.com/tags/rsync/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>WordPress 转 Hexo 后，回车变成空格的问题解决</title>
-    <link href="https://www.oldcai.com/hexo/wordpress-to-hexo-lose-return/"/>
-    <id>https://www.oldcai.com/hexo/wordpress-to-hexo-lose-return/</id>
-    <published>2018-10-22T15:45:13.000Z</published>
-    <updated>2018-10-23T17:00:21.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>刚从 WordPress 转到 Hexo 的时候，很多文章文字都挤在一团，很不方便阅读。</p><h2 id="替换代码："><a href="#替换代码：" class="headerlink" title="替换代码："></a>替换代码：</h2><figure class="highlight bash"><figcaption><span>空格替换回回车</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -d <span class="built_in">source</span>/_posts/archives/* | xargs perl -pi -e <span class="string">'s|(?&lt;!^)(?&lt;![~`!@#$%^&amp;*()\-_=+\\\|.,&lt;&gt;/?;: #\w\d]) |\n\n|g'</span></span><br></pre></td></tr></table></figure><p>运行上面代码，再稍微整理一下，就好看多了。</p><p>因为替换时的正则表达式用到了<a href="/hexoprograming/regex/">零宽正回顾断言</a>，所以，并不会影响英文和代码的正常显示。</p><p>但是，不管怎样，还是要记得先把文章备份。</p><h3 id="替换前："><a href="#替换前：" class="headerlink" title="替换前："></a>替换前：</h3><p><img src="/images/2018/10/content-no-return.jpg" alt="从WordPress导入过来的没回车的文章"></p><h3 id="替换后："><a href="#替换后：" class="headerlink" title="替换后："></a>替换后：</h3><p><img src="/images/2018/10/content-with-return.jpg" alt="替换好回车的文章"></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;刚从 WordPress 转到 Hexo 的时候，很多文章文字都挤在一团，很不方便阅读。&lt;/p&gt;
-&lt;h2 id=&quot;替换代码：&quot;&gt;&lt;a href=&quot;#替换代码：&quot; class=&quot;headerlink&quot; title=&quot;替换代码：&quot;&gt;&lt;/a&gt;替换代码：&lt;/h2&gt;&lt;figure c
-      
-    
-    </summary>
-    
-      <category term="解决" scheme="https://www.oldcai.com/categories/%E8%A7%A3%E5%86%B3/"/>
-    
-    
-      <category term="博客" scheme="https://www.oldcai.com/tags/%E5%8D%9A%E5%AE%A2/"/>
-    
-      <category term="Hexo" scheme="https://www.oldcai.com/tags/Hexo/"/>
-    
-      <category term="WordPress" scheme="https://www.oldcai.com/tags/WordPress/"/>
     
   </entry>
   
