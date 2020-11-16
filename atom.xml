@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.oldcai.com/"/>
-  <updated>2020-11-15T08:16:58.164Z</updated>
+  <updated>2020-11-16T03:00:01.821Z</updated>
   <id>https://www.oldcai.com/</id>
   
   <author>
@@ -15,6 +15,54 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="https://www.oldcai.com/investing/td-ameritrade-uncleared-deposits/"/>
+    <id>https://www.oldcai.com/investing/td-ameritrade-uncleared-deposits/</id>
+    <published>2020-11-16T02:36:55.272Z</published>
+    <updated>2020-11-16T03:00:01.821Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Reasons-Why-Options-Trading-Not-Available"><a href="#Reasons-Why-Options-Trading-Not-Available" class="headerlink" title="Reasons Why Options Trading Not Available"></a>Reasons Why Options Trading Not Available</h2><p>There are two main reasons why your account cannot be used to buy options.</p><ol><li>Unsupported Account Type<ol><li>Trust accounts</li><li>529 education accounts</li><li>Pension plans</li></ol></li><li>Deposits are not cleared</li></ol><p>Options and most stocks priced under $5 a share are not able to trade before deposits are cleared.</p><h2 id="Check-Uncleared-Deposits"><a href="#Check-Uncleared-Deposits" class="headerlink" title="Check Uncleared Deposits"></a>Check Uncleared Deposits</h2><p>After confirming that the account type supports the options transaction, you can check the outstanding payment on the website.</p><h3 id="How-to-Check-Uncleared-Deposits"><a href="#How-to-Check-Uncleared-Deposits" class="headerlink" title="How to Check Uncleared Deposits"></a>How to Check Uncleared Deposits</h3><p>Click <a href="https://invest.ameritrade.com/grid/p/site#r=transfersActivity" target="_blank" rel="noopener">this link</a></p><p>Or find in the navigation bar as below.</p><pre><code>My Account &gt; Deposits &amp; Transfers &gt; Activity</code></pre><ol><li>Click &gt; Cash available for withdrawal</li><li>You’ll see &gt; Uncleared deposits</li></ol><p><img src="media/2020-11-16%20at%2010.18%20am.jpg" alt="2020-11-16 at 10.18 am"></p><p>You can wait until TD Ameritrade clears your deposits.</p><h2 id="How-Long-Does-It-Take-to-Clear"><a href="#How-Long-Does-It-Take-to-Clear" class="headerlink" title="How Long Does It Take to Clear"></a>How Long Does It Take to Clear</h2><p>According to the feedback from TD Ameritrade customer service, the timetable for receipt is as follows.</p><table><thead><tr><th style="text-align:center">Deposits Type</th><th style="text-align:center">Clearance Duration</th></tr></thead><tbody><tr><td style="text-align:center"><strong>electronic (ACH)</strong></td><td style="text-align:center">2-4 business days</td></tr><tr><td style="text-align:center"><strong>Checks</strong></td><td style="text-align:center">4-5 business days</td></tr><tr><td style="text-align:center"><strong>Wire</strong></td><td style="text-align:center">As soon as they post to your account</td></tr></tbody></table><p>If you cannot buy options or other ideal securities immediately after deposit but still afraid of losing time-sensitive opportunities, please work out your investment plan with the timetable above.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;Reasons-Why-Options-Trading-Not-Available&quot;&gt;&lt;a href=&quot;#Reasons-Why-Options-Trading-Not-Available&quot; class=&quot;headerlink&quot; title=&quot;Reasons Wh
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>为什么我的TD Ameritrade账号不能购买期权？</title>
+    <link href="https://www.oldcai.com/investing/td-ameritrade-uncleared-deposits-zhcn/"/>
+    <id>https://www.oldcai.com/investing/td-ameritrade-uncleared-deposits-zhcn/</id>
+    <published>2020-11-16T02:06:55.000Z</published>
+    <updated>2020-11-16T02:53:54.468Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="不能购买期权的原因"><a href="#不能购买期权的原因" class="headerlink" title="不能购买期权的原因"></a>不能购买期权的原因</h2><p>有两种原因可能导致账号不能购买期权</p><ol><li>账号类型不支持<ol><li>信托账号（Trust accounts）</li><li>529教育储蓄基金账号（529 education accounts）</li><li>退休金账号（Pension plans）</li></ol></li><li>银证转账还未结清</li></ol><p>其中，转账还未结清还可能影响到：不能交易粉单市场（大部分$5以下的股票），也不能提现。</p><h2 id="查看未结款项（uncleared-deposits）"><a href="#查看未结款项（uncleared-deposits）" class="headerlink" title="查看未结款项（uncleared deposits）"></a>查看未结款项（uncleared deposits）</h2><p>先确认账号类型支持options的交易后，可以在网站查询到未结清款项。</p><h3 id="查询方法"><a href="#查询方法" class="headerlink" title="查询方法"></a>查询方法</h3><p>点击<a href="https://invest.ameritrade.com/grid/p/site#r=transfersActivity" target="_blank" rel="noopener">这个链接</a></p><p>或者在导航栏找到</p><pre><code>My Account &gt; Deposits &amp; Transfers &gt; Activity</code></pre><p>然后点开Cash available for withdrawal</p><p>会看到uncleared deposits</p><p><img src="media/2020-11-16%20at%2010.18%20am.jpg" alt="2020-11-16 at 10.18 am"></p><p>等到结清后即可。</p><h2 id="结清所需时间"><a href="#结清所需时间" class="headerlink" title="结清所需时间"></a>结清所需时间</h2><p>老蔡经过咨询后，根据TD Ameritrade客服反馈，到账时间表如下</p><table><thead><tr><th style="text-align:center">汇款类型</th><th style="text-align:center">结清时间</th></tr></thead><tbody><tr><td style="text-align:center"><strong>ACH电汇</strong></td><td style="text-align:center">2-4个工作日</td></tr><tr><td style="text-align:center"><strong>支票账户</strong></td><td style="text-align:center">4-5个工作日</td></tr><tr><td style="text-align:center"><strong>Wire电汇</strong></td><td style="text-align:center">到账后立刻结清。美国国内转账一般1-3小时，国际1-2天</td></tr></tbody></table><p>如果汇款后不能立刻购买期权或者其他理想标的，但是又怕踏空。对照上面的汇款所需时间，可以合理安排投资。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;不能购买期权的原因&quot;&gt;&lt;a href=&quot;#不能购买期权的原因&quot; class=&quot;headerlink&quot; title=&quot;不能购买期权的原因&quot;&gt;&lt;/a&gt;不能购买期权的原因&lt;/h2&gt;&lt;p&gt;有两种原因可能导致账号不能购买期权&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;账号类型不支持&lt;ol&gt;
+      
+    
+    </summary>
+    
+      <category term="期权" scheme="https://www.oldcai.com/categories/%E6%9C%9F%E6%9D%83/"/>
+    
+    
+      <category term="TD Ameritrade" scheme="https://www.oldcai.com/tags/TD-Ameritrade/"/>
+    
+  </entry>
   
   <entry>
     <title>7个方法帮你提高战略执行</title>
@@ -129,7 +177,7 @@
     <link href="https://www.oldcai.com/investing/dollor-transfer/"/>
     <id>https://www.oldcai.com/investing/dollor-transfer/</id>
     <published>2020-09-01T01:48:59.000Z</published>
-    <updated>2020-11-15T07:23:45.215Z</updated>
+    <updated>2020-11-15T09:45:58.111Z</updated>
     
     <content type="html"><![CDATA[<p>外汇管制越来越严了。老蔡今天汇款的时候，碰到上次汇款时还没有出现过的单日额度限制，所以想记录一下。</p><p>除了换汇额度一年50000美金外，这次被银行告知单日汇款额度也被限制在人民币50000以下，不知道是不是只是银行单方面的限制。于是，汇了7200美金（折算人民币约50000）。</p><p>由于办理的光大银行出国加卡，免了电报费，所以发汇行只收了千分之一手续费，约50人民币。</p><p>汇出时间是早上9点，实际到账时间是上午10点。</p><p>中转行手续费46美元，加上香港招商银行收款手续费4美元，总共50美元。</p><p>总结一下，此笔交易手续费约0.8%。但如果转账金额更小、存在电报费的情况下可能更高，会超过1%，有其他更低费率的途径可以考虑其他途径转账。</p><p>后记：第二天收到电话，说让我改购汇用途。说总行收紧政策了，因私旅游得有机票或者酒店预订记录，有签证都不行。</p>]]></content>
     
@@ -230,9 +278,9 @@
       <category term="rust" scheme="https://www.oldcai.com/categories/%E6%95%99%E7%A8%8B/rust/"/>
     
     
-      <category term="docker" scheme="https://www.oldcai.com/tags/docker/"/>
-    
       <category term="actix" scheme="https://www.oldcai.com/tags/actix/"/>
+    
+      <category term="docker" scheme="https://www.oldcai.com/tags/docker/"/>
     
       <category term="rancher" scheme="https://www.oldcai.com/tags/rancher/"/>
     
@@ -272,7 +320,7 @@
     <link href="https://www.oldcai.com/linux/free-centos-disk/"/>
     <id>https://www.oldcai.com/linux/free-centos-disk/</id>
     <published>2020-07-12T00:54:45.000Z</published>
-    <updated>2020-11-15T07:24:11.708Z</updated>
+    <updated>2020-11-16T02:06:47.746Z</updated>
     
     <content type="html"><![CDATA[<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>I have a personal VPS had been running for almost two years, and its disk usage is getting to 90%.</p><p>Increase the budget is not necessary because there isn’t any serious business running on it.</p><p>Then I started to investigate the disk-consuming directories and finally found out who was responsible for high disk usage, and .</p><p>The good thing is, there is no risk or any effort to exert for cleaning them.</p><p>Here are the commands to free those disk:</p><h2 id="Steps"><a href="#Steps" class="headerlink" title="Steps"></a>Steps</h2><figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">journalctl <span class="comment">--vacuum-size=1G</span></span><br><span class="line">yum clean <span class="keyword">all</span></span><br></pre></td></tr></table></figure><h2 id="A-Little-Explanation"><a href="#A-Little-Explanation" class="headerlink" title="A Little Explanation"></a>A Little Explanation</h2><p>For the first command, because a long run system could have tens of GBs of log archives, making journal service keep its size below a specific size is always a good idea.</p><p>The second one is cleaning the yum cache, which is also above 10GBs on my side.</p><p>After running those commands, my VPS system had freed about 12GBs and back to bouncing again.</p>]]></content>
     
@@ -506,58 +554,6 @@
     
     
       <category term="zsh" scheme="https://www.oldcai.com/tags/zsh/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Filebeat Not Able to Connect to Logstash</title>
-    <link href="https://www.oldcai.com/server/logstash-filebeat-cert/"/>
-    <id>https://www.oldcai.com/server/logstash-filebeat-cert/</id>
-    <published>2018-12-13T22:35:00.000Z</published>
-    <updated>2018-12-14T07:17:19.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="Possible-Errors"><a href="#Possible-Errors" class="headerlink" title="Possible Errors:"></a>Possible Errors:</h2><ul><li>Failed to connect to backoff(async(tcp://10.10.10.1:5044)): x509: certificate is valid for 127.0.0.1, not 10.10.10.1</li><li>x509: cannot validate certificate for <code>127.0.0.1</code> because it doesn’t contain any IP SANs</li></ul><h2 id="Step-1-Add-subjectAltName"><a href="#Step-1-Add-subjectAltName" class="headerlink" title="Step 1 - Add subjectAltName"></a>Step 1 - Add subjectAltName</h2><p>Add the line below into file <code>/etc/pki/tls/openssl.cnf</code></p><figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">subjectAltName = <span class="built_in">IP</span>: <span class="number">127.0</span><span class="meta">.0</span><span class="meta">.1</span></span><br></pre></td></tr></table></figure><p>You can change the ip address to your logstash server address</p><h2 id="Step-2-Regenerate-Certification"><a href="#Step-2-Regenerate-Certification" class="headerlink" title="Step 2 - Regenerate Certification"></a>Step 2 - Regenerate Certification</h2><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl req -config <span class="regexp">/etc/</span>pki<span class="regexp">/tls/</span>openssl.cnf -x509 -days <span class="number">3650</span> -batch -nodes -newkey <span class="string">rsa:</span><span class="number">2048</span> -keyout <span class="regexp">/etc/</span>pki<span class="regexp">/tls/</span><span class="keyword">private</span><span class="regexp">/logstash-forwarder.key -out /</span>etc<span class="regexp">/pki/</span>tls<span class="regexp">/certs/</span>logstash-forwarder.crt</span><br></pre></td></tr></table></figure><p>Then you can use the cert file <code>/etc/pki/tls/certs/logstash-forwarder.crt</code> to authorize filebeat to connect to logstash.</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;Possible-Errors&quot;&gt;&lt;a href=&quot;#Possible-Errors&quot; class=&quot;headerlink&quot; title=&quot;Possible Errors:&quot;&gt;&lt;/a&gt;Possible Errors:&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;Failed to 
-      
-    
-    </summary>
-    
-      <category term="Server" scheme="https://www.oldcai.com/categories/Server/"/>
-    
-    
-      <category term="ELK" scheme="https://www.oldcai.com/tags/ELK/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud</title>
-    <link href="https://www.oldcai.com/server/large-postgresql-database-migration/"/>
-    <id>https://www.oldcai.com/server/large-postgresql-database-migration/</id>
-    <published>2018-11-27T17:05:00.000Z</published>
-    <updated>2019-12-23T18:52:37.000Z</updated>
-    
-    <content type="html"><![CDATA[<pre><code>To practice this guide, PostgreSQL version should be at least 9.6</code></pre><h2 id="TL-DR"><a href="#TL-DR" class="headerlink" title="TL;DR:"></a>TL;DR:</h2><p>First, setup a master-slave replication for PostgreSQL.<br>Then switch the slave server to master.</p><h2 id="Longer-Story"><a href="#Longer-Story" class="headerlink" title="Longer Story"></a>Longer Story</h2><h3 id="Situation"><a href="#Situation" class="headerlink" title="Situation"></a>Situation</h3><p>In our case, the database is almost 300GB, it would take at least 3 hours to migrate to a new server, including export, transfer and import time.</p><p>Sometimes, it’s acceptable to shutdown sites or apps for a short time to do some maintain, but what if the data grows and the migration may takes days or weeks?</p><p>For services in-production, you would expect it always online.</p><p>Yes, we hope we can keep the service online while transferring data and switch it in minutes.</p><h3 id="Struggles"><a href="#Struggles" class="headerlink" title="Struggles"></a>Struggles</h3><p>I have checked <a href="https://www.howtoforge.com/tutorial/how-to-set-up-master-slave-replication-for-postgresql-96-on-ubuntu-1604/" target="_blank" rel="noopener">How to Set-Up Master-Slave Replication for PostgreSQL 9.6 on Ubuntu 16.04</a> and tried many times of making replicas on the new server but always fail.<br>It reports the same error: <code>requested WAL segment 00000001000001CD00000055 has already been removed</code> every time.</p><p>After did some research and I found that’s because my database is too large, transfer would take too much time, and the <code>wal_keep_segments</code> is not enough for that long time of transferring files.</p><h3 id="Quick-Fix"><a href="#Quick-Fix" class="headerlink" title="Quick Fix"></a>Quick Fix</h3><p>Maybe it can be fixed by increasing <code>wal_keep_segments</code> to a greater number, but that introduces another problem: we need to calculate the proper number, enough keeping WAL files after the long and unsure time of data transferring, and not too big that would slow down the running service.<br>Of course, that’s not <strong>the best solution</strong>.</p><h3 id="Better-Solutions"><a href="#Better-Solutions" class="headerlink" title="Better Solutions"></a>Better Solutions</h3><p>Later, I found a more reliable and more robust solution <a href="https://www.postgresql.org/message-id/8154f0c1-5ac3-8769-d0b6-81c65c666dd7%40dalibo.com" target="_blank" rel="noopener">in PostgreSQL’s mail list</a>:</p><blockquote><p>You could use <code>-X stream</code> instead of <code>--xlog</code> (which is an alias for <code>-X fetch</code>). This consumes two wal senders instead of one, but greatly reduce the probability of having this error.<br>The only way to really prevent this error is using replication slots, but the support for pg_basebackup is only available in 9.6.</p></blockquote><p>I would show you how to use <code>replication slots</code> and use stream to transfer the transaction log files(WAL files) below.</p><h2 id="Step-1-Enable-Replication-Slots"><a href="#Step-1-Enable-Replication-Slots" class="headerlink" title="Step 1 - Enable Replication Slots"></a>Step 1 - Enable Replication Slots</h2><p>PostgreSQL disabled replication slots by default, we need to setup by adding lines to the bottom of <code>/var/lib/pgsql/9.6/data/postgresql.conf</code> below:</p><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">synchronous_standby_names</span> = <span class="string">'slave001'</span></span><br><span class="line"><span class="attr">wal_level</span> = replica</span><br><span class="line"><span class="attr">hot_standby</span> = <span class="literal">on</span></span><br><span class="line"><span class="attr">max_wal_senders</span> = <span class="number">2</span></span><br><span class="line"><span class="attr">wal_keep_segments</span> = <span class="number">10</span></span><br><span class="line"><span class="attr">max_replication_slots</span> = <span class="number">2</span></span><br><span class="line"><span class="attr">synchronous_commit</span> = local</span><br></pre></td></tr></table></figure><p>Then restart the PostgreSQL service by <code>service postgresql-9.6 restart</code>.</p><h2 id="Step-2-Creating-a-Replication-Slot"><a href="#Step-2-Creating-a-Replication-Slot" class="headerlink" title="Step 2 - Creating a Replication Slot"></a>Step 2 - Creating a Replication Slot</h2><p>Connect to master PostgreSQL by <code>sudo -u postgres psql</code><br>Then execute<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">select</span> <span class="title">pg_create_physical_replication_slot</span>(<span class="params"><span class="string">'slot_for_migration'</span>, <span class="literal">true</span></span>)</span>;</span><br></pre></td></tr></table></figure></p><p>We can check the progress by selecting:<br><figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> pg_replication_slots;</span><br></pre></td></tr></table></figure></p><p>If you want to delete this slot later after migration, you can use this command:<br><figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">'select pg_drop_replication_slot('slot_for_migration')<span class="comment">;</span></span><br></pre></td></tr></table></figure></p><p>Use it after remove the initial prime if you know what this command would do.</p><h2 id="Step-3-Create-a-User-for-Replication"><a href="#Step-3-Create-a-User-for-Replication" class="headerlink" title="Step 3 - Create a User for Replication"></a>Step 3 - Create a User for Replication</h2><p>Run commands with psql as user postgres on the master side:</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> replica <span class="keyword">REPLICATION</span> LOGIN ENCRYPTED <span class="keyword">PASSWORD</span> <span class="string">'your password here'</span>;</span><br></pre></td></tr></table></figure><p>Add these lines below to master’s pg_hba.conf</p><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># Localhost</span><br><span class="line">host    replication     replica          <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>/<span class="number">32</span>              md5</span><br><span class="line"> </span><br><span class="line"># PostgreSQL Master IP address</span><br><span class="line">host    replication     replica          <span class="number">10.10</span><span class="number">.10</span><span class="number">.10</span>/<span class="number">32</span>            md5</span><br><span class="line"> </span><br><span class="line"># PostgreSQL SLave IP address</span><br><span class="line">host    replication     replica          <span class="number">10.10</span><span class="number">.10</span><span class="number">.11</span>/<span class="number">32</span>            md5</span><br></pre></td></tr></table></figure><p>Then restart the PostgreSQL server.</p><h2 id="Step-4-Transfer-Data-From-Another-Data-Center"><a href="#Step-4-Transfer-Data-From-Another-Data-Center" class="headerlink" title="Step 4 - Transfer Data From Another Data Center"></a>Step 4 - Transfer Data From Another Data Center</h2><p>Now, run on the slave server:<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pg_basebackup -h <span class="number">10.10</span><span class="number">.10</span><span class="number">.10</span> -p <span class="number">5432</span> -S slot_for_migration -U replica -D /var/lib/pgsql/<span class="number">9.6</span>/data --checkpoint=fast -R -P -X stream</span><br></pre></td></tr></table></figure></p><p>It would ask you to type password.<br>Now, you need to wait until it finishes syncing. This step is very time consuming, usually takes hours or even days.</p><h2 id="Step-5-Restart-The-Slave-PostgreSQL-Server"><a href="#Step-5-Restart-The-Slave-PostgreSQL-Server" class="headerlink" title="Step 5 - Restart The Slave PostgreSQL Server"></a>Step 5 - Restart The Slave PostgreSQL Server</h2><p>After syncing finished, run <code>service postgresql-9.6 restart</code>, there should be a sync before the standby server up and run, wouldn’t take too much time if you didn’t leave the console too long after step 4.</p><p>We are almost there. Now, we can connect to the server by psql and do some check, make sure our data are the latest.</p><h2 id="Step-6-Promote-the-Slave-to-Master-Like-a-King"><a href="#Step-6-Promote-the-Slave-to-Master-Like-a-King" class="headerlink" title="Step 6 - Promote the Slave to Master Like a King"></a>Step 6 - Promote the Slave to Master Like a King</h2><p>Finally, we still need to promote our slave postgresql server to master before we finish our database migration.</p><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pg_ctl <span class="literal">promote</span> -D</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;pre&gt;&lt;code&gt;To practice this guide, PostgreSQL version should be at least 9.6
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;TL-DR&quot;&gt;&lt;a href=&quot;#TL-DR&quot; class=&quot;headerlink&quot;
-      
-    
-    </summary>
-    
-      <category term="Server" scheme="https://www.oldcai.com/categories/Server/"/>
-    
-    
-      <category term="postgresql" scheme="https://www.oldcai.com/tags/postgresql/"/>
     
   </entry>
   
