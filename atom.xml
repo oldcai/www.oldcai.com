@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.oldcai.com/"/>
-  <updated>2020-11-16T03:00:01.821Z</updated>
+  <updated>2020-11-16T03:05:41.134Z</updated>
   <id>https://www.oldcai.com/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
+    <title>Why can&#39;t I trade options in TD Ameritrade?</title>
     <link href="https://www.oldcai.com/investing/td-ameritrade-uncleared-deposits/"/>
     <id>https://www.oldcai.com/investing/td-ameritrade-uncleared-deposits/</id>
-    <published>2020-11-16T02:36:55.272Z</published>
-    <updated>2020-11-16T03:00:01.821Z</updated>
+    <published>2020-11-16T02:37:26.000Z</published>
+    <updated>2020-11-16T03:05:41.134Z</updated>
     
     <content type="html"><![CDATA[<h2 id="Reasons-Why-Options-Trading-Not-Available"><a href="#Reasons-Why-Options-Trading-Not-Available" class="headerlink" title="Reasons Why Options Trading Not Available"></a>Reasons Why Options Trading Not Available</h2><p>There are two main reasons why your account cannot be used to buy options.</p><ol><li>Unsupported Account Type<ol><li>Trust accounts</li><li>529 education accounts</li><li>Pension plans</li></ol></li><li>Deposits are not cleared</li></ol><p>Options and most stocks priced under $5 a share are not able to trade before deposits are cleared.</p><h2 id="Check-Uncleared-Deposits"><a href="#Check-Uncleared-Deposits" class="headerlink" title="Check Uncleared Deposits"></a>Check Uncleared Deposits</h2><p>After confirming that the account type supports the options transaction, you can check the outstanding payment on the website.</p><h3 id="How-to-Check-Uncleared-Deposits"><a href="#How-to-Check-Uncleared-Deposits" class="headerlink" title="How to Check Uncleared Deposits"></a>How to Check Uncleared Deposits</h3><p>Click <a href="https://invest.ameritrade.com/grid/p/site#r=transfersActivity" target="_blank" rel="noopener">this link</a></p><p>Or find in the navigation bar as below.</p><pre><code>My Account &gt; Deposits &amp; Transfers &gt; Activity</code></pre><ol><li>Click &gt; Cash available for withdrawal</li><li>You’ll see &gt; Uncleared deposits</li></ol><p><img src="media/2020-11-16%20at%2010.18%20am.jpg" alt="2020-11-16 at 10.18 am"></p><p>You can wait until TD Ameritrade clears your deposits.</p><h2 id="How-Long-Does-It-Take-to-Clear"><a href="#How-Long-Does-It-Take-to-Clear" class="headerlink" title="How Long Does It Take to Clear"></a>How Long Does It Take to Clear</h2><p>According to the feedback from TD Ameritrade customer service, the timetable for receipt is as follows.</p><table><thead><tr><th style="text-align:center">Deposits Type</th><th style="text-align:center">Clearance Duration</th></tr></thead><tbody><tr><td style="text-align:center"><strong>electronic (ACH)</strong></td><td style="text-align:center">2-4 business days</td></tr><tr><td style="text-align:center"><strong>Checks</strong></td><td style="text-align:center">4-5 business days</td></tr><tr><td style="text-align:center"><strong>Wire</strong></td><td style="text-align:center">As soon as they post to your account</td></tr></tbody></table><p>If you cannot buy options or other ideal securities immediately after deposit but still afraid of losing time-sensitive opportunities, please work out your investment plan with the timetable above.</p>]]></content>
     
@@ -34,13 +34,17 @@
     
     </summary>
     
+      <category term="Options" scheme="https://www.oldcai.com/categories/Options/"/>
+    
+    
+      <category term="TD Ameritrade" scheme="https://www.oldcai.com/tags/TD-Ameritrade/"/>
     
   </entry>
   
   <entry>
     <title>为什么我的TD Ameritrade账号不能购买期权？</title>
-    <link href="https://www.oldcai.com/investing/td-ameritrade-uncleared-deposits-zhcn/"/>
-    <id>https://www.oldcai.com/investing/td-ameritrade-uncleared-deposits-zhcn/</id>
+    <link href="https://www.oldcai.com/investing/td-ameritrade-uncleared-deposits-zh-cn/"/>
+    <id>https://www.oldcai.com/investing/td-ameritrade-uncleared-deposits-zh-cn/</id>
     <published>2020-11-16T02:06:55.000Z</published>
     <updated>2020-11-16T02:53:54.468Z</updated>
     
@@ -278,9 +282,9 @@
       <category term="rust" scheme="https://www.oldcai.com/categories/%E6%95%99%E7%A8%8B/rust/"/>
     
     
-      <category term="actix" scheme="https://www.oldcai.com/tags/actix/"/>
-    
       <category term="docker" scheme="https://www.oldcai.com/tags/docker/"/>
+    
+      <category term="actix" scheme="https://www.oldcai.com/tags/actix/"/>
     
       <category term="rancher" scheme="https://www.oldcai.com/tags/rancher/"/>
     
