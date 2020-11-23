@@ -3,7 +3,40 @@
   
     
     <entry>
-      <title>Why can&#39;t I trade options in TD Ameritrade?</title>
+      <title>国内几家在线流媒体播放公司成长趋势比较</title>
+      <link href="/investing/cn-media-companies/"/>
+      <url>/investing/cn-media-companies/</url>
+      
+        <content type="html"><![CDATA[<h2 id="百度指数对比"><a href="#百度指数对比" class="headerlink" title="百度指数对比"></a>百度指数对比</h2><p>截止至2020-11-23为止，QQ音乐+酷狗音乐，网易云音乐，哔哩哔哩，爱奇艺，抖音+快手</p><p>这几家流媒体公司的百度指数如图：<br><img src="https://i.imgur.com/Qa1U3Bx.jpg" alt></p><h2 id="趋势分析"><a href="#趋势分析" class="headerlink" title="趋势分析"></a>趋势分析</h2><p>其中，爱奇艺的搜索量下降趋势明显。</p><p>B站目前看来热度还在上升，但是增长率已经放缓了。</p><p>音乐播放器（酷狗+QQ+网易）搜索都有缓慢下降的趋势，但老蔡又想不出其他头部音乐播放器，<br>所以推测应该是：近几年用户对于手机应用的搜索，已经不断从百度搜索转移到移动端应用商店里。</p><pre><code>整体来说两家的音乐播放器是旗鼓相当的。</code></pre><p>另外还有个有意思的发现是，疫情短暂降低了音乐应用的搜索量，却骤然提升了播剧的应用，如爱奇艺，但bilibili是先降后升并超过爱奇艺的增幅。</p><table><thead><tr><th style="text-align:center">应用</th><th style="text-align:center">影响</th></tr></thead><tbody><tr><td style="text-align:center"><strong>爱奇艺</strong></td><td style="text-align:center">骤升</td></tr><tr><td style="text-align:center"><strong>抖音+快手</strong></td><td style="text-align:center">骤升</td></tr><tr><td style="text-align:center"><strong>哔哩哔哩</strong></td><td style="text-align:center">先降后大幅增加</td></tr><tr><td style="text-align:center"><strong>QQ音乐+酷狗</strong></td><td style="text-align:center">先降后恢复</td></tr><tr><td style="text-align:center"><strong>网易云音乐</strong></td><td style="text-align:center">先降后恢复</td></tr></tbody></table><h2 id="增长预期"><a href="#增长预期" class="headerlink" title="增长预期"></a>增长预期</h2><p>目前国内的IP产业布局最前沿的就是这几个公司，预计在未来知识产权时代中，受益的也是它们。</p><p>而在ARK基金中，预计到2024年为止，美国在线流媒体音乐播放会占据整个音乐市场的更大份额，并抬高整个音乐市场的规模。美股中的Spotify等股票的预计年化增长率是18%</p><p><img src="https://i.imgur.com/wO2E2e6.jpg" alt></p><p>相信在重视版权后的中国，这样的增长也是可以预期的。</p><p>另外，ARK的2020年的展望中还能看出，未来几年，美国的在线点播媒体也将加速替代传统电视媒体，预计年化增长率有惊人的51%</p><p><img src="https://i.imgur.com/MelOUXv.jpg" alt></p><p>国内随着机顶盒和智能电视的普及，相信相关产业的升级换代甚至可以比美国更快。而拥有IP，制造内容的公司将会获得更高的利润。</p><p>综合搜索趋势、行业趋势，老蔡选择投入更多哔哩哔哩和腾讯音乐。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 投资 </category>
+          
+          <category> 美股 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 中概股 </tag>
+            
+            <tag> 腾讯音乐 </tag>
+            
+            <tag> 哔哩哔哩 </tag>
+            
+            <tag> 网易 </tag>
+            
+            <tag> 爱奇艺 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>Why Can&#39;t I Trade Options in Td Ameritrade?</title>
       <link href="/investing/td-ameritrade-uncleared-deposits/"/>
       <url>/investing/td-ameritrade-uncleared-deposits/</url>
       
@@ -49,7 +82,7 @@
     </entry>
     
     <entry>
-      <title>7个方法帮你提高战略执行</title>
+      <title>7个方法帮你提高战略的执行力</title>
       <link href="/strategy/how-to-improve-strategy-execution/"/>
       <url>/strategy/how-to-improve-strategy-execution/</url>
       
@@ -651,9 +684,9 @@
             
             <tag> Hexo </tag>
             
-            <tag> Ghost </tag>
-            
             <tag> WordPress </tag>
+            
+            <tag> Ghost </tag>
             
         </tags>
       
@@ -2757,9 +2790,9 @@
             
             <tag> C++ </tag>
             
-            <tag> 程序崩溃 </tag>
-            
             <tag> QT </tag>
+            
+            <tag> 程序崩溃 </tag>
             
             <tag> OpenSSL </tag>
             
@@ -3315,9 +3348,9 @@
       
         <tags>
             
-            <tag> 打字 </tag>
-            
             <tag> 论文 </tag>
+            
+            <tag> 打字 </tag>
             
         </tags>
       
@@ -3340,8 +3373,6 @@
       
         <tags>
             
-            <tag> 论文 </tag>
-            
             <tag> SQL2000 </tag>
             
             <tag> VB </tag>
@@ -3349,6 +3380,8 @@
             <tag> 凑字数 </tag>
             
             <tag> 小型超市管理系统 </tag>
+            
+            <tag> 论文 </tag>
             
         </tags>
       
