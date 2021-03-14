@@ -9,14 +9,14 @@
     <meta name="description" content="介绍我有一个VPS已经运行了将近两年，其磁盘使用率已超过90％。 因为没有什么业务在上面，所以也不想增加预算。 于是，我开始研究占用磁盘的目录，并最终找出了是谁占用了这么多磁盘。 不过好在清理它们没啥风险，并且也不费劲。 下面是清空磁盘的命令: 命令第一个命令由于长时间运行，系统可能具有数十GB的日志，让日记服务的大小保持在特定大小是个好主意。 1journalctl --vacuum-size=">
 <meta name="keywords" content="CentOS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2个命令清理至少10GB CentOS磁盘">
+<meta property="og:title" content="怎样清理CentOS磁盘？3个命令清理至少10GB CentOS空间">
 <meta property="og:url" content="https://www.oldcai.com/linux/free-centos-disk-cn/index.html">
 <meta property="og:site_name" content="老蔡博客">
 <meta property="og:description" content="介绍我有一个VPS已经运行了将近两年，其磁盘使用率已超过90％。 因为没有什么业务在上面，所以也不想增加预算。 于是，我开始研究占用磁盘的目录，并最终找出了是谁占用了这么多磁盘。 不过好在清理它们没啥风险，并且也不费劲。 下面是清空磁盘的命令: 命令第一个命令由于长时间运行，系统可能具有数十GB的日志，让日记服务的大小保持在特定大小是个好主意。 1journalctl --vacuum-size=">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-08-29T11:15:19.531Z">
+<meta property="og:updated_time" content="2021-02-27T05:55:37.397Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2个命令清理至少10GB CentOS磁盘">
+<meta name="twitter:title" content="怎样清理CentOS磁盘？3个命令清理至少10GB CentOS空间">
 <meta name="twitter:description" content="介绍我有一个VPS已经运行了将近两年，其磁盘使用率已超过90％。 因为没有什么业务在上面，所以也不想增加预算。 于是，我开始研究占用磁盘的目录，并最终找出了是谁占用了这么多磁盘。 不过好在清理它们没啥风险，并且也不费劲。 下面是清空磁盘的命令: 命令第一个命令由于长时间运行，系统可能具有数十GB的日志，让日记服务的大小保持在特定大小是个好主意。 1journalctl --vacuum-size=">
     
     
@@ -37,7 +37,7 @@
         
     
     <!-- title -->
-    <title>2个命令清理至少10GB CentOS磁盘</title>
+    <title>怎样清理CentOS磁盘？3个命令清理至少10GB CentOS空间</title>
     <!-- styles -->
     <link rel="stylesheet" href="/css/style.css">
     <!-- persian styles -->
@@ -92,20 +92,20 @@
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/linux/free-centos-disk-cn/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://www.oldcai.com/linux/free-centos-disk-cn/&text=2个命令清理至少10GB CentOS磁盘"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/linux/free-centos-disk-cn/&title=2个命令清理至少10GB CentOS磁盘"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/linux/free-centos-disk-cn/&is_video=false&description=2个命令清理至少10GB CentOS磁盘"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=2个命令清理至少10GB CentOS磁盘&body=Check out this article: https://www.oldcai.com/linux/free-centos-disk-cn/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://www.oldcai.com/linux/free-centos-disk-cn/&title=2个命令清理至少10GB CentOS磁盘"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://www.oldcai.com/linux/free-centos-disk-cn/&title=2个命令清理至少10GB CentOS磁盘"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/linux/free-centos-disk-cn/&title=2个命令清理至少10GB CentOS磁盘"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://www.oldcai.com/linux/free-centos-disk-cn/&title=2个命令清理至少10GB CentOS磁盘"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/linux/free-centos-disk-cn/&name=2个命令清理至少10GB CentOS磁盘&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://www.oldcai.com/linux/free-centos-disk-cn/&text=怎样清理CentOS磁盘？3个命令清理至少10GB CentOS空间"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/linux/free-centos-disk-cn/&title=怎样清理CentOS磁盘？3个命令清理至少10GB CentOS空间"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/linux/free-centos-disk-cn/&is_video=false&description=怎样清理CentOS磁盘？3个命令清理至少10GB CentOS空间"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=怎样清理CentOS磁盘？3个命令清理至少10GB CentOS空间&body=Check out this article: https://www.oldcai.com/linux/free-centos-disk-cn/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://www.oldcai.com/linux/free-centos-disk-cn/&title=怎样清理CentOS磁盘？3个命令清理至少10GB CentOS空间"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://www.oldcai.com/linux/free-centos-disk-cn/&title=怎样清理CentOS磁盘？3个命令清理至少10GB CentOS空间"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/linux/free-centos-disk-cn/&title=怎样清理CentOS磁盘？3个命令清理至少10GB CentOS空间"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://www.oldcai.com/linux/free-centos-disk-cn/&title=怎样清理CentOS磁盘？3个命令清理至少10GB CentOS空间"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/linux/free-centos-disk-cn/&name=怎样清理CentOS磁盘？3个命令清理至少10GB CentOS空间&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#介绍"><span class="toc-number">1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#命令"><span class="toc-number">2.</span> <span class="toc-text">命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#第一个命令"><span class="toc-number">2.1.</span> <span class="toc-text">第一个命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第二个命令"><span class="toc-number">2.2.</span> <span class="toc-text">第二个命令</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#介绍"><span class="toc-number">1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#命令"><span class="toc-number">2.</span> <span class="toc-text">命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#第一个命令"><span class="toc-number">2.1.</span> <span class="toc-text">第一个命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第二个命令"><span class="toc-number">2.2.</span> <span class="toc-text">第二个命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第三个命令"><span class="toc-number">2.3.</span> <span class="toc-text">第三个命令</span></a></li></ol></li></ol>
     </div>
   </span>
 </div>
@@ -117,7 +117,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        2个命令清理至少10GB CentOS磁盘
+        怎样清理CentOS磁盘？3个命令清理至少10GB CentOS空间
     </h1>
 
 
@@ -160,6 +160,9 @@
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">journalctl <span class="attribute">--vacuum-size</span>=1G</span><br></pre></td></tr></table></figure>
 <h3 id="第二个命令"><a href="#第二个命令" class="headerlink" title="第二个命令"></a>第二个命令</h3><p>清理yum缓存，这个在我这边也超过10GB。</p>
 <figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum clean <span class="keyword">all</span></span><br></pre></td></tr></table></figure>
+<h3 id="第三个命令"><a href="#第三个命令" class="headerlink" title="第三个命令"></a>第三个命令</h3><p>清理老内核包</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span>-cleanup <span class="comment">--oldkernels --count=1</span></span><br></pre></td></tr></table></figure>
+<p>运行了几年的系统，通常也能清理出几百M。</p>
 <p>运行这些命令后，我的VPS系统释放了大约12GB的空间，然后又重新满血复活。</p>
 
   </div>
@@ -192,21 +195,21 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#介绍"><span class="toc-number">1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#命令"><span class="toc-number">2.</span> <span class="toc-text">命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#第一个命令"><span class="toc-number">2.1.</span> <span class="toc-text">第一个命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第二个命令"><span class="toc-number">2.2.</span> <span class="toc-text">第二个命令</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#介绍"><span class="toc-number">1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#命令"><span class="toc-number">2.</span> <span class="toc-text">命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#第一个命令"><span class="toc-number">2.1.</span> <span class="toc-text">第一个命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第二个命令"><span class="toc-number">2.2.</span> <span class="toc-text">第二个命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第三个命令"><span class="toc-number">2.3.</span> <span class="toc-text">第三个命令</span></a></li></ol></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/linux/free-centos-disk-cn/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://www.oldcai.com/linux/free-centos-disk-cn/&text=2个命令清理至少10GB CentOS磁盘"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/linux/free-centos-disk-cn/&title=2个命令清理至少10GB CentOS磁盘"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/linux/free-centos-disk-cn/&is_video=false&description=2个命令清理至少10GB CentOS磁盘"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=2个命令清理至少10GB CentOS磁盘&body=Check out this article: https://www.oldcai.com/linux/free-centos-disk-cn/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://www.oldcai.com/linux/free-centos-disk-cn/&title=2个命令清理至少10GB CentOS磁盘"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://www.oldcai.com/linux/free-centos-disk-cn/&title=2个命令清理至少10GB CentOS磁盘"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/linux/free-centos-disk-cn/&title=2个命令清理至少10GB CentOS磁盘"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://www.oldcai.com/linux/free-centos-disk-cn/&title=2个命令清理至少10GB CentOS磁盘"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/linux/free-centos-disk-cn/&name=2个命令清理至少10GB CentOS磁盘&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://www.oldcai.com/linux/free-centos-disk-cn/&text=怎样清理CentOS磁盘？3个命令清理至少10GB CentOS空间"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/linux/free-centos-disk-cn/&title=怎样清理CentOS磁盘？3个命令清理至少10GB CentOS空间"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/linux/free-centos-disk-cn/&is_video=false&description=怎样清理CentOS磁盘？3个命令清理至少10GB CentOS空间"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=怎样清理CentOS磁盘？3个命令清理至少10GB CentOS空间&body=Check out this article: https://www.oldcai.com/linux/free-centos-disk-cn/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://www.oldcai.com/linux/free-centos-disk-cn/&title=怎样清理CentOS磁盘？3个命令清理至少10GB CentOS空间"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://www.oldcai.com/linux/free-centos-disk-cn/&title=怎样清理CentOS磁盘？3个命令清理至少10GB CentOS空间"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/linux/free-centos-disk-cn/&title=怎样清理CentOS磁盘？3个命令清理至少10GB CentOS空间"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://www.oldcai.com/linux/free-centos-disk-cn/&title=怎样清理CentOS磁盘？3个命令清理至少10GB CentOS空间"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/linux/free-centos-disk-cn/&name=怎样清理CentOS磁盘？3个命令清理至少10GB CentOS空间&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
