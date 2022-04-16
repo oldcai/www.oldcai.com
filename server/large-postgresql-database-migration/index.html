@@ -9,14 +9,14 @@
     <meta name="description" content="To practice this guide, PostgreSQL version should be at least 9.6 TL;DR:First, setup a master-slave replication for PostgreSQL.Then switch the slave server to master. Longer StorySituationIn our case,">
 <meta name="keywords" content="postgresql">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud">
+<meta property="og:title" content="Migrate Postgresql Database Without Downtime">
 <meta property="og:url" content="https://www.oldcai.com/server/large-postgresql-database-migration/index.html">
 <meta property="og:site_name" content="老蔡博客">
 <meta property="og:description" content="To practice this guide, PostgreSQL version should be at least 9.6 TL;DR:First, setup a master-slave replication for PostgreSQL.Then switch the slave server to master. Longer StorySituationIn our case,">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-23T18:52:37.000Z">
+<meta property="og:updated_time" content="2022-03-14T23:45:11.291Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud">
+<meta name="twitter:title" content="Migrate Postgresql Database Without Downtime">
 <meta name="twitter:description" content="To practice this guide, PostgreSQL version should be at least 9.6 TL;DR:First, setup a master-slave replication for PostgreSQL.Then switch the slave server to master. Longer StorySituationIn our case,">
     
     
@@ -37,7 +37,7 @@
         
     
     <!-- title -->
-    <title>Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud</title>
+    <title>Migrate Postgresql Database Without Downtime</title>
     <!-- styles -->
     <link rel="stylesheet" href="/css/style.css">
     <!-- persian styles -->
@@ -92,15 +92,15 @@
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/server/large-postgresql-database-migration/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://www.oldcai.com/server/large-postgresql-database-migration/&text=Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/server/large-postgresql-database-migration/&title=Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/server/large-postgresql-database-migration/&is_video=false&description=Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud&body=Check out this article: https://www.oldcai.com/server/large-postgresql-database-migration/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://www.oldcai.com/server/large-postgresql-database-migration/&title=Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://www.oldcai.com/server/large-postgresql-database-migration/&title=Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/server/large-postgresql-database-migration/&title=Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://www.oldcai.com/server/large-postgresql-database-migration/&title=Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/server/large-postgresql-database-migration/&name=Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://www.oldcai.com/server/large-postgresql-database-migration/&text=Migrate Postgresql Database Without Downtime"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/server/large-postgresql-database-migration/&title=Migrate Postgresql Database Without Downtime"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/server/large-postgresql-database-migration/&is_video=false&description=Migrate Postgresql Database Without Downtime"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Migrate Postgresql Database Without Downtime&body=Check out this article: https://www.oldcai.com/server/large-postgresql-database-migration/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://www.oldcai.com/server/large-postgresql-database-migration/&title=Migrate Postgresql Database Without Downtime"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://www.oldcai.com/server/large-postgresql-database-migration/&title=Migrate Postgresql Database Without Downtime"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/server/large-postgresql-database-migration/&title=Migrate Postgresql Database Without Downtime"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://www.oldcai.com/server/large-postgresql-database-migration/&title=Migrate Postgresql Database Without Downtime"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/server/large-postgresql-database-migration/&name=Migrate Postgresql Database Without Downtime&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -117,7 +117,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud
+        Migrate Postgresql Database Without Downtime
     </h1>
 
 
@@ -183,6 +183,7 @@
 <p>We are almost there. Now, we can connect to the server by psql and do some check, make sure our data are the latest.</p>
 <h2 id="Step-6-Promote-the-Slave-to-Master-Like-a-King"><a href="#Step-6-Promote-the-Slave-to-Master-Like-a-King" class="headerlink" title="Step 6 - Promote the Slave to Master Like a King"></a>Step 6 - Promote the Slave to Master Like a King</h2><p>Finally, we still need to promote our slave postgresql server to master before we finish our database migration.</p>
 <figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pg_ctl <span class="literal">promote</span> -D</span><br></pre></td></tr></table></figure>
+
   </div>
 </article>
 
@@ -219,15 +220,15 @@
     <div id="share-footer" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/server/large-postgresql-database-migration/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://www.oldcai.com/server/large-postgresql-database-migration/&text=Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/server/large-postgresql-database-migration/&title=Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/server/large-postgresql-database-migration/&is_video=false&description=Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud&body=Check out this article: https://www.oldcai.com/server/large-postgresql-database-migration/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://www.oldcai.com/server/large-postgresql-database-migration/&title=Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://www.oldcai.com/server/large-postgresql-database-migration/&title=Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/server/large-postgresql-database-migration/&title=Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://www.oldcai.com/server/large-postgresql-database-migration/&title=Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/server/large-postgresql-database-migration/&name=Better Way to Migrate an In-Production PostgreSQL Database to a Different Data Center or Cloud&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://www.oldcai.com/server/large-postgresql-database-migration/&text=Migrate Postgresql Database Without Downtime"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/server/large-postgresql-database-migration/&title=Migrate Postgresql Database Without Downtime"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/server/large-postgresql-database-migration/&is_video=false&description=Migrate Postgresql Database Without Downtime"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Migrate Postgresql Database Without Downtime&body=Check out this article: https://www.oldcai.com/server/large-postgresql-database-migration/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://www.oldcai.com/server/large-postgresql-database-migration/&title=Migrate Postgresql Database Without Downtime"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://www.oldcai.com/server/large-postgresql-database-migration/&title=Migrate Postgresql Database Without Downtime"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/server/large-postgresql-database-migration/&title=Migrate Postgresql Database Without Downtime"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://www.oldcai.com/server/large-postgresql-database-migration/&title=Migrate Postgresql Database Without Downtime"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/server/large-postgresql-database-migration/&name=Migrate Postgresql Database Without Downtime&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -245,7 +246,7 @@
         
         <footer id="footer">
   <div class="footer-left">
-    Copyright &copy; 2021 oldcai
+    Copyright &copy; 2022 oldcai
   </div>
   <div class="footer-right">
     <nav>
