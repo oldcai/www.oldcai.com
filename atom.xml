@@ -68,35 +68,6 @@
   </entry>
   
   <entry>
-    <title>赌川普赢，赔率接近3倍</title>
-    <link href="https://www.oldcai.com/politics/trump-win-token/"/>
-    <id>https://www.oldcai.com/politics/trump-win-token/</id>
-    <published>2020-10-16T04:42:44.000Z</published>
-    <updated>2020-10-17T06:53:00.262Z</updated>
-    
-    <content type="html"><![CDATA[<p>按我个人对政治肤浅的见解，川普这次连任应该概率是很大的。</p><p>在和一些小朋友探讨后，他们怂恿我去买一个基于加密货币的金融衍生品，一个叫做TRUMPWIN的token。看了一下，赔率是1/0.361=2.77的样子</p><p><a href="https://support.poloniex.com/hc/en-us/articles/360052070213-TRUMPWIN-TRUMPLOSE-Are-Now-on-Poloniex" target="_blank" rel="noopener">点这里看TRUMPWIN token介绍</a></p><p><a href="https://poloniex.com/exchange/USDT_TRUMPWIN" target="_blank" rel="noopener">点这里进交易页面</a></p><p>其实在传统博彩网站上，早就有类似的盘口。</p><p>参考<a href="https://www.oddschecker.com/politics/us-politics/us-presidential-election-2020/winner" target="_blank" rel="noopener">oddschecker</a>上的押注情况，川普目前赔率在2.88，拜登在1.4</p><h2 id="这就很有趣了"><a href="#这就很有趣了" class="headerlink" title="这就很有趣了"></a>这就很有趣了</h2><p>即使川普拜登两边胜率在50%：50%</p><p>按凯利公式计算，投注比例32.01%，也有13.35%收益率。</p><p>而到大选还只有不到一个月了，这样的收益期望相当可观。</p><p>当然，选举结果这种东西有高不确定性，小赌怡情就好。</p><h2 id="更远一点的思考"><a href="#更远一点的思考" class="headerlink" title="更远一点的思考"></a>更远一点的思考</h2><p>这个偏差是什么原因导致的？</p><p>因为我所掌握的信息是被扭曲的（实际上川普没那么大胜算，甚至快输了）？</p><p>还是投注的人来自的社会圈子有共性（都是不支持川普的人）？</p><p>或者是媒体在一次次民调中的预测所起到的影响导致的？</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;按我个人对政治肤浅的见解，川普这次连任应该概率是很大的。&lt;/p&gt;
-&lt;p&gt;在和一些小朋友探讨后，他们怂恿我去买一个基于加密货币的金融衍生品，一个叫做TRUMPWIN的token。看了一下，赔率是1/0.361=2.77的样子&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://s
-      
-    
-    </summary>
-    
-      <category term="赌博" scheme="https://www.oldcai.com/categories/%E8%B5%8C%E5%8D%9A/"/>
-    
-    
-      <category term="token" scheme="https://www.oldcai.com/tags/token/"/>
-    
-      <category term="Trump" scheme="https://www.oldcai.com/tags/Trump/"/>
-    
-  </entry>
-  
-  <entry>
     <title>同一GitHub账号GitHub Pages绑定多个域名操作步骤</title>
     <link href="https://www.oldcai.com/hexo/github-pages/"/>
     <id>https://www.oldcai.com/hexo/github-pages/</id>
@@ -570,6 +541,36 @@
       <category term="Hexo" scheme="https://www.oldcai.com/tags/Hexo/"/>
     
       <category term="WordPress" scheme="https://www.oldcai.com/tags/WordPress/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>正则表达式进阶，零宽正回顾断言，零宽负回顾断言</title>
+    <link href="https://www.oldcai.com/programing/regex/"/>
+    <id>https://www.oldcai.com/programing/regex/</id>
+    <published>2018-10-21T13:19:01.000Z</published>
+    <updated>2018-10-27T12:22:24.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>零宽断言，表示匹配字符的时候再添加一些定位条件，使匹配更精准，但又不匹配到字符串。</p><table><thead><tr><th style="text-align:center">举例</th><th style="text-align:center">解释</th></tr></thead><tbody><tr><td style="text-align:center"><code>\w+(?=ing)</code></td><td style="text-align:center">匹配以ing结尾的单词前缀（不包括ing），<code>talking</code>匹配到<code>talk</code></td></tr><tr><td style="text-align:center"><code>\w+(?!ing)</code></td><td style="text-align:center">匹配不是以ing结尾的多个字符，<code>do talking</code>匹配到<code>do</code></td></tr><tr><td style="text-align:center"><code>(?&lt;=re)\w+</code></td><td style="text-align:center">匹配以re开头的多个字符（不包括re），<code>redo</code>匹配到<code>do</code></td></tr><tr><td style="text-align:center"><code>(?&lt;!re)\w+</code></td><td style="text-align:center">匹配排除re开头的单词外的其他单词，<code>refreshing wether</code>匹配到<code>weather</code></td></tr></tbody></table><p>组合起来使用<br><code>(?&lt;=\s)\d+(?=\s)</code> 匹配两边是空白符的数字，不包括空白符，相当于Vim中在单词上按下<code>*</code>号的结果</p><p>另外，推荐一个测试正则表达式的网站: <a href="https://regexr.com/" target="_blank" rel="noopener">Regexr</a><br>regex，是正则regular expression的缩写，加上r就当是被正则坑的人的意思吧😂</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;零宽断言，表示匹配字符的时候再添加一些定位条件，使匹配更精准，但又不匹配到字符串。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;举例&lt;/th&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;解释
+      
+    
+    </summary>
+    
+      <category term="编程" scheme="https://www.oldcai.com/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    
+      <category term="代码高亮" scheme="https://www.oldcai.com/tags/%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE/"/>
     
   </entry>
   
