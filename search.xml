@@ -78,9 +78,9 @@
       
         <tags>
             
-            <tag> docker </tag>
-            
             <tag> actix </tag>
+            
+            <tag> docker </tag>
             
             <tag> rancher </tag>
             
@@ -493,9 +493,9 @@
             
             <tag> Hexo </tag>
             
-            <tag> WordPress </tag>
-            
             <tag> Ghost </tag>
+            
+            <tag> WordPress </tag>
             
         </tags>
       
@@ -655,11 +655,11 @@
     </entry>
     
     <entry>
-      <title>你的文件值多少钱</title>
+      <title>文件值多少钱</title>
       <link href="/archives/1150/"/>
       <url>/archives/1150/</url>
       
-        <content type="html"><![CDATA[<p><img src="/images/2017/05/1493751258.jpeg" alt></p><p>这个问题需要站在两个角度来看：文件丢失之前，文件丢失之后。比如和家人的照片，丢失之前可能无所谓，换一块几百块钱的硬盘都不一定舍得；丢失之后，可能修理店喊1000块也想恢复过来。</p><p>国外有一家专门做备份的公司，叫BackBlaze。</p><p>之前还是因为在挑选服务器硬盘品牌的时候，找到他们的一篇<a href="https://www.backblaze.com/blog/what-hard-drive-should-i-buy/" target="_blank" rel="noopener">硬盘平均寿命统计</a>的文章，当时感觉他们至少是在对待数据安全性和降低成本上面比别人更认真，就上了贼船。</p><p>又到了一年一度交备份年金的时候了，他们的服务费真的不算贵，每年每台机器$50，但是，但是这不是美元汇率渐涨吗。。好吧，好吧，实话是：但是，50刀已经够吃一顿好吃的了⁄(⁄</p><p>⁄•⁄ω⁄•⁄</p><p>⁄)⁄⁄</p><h2 id="真的需要继续订购BackBlaze吗"><a href="#真的需要继续订购BackBlaze吗" class="headerlink" title="真的需要继续订购BackBlaze吗"></a>真的需要继续订购BackBlaze吗</h2><h3 id="不订购的理由挺多"><a href="#不订购的理由挺多" class="headerlink" title="不订购的理由挺多"></a>不订购的理由挺多</h3><ol><li>过去的几年老蔡好像没有发生任何数据丢失方面的问题，去年买了BackBlaze的备份服务后，backblaze.com网站都没怎么上过。</li><li>老蔡平时用TimeMachine备份数据，就算硬盘坏了，应该也不会出什么大乱子吧。</li><li>代码什么的，基本都会提交到git服务器，所以就算失窃了，也不会丢失太多重要的东西。</li></ol><p>但是老蔡还是继续订购了。并且写下这篇博文，避免以后再次纠结浪费时间。</p><h3 id="继续订购的理由只需要一个"><a href="#继续订购的理由只需要一个" class="headerlink" title="继续订购的理由只需要一个"></a>继续订购的理由只需要一个</h3><ol><li>数据一旦丢失，即使可以通过各种方法找回来，但是至少需要半天时间。</li></ol><p>假设$50是老蔡半天的收入，以后这个占比可能更小，</p><p>而以后多浪费半天的时间在没有意义的事情上面，是极其不划算的。</p><p>这是最主要的原因，当然，也列一下一些其他的理由，以便说服将来的自己。</p><p><img src="/images/2017/05/1493751829_1.jpeg" alt></p><ol><li>作为备选方案，即使家中失窃，也能保证不丢失任何数据。</li></ol><p><img src="/images/2017/05/1493751932_1.jpeg" alt></p><ol><li>想要有个说走就走的旅行？再也不用在临行前还在等待路上可能要用到的办公文件从iMac里拷贝到rMBP里了。</li></ol><p>想明白了这些，老蔡也就不再纠结了，希望以后碰到类似问题的时候重新回忆起这个总结。毕竟人一生不长，就30000天。</p><h2 id="你用的什么备份方案呢？"><a href="#你用的什么备份方案呢？" class="headerlink" title="你用的什么备份方案呢？"></a>你用的什么备份方案呢？</h2><p>通过这个邀请链接注册，可以免费获赠一个月试用：<a href="https://secure.backblaze.com/r/01lm95" target="_blank" rel="noopener">邀请链接</a> 等你觉得满意购买后，我也会有</p><p>1 个月的奖励。</p><p>觉得BackBlaze怎么样？来免费试试<a href="https://secure.backblaze.com/r/01lm95" target="_blank" rel="noopener">BackBlaze</a>吧？</p>]]></content>
+        <content type="html"><![CDATA[<p><img src="/images/2017/05/1493751258.jpeg" alt></p><p>这个问题需要站在两个角度来看：文件丢失之前，文件丢失之后。比如和家人的照片，丢失之前可能无所谓，换一块几百块钱的硬盘都不一定舍得；丢失之后，可能修理店喊1000块也想恢复过来。</p><p>国外有一家专门做备份的公司，叫BackBlaze。</p><p>之前还是因为在挑选服务器硬盘品牌的时候，找到他们的一篇<a href="https://www.backblaze.com/blog/what-hard-drive-should-i-buy/" target="_blank" rel="noopener">硬盘平均寿命统计</a>的文章，当时感觉他们至少是在对待数据安全性和降低成本上面比别人更认真，就上了贼船。</p><p>又到了一年一度交备份年金的时候了，他们的服务费真的不算贵，每年每台机器$50，但是，但是这不是美元汇率渐涨吗。。好吧，好吧，实话是：但是，50刀已经够吃一顿好吃的了</p><h2 id="真的需要继续订购BackBlaze吗"><a href="#真的需要继续订购BackBlaze吗" class="headerlink" title="真的需要继续订购BackBlaze吗"></a>真的需要继续订购BackBlaze吗</h2><h3 id="不订购的理由挺多"><a href="#不订购的理由挺多" class="headerlink" title="不订购的理由挺多"></a>不订购的理由挺多</h3><ol><li>过去的几年老蔡好像没有发生任何数据丢失方面的问题，去年买了BackBlaze的备份服务后，backblaze.com网站都没怎么上过。</li><li>老蔡平时用TimeMachine备份数据，就算硬盘坏了，应该也不会出什么大乱子吧。</li><li>代码什么的，基本都会提交到git服务器，所以就算失窃了，也不会丢失太多重要的东西。</li></ol><p>但是老蔡还是继续订购了。并且写下这篇博文，避免以后再次纠结浪费时间。</p><h3 id="继续订购的理由只需要一个"><a href="#继续订购的理由只需要一个" class="headerlink" title="继续订购的理由只需要一个"></a>继续订购的理由只需要一个</h3><ol><li>数据一旦丢失，即使可以通过各种方法找回来，但是至少需要半天时间。</li></ol><p>假设$50是老蔡半天的收入，以后这个占比可能更小，</p><p>而以后多浪费半天的时间在没有意义的事情上面，是极其不划算的。</p><p>这是最主要的原因，当然，也列一下一些其他的理由，以便说服将来的自己。</p><p><img src="/images/2017/05/1493751829_1.jpeg" alt></p><ol><li>作为备选方案，即使家中失窃，也能保证不丢失任何数据。</li></ol><p><img src="/images/2017/05/1493751932_1.jpeg" alt></p><ol><li>想要有个说走就走的旅行？再也不用在临行前还在等待路上可能要用到的办公文件从iMac里拷贝到rMBP里了。</li></ol><p>想明白了这些，老蔡也就不再纠结了，希望以后碰到类似问题的时候重新回忆起这个总结。毕竟人一生不长，就30000天。</p><h2 id="你用的什么备份方案呢？"><a href="#你用的什么备份方案呢？" class="headerlink" title="你用的什么备份方案呢？"></a>你用的什么备份方案呢？</h2><p>通过这个邀请链接注册，可以免费获赠一个月试用：<a href="https://secure.backblaze.com/r/01lm95" target="_blank" rel="noopener">邀请链接</a> 等你觉得满意购买后，我也会有</p><p>1 个月的奖励。</p><p>觉得BackBlaze怎么样？来免费试试<a href="https://secure.backblaze.com/r/01lm95" target="_blank" rel="noopener">BackBlaze</a>吧？</p>]]></content>
       
       
       <categories>
