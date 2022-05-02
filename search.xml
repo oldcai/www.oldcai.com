@@ -3,17 +3,6 @@
   
     
     <entry>
-      <title>成长的基准</title>
-      <link href="/random-thoughts/benchmark/"/>
-      <url>/random-thoughts/benchmark/</url>
-      
-        <content type="html"><![CDATA[<p>我们总是谈到个人成长，每个人的标准不同。</p><p>一个成长到比较高程度的人应该是什么样的？</p><p>中国传统价值的标杆，是仁义礼智信。</p><p>但这个标杆，只是道，而不是术。</p><p>虽然说有道无术，术尚可求也，有术无道，止于术。</p><p>但就算道和术都明白了也不一定能做的好。就时间管理来说，做好的人也只是寥寥。</p><p>老蔡给自己定义的成长的维度有四个：</p><ul><li>明确方向</li><li>掌握方法</li><li>掌控欲望</li><li>坚持行动</li></ul><p>看清方向，是中国传统的道；<br>西方哲学更注重方法，包括法和术，细分到各个学科的方法论，技术，学术。</p><p>人心人性，总是缺乏恒心。源自于欲望就像野火，燎燃容易，熄灭的也快。</p><p>而行动力更在心理层面之外。如果摒弃了行动，明白所有道理也是无用。<br>王小波读萧伯纳的时候，感慨自己不能做一个一无所能，就能明辨是非的人，大概就是这样吧。<br>而如果坚持行动，即使不明白大道理，也有概率让这个世界变得不一样。</p><p>明确的方向，科学的方法，平和的心态，持续的行动。这是我幸福感的源泉。</p>]]></content>
-      
-      
-      
-    </entry>
-    
-    <entry>
       <title>Migrate Postgresql Database Without Downtime</title>
       <link href="/server/large-postgresql-database-migration/"/>
       <url>/server/large-postgresql-database-migration/</url>
@@ -210,6 +199,23 @@
             <tag> tokio </tag>
             
         </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>成长的基准</title>
+      <link href="/random-thoughts/benchmark/"/>
+      <url>/random-thoughts/benchmark/</url>
+      
+        <content type="html"><![CDATA[<p>我们总是谈到个人成长，每个人的标准不同。</p><p>一个成长到比较高程度的人应该是什么样的？</p><p>中国传统价值的标杆，是仁义礼智信。</p><p>但这个标杆，只是道，而不是术。</p><p>虽然说有道无术，术尚可求也，有术无道，止于术。</p><p>但就算道和术都明白了也不一定能做的好。就时间管理来说，做好的人也只是寥寥。</p><p>老蔡给自己定义的成长的维度有四个：</p><ul><li>明确方向</li><li>掌握方法</li><li>掌控欲望</li><li>坚持行动</li></ul><p>看清方向，是中国传统的道；<br>西方哲学更注重方法，包括法和术，细分到各个学科的方法论，技术，学术。</p><p>人心人性，总是缺乏恒心。源自于欲望就像野火，燎燃容易，熄灭的也快。</p><p>而行动力更在心理层面之外。如果摒弃了行动，明白所有道理也是无用。<br>王小波读萧伯纳的时候，感慨自己不能做一个一无所能，就能明辨是非的人，大概就是这样吧。<br>而如果坚持行动，即使不明白大道理，也有概率让这个世界变得不一样。</p><p>明确的方向，科学的方法，平和的心态，持续的行动。这是我幸福感的源泉。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 思考 </category>
+          
+      </categories>
+      
       
     </entry>
     
