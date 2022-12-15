@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <!-- so meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="今天老蔡在linux的VPS上面安装了Kloxo，想直接执行PHP脚本，但苦于找不到PHP路径，所以find了一下，终于找到了。Kloxo中，默认安装的PHP可执行文件路径为 /usr/local/lxlabs/ext/php/php 在Kloxo中设置默认php参数，则应该在目录 /usr/local/lxlabs/ext/php/etc 中，修改php.ini 值得注意的是，修改了php.in">
-<meta name="keywords" content="PHP,Kloxo,路径">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="今天老蔡在linux的VPS上面安装了Kloxo，想直接执行PHP脚本，但苦于找不到PHP路径，所以find了一下，终于找到了。Kloxo中，默认安装的PHP可执行文件路径为 &#x2F;usr&#x2F;local&#x2F;lxlabs&#x2F;ext&#x2F;php&#x2F;php 在Kloxo中设置默认php参数，则应该在目录 &#x2F;usr&#x2F;local&#x2F;lx">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Kloxo中的php路径">
-<meta property="og:url" content="https://www.oldcai.com/archives/251/index.html">
+<meta property="og:url" content="https://www.oldcai.com/archives/251/">
 <meta property="og:site_name" content="老蔡博客">
-<meta property="og:description" content="今天老蔡在linux的VPS上面安装了Kloxo，想直接执行PHP脚本，但苦于找不到PHP路径，所以find了一下，终于找到了。Kloxo中，默认安装的PHP可执行文件路径为 /usr/local/lxlabs/ext/php/php 在Kloxo中设置默认php参数，则应该在目录 /usr/local/lxlabs/ext/php/etc 中，修改php.ini 值得注意的是，修改了php.in">
-<meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-23T14:45:53.000Z">
+<meta property="og:description" content="今天老蔡在linux的VPS上面安装了Kloxo，想直接执行PHP脚本，但苦于找不到PHP路径，所以find了一下，终于找到了。Kloxo中，默认安装的PHP可执行文件路径为 &#x2F;usr&#x2F;local&#x2F;lxlabs&#x2F;ext&#x2F;php&#x2F;php 在Kloxo中设置默认php参数，则应该在目录 &#x2F;usr&#x2F;local&#x2F;lx">
+<meta property="og:locale">
+<meta property="article:published_time" content="2011-06-26T18:31:29.000Z">
+<meta property="article:modified_time" content="2018-10-23T14:45:53.000Z">
+<meta property="article:author" content="oldcai">
+<meta property="article:tag" content="Kloxo">
+<meta property="article:tag" content="PHP">
+<meta property="article:tag" content="路径">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Kloxo中的php路径">
-<meta name="twitter:description" content="今天老蔡在linux的VPS上面安装了Kloxo，想直接执行PHP脚本，但苦于找不到PHP路径，所以find了一下，终于找到了。Kloxo中，默认安装的PHP可执行文件路径为 /usr/local/lxlabs/ext/php/php 在Kloxo中设置默认php参数，则应该在目录 /usr/local/lxlabs/ext/php/etc 中，修改php.ini 值得注意的是，修改了php.in">
     
     
         
@@ -39,17 +41,21 @@
     <!-- title -->
     <title>Kloxo中的php路径</title>
     <!-- styles -->
-    <link rel="stylesheet" href="/css/style.css">
+    
+<link rel="stylesheet" href="/css/style.css">
+
     <!-- persian styles -->
     
-      <link rel="stylesheet" href="/css/rtl.css">
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
     
     <!-- rss -->
     
     
-      <link rel="alternate" href="/atom.xml" title="老蔡博客" type="application/atom+xml">
+      <link rel="alternate" href="/atom.xml" title="老蔡博客" type="application/atom+xml" />
     
-</head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 <body class="max-width mx-auto px3 ltr">
     
@@ -91,16 +97,16 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/archives/251/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://www.oldcai.com/archives/251/&text=Kloxo中的php路径"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/archives/251/&title=Kloxo中的php路径"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/archives/251/&is_video=false&description=Kloxo中的php路径"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/archives/251/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.oldcai.com/archives/251/&text=Kloxo中的php路径"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/archives/251/&title=Kloxo中的php路径"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/archives/251/&is_video=false&description=Kloxo中的php路径"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="mailto:?subject=Kloxo中的php路径&body=Check out this article: https://www.oldcai.com/archives/251/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://www.oldcai.com/archives/251/&title=Kloxo中的php路径"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://www.oldcai.com/archives/251/&title=Kloxo中的php路径"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/archives/251/&title=Kloxo中的php路径"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://www.oldcai.com/archives/251/&title=Kloxo中的php路径"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/archives/251/&name=Kloxo中的php路径&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.oldcai.com/archives/251/&title=Kloxo中的php路径"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.oldcai.com/archives/251/&title=Kloxo中的php路径"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/archives/251/&title=Kloxo中的php路径"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.oldcai.com/archives/251/&title=Kloxo中的php路径"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/archives/251/&name=Kloxo中的php路径&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -135,14 +141,14 @@
       
     <div class="article-category">
         <i class="fas fa-archive"></i>
-        <a class="category-link" href="/categories/linux/">linux</a> › <a class="category-link" href="/categories/linux/网站/">网站</a>
+        <a class="category-link" href="/categories/linux/">linux</a> › <a class="category-link" href="/categories/linux/%E7%BD%91%E7%AB%99/">网站</a>
     </div>
 
 
       
     <div class="article-tag">
         <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/tags/Kloxo/">Kloxo</a>, <a class="tag-link" href="/tags/PHP/">PHP</a>, <a class="tag-link" href="/tags/路径/">路径</a>
+        <a class="tag-link-link" href="/tags/Kloxo/" rel="tag">Kloxo</a>, <a class="tag-link-link" href="/tags/PHP/" rel="tag">PHP</a>, <a class="tag-link-link" href="/tags/%E8%B7%AF%E5%BE%84/" rel="tag">路径</a>
     </div>
 
 
@@ -152,8 +158,8 @@
 
   <div class="content" itemprop="articleBody">
     <p>今天老蔡在linux的VPS上面安装了Kloxo，想直接执行PHP脚本，但苦于找不到PHP路径，所以find了一下，终于找到了。Kloxo中，默认安装的PHP可执行文件路径为</p>
-<p>/usr/local/lxlabs/ext/php/php 在Kloxo中设置默认php参数，则应该在目录</p>
-<p>/usr/local/lxlabs/ext/php/etc 中，修改php.ini 值得注意的是，修改了php.ini文件后，并不会马上生效，需重启vps才能生效。</p>
+<p>&#x2F;usr&#x2F;local&#x2F;lxlabs&#x2F;ext&#x2F;php&#x2F;php 在Kloxo中设置默认php参数，则应该在目录</p>
+<p>&#x2F;usr&#x2F;local&#x2F;lxlabs&#x2F;ext&#x2F;php&#x2F;etc 中，修改php.ini 值得注意的是，修改了php.ini文件后，并不会马上生效，需重启vps才能生效。</p>
 <p>如果您的问题是：<strong>怎么安装kloxo</strong>，请阅读<a href="http://www.oldcai.com/archives/374" title="一键安装kloxo及kloxo内存优化办法">《一键安装kloxo及kloxo中mysql内存占用过大优化具体办法》</a></p>
 
   </div>
@@ -191,16 +197,16 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/archives/251/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://www.oldcai.com/archives/251/&text=Kloxo中的php路径"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/archives/251/&title=Kloxo中的php路径"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/archives/251/&is_video=false&description=Kloxo中的php路径"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/archives/251/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.oldcai.com/archives/251/&text=Kloxo中的php路径"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/archives/251/&title=Kloxo中的php路径"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/archives/251/&is_video=false&description=Kloxo中的php路径"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="mailto:?subject=Kloxo中的php路径&body=Check out this article: https://www.oldcai.com/archives/251/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://www.oldcai.com/archives/251/&title=Kloxo中的php路径"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://www.oldcai.com/archives/251/&title=Kloxo中的php路径"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/archives/251/&title=Kloxo中的php路径"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://www.oldcai.com/archives/251/&title=Kloxo中的php路径"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/archives/251/&name=Kloxo中的php路径&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.oldcai.com/archives/251/&title=Kloxo中的php路径"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.oldcai.com/archives/251/&title=Kloxo中的php路径"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/archives/251/&title=Kloxo中的php路径"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.oldcai.com/archives/251/&title=Kloxo中的php路径"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/archives/251/&name=Kloxo中的php路径&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -241,13 +247,23 @@
 </body>
 </html>
 <!-- styles -->
+
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
 <link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
 
+
 <!-- jquery -->
+
 <script src="/lib/jquery/jquery.min.js"></script>
+
+
 <script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+
 <script src="/js/main.js"></script>
+
 <!-- search -->
 
 <!-- Google Analytics -->

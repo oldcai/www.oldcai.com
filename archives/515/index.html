@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <!-- so meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="当年用C++ Builder写用access数据库的资料。 在BCB下如何用ADO操作带密码的ACCESS文件？ 首先建立一个ACCESS数据库，如psw.mdb，为其设置好密码为12345，在其中建立表usedb。 1.建立新表单Form1，在其中放入一个TADOTable控件、一个TDataSource控件及一个TDBGrid控件，输入若干记录。 2.设置TADOTable控件的Connect">
-<meta name="keywords" content="C++,C++ Builder,access">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++ Builder访问access数据库的资料">
-<meta property="og:url" content="https://www.oldcai.com/archives/515/index.html">
+<meta property="og:url" content="https://www.oldcai.com/archives/515/">
 <meta property="og:site_name" content="老蔡博客">
 <meta property="og:description" content="当年用C++ Builder写用access数据库的资料。 在BCB下如何用ADO操作带密码的ACCESS文件？ 首先建立一个ACCESS数据库，如psw.mdb，为其设置好密码为12345，在其中建立表usedb。 1.建立新表单Form1，在其中放入一个TADOTable控件、一个TDataSource控件及一个TDBGrid控件，输入若干记录。 2.设置TADOTable控件的Connect">
-<meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-23T14:45:53.000Z">
+<meta property="og:locale">
+<meta property="article:published_time" content="2012-04-12T02:33:15.000Z">
+<meta property="article:modified_time" content="2018-10-23T14:45:53.000Z">
+<meta property="article:author" content="oldcai">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="C++ Builder">
+<meta property="article:tag" content="access">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="C++ Builder访问access数据库的资料">
-<meta name="twitter:description" content="当年用C++ Builder写用access数据库的资料。 在BCB下如何用ADO操作带密码的ACCESS文件？ 首先建立一个ACCESS数据库，如psw.mdb，为其设置好密码为12345，在其中建立表usedb。 1.建立新表单Form1，在其中放入一个TADOTable控件、一个TDataSource控件及一个TDBGrid控件，输入若干记录。 2.设置TADOTable控件的Connect">
     
     
         
@@ -39,17 +41,21 @@
     <!-- title -->
     <title>C++ Builder访问access数据库的资料</title>
     <!-- styles -->
-    <link rel="stylesheet" href="/css/style.css">
+    
+<link rel="stylesheet" href="/css/style.css">
+
     <!-- persian styles -->
     
-      <link rel="stylesheet" href="/css/rtl.css">
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
     
     <!-- rss -->
     
     
-      <link rel="alternate" href="/atom.xml" title="老蔡博客" type="application/atom+xml">
+      <link rel="alternate" href="/atom.xml" title="老蔡博客" type="application/atom+xml" />
     
-</head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 <body class="max-width mx-auto px3 ltr">
     
@@ -91,16 +97,16 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/archives/515/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://www.oldcai.com/archives/515/&text=C++ Builder访问access数据库的资料"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/archives/515/&title=C++ Builder访问access数据库的资料"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/archives/515/&is_video=false&description=C++ Builder访问access数据库的资料"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/archives/515/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.oldcai.com/archives/515/&text=C++ Builder访问access数据库的资料"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/archives/515/&title=C++ Builder访问access数据库的资料"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/archives/515/&is_video=false&description=C++ Builder访问access数据库的资料"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="mailto:?subject=C++ Builder访问access数据库的资料&body=Check out this article: https://www.oldcai.com/archives/515/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://www.oldcai.com/archives/515/&title=C++ Builder访问access数据库的资料"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://www.oldcai.com/archives/515/&title=C++ Builder访问access数据库的资料"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/archives/515/&title=C++ Builder访问access数据库的资料"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://www.oldcai.com/archives/515/&title=C++ Builder访问access数据库的资料"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/archives/515/&name=C++ Builder访问access数据库的资料&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.oldcai.com/archives/515/&title=C++ Builder访问access数据库的资料"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.oldcai.com/archives/515/&title=C++ Builder访问access数据库的资料"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/archives/515/&title=C++ Builder访问access数据库的资料"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.oldcai.com/archives/515/&title=C++ Builder访问access数据库的资料"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/archives/515/&name=C++ Builder访问access数据库的资料&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -135,14 +141,14 @@
       
     <div class="article-category">
         <i class="fas fa-archive"></i>
-        <a class="category-link" href="/categories/数据库/">数据库</a> › <a class="category-link" href="/categories/数据库/编程/">编程</a>
+        <a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a> › <a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/%E7%BC%96%E7%A8%8B/">编程</a>
     </div>
 
 
       
     <div class="article-tag">
         <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/tags/C/">C++</a>, <a class="tag-link" href="/tags/C-Builder/">C++ Builder</a>, <a class="tag-link" href="/tags/access/">access</a>
+        <a class="tag-link-link" href="/tags/C/" rel="tag">C++</a>, <a class="tag-link-link" href="/tags/C-Builder/" rel="tag">C++ Builder</a>, <a class="tag-link-link" href="/tags/access/" rel="tag">access</a>
     </div>
 
 
@@ -155,7 +161,7 @@
 <p>在BCB下如何用ADO操作带密码的ACCESS文件？</p>
 <p>首先建立一个ACCESS数据库，如psw.mdb，为其设置好密码为12345，在其中建立表usedb。</p>
 <p>1.建立新表单Form1，在其中放入一个TADOTable控件、一个TDataSource控件及一个TDBGrid控件，输入若干记录。</p>
-<p>2.设置TADOTable控件的ConnectionString属性为Provider=Microsoft.Jet.OLEDB.4.0;Data Source=psw.mdb;Persist Security Info=False;Jet OLEDB:Database Password=12345，注意，密码也可以在Build窗口中点击“所有”（最后一个）选项卡，在下面的列表中找到Jet OLEDB:Database Password项双击后在打开的输入框中输入12345再点确定。</p>
+<p>2.设置TADOTable控件的ConnectionString属性为Provider&#x3D;Microsoft.Jet.OLEDB.4.0;Data Source&#x3D;psw.mdb;Persist Security Info&#x3D;False;Jet OLEDB:Database Password&#x3D;12345，注意，密码也可以在Build窗口中点击“所有”（最后一个）选项卡，在下面的列表中找到Jet OLEDB:Database Password项双击后在打开的输入框中输入12345再点确定。</p>
 <p>3.设置TDataSource控件的DataSet属性为TADOTable1。</p>
 <p>4.设置TDBGrid控件的DataSource属性为TDataSource1。</p>
 <p>5.设置TableName属性为usedb、Active属性为true。</p>
@@ -176,8 +182,8 @@
 <p>相关软件</p>
 <p>上一篇:用程序实现文件的关联</p>
 <p>下一篇:C++Builder定制系统菜单特别声明:本站除部分特别声明制止转载的专稿外的其他文章</p>
-<p>CIO信息化频道_信息化解决方案/案例大全、信息化理论与实践的技巧..:: Access数据库在管理中得到了广泛的运用,在长期的运用中已有很多数据材料存储在Access数据库的文件中,用C++ Builder编程本文从运用数据库存取对象变量的方式出发,实现了非Access格式数据库(以FoxPro数据库为例)的建新库、拷贝数据库结构、</p>
-<p>AnsiString app_path,alias_1,name_1;<br>app_path=ExtractFilePath(ParamStr(0));<br>//取得运用程序的路径<br>alias_1=”mydatabase2”;<br>//Access数据库别号<br>name_1=”DATABASE NAME=”+app_path+”123.mdb”;<br>if(!Session1-＞IsAlias(alias_1))<br>//数据库别号不存在<br>{<br>TStringList dataname=new TStringList();<br>dataname-＞Add(name_1);<br>Session1-＞AddAlias(alias_1,”MSACCESS”,dataname);//创立别号<br>delete dataname;<br>Session1-＞Close();<br>}<br>Database1-＞AliasName=alias_1;<br>Database1-＞DatabaseName=”app_alias”;<br>Table1-＞DatabaseName=Database1-＞DatabaseName;<br>Table1-＞TableName=”xxys”;<br>Table1-＞Active=true;<br>// 注意：在运行以上程序之前，别忘了进入BDE Administrator<br>// 将MSACCESS驱动配置中的DLL32由IDDAO32.DLL改为IDDA3532.DLL，并保存这个配置。<br>// 为了使程序运行得更流畅，可以在Database1的OnLogin事件函数中参加以下代码：<br>LoginParams-＞Values[“PASSWORD”]=””;<br>LoginParams-＞Values[“USERNAME”]=””;</p>
+<p>CIO信息化频道_信息化解决方案&#x2F;案例大全、信息化理论与实践的技巧..:: Access数据库在管理中得到了广泛的运用,在长期的运用中已有很多数据材料存储在Access数据库的文件中,用C++ Builder编程本文从运用数据库存取对象变量的方式出发,实现了非Access格式数据库(以FoxPro数据库为例)的建新库、拷贝数据库结构、</p>
+<p>AnsiString app_path,alias_1,name_1;<br>app_path&#x3D;ExtractFilePath(ParamStr(0));<br>&#x2F;&#x2F;取得运用程序的路径<br>alias_1&#x3D;”mydatabase2”;<br>&#x2F;&#x2F;Access数据库别号<br>name_1&#x3D;”DATABASE NAME&#x3D;”+app_path+”123.mdb”;<br>if(!Session1-＞IsAlias(alias_1))<br>&#x2F;&#x2F;数据库别号不存在<br>{<br>TStringList dataname&#x3D;new TStringList();<br>dataname-＞Add(name_1);<br>Session1-＞AddAlias(alias_1,”MSACCESS”,dataname);&#x2F;&#x2F;创立别号<br>delete dataname;<br>Session1-＞Close();<br>}<br>Database1-＞AliasName&#x3D;alias_1;<br>Database1-＞DatabaseName&#x3D;”app_alias”;<br>Table1-＞DatabaseName&#x3D;Database1-＞DatabaseName;<br>Table1-＞TableName&#x3D;”xxys”;<br>Table1-＞Active&#x3D;true;<br>&#x2F;&#x2F; 注意：在运行以上程序之前，别忘了进入BDE Administrator<br>&#x2F;&#x2F; 将MSACCESS驱动配置中的DLL32由IDDAO32.DLL改为IDDA3532.DLL，并保存这个配置。<br>&#x2F;&#x2F; 为了使程序运行得更流畅，可以在Database1的OnLogin事件函数中参加以下代码：<br>LoginParams-＞Values[“PASSWORD”]&#x3D;””;<br>LoginParams-＞Values[“USERNAME”]&#x3D;””;</p>
 <p>这样在运行程序时就不会弹出数据库登录的对话框了。</p>
 <p>以上程序在Windows95操作系统，C++ Builder 3下调试运行通过</p>
 
@@ -216,16 +222,16 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/archives/515/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://www.oldcai.com/archives/515/&text=C++ Builder访问access数据库的资料"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/archives/515/&title=C++ Builder访问access数据库的资料"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/archives/515/&is_video=false&description=C++ Builder访问access数据库的资料"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/archives/515/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.oldcai.com/archives/515/&text=C++ Builder访问access数据库的资料"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/archives/515/&title=C++ Builder访问access数据库的资料"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/archives/515/&is_video=false&description=C++ Builder访问access数据库的资料"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="mailto:?subject=C++ Builder访问access数据库的资料&body=Check out this article: https://www.oldcai.com/archives/515/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://www.oldcai.com/archives/515/&title=C++ Builder访问access数据库的资料"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://www.oldcai.com/archives/515/&title=C++ Builder访问access数据库的资料"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/archives/515/&title=C++ Builder访问access数据库的资料"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://www.oldcai.com/archives/515/&title=C++ Builder访问access数据库的资料"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/archives/515/&name=C++ Builder访问access数据库的资料&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.oldcai.com/archives/515/&title=C++ Builder访问access数据库的资料"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.oldcai.com/archives/515/&title=C++ Builder访问access数据库的资料"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/archives/515/&title=C++ Builder访问access数据库的资料"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.oldcai.com/archives/515/&title=C++ Builder访问access数据库的资料"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/archives/515/&name=C++ Builder访问access数据库的资料&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -266,13 +272,23 @@
 </body>
 </html>
 <!-- styles -->
+
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
 <link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
 
+
 <!-- jquery -->
+
 <script src="/lib/jquery/jquery.min.js"></script>
+
+
 <script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+
 <script src="/js/main.js"></script>
+
 <!-- search -->
 
 <!-- Google Analytics -->

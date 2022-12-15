@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <!-- so meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="话说这是老蔡去年写的一篇关于静态编译QT4.7.1的文章，而QT现在发行版不断进化中，需要的朋友可以去官网下载，由于老蔡不能保证版本的前沿性，所以暂不给出更新的链接。当时，老蔡将这篇文章发于一个群里面的朋友开的qtsir社区，而这个社区现在不景气了，固特意将文章转过来，以备不测。 [wptabs color=”wpui-light” effect=”fade”] 注意：QT4.7.3版本占用空间清">
-<meta name="keywords" content="C++,QT,编译">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="话说这是老蔡去年写的一篇关于静态编译QT4.7.1的文章，而QT现在发行版不断进化中，需要的朋友可以去官网下载，由于老蔡不能保证版本的前沿性，所以暂不给出更新的链接。当时，老蔡将这篇文章发于一个群里面的朋友开的qtsir社区，而这个社区现在不景气了，固特意将文章转过来，以备不测。 [wptabs color&#x3D;”wpui-light” effect&#x3D;”fade”] 注意：QT4.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="QT4.7在VS2010下纯静态编译">
-<meta property="og:url" content="https://www.oldcai.com/archives/208/index.html">
+<meta property="og:url" content="https://www.oldcai.com/archives/208/">
 <meta property="og:site_name" content="老蔡博客">
-<meta property="og:description" content="话说这是老蔡去年写的一篇关于静态编译QT4.7.1的文章，而QT现在发行版不断进化中，需要的朋友可以去官网下载，由于老蔡不能保证版本的前沿性，所以暂不给出更新的链接。当时，老蔡将这篇文章发于一个群里面的朋友开的qtsir社区，而这个社区现在不景气了，固特意将文章转过来，以备不测。 [wptabs color=”wpui-light” effect=”fade”] 注意：QT4.7.3版本占用空间清">
-<meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-23T14:45:53.000Z">
+<meta property="og:description" content="话说这是老蔡去年写的一篇关于静态编译QT4.7.1的文章，而QT现在发行版不断进化中，需要的朋友可以去官网下载，由于老蔡不能保证版本的前沿性，所以暂不给出更新的链接。当时，老蔡将这篇文章发于一个群里面的朋友开的qtsir社区，而这个社区现在不景气了，固特意将文章转过来，以备不测。 [wptabs color&#x3D;”wpui-light” effect&#x3D;”fade”] 注意：QT4.">
+<meta property="og:locale">
+<meta property="article:published_time" content="2011-05-20T05:27:29.000Z">
+<meta property="article:modified_time" content="2018-10-23T14:45:53.000Z">
+<meta property="article:author" content="oldcai">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="QT">
+<meta property="article:tag" content="编译">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="QT4.7在VS2010下纯静态编译">
-<meta name="twitter:description" content="话说这是老蔡去年写的一篇关于静态编译QT4.7.1的文章，而QT现在发行版不断进化中，需要的朋友可以去官网下载，由于老蔡不能保证版本的前沿性，所以暂不给出更新的链接。当时，老蔡将这篇文章发于一个群里面的朋友开的qtsir社区，而这个社区现在不景气了，固特意将文章转过来，以备不测。 [wptabs color=”wpui-light” effect=”fade”] 注意：QT4.7.3版本占用空间清">
     
     
         
@@ -39,17 +41,21 @@
     <!-- title -->
     <title>QT4.7在VS2010下纯静态编译</title>
     <!-- styles -->
-    <link rel="stylesheet" href="/css/style.css">
+    
+<link rel="stylesheet" href="/css/style.css">
+
     <!-- persian styles -->
     
-      <link rel="stylesheet" href="/css/rtl.css">
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
     
     <!-- rss -->
     
     
-      <link rel="alternate" href="/atom.xml" title="老蔡博客" type="application/atom+xml">
+      <link rel="alternate" href="/atom.xml" title="老蔡博客" type="application/atom+xml" />
     
-</head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 <body class="max-width mx-auto px3 ltr">
     
@@ -91,16 +97,16 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/archives/208/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://www.oldcai.com/archives/208/&text=QT4.7在VS2010下纯静态编译"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/archives/208/&title=QT4.7在VS2010下纯静态编译"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/archives/208/&is_video=false&description=QT4.7在VS2010下纯静态编译"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/archives/208/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.oldcai.com/archives/208/&text=QT4.7在VS2010下纯静态编译"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/archives/208/&title=QT4.7在VS2010下纯静态编译"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/archives/208/&is_video=false&description=QT4.7在VS2010下纯静态编译"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="mailto:?subject=QT4.7在VS2010下纯静态编译&body=Check out this article: https://www.oldcai.com/archives/208/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://www.oldcai.com/archives/208/&title=QT4.7在VS2010下纯静态编译"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://www.oldcai.com/archives/208/&title=QT4.7在VS2010下纯静态编译"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/archives/208/&title=QT4.7在VS2010下纯静态编译"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://www.oldcai.com/archives/208/&title=QT4.7在VS2010下纯静态编译"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/archives/208/&name=QT4.7在VS2010下纯静态编译&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.oldcai.com/archives/208/&title=QT4.7在VS2010下纯静态编译"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.oldcai.com/archives/208/&title=QT4.7在VS2010下纯静态编译"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/archives/208/&title=QT4.7在VS2010下纯静态编译"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.oldcai.com/archives/208/&title=QT4.7在VS2010下纯静态编译"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/archives/208/&name=QT4.7在VS2010下纯静态编译&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -135,14 +141,14 @@
       
     <div class="article-category">
         <i class="fas fa-archive"></i>
-        <a class="category-link" href="/categories/编程/">编程</a>
+        <a class="category-link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>
     </div>
 
 
       
     <div class="article-tag">
         <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/tags/C/">C++</a>, <a class="tag-link" href="/tags/QT/">QT</a>, <a class="tag-link" href="/tags/编译/">编译</a>
+        <a class="tag-link-link" href="/tags/C/" rel="tag">C++</a>, <a class="tag-link-link" href="/tags/QT/" rel="tag">QT</a>, <a class="tag-link-link" href="/tags/%E7%BC%96%E8%AF%91/" rel="tag">编译</a>
     </div>
 
 
@@ -152,64 +158,65 @@
 
   <div class="content" itemprop="articleBody">
     <p>话说这是老蔡去年写的一篇关于静态编译QT4.7.1的文章，而QT现在发行版不断进化中，需要的朋友可以去官网下载，由于老蔡不能保证版本的前沿性，所以暂不给出更新的链接。当时，老蔡将这篇文章发于一个群里面的朋友开的qtsir社区，而这个社区现在不景气了，固特意将文章转过来，以备不测。</p>
-<p>[wptabs color=”wpui-light”</p>
-<p>effect=”fade”]</p>
-<p>注意：QT4.7.3版本占用空间清理前已接近26G，清理后已增加到18.0 GB。注意保留足够的空间，避免因此导致的编译失败。[/wptabs]</p>
+<p>[wptabs color&#x3D;”wpui-light”</p>
+<p>effect&#x3D;”fade”]</p>
+<p>注意：QT4.7.3版本占用空间清理前已接近26G，清理后已增加到18.0 GB。注意保留足够的空间，避免因此导致的编译失败。[&#x2F;wptabs]</p>
 <p>“纯静态编译”是我杜撰的一个词，意思就是不带dll，直接给别人运行程序就能用。</p>
 <p>下面是步骤</p>
-<p>[wptabtitle]一、下载QT源码包[/wptabtitle]</p>
-<p>[wptabs color=”wpui-light”</p>
-<p>effect=”fade”]</p>
+<p>[wptabtitle]一、下载QT源码包[&#x2F;wptabtitle]</p>
+<p>[wptabs color&#x3D;”wpui-light”</p>
+<p>effect&#x3D;”fade”]</p>
 <p>QT 4.7.0源码包地址：</p>
-<p><a href="http://get.qt.nokia.com/qt/source/qt-everywhere-opensource-src-4.7.0.zip" target="_blank" rel="noopener">http://get.qt.nokia.com/qt/source/qt-everywhere-opensource-src-4.7.0.zip</a> QT 4.7.4源码包地址（老蔡2011.10.9加入）：</p>
-<p><a href="http://download.qt.nokia.com/qt/source/qt-everywhere-opensource-src-4.7.4.zip" target="_blank" rel="noopener">http://download.qt.nokia.com/qt/source/qt-everywhere-opensource-src-4.7.4.zip</a> [/wptabs]</p>
+<p><a target="_blank" rel="noopener" href="http://get.qt.nokia.com/qt/source/qt-everywhere-opensource-src-4.7.0.zip">http://get.qt.nokia.com/qt/source/qt-everywhere-opensource-src-4.7.0.zip</a> QT 4.7.4源码包地址（老蔡2011.10.9加入）：</p>
+<p><a target="_blank" rel="noopener" href="http://download.qt.nokia.com/qt/source/qt-everywhere-opensource-src-4.7.4.zip">http://download.qt.nokia.com/qt/source/qt-everywhere-opensource-src-4.7.4.zip</a> [&#x2F;wptabs]</p>
+<p> </p>
 <p>解压到一个文件夹。</p>
 <p>打开mkspecs目录，找到win32-msvc2010目录进入（如果不是VS2010，可改为自己的版本）</p>
 <p>用记事本打开qmake.conf文件，更改MD为MT，更改MDd为MTd。</p>
 <p>预留25.3G，最好26G空间，我nmake完毕后，查看大小，是25.3G，难免其间还有其他中间文件生成，最好多留一点。</p>
-<p>[wptabtitle]二、配置环境变量[/wptabtitle]</p>
+<p>[wptabtitle]二、配置环境变量[&#x2F;wptabtitle]</p>
 <p>在PATH环境变量中添加:”E:QtQT-4.7.0”</p>
 <p>添加新的环境变量,名字为”QMAKESPEC”,值为”win32-msvc2010”</p>
 <p>添加新的环境变量，名字为”QTDIR”,值为”E:QtQT-4.7.0”</p>
-<p>[wptabtitle]三、设置配置[/wptabtitle]</p>
-<p>先打开VS2010命令行形式，步骤如下[wptabs color=”wpui-light”</p>
-<p>effect=”fade”]</p>
+<p>[wptabtitle]三、设置配置[&#x2F;wptabtitle]</p>
+<p>先打开VS2010命令行形式，步骤如下[wptabs color&#x3D;”wpui-light”</p>
+<p>effect&#x3D;”fade”]</p>
 <ol>
 <li>开始</li>
 <li>Microsoft Visual Studio 2010</li>
 <li>Visual Studio Tools-Open Visual Studio Command Prompt (2010)</li>
 </ol>
-<p>[/wptabs]</p>
+<p>[&#x2F;wptabs]</p>
 <p>然后cd到源代码所在文件夹。</p>
-<p>输入[wptabs color=”wpui-light”</p>
-<p>effect=”fade”]</p>
-<p>configure -platform win32-msvc2010 -debug-and-release -static -fast -qt-sql-odbc -qt-sql-sqlite[/wptabs]</p>
-<p>补充：有人说加入-nomake demos -nomake examples可以大大缩短编译时间，即[wptabs color=”wpui-light”</p>
-<p>effect=”fade”]</p>
-<p>configure -platform win32-msvc2010 -debug-and-release -static -fast -qt-sql-odbc -qt-sql-sqlite -nomake demos -nomake examples[/wptabs]</p>
+<p>输入[wptabs color&#x3D;”wpui-light”</p>
+<p>effect&#x3D;”fade”]</p>
+<p>configure -platform win32-msvc2010 -debug-and-release -static -fast -qt-sql-odbc -qt-sql-sqlite[&#x2F;wptabs]</p>
+<p>补充：有人说加入-nomake demos -nomake examples可以大大缩短编译时间，即[wptabs color&#x3D;”wpui-light”</p>
+<p>effect&#x3D;”fade”]</p>
+<p>configure -platform win32-msvc2010 -debug-and-release -static -fast -qt-sql-odbc -qt-sql-sqlite -nomake demos -nomake examples[&#x2F;wptabs]</p>
 <p>2011.10.9加入：</p>
-<p>默认静态编译是不支持OpenSSL的，这样就对HTTPS协议起不到支持的作用，所以，如果有支持SSL协议的需要，则要加入-openssl，如下[wptabs color=”wpui-light”</p>
-<p>effect=”fade”]</p>
+<p>默认静态编译是不支持OpenSSL的，这样就对HTTPS协议起不到支持的作用，所以，如果有支持SSL协议的需要，则要加入-openssl，如下[wptabs color&#x3D;”wpui-light”</p>
+<p>effect&#x3D;”fade”]</p>
 <p>configure -platform win32-msvc2010 -debug-and-release -static -fast -openssl -I “E:QTopenssl-1.0.0einclude”</p>
 <p>-l “E:QTopenssl-1.0.0eout32dll”</p>
-<p>-qt-sql-odbc -qt-sql-sqlite[/wptabs]</p>
+<p>-qt-sql-odbc -qt-sql-sqlite[&#x2F;wptabs]</p>
 <p>路径不尽相同，请童鞋们参照自己的情况修改。OpenSSL需要自己下载并安装。</p>
 <p>1.0.0e版OpenSSL地址如下：</p>
-<p><a href="http://www.openssl.org/source/openssl-1.0.0e.tar.gz" target="_blank" rel="noopener">http://www.openssl.org/source/openssl-1.0.0e.tar.gz</a> OpenSSL如再使用过程中遇到异常，则参看：</p>
+<p><a target="_blank" rel="noopener" href="http://www.openssl.org/source/openssl-1.0.0e.tar.gz">http://www.openssl.org/source/openssl-1.0.0e.tar.gz</a> OpenSSL如再使用过程中遇到异常，则参看：</p>
 <p><a href="http://www.oldcai.com/archives/353" title="静态编译的QT的OpenSSL异常问题">静态编译(static)的QT下OpenSSL异常的问题</a></p>
 <p><strong>配置完毕后</strong> 可复制上面的内容粘贴到这个静态编译QT4.7的控制台里面</p>
 <p>然后回车。</p>
 <p>选o，回车</p>
 <p>选y，回车</p>
 <p>等待配置完成（很快）。</p>
-<p>[wptabtitle]四、编译链接[/wptabtitle]</p>
+<p>[wptabtitle]四、编译链接[&#x2F;wptabtitle]</p>
 <p>输入nmake回车</p>
-<p>[wptabtitle]五、静待个把钟头[/wptabtitle]</p>
+<p>[wptabtitle]五、静待个把钟头[&#x2F;wptabtitle]</p>
 <p>直到编译完毕。</p>
 <p>就在这静待的个把钟头里面，我的浏览器不知道被谁关掉了，于是我输入的内容全没了——因为sogou浏览器的快速模式估计有些javascript不能用，自动保存的数据起不到回复内容的作用，原文章是靠记忆十分气馁地恢复的，所以，比较简单。</p>
 <p>4.7的release版和beta版的静态编译的步骤不一样，我也摸索了一下。</p>
 <p>后来，老蔡又经历了几次重新编译，补充了一些配置，给自己记录，给大家参考。</p>
-<p>[wptabtitle]六、清理中间文件[/wptabtitle]</p>
+<p>[wptabtitle]六、清理中间文件[&#x2F;wptabtitle]</p>
 <p>最后别忙退出控制台，输入nmake clean回车</p>
 <p>清理中间文件。</p>
 <p>清理完毕后，占用空间7.41 GB</p>
@@ -249,16 +256,16 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/archives/208/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://www.oldcai.com/archives/208/&text=QT4.7在VS2010下纯静态编译"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/archives/208/&title=QT4.7在VS2010下纯静态编译"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/archives/208/&is_video=false&description=QT4.7在VS2010下纯静态编译"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/archives/208/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.oldcai.com/archives/208/&text=QT4.7在VS2010下纯静态编译"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/archives/208/&title=QT4.7在VS2010下纯静态编译"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/archives/208/&is_video=false&description=QT4.7在VS2010下纯静态编译"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="mailto:?subject=QT4.7在VS2010下纯静态编译&body=Check out this article: https://www.oldcai.com/archives/208/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://www.oldcai.com/archives/208/&title=QT4.7在VS2010下纯静态编译"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://www.oldcai.com/archives/208/&title=QT4.7在VS2010下纯静态编译"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/archives/208/&title=QT4.7在VS2010下纯静态编译"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://www.oldcai.com/archives/208/&title=QT4.7在VS2010下纯静态编译"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/archives/208/&name=QT4.7在VS2010下纯静态编译&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.oldcai.com/archives/208/&title=QT4.7在VS2010下纯静态编译"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.oldcai.com/archives/208/&title=QT4.7在VS2010下纯静态编译"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/archives/208/&title=QT4.7在VS2010下纯静态编译"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.oldcai.com/archives/208/&title=QT4.7在VS2010下纯静态编译"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/archives/208/&name=QT4.7在VS2010下纯静态编译&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -299,13 +306,23 @@
 </body>
 </html>
 <!-- styles -->
+
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
 <link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
 
+
 <!-- jquery -->
+
 <script src="/lib/jquery/jquery.min.js"></script>
+
+
 <script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+
 <script src="/js/main.js"></script>
+
 <!-- search -->
 
 <!-- Google Analytics -->

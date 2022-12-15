@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <!-- so meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="JavaScript越来越强大了，有人甚至做出了能在浏览器中装操作系统来运行的虚拟机。 在用Node.js前后端分离之前，一直都是通过越来越强大的浏览器中运行大量js代码，利用单页应用来实现前后端逻辑分离的。 首先来说说前后端分离的目的一个典型的小型的MVC构架的Web项目，一般都是囊括着前端+后端的代码， 小型项目慢慢变大，更多的人员投入到项目中， 想让整个team在尽少信息冗余的情况下，能顺利">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Node.js前后端分离的分界线">
-<meta property="og:url" content="https://www.oldcai.com/archives/1144/index.html">
+<meta property="og:url" content="https://www.oldcai.com/archives/1144/">
 <meta property="og:site_name" content="老蔡博客">
 <meta property="og:description" content="JavaScript越来越强大了，有人甚至做出了能在浏览器中装操作系统来运行的虚拟机。 在用Node.js前后端分离之前，一直都是通过越来越强大的浏览器中运行大量js代码，利用单页应用来实现前后端逻辑分离的。 首先来说说前后端分离的目的一个典型的小型的MVC构架的Web项目，一般都是囊括着前端+后端的代码， 小型项目慢慢变大，更多的人员投入到项目中， 想让整个team在尽少信息冗余的情况下，能顺利">
-<meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-23T14:45:53.000Z">
+<meta property="og:locale">
+<meta property="article:published_time" content="2017-04-09T15:46:31.000Z">
+<meta property="article:modified_time" content="2018-10-23T14:45:53.000Z">
+<meta property="article:author" content="oldcai">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Node.js前后端分离的分界线">
-<meta name="twitter:description" content="JavaScript越来越强大了，有人甚至做出了能在浏览器中装操作系统来运行的虚拟机。 在用Node.js前后端分离之前，一直都是通过越来越强大的浏览器中运行大量js代码，利用单页应用来实现前后端逻辑分离的。 首先来说说前后端分离的目的一个典型的小型的MVC构架的Web项目，一般都是囊括着前端+后端的代码， 小型项目慢慢变大，更多的人员投入到项目中， 想让整个team在尽少信息冗余的情况下，能顺利">
     
     
         
@@ -38,17 +38,21 @@
     <!-- title -->
     <title>Node.js前后端分离的分界线</title>
     <!-- styles -->
-    <link rel="stylesheet" href="/css/style.css">
+    
+<link rel="stylesheet" href="/css/style.css">
+
     <!-- persian styles -->
     
-      <link rel="stylesheet" href="/css/rtl.css">
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
     
     <!-- rss -->
     
     
-      <link rel="alternate" href="/atom.xml" title="老蔡博客" type="application/atom+xml">
+      <link rel="alternate" href="/atom.xml" title="老蔡博客" type="application/atom+xml" />
     
-</head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 <body class="max-width mx-auto px3 ltr">
     
@@ -90,21 +94,21 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/archives/1144/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://www.oldcai.com/archives/1144/&text=Node.js前后端分离的分界线"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/archives/1144/&title=Node.js前后端分离的分界线"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/archives/1144/&is_video=false&description=Node.js前后端分离的分界线"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/archives/1144/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.oldcai.com/archives/1144/&text=Node.js前后端分离的分界线"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/archives/1144/&title=Node.js前后端分离的分界线"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/archives/1144/&is_video=false&description=Node.js前后端分离的分界线"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="mailto:?subject=Node.js前后端分离的分界线&body=Check out this article: https://www.oldcai.com/archives/1144/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://www.oldcai.com/archives/1144/&title=Node.js前后端分离的分界线"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://www.oldcai.com/archives/1144/&title=Node.js前后端分离的分界线"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/archives/1144/&title=Node.js前后端分离的分界线"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://www.oldcai.com/archives/1144/&title=Node.js前后端分离的分界线"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/archives/1144/&name=Node.js前后端分离的分界线&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.oldcai.com/archives/1144/&title=Node.js前后端分离的分界线"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.oldcai.com/archives/1144/&title=Node.js前后端分离的分界线"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/archives/1144/&title=Node.js前后端分离的分界线"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.oldcai.com/archives/1144/&title=Node.js前后端分离的分界线"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/archives/1144/&name=Node.js前后端分离的分界线&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#首先来说说前后端分离的目的"><span class="toc-number">1.</span> <span class="toc-text">首先来说说前后端分离的目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#那么我们在实际开发过程中哪里沟通最频繁呢"><span class="toc-number">2.</span> <span class="toc-text">那么我们在实际开发过程中哪里沟通最频繁呢</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#然而，激进的前端总是想让Node-js干更多的事"><span class="toc-number">3.</span> <span class="toc-text">然而，激进的前端总是想让Node.js干更多的事</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A6%96%E5%85%88%E6%9D%A5%E8%AF%B4%E8%AF%B4%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E7%9A%84%E7%9B%AE%E7%9A%84"><span class="toc-number">1.</span> <span class="toc-text">首先来说说前后端分离的目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%82%A3%E4%B9%88%E6%88%91%E4%BB%AC%E5%9C%A8%E5%AE%9E%E9%99%85%E5%BC%80%E5%8F%91%E8%BF%87%E7%A8%8B%E4%B8%AD%E5%93%AA%E9%87%8C%E6%B2%9F%E9%80%9A%E6%9C%80%E9%A2%91%E7%B9%81%E5%91%A2"><span class="toc-number">2.</span> <span class="toc-text">那么我们在实际开发过程中哪里沟通最频繁呢</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%84%B6%E8%80%8C%EF%BC%8C%E6%BF%80%E8%BF%9B%E7%9A%84%E5%89%8D%E7%AB%AF%E6%80%BB%E6%98%AF%E6%83%B3%E8%AE%A9Node-js%E5%B9%B2%E6%9B%B4%E5%A4%9A%E7%9A%84%E4%BA%8B"><span class="toc-number">3.</span> <span class="toc-text">然而，激进的前端总是想让Node.js干更多的事</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -134,7 +138,7 @@
       
     <div class="article-category">
         <i class="fas fa-archive"></i>
-        <a class="category-link" href="/categories/思考/">思考</a> › <a class="category-link" href="/categories/思考/构架/">构架</a>
+        <a class="category-link" href="/categories/%E6%80%9D%E8%80%83/">思考</a> › <a class="category-link" href="/categories/%E6%80%9D%E8%80%83/%E6%9E%84%E6%9E%B6/">构架</a>
     </div>
 
 
@@ -153,7 +157,7 @@
 <p>尽少平均信息，包括但不限于：每个人平均下来，尽少的必须掌握、理解的代码，尽少的必要沟通，从而提高效率。</p>
 <h2 id="那么我们在实际开发过程中哪里沟通最频繁呢"><a href="#那么我们在实际开发过程中哪里沟通最频繁呢" class="headerlink" title="那么我们在实际开发过程中哪里沟通最频繁呢"></a>那么我们在实际开发过程中哪里沟通最频繁呢</h2><p>还记得某个加班的深夜里，拿着前端丢过来的demo，一行行比对着与本地的差异，然后套到模板里吗？</p>
 <p>还记得即使一行行比对，还是漏掉了某个地方，导致bug吗？</p>
-<p>还记得每次写/改完模板标签/helper，就要给前端写/改文档来说明吗？</p>
+<p>还记得每次写&#x2F;改完模板标签&#x2F;helper，就要给前端写&#x2F;改文档来说明吗？</p>
 <p>如果对待Web前端能够像Android，iOS等其他端一样，只用给和其他端同样的接口，就能完成沟通，是多么高效的一件事啊。</p>
 <p>所以前端即使是放在服务器上，也应该是专注于表现层。</p>
 <h2 id="然而，激进的前端总是想让Node-js干更多的事"><a href="#然而，激进的前端总是想让Node-js干更多的事" class="headerlink" title="然而，激进的前端总是想让Node.js干更多的事"></a>然而，激进的前端总是想让Node.js干更多的事</h2><p>Node.js搭载着v8，又有活跃的npm社区红利，性能和可用资源做后端的确是足够了。</p>
@@ -192,21 +196,21 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#首先来说说前后端分离的目的"><span class="toc-number">1.</span> <span class="toc-text">首先来说说前后端分离的目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#那么我们在实际开发过程中哪里沟通最频繁呢"><span class="toc-number">2.</span> <span class="toc-text">那么我们在实际开发过程中哪里沟通最频繁呢</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#然而，激进的前端总是想让Node-js干更多的事"><span class="toc-number">3.</span> <span class="toc-text">然而，激进的前端总是想让Node.js干更多的事</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A6%96%E5%85%88%E6%9D%A5%E8%AF%B4%E8%AF%B4%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E7%9A%84%E7%9B%AE%E7%9A%84"><span class="toc-number">1.</span> <span class="toc-text">首先来说说前后端分离的目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%82%A3%E4%B9%88%E6%88%91%E4%BB%AC%E5%9C%A8%E5%AE%9E%E9%99%85%E5%BC%80%E5%8F%91%E8%BF%87%E7%A8%8B%E4%B8%AD%E5%93%AA%E9%87%8C%E6%B2%9F%E9%80%9A%E6%9C%80%E9%A2%91%E7%B9%81%E5%91%A2"><span class="toc-number">2.</span> <span class="toc-text">那么我们在实际开发过程中哪里沟通最频繁呢</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%84%B6%E8%80%8C%EF%BC%8C%E6%BF%80%E8%BF%9B%E7%9A%84%E5%89%8D%E7%AB%AF%E6%80%BB%E6%98%AF%E6%83%B3%E8%AE%A9Node-js%E5%B9%B2%E6%9B%B4%E5%A4%9A%E7%9A%84%E4%BA%8B"><span class="toc-number">3.</span> <span class="toc-text">然而，激进的前端总是想让Node.js干更多的事</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/archives/1144/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://www.oldcai.com/archives/1144/&text=Node.js前后端分离的分界线"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/archives/1144/&title=Node.js前后端分离的分界线"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/archives/1144/&is_video=false&description=Node.js前后端分离的分界线"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/archives/1144/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.oldcai.com/archives/1144/&text=Node.js前后端分离的分界线"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/archives/1144/&title=Node.js前后端分离的分界线"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/archives/1144/&is_video=false&description=Node.js前后端分离的分界线"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="mailto:?subject=Node.js前后端分离的分界线&body=Check out this article: https://www.oldcai.com/archives/1144/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://www.oldcai.com/archives/1144/&title=Node.js前后端分离的分界线"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://www.oldcai.com/archives/1144/&title=Node.js前后端分离的分界线"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/archives/1144/&title=Node.js前后端分离的分界线"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://www.oldcai.com/archives/1144/&title=Node.js前后端分离的分界线"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/archives/1144/&name=Node.js前后端分离的分界线&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.oldcai.com/archives/1144/&title=Node.js前后端分离的分界线"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.oldcai.com/archives/1144/&title=Node.js前后端分离的分界线"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/archives/1144/&title=Node.js前后端分离的分界线"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.oldcai.com/archives/1144/&title=Node.js前后端分离的分界线"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/archives/1144/&name=Node.js前后端分离的分界线&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -247,13 +251,23 @@
 </body>
 </html>
 <!-- styles -->
+
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
 <link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
 
+
 <!-- jquery -->
+
 <script src="/lib/jquery/jquery.min.js"></script>
+
+
 <script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+
 <script src="/js/main.js"></script>
+
 <!-- search -->
 
 <!-- Google Analytics -->

@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <!-- so meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="之前服务器偶尔故障，SSH连不上，只能在IDC的后台去重启机器。这就使得调查导致问题的原因变得十分困难。 于是老蔡查阅“中外典籍”，找到了这个神器：atop atop不仅平时可以帮你自动高亮异常负载（CPU，内存，磁盘，网络），还能每隔15分钟存个档，重启后可以调出来看案发现场是哪个进程出了故障。 定时保存服务器资源负载数据 这是老蔡在刚刚不久前通过atop定期记录服务器负载这个功能定位到的一个很">
-<meta name="keywords" content="atop">
 <meta property="og:type" content="article">
 <meta property="og:title" content="atop，调查服务器宕机事件的神器">
-<meta property="og:url" content="https://www.oldcai.com/linux/atop/index.html">
+<meta property="og:url" content="https://www.oldcai.com/linux/atop/">
 <meta property="og:site_name" content="老蔡博客">
 <meta property="og:description" content="之前服务器偶尔故障，SSH连不上，只能在IDC的后台去重启机器。这就使得调查导致问题的原因变得十分困难。 于是老蔡查阅“中外典籍”，找到了这个神器：atop atop不仅平时可以帮你自动高亮异常负载（CPU，内存，磁盘，网络），还能每隔15分钟存个档，重启后可以调出来看案发现场是哪个进程出了故障。 定时保存服务器资源负载数据 这是老蔡在刚刚不久前通过atop定期记录服务器负载这个功能定位到的一个很">
-<meta property="og:locale" content="default">
+<meta property="og:locale">
 <meta property="og:image" content="https://www.oldcai.com/images/2018/10/memory.jpeg">
 <meta property="og:image" content="https://www.oldcai.com/images/2018/10/io.jpeg">
-<meta property="og:updated_time" content="2018-10-27T12:24:39.000Z">
+<meta property="article:published_time" content="2018-10-20T09:44:52.000Z">
+<meta property="article:modified_time" content="2018-10-27T12:24:39.000Z">
+<meta property="article:author" content="oldcai">
+<meta property="article:tag" content="atop">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="atop，调查服务器宕机事件的神器">
-<meta name="twitter:description" content="之前服务器偶尔故障，SSH连不上，只能在IDC的后台去重启机器。这就使得调查导致问题的原因变得十分困难。 于是老蔡查阅“中外典籍”，找到了这个神器：atop atop不仅平时可以帮你自动高亮异常负载（CPU，内存，磁盘，网络），还能每隔15分钟存个档，重启后可以调出来看案发现场是哪个进程出了故障。 定时保存服务器资源负载数据 这是老蔡在刚刚不久前通过atop定期记录服务器负载这个功能定位到的一个很">
 <meta name="twitter:image" content="https://www.oldcai.com/images/2018/10/memory.jpeg">
     
     
@@ -42,17 +42,21 @@
     <!-- title -->
     <title>atop，调查服务器宕机事件的神器</title>
     <!-- styles -->
-    <link rel="stylesheet" href="/css/style.css">
+    
+<link rel="stylesheet" href="/css/style.css">
+
     <!-- persian styles -->
     
-      <link rel="stylesheet" href="/css/rtl.css">
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
     
     <!-- rss -->
     
     
-      <link rel="alternate" href="/atom.xml" title="老蔡博客" type="application/atom+xml">
+      <link rel="alternate" href="/atom.xml" title="老蔡博客" type="application/atom+xml" />
     
-</head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 <body class="max-width mx-auto px3 ltr">
     
@@ -94,21 +98,21 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/linux/atop/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://www.oldcai.com/linux/atop/&text=atop，调查服务器宕机事件的神器"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/linux/atop/&title=atop，调查服务器宕机事件的神器"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/linux/atop/&is_video=false&description=atop，调查服务器宕机事件的神器"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/linux/atop/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.oldcai.com/linux/atop/&text=atop，调查服务器宕机事件的神器"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/linux/atop/&title=atop，调查服务器宕机事件的神器"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/linux/atop/&is_video=false&description=atop，调查服务器宕机事件的神器"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="mailto:?subject=atop，调查服务器宕机事件的神器&body=Check out this article: https://www.oldcai.com/linux/atop/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://www.oldcai.com/linux/atop/&title=atop，调查服务器宕机事件的神器"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://www.oldcai.com/linux/atop/&title=atop，调查服务器宕机事件的神器"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/linux/atop/&title=atop，调查服务器宕机事件的神器"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://www.oldcai.com/linux/atop/&title=atop，调查服务器宕机事件的神器"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/linux/atop/&name=atop，调查服务器宕机事件的神器&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.oldcai.com/linux/atop/&title=atop，调查服务器宕机事件的神器"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.oldcai.com/linux/atop/&title=atop，调查服务器宕机事件的神器"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/linux/atop/&title=atop，调查服务器宕机事件的神器"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.oldcai.com/linux/atop/&title=atop，调查服务器宕机事件的神器"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/linux/atop/&name=atop，调查服务器宕机事件的神器&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#定时保存服务器资源负载数据"><span class="toc-number">1.</span> <span class="toc-text">定时保存服务器资源负载数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#atop还能自动高亮服务器性能瓶颈"><span class="toc-number">2.</span> <span class="toc-text">atop还能自动高亮服务器性能瓶颈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#深入了解atop"><span class="toc-number">3.</span> <span class="toc-text">深入了解atop</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E6%97%B6%E4%BF%9D%E5%AD%98%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%B5%84%E6%BA%90%E8%B4%9F%E8%BD%BD%E6%95%B0%E6%8D%AE"><span class="toc-number">1.</span> <span class="toc-text">定时保存服务器资源负载数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#atop%E8%BF%98%E8%83%BD%E8%87%AA%E5%8A%A8%E9%AB%98%E4%BA%AE%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%80%A7%E8%83%BD%E7%93%B6%E9%A2%88"><span class="toc-number">2.</span> <span class="toc-text">atop还能自动高亮服务器性能瓶颈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%B1%E5%85%A5%E4%BA%86%E8%A7%A3atop"><span class="toc-number">3.</span> <span class="toc-text">深入了解atop</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -138,14 +142,14 @@
       
     <div class="article-category">
         <i class="fas fa-archive"></i>
-        <a class="category-link" href="/categories/linux/">linux</a> › <a class="category-link" href="/categories/linux/服务器运维/">服务器运维</a> › <a class="category-link" href="/categories/linux/服务器运维/软件评测/">软件评测</a>
+        <a class="category-link" href="/categories/linux/">linux</a> › <a class="category-link" href="/categories/linux/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%90%E7%BB%B4/">服务器运维</a> › <a class="category-link" href="/categories/linux/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%90%E7%BB%B4/%E8%BD%AF%E4%BB%B6%E8%AF%84%E6%B5%8B/">软件评测</a>
     </div>
 
 
       
     <div class="article-tag">
         <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/tags/atop/">atop</a>
+        <a class="tag-link-link" href="/tags/atop/" rel="tag">atop</a>
     </div>
 
 
@@ -156,15 +160,15 @@
   <div class="content" itemprop="articleBody">
     <p>之前服务器偶尔故障，SSH连不上，只能在IDC的后台去重启机器。这就使得调查导致问题的原因变得十分困难。</p>
 <p>于是老蔡查阅“中外典籍”，找到了这个神器：atop atop不仅平时可以帮你自动高亮异常负载（CPU，内存，磁盘，网络），还能每隔15分钟存个档，重启后可以调出来看案发现场是哪个进程出了故障。</p>
-<h2 id="定时保存服务器资源负载数据"><a href="#定时保存服务器资源负载数据" class="headerlink" title="定时保存服务器资源负载数据"></a>定时保存服务器资源负载数据</h2><p><img src="/images/2018/10/memory.jpeg" alt></p>
+<h2 id="定时保存服务器资源负载数据"><a href="#定时保存服务器资源负载数据" class="headerlink" title="定时保存服务器资源负载数据"></a>定时保存服务器资源负载数据</h2><p><img src="/images/2018/10/memory.jpeg"></p>
 <p>这是老蔡在刚刚不久前通过atop定期记录服务器负载这个功能定位到的一个很低概率发生的内存泄漏导致服务器死机的现场还原截图。</p>
 <p>atop默认有个服务，启动服务后，每15分钟存档一次，以天为单位保存成文件。</p>
 <p>真相永远只有一个，各位新一姬，还原犯罪现场，找出杀死服务器的真凶吧。</p>
 <p>service atop restart</p>
 <p>启动atop记录服务</p>
-<p>atop -r /var/log/atop/atop_20181019</p>
+<p>atop -r &#x2F;var&#x2F;log&#x2F;atop&#x2F;atop_20181019</p>
 <p>通过这条命令来查阅记录，进入后，t是下一页，T是上一页，每一页15分钟间隔。</p>
-<h2 id="atop还能自动高亮服务器性能瓶颈"><a href="#atop还能自动高亮服务器性能瓶颈" class="headerlink" title="atop还能自动高亮服务器性能瓶颈"></a>atop还能自动高亮服务器性能瓶颈</h2><p><img src="/images/2018/10/io.jpeg" alt> 拿一台磁盘IO基本已经快到顶的服务器举例，atop会自动标红DSK的busy程度。</p>
+<h2 id="atop还能自动高亮服务器性能瓶颈"><a href="#atop还能自动高亮服务器性能瓶颈" class="headerlink" title="atop还能自动高亮服务器性能瓶颈"></a>atop还能自动高亮服务器性能瓶颈</h2><p><img src="/images/2018/10/io.jpeg"> 拿一台磁盘IO基本已经快到顶的服务器举例，atop会自动标红DSK的busy程度。</p>
 <p>以往我们排查问题的时候，可能会需要用各种工具查看，比如htop，iotop，iostat，nload，iftop，等等，最后过了半个小时说不定才可以找到问题（还看经验是否丰富），而用atop可以轻松察觉。</p>
 <h2 id="深入了解atop"><a href="#深入了解atop" class="headerlink" title="深入了解atop"></a>深入了解atop</h2><p><a href="/linux/atop-dsk/">atop磁盘的DSK后面的数字都代表什么</a></p>
 
@@ -198,21 +202,21 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#定时保存服务器资源负载数据"><span class="toc-number">1.</span> <span class="toc-text">定时保存服务器资源负载数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#atop还能自动高亮服务器性能瓶颈"><span class="toc-number">2.</span> <span class="toc-text">atop还能自动高亮服务器性能瓶颈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#深入了解atop"><span class="toc-number">3.</span> <span class="toc-text">深入了解atop</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E6%97%B6%E4%BF%9D%E5%AD%98%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%B5%84%E6%BA%90%E8%B4%9F%E8%BD%BD%E6%95%B0%E6%8D%AE"><span class="toc-number">1.</span> <span class="toc-text">定时保存服务器资源负载数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#atop%E8%BF%98%E8%83%BD%E8%87%AA%E5%8A%A8%E9%AB%98%E4%BA%AE%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%80%A7%E8%83%BD%E7%93%B6%E9%A2%88"><span class="toc-number">2.</span> <span class="toc-text">atop还能自动高亮服务器性能瓶颈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%B1%E5%85%A5%E4%BA%86%E8%A7%A3atop"><span class="toc-number">3.</span> <span class="toc-text">深入了解atop</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/linux/atop/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://www.oldcai.com/linux/atop/&text=atop，调查服务器宕机事件的神器"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/linux/atop/&title=atop，调查服务器宕机事件的神器"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/linux/atop/&is_video=false&description=atop，调查服务器宕机事件的神器"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/linux/atop/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.oldcai.com/linux/atop/&text=atop，调查服务器宕机事件的神器"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/linux/atop/&title=atop，调查服务器宕机事件的神器"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/linux/atop/&is_video=false&description=atop，调查服务器宕机事件的神器"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="mailto:?subject=atop，调查服务器宕机事件的神器&body=Check out this article: https://www.oldcai.com/linux/atop/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://www.oldcai.com/linux/atop/&title=atop，调查服务器宕机事件的神器"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://www.oldcai.com/linux/atop/&title=atop，调查服务器宕机事件的神器"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/linux/atop/&title=atop，调查服务器宕机事件的神器"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://www.oldcai.com/linux/atop/&title=atop，调查服务器宕机事件的神器"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/linux/atop/&name=atop，调查服务器宕机事件的神器&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.oldcai.com/linux/atop/&title=atop，调查服务器宕机事件的神器"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.oldcai.com/linux/atop/&title=atop，调查服务器宕机事件的神器"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/linux/atop/&title=atop，调查服务器宕机事件的神器"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.oldcai.com/linux/atop/&title=atop，调查服务器宕机事件的神器"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/linux/atop/&name=atop，调查服务器宕机事件的神器&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -253,13 +257,23 @@
 </body>
 </html>
 <!-- styles -->
+
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
 <link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
 
+
 <!-- jquery -->
+
 <script src="/lib/jquery/jquery.min.js"></script>
+
+
 <script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+
 <script src="/js/main.js"></script>
+
 <!-- search -->
 
 <!-- Google Analytics -->

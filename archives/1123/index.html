@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <!-- so meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="可能SSDB的重点在PHP/CPP/Java/Go，python的库不是很好用。 原生的库不支持python 3，第三方库又很久没有更新过，很多功能不支持，最终选择使用自己patch了一下的ssdb.py。 ssdb的社区不太活跃，Server端和文档也有一些待提升的地方，特别是打开文件数，比较扑朔迷离，解决了问题也不知道怎么Pull Request到官方。 官方文档摘抄:  『禁止使用  Cen">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="可能SSDB的重点在PHP&#x2F;CPP&#x2F;Java&#x2F;Go，python的库不是很好用。 原生的库不支持python 3，第三方库又很久没有更新过，很多功能不支持，最终选择使用自己patch了一下的ssdb.py。 ssdb的社区不太活跃，Server端和文档也有一些待提升的地方，特别是打开文件数，比较扑朔迷离，解决了问题也不知道怎么Pull Request到官方。 官方文档">
 <meta property="og:type" content="article">
 <meta property="og:title" content="解决SSDB在CentOS 7.2中打开文件数Max open files的问题(可能导致Too many open files)">
-<meta property="og:url" content="https://www.oldcai.com/archives/1123/index.html">
+<meta property="og:url" content="https://www.oldcai.com/archives/1123/">
 <meta property="og:site_name" content="老蔡博客">
-<meta property="og:description" content="可能SSDB的重点在PHP/CPP/Java/Go，python的库不是很好用。 原生的库不支持python 3，第三方库又很久没有更新过，很多功能不支持，最终选择使用自己patch了一下的ssdb.py。 ssdb的社区不太活跃，Server端和文档也有一些待提升的地方，特别是打开文件数，比较扑朔迷离，解决了问题也不知道怎么Pull Request到官方。 官方文档摘抄:  『禁止使用  Cen">
-<meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-23T14:45:53.000Z">
+<meta property="og:description" content="可能SSDB的重点在PHP&#x2F;CPP&#x2F;Java&#x2F;Go，python的库不是很好用。 原生的库不支持python 3，第三方库又很久没有更新过，很多功能不支持，最终选择使用自己patch了一下的ssdb.py。 ssdb的社区不太活跃，Server端和文档也有一些待提升的地方，特别是打开文件数，比较扑朔迷离，解决了问题也不知道怎么Pull Request到官方。 官方文档">
+<meta property="og:locale">
+<meta property="article:published_time" content="2016-07-10T09:10:32.000Z">
+<meta property="article:modified_time" content="2018-10-23T14:45:53.000Z">
+<meta property="article:author" content="oldcai">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="解决SSDB在CentOS 7.2中打开文件数Max open files的问题(可能导致Too many open files)">
-<meta name="twitter:description" content="可能SSDB的重点在PHP/CPP/Java/Go，python的库不是很好用。 原生的库不支持python 3，第三方库又很久没有更新过，很多功能不支持，最终选择使用自己patch了一下的ssdb.py。 ssdb的社区不太活跃，Server端和文档也有一些待提升的地方，特别是打开文件数，比较扑朔迷离，解决了问题也不知道怎么Pull Request到官方。 官方文档摘抄:  『禁止使用  Cen">
     
     
         
@@ -38,17 +38,21 @@
     <!-- title -->
     <title>解决SSDB在CentOS 7.2中打开文件数Max open files的问题(可能导致Too many open files)</title>
     <!-- styles -->
-    <link rel="stylesheet" href="/css/style.css">
+    
+<link rel="stylesheet" href="/css/style.css">
+
     <!-- persian styles -->
     
-      <link rel="stylesheet" href="/css/rtl.css">
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
     
     <!-- rss -->
     
     
-      <link rel="alternate" href="/atom.xml" title="老蔡博客" type="application/atom+xml">
+      <link rel="alternate" href="/atom.xml" title="老蔡博客" type="application/atom+xml" />
     
-</head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 <body class="max-width mx-auto px3 ltr">
     
@@ -90,21 +94,21 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/archives/1123/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://www.oldcai.com/archives/1123/&text=解决SSDB在CentOS 7.2中打开文件数Max open files的问题(可能导致Too many open files)"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/archives/1123/&title=解决SSDB在CentOS 7.2中打开文件数Max open files的问题(可能导致Too many open files)"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/archives/1123/&is_video=false&description=解决SSDB在CentOS 7.2中打开文件数Max open files的问题(可能导致Too many open files)"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/archives/1123/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.oldcai.com/archives/1123/&text=解决SSDB在CentOS 7.2中打开文件数Max open files的问题(可能导致Too many open files)"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/archives/1123/&title=解决SSDB在CentOS 7.2中打开文件数Max open files的问题(可能导致Too many open files)"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/archives/1123/&is_video=false&description=解决SSDB在CentOS 7.2中打开文件数Max open files的问题(可能导致Too many open files)"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="mailto:?subject=解决SSDB在CentOS 7.2中打开文件数Max open files的问题(可能导致Too many open files)&body=Check out this article: https://www.oldcai.com/archives/1123/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://www.oldcai.com/archives/1123/&title=解决SSDB在CentOS 7.2中打开文件数Max open files的问题(可能导致Too many open files)"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://www.oldcai.com/archives/1123/&title=解决SSDB在CentOS 7.2中打开文件数Max open files的问题(可能导致Too many open files)"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/archives/1123/&title=解决SSDB在CentOS 7.2中打开文件数Max open files的问题(可能导致Too many open files)"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://www.oldcai.com/archives/1123/&title=解决SSDB在CentOS 7.2中打开文件数Max open files的问题(可能导致Too many open files)"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/archives/1123/&name=解决SSDB在CentOS 7.2中打开文件数Max open files的问题(可能导致Too many open files)&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.oldcai.com/archives/1123/&title=解决SSDB在CentOS 7.2中打开文件数Max open files的问题(可能导致Too many open files)"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.oldcai.com/archives/1123/&title=解决SSDB在CentOS 7.2中打开文件数Max open files的问题(可能导致Too many open files)"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/archives/1123/&title=解决SSDB在CentOS 7.2中打开文件数Max open files的问题(可能导致Too many open files)"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.oldcai.com/archives/1123/&title=解决SSDB在CentOS 7.2中打开文件数Max open files的问题(可能导致Too many open files)"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/archives/1123/&name=解决SSDB在CentOS 7.2中打开文件数Max open files的问题(可能导致Too many open files)&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#第一步，修改系统打开文件限制"><span class="toc-number">1.</span> <span class="toc-text">第一步，修改系统打开文件限制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第二步，增加进程打开文件限制"><span class="toc-number">2.</span> <span class="toc-text">第二步，增加进程打开文件限制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第三步，配置leveldb模块的max-open-files【可忽略】"><span class="toc-number">3.</span> <span class="toc-text">第三步，配置leveldb模块的max_open_files【可忽略】</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SSDB的leveldb的max-open-files"><span class="toc-number">3.1.</span> <span class="toc-text">SSDB的leveldb的max_open_files</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%8C%E4%BF%AE%E6%94%B9%E7%B3%BB%E7%BB%9F%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6%E9%99%90%E5%88%B6"><span class="toc-number">1.</span> <span class="toc-text">第一步，修改系统打开文件限制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%8C%E5%A2%9E%E5%8A%A0%E8%BF%9B%E7%A8%8B%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6%E9%99%90%E5%88%B6"><span class="toc-number">2.</span> <span class="toc-text">第二步，增加进程打开文件限制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%8C%E9%85%8D%E7%BD%AEleveldb%E6%A8%A1%E5%9D%97%E7%9A%84max-open-files%E3%80%90%E5%8F%AF%E5%BF%BD%E7%95%A5%E3%80%91"><span class="toc-number">3.</span> <span class="toc-text">第三步，配置leveldb模块的max_open_files【可忽略】</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SSDB%E7%9A%84leveldb%E7%9A%84max-open-files"><span class="toc-number">3.1.</span> <span class="toc-text">SSDB的leveldb的max_open_files</span></a></li></ol></li></ol>
     </div>
   </span>
 </div>
@@ -134,7 +138,7 @@
       
     <div class="article-category">
         <i class="fas fa-archive"></i>
-        <a class="category-link" href="/categories/linux/">linux</a> › <a class="category-link" href="/categories/linux/数据库/">数据库</a> › <a class="category-link" href="/categories/linux/数据库/服务器运维/">服务器运维</a>
+        <a class="category-link" href="/categories/linux/">linux</a> › <a class="category-link" href="/categories/linux/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a> › <a class="category-link" href="/categories/linux/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%90%E7%BB%B4/">服务器运维</a>
     </div>
 
 
@@ -145,43 +149,48 @@
   
 
   <div class="content" itemprop="articleBody">
-    <p>可能SSDB的重点在PHP/CPP/Java/Go，python的库不是很好用。</p>
-<p>原生的库不支持python 3，第三方库又很久没有更新过，很多功能不支持，最终选择使用<a href="https://github.com/oldcai/ssdb.py" target="_blank" rel="noopener">自己patch了一下的ssdb.py</a>。</p>
+    <p>可能SSDB的重点在PHP&#x2F;CPP&#x2F;Java&#x2F;Go，python的库不是很好用。</p>
+<p>原生的库不支持python 3，第三方库又很久没有更新过，很多功能不支持，最终选择使用<a target="_blank" rel="noopener" href="https://github.com/oldcai/ssdb.py">自己patch了一下的ssdb.py</a>。</p>
 <p>ssdb的社区不太活跃，Server端和文档也有一些待提升的地方，特别是打开文件数，比较扑朔迷离，解决了问题也不知道怎么Pull Request到官方。</p>
-<p><a href="http://ssdb.io/docs/zh_cn/config.html" target="_blank" rel="noopener">官方文档</a>摘抄:</p>
+<p><a target="_blank" rel="noopener" href="http://ssdb.io/docs/zh_cn/config.html">官方文档</a>摘抄:</p>
 <blockquote>
 <p>『禁止使用</p>
 </blockquote>
 <p>CentOS 7』，『你无法搞定</p>
 <p>CentOS 7』</p>
 <p>实际使用中发现，可能是作者被相关问题问的太多，有些反应过度。</p>
-<p>老蔡料想，同类数据库大概率也会遇到类似问题，结果果然发现，在<a href="http://docs.basho.com/riak/kv/2.1.4/using/performance/open-files-limit/#enable-pam-based-limits-for-centos-and-red-hat" target="_blank" rel="noopener">riak的文档</a>中就有CentOS 7如何调整软硬连接数的说明：</p>
+<p>老蔡料想，同类数据库大概率也会遇到类似问题，结果果然发现，在<a target="_blank" rel="noopener" href="http://docs.basho.com/riak/kv/2.1.4/using/performance/open-files-limit/#enable-pam-based-limits-for-centos-and-red-hat">riak的文档</a>中就有CentOS 7如何调整软硬连接数的说明：</p>
 <h2 id="第一步，修改系统打开文件限制"><a href="#第一步，修改系统打开文件限制" class="headerlink" title="第一步，修改系统打开文件限制"></a>第一步，修改系统打开文件限制</h2><pre><code># 修改/etc/security/limits.conf
 # 加入
 * soft nofile 1020000
 * hard nofile 1020000
-</code></pre><p>将*替换成运行ssdb的用户名更佳。</p>
+</code></pre>
+<p>将*替换成运行ssdb的用户名更佳。</p>
 <p>系统全局文件大小也有相应办法调整</p>
 <pre><code># 修改/etc/sysctl.conf
 # 加入
-fs.file-max = 1020000
-</code></pre><h2 id="第二步，增加进程打开文件限制"><a href="#第二步，增加进程打开文件限制" class="headerlink" title="第二步，增加进程打开文件限制"></a>第二步，增加进程打开文件限制</h2><p>调整硬限制后，如果Max open files还是没有增加，可以通过在启动脚本中加入一行<code>ulimit -n 1020000</code>来实现。</p>
+fs.file-max = 1020000
+</code></pre>
+<h2 id="第二步，增加进程打开文件限制"><a href="#第二步，增加进程打开文件限制" class="headerlink" title="第二步，增加进程打开文件限制"></a>第二步，增加进程打开文件限制</h2><p>调整硬限制后，如果Max open files还是没有增加，可以通过在启动脚本中加入一行<code>ulimit -n 1020000</code>来实现。</p>
 <p>修改配置后，记得重启进程，如果还是不行就重启一下系统。</p>
 <p>然而怎么证明已经将进程的文件打开限制调整到了1020000呢，命令如下：</p>
-<pre><code>grep &apos;open files&apos;
-</code></pre><p>/proc/$(cat /var/run/ssdb.pid)/limits<br>    Max open files 1020000 1020000 files</p>
+<pre><code>grep &#39;open files&#39;
+</code></pre>
+<p>&#x2F;proc&#x2F;$(cat &#x2F;var&#x2F;run&#x2F;ssdb.pid)&#x2F;limits<br>    Max open files 1020000 1020000 files</p>
 <h2 id="第三步，配置leveldb模块的max-open-files【可忽略】"><a href="#第三步，配置leveldb模块的max-open-files【可忽略】" class="headerlink" title="第三步，配置leveldb模块的max_open_files【可忽略】"></a>第三步，配置leveldb模块的max_open_files【可忽略】</h2><p>作者说，该参数几乎不可能导致问题，所以第三步一般来说可以忽略，但是既然官方文档并没有相关描述，就在此写一下。</p>
 <p>它是限制leveldb模块的打开文件数的。</p>
 <h3 id="SSDB的leveldb的max-open-files"><a href="#SSDB的leveldb的max-open-files" class="headerlink" title="SSDB的leveldb的max_open_files"></a>SSDB的leveldb的max_open_files</h3><p>我们检测一下ssdb的日志</p>
 <pre><code>grep max_open_files /var/log/ssdb/log.txt
 2016-07-10 04:11:46.731 [INFO ]
-</code></pre><p>ssdb-server.cpp(57): max_open_files : 500</p>
+</code></pre>
+<p>ssdb-server.cpp(57): max_open_files : 500</p>
 <p>发现日志中的最大文件打开数max_open_files还是500，离我们预期的还远</p>
 <p>瞬间凌乱了有木有？</p>
 <p>好吧，老蔡没办法，只有读一下源码，发现是可配置的，在配置文件中，相应位置配置如下</p>
 <pre><code>leveldb:
 max_open_files: 1020000
-</code></pre><p>再次重启进程，有没有发现整个世界都变美好了？</p>
+</code></pre>
+<p>再次重启进程，有没有发现整个世界都变美好了？</p>
 
   </div>
 </article>
@@ -213,21 +222,21 @@ max_open_files: 1020000
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#第一步，修改系统打开文件限制"><span class="toc-number">1.</span> <span class="toc-text">第一步，修改系统打开文件限制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第二步，增加进程打开文件限制"><span class="toc-number">2.</span> <span class="toc-text">第二步，增加进程打开文件限制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第三步，配置leveldb模块的max-open-files【可忽略】"><span class="toc-number">3.</span> <span class="toc-text">第三步，配置leveldb模块的max_open_files【可忽略】</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SSDB的leveldb的max-open-files"><span class="toc-number">3.1.</span> <span class="toc-text">SSDB的leveldb的max_open_files</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%8C%E4%BF%AE%E6%94%B9%E7%B3%BB%E7%BB%9F%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6%E9%99%90%E5%88%B6"><span class="toc-number">1.</span> <span class="toc-text">第一步，修改系统打开文件限制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%8C%E5%A2%9E%E5%8A%A0%E8%BF%9B%E7%A8%8B%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6%E9%99%90%E5%88%B6"><span class="toc-number">2.</span> <span class="toc-text">第二步，增加进程打开文件限制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%8C%E9%85%8D%E7%BD%AEleveldb%E6%A8%A1%E5%9D%97%E7%9A%84max-open-files%E3%80%90%E5%8F%AF%E5%BF%BD%E7%95%A5%E3%80%91"><span class="toc-number">3.</span> <span class="toc-text">第三步，配置leveldb模块的max_open_files【可忽略】</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SSDB%E7%9A%84leveldb%E7%9A%84max-open-files"><span class="toc-number">3.1.</span> <span class="toc-text">SSDB的leveldb的max_open_files</span></a></li></ol></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/archives/1123/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://www.oldcai.com/archives/1123/&text=解决SSDB在CentOS 7.2中打开文件数Max open files的问题(可能导致Too many open files)"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/archives/1123/&title=解决SSDB在CentOS 7.2中打开文件数Max open files的问题(可能导致Too many open files)"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/archives/1123/&is_video=false&description=解决SSDB在CentOS 7.2中打开文件数Max open files的问题(可能导致Too many open files)"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/archives/1123/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.oldcai.com/archives/1123/&text=解决SSDB在CentOS 7.2中打开文件数Max open files的问题(可能导致Too many open files)"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/archives/1123/&title=解决SSDB在CentOS 7.2中打开文件数Max open files的问题(可能导致Too many open files)"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/archives/1123/&is_video=false&description=解决SSDB在CentOS 7.2中打开文件数Max open files的问题(可能导致Too many open files)"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="mailto:?subject=解决SSDB在CentOS 7.2中打开文件数Max open files的问题(可能导致Too many open files)&body=Check out this article: https://www.oldcai.com/archives/1123/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://www.oldcai.com/archives/1123/&title=解决SSDB在CentOS 7.2中打开文件数Max open files的问题(可能导致Too many open files)"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://www.oldcai.com/archives/1123/&title=解决SSDB在CentOS 7.2中打开文件数Max open files的问题(可能导致Too many open files)"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/archives/1123/&title=解决SSDB在CentOS 7.2中打开文件数Max open files的问题(可能导致Too many open files)"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://www.oldcai.com/archives/1123/&title=解决SSDB在CentOS 7.2中打开文件数Max open files的问题(可能导致Too many open files)"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/archives/1123/&name=解决SSDB在CentOS 7.2中打开文件数Max open files的问题(可能导致Too many open files)&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.oldcai.com/archives/1123/&title=解决SSDB在CentOS 7.2中打开文件数Max open files的问题(可能导致Too many open files)"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.oldcai.com/archives/1123/&title=解决SSDB在CentOS 7.2中打开文件数Max open files的问题(可能导致Too many open files)"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/archives/1123/&title=解决SSDB在CentOS 7.2中打开文件数Max open files的问题(可能导致Too many open files)"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.oldcai.com/archives/1123/&title=解决SSDB在CentOS 7.2中打开文件数Max open files的问题(可能导致Too many open files)"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/archives/1123/&name=解决SSDB在CentOS 7.2中打开文件数Max open files的问题(可能导致Too many open files)&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -268,13 +277,23 @@ max_open_files: 1020000
 </body>
 </html>
 <!-- styles -->
+
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
 <link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
 
+
 <!-- jquery -->
+
 <script src="/lib/jquery/jquery.min.js"></script>
+
+
 <script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+
 <script src="/js/main.js"></script>
+
 <!-- search -->
 
 <!-- Google Analytics -->

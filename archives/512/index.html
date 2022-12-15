@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <!-- so meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="若干年前老蔡总结的一些C++ Builder的笔记，对初学或许有帮助，删了不忍心，就发出来吧。 Memo1-&amp;gt;Text=”String”;是显示开头内容（如果内容超出Memo1的范围的话） Memo1-&amp;gt;Lines-&amp;gt;Add(“String”);是显示结尾内容（如果内容超出Memo1的范围的话） Memo1-&amp;gt;Text=IdHTTP1-&amp;gt;Get(“http://www">
-<meta name="keywords" content="C++,C++ Builder,字符串">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="若干年前老蔡总结的一些C++ Builder的笔记，对初学或许有帮助，删了不忍心，就发出来吧。 Memo1-&gt;Text&#x3D;”String”;是显示开头内容（如果内容超出Memo1的范围的话） Memo1-&gt;Lines-&gt;Add(“String”);是显示结尾内容（如果内容超出Memo1的范围的话） Memo1-&gt;Text&#x3D;IdHTTP1-&gt;Get(“">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++ Builder字符串处理函数总结">
-<meta property="og:url" content="https://www.oldcai.com/archives/512/index.html">
+<meta property="og:url" content="https://www.oldcai.com/archives/512/">
 <meta property="og:site_name" content="老蔡博客">
-<meta property="og:description" content="若干年前老蔡总结的一些C++ Builder的笔记，对初学或许有帮助，删了不忍心，就发出来吧。 Memo1-&amp;gt;Text=”String”;是显示开头内容（如果内容超出Memo1的范围的话） Memo1-&amp;gt;Lines-&amp;gt;Add(“String”);是显示结尾内容（如果内容超出Memo1的范围的话） Memo1-&amp;gt;Text=IdHTTP1-&amp;gt;Get(“http://www">
-<meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-23T14:45:53.000Z">
+<meta property="og:description" content="若干年前老蔡总结的一些C++ Builder的笔记，对初学或许有帮助，删了不忍心，就发出来吧。 Memo1-&gt;Text&#x3D;”String”;是显示开头内容（如果内容超出Memo1的范围的话） Memo1-&gt;Lines-&gt;Add(“String”);是显示结尾内容（如果内容超出Memo1的范围的话） Memo1-&gt;Text&#x3D;IdHTTP1-&gt;Get(“">
+<meta property="og:locale">
+<meta property="article:published_time" content="2012-04-11T13:22:59.000Z">
+<meta property="article:modified_time" content="2018-10-23T14:45:53.000Z">
+<meta property="article:author" content="oldcai">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="C++ Builder">
+<meta property="article:tag" content="字符串">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="C++ Builder字符串处理函数总结">
-<meta name="twitter:description" content="若干年前老蔡总结的一些C++ Builder的笔记，对初学或许有帮助，删了不忍心，就发出来吧。 Memo1-&amp;gt;Text=”String”;是显示开头内容（如果内容超出Memo1的范围的话） Memo1-&amp;gt;Lines-&amp;gt;Add(“String”);是显示结尾内容（如果内容超出Memo1的范围的话） Memo1-&amp;gt;Text=IdHTTP1-&amp;gt;Get(“http://www">
     
     
         
@@ -39,17 +41,21 @@
     <!-- title -->
     <title>C++ Builder字符串处理函数总结</title>
     <!-- styles -->
-    <link rel="stylesheet" href="/css/style.css">
+    
+<link rel="stylesheet" href="/css/style.css">
+
     <!-- persian styles -->
     
-      <link rel="stylesheet" href="/css/rtl.css">
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
     
     <!-- rss -->
     
     
-      <link rel="alternate" href="/atom.xml" title="老蔡博客" type="application/atom+xml">
+      <link rel="alternate" href="/atom.xml" title="老蔡博客" type="application/atom+xml" />
     
-</head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 <body class="max-width mx-auto px3 ltr">
     
@@ -91,16 +97,16 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/archives/512/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://www.oldcai.com/archives/512/&text=C++ Builder字符串处理函数总结"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/archives/512/&title=C++ Builder字符串处理函数总结"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/archives/512/&is_video=false&description=C++ Builder字符串处理函数总结"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/archives/512/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.oldcai.com/archives/512/&text=C++ Builder字符串处理函数总结"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/archives/512/&title=C++ Builder字符串处理函数总结"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/archives/512/&is_video=false&description=C++ Builder字符串处理函数总结"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="mailto:?subject=C++ Builder字符串处理函数总结&body=Check out this article: https://www.oldcai.com/archives/512/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://www.oldcai.com/archives/512/&title=C++ Builder字符串处理函数总结"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://www.oldcai.com/archives/512/&title=C++ Builder字符串处理函数总结"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/archives/512/&title=C++ Builder字符串处理函数总结"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://www.oldcai.com/archives/512/&title=C++ Builder字符串处理函数总结"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/archives/512/&name=C++ Builder字符串处理函数总结&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.oldcai.com/archives/512/&title=C++ Builder字符串处理函数总结"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.oldcai.com/archives/512/&title=C++ Builder字符串处理函数总结"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/archives/512/&title=C++ Builder字符串处理函数总结"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.oldcai.com/archives/512/&title=C++ Builder字符串处理函数总结"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/archives/512/&name=C++ Builder字符串处理函数总结&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -135,14 +141,14 @@
       
     <div class="article-category">
         <i class="fas fa-archive"></i>
-        <a class="category-link" href="/categories/编程/">编程</a>
+        <a class="category-link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>
     </div>
 
 
       
     <div class="article-tag">
         <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/tags/C/">C++</a>, <a class="tag-link" href="/tags/C-Builder/">C++ Builder</a>, <a class="tag-link" href="/tags/字符串/">字符串</a>
+        <a class="tag-link-link" href="/tags/C/" rel="tag">C++</a>, <a class="tag-link-link" href="/tags/C-Builder/" rel="tag">C++ Builder</a>, <a class="tag-link-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a>
     </div>
 
 
@@ -152,9 +158,9 @@
 
   <div class="content" itemprop="articleBody">
     <p>若干年前老蔡总结的一些C++ Builder的笔记，对初学或许有帮助，删了不忍心，就发出来吧。</p>
-<p>Memo1-&gt;Text=”String”;<br>是显示开头内容（如果内容超出Memo1的范围的话）</p>
+<p>Memo1-&gt;Text&#x3D;”String”;<br>是显示开头内容（如果内容超出Memo1的范围的话）</p>
 <p>Memo1-&gt;Lines-&gt;Add(“String”);<br>是显示结尾内容（如果内容超出Memo1的范围的话）</p>
-<p>Memo1-&gt;Text=IdHTTP1-&gt;Get(“<a href="http://www.baidu.com/&quot;)" target="_blank" rel="noopener">http://www.baidu.com/&quot;)</a>;</p>
+<p>Memo1-&gt;Text&#x3D;IdHTTP1-&gt;Get(“<a target="_blank" rel="noopener" href="http://www.baidu.com/">http://www.baidu.com/</a>“);</p>
 <p>  Memo1-&gt;Lines-&gt;Add(“结束”);</p>
 <p>Text.Length();<br>Memo1-&gt;Lines-&gt;Add(IntToStr(AnsiPos(“a”,a)));</p>
 <p>Memo1-&gt;Lines-&gt;Add(a.SubString(1,2));</p>
@@ -173,10 +179,12 @@
 <p>Trim<br> AnstString _fastcall Trim() const<br> 返回一个新的字符串，它会将原字符串前后空白或控制字符清除后再返回</p>
 <p>WideChar<br> wchar_t fastcall WideChar(wchart* dest,int destsize)const<br> 转换AnsiString到一个宽字符数组（COM中常用）</p>
 <p>AnsiString成员函数<br> 功能<br> 传统字符串函数</p>
-<p>=<br> 字符串拷贝<br> strcpy</p>
-<p>+=<br> 字符串合并<br> strcat</p>
-<p>+<br> 字符串连接<br> 无</p>
-<p>==,!+=,,&gt;=<br> 字符串比较<br> strcmp</p>
+<p>&#x3D;<br> 字符串拷贝<br> strcpy</p>
+<p>+&#x3D;<br> 字符串合并<br> strcat</p>
+<ul>
+<li>字符串连接<br>无</li>
+</ul>
+<p>&#x3D;&#x3D;,!+&#x3D;,,&gt;&#x3D;<br> 字符串比较<br> strcmp</p>
 <p>c_str()<br> 相互转换<br> 无，但可以利用指针实现</p>
 <p>Delete<br> 删除子字符串<br> 无</p>
 <p>Insert<br> 插入子字符串<br> 无</p>
@@ -223,16 +231,16 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/archives/512/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://www.oldcai.com/archives/512/&text=C++ Builder字符串处理函数总结"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/archives/512/&title=C++ Builder字符串处理函数总结"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/archives/512/&is_video=false&description=C++ Builder字符串处理函数总结"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/archives/512/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.oldcai.com/archives/512/&text=C++ Builder字符串处理函数总结"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/archives/512/&title=C++ Builder字符串处理函数总结"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/archives/512/&is_video=false&description=C++ Builder字符串处理函数总结"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="mailto:?subject=C++ Builder字符串处理函数总结&body=Check out this article: https://www.oldcai.com/archives/512/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://www.oldcai.com/archives/512/&title=C++ Builder字符串处理函数总结"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://www.oldcai.com/archives/512/&title=C++ Builder字符串处理函数总结"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/archives/512/&title=C++ Builder字符串处理函数总结"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://www.oldcai.com/archives/512/&title=C++ Builder字符串处理函数总结"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/archives/512/&name=C++ Builder字符串处理函数总结&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.oldcai.com/archives/512/&title=C++ Builder字符串处理函数总结"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.oldcai.com/archives/512/&title=C++ Builder字符串处理函数总结"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/archives/512/&title=C++ Builder字符串处理函数总结"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.oldcai.com/archives/512/&title=C++ Builder字符串处理函数总结"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/archives/512/&name=C++ Builder字符串处理函数总结&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -273,13 +281,23 @@
 </body>
 </html>
 <!-- styles -->
+
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
 <link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
 
+
 <!-- jquery -->
+
 <script src="/lib/jquery/jquery.min.js"></script>
+
+
 <script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+
 <script src="/js/main.js"></script>
+
 <!-- search -->
 
 <!-- Google Analytics -->

@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <!-- so meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="1. 创建项目1cargo new hello-tokio 2. 修改文件 Cargo.toml  12[dependencies]tokio = &amp;#123; version = &quot;0.2&quot;, features = [&quot;full&quot;] &amp;#125;  src/main.rs  1234567891011use tokio::net::TcpStream;use tokio::prelude::*;">
-<meta name="keywords" content="tokio">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="1. 创建项目1cargo new hello-tokio   2. 修改文件 Cargo.toml  12[dependencies]tokio &#x3D; &amp;#123; version &#x3D; &quot;0.2&quot;, features &#x3D; [&quot;full&quot;] &amp;#125;   src&#x2F;main.rs  1234567891011use tokio::net::TcpS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hello World - rust之tokio- rust教程01">
-<meta property="og:url" content="https://www.oldcai.com/rust/tokio-hello-world/index.html">
+<meta property="og:url" content="https://www.oldcai.com/rust/tokio-hello-world/">
 <meta property="og:site_name" content="老蔡博客">
-<meta property="og:description" content="1. 创建项目1cargo new hello-tokio 2. 修改文件 Cargo.toml  12[dependencies]tokio = &amp;#123; version = &quot;0.2&quot;, features = [&quot;full&quot;] &amp;#125;  src/main.rs  1234567891011use tokio::net::TcpStream;use tokio::prelude::*;">
-<meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-07-11T17:18:33.605Z">
+<meta property="og:description" content="1. 创建项目1cargo new hello-tokio   2. 修改文件 Cargo.toml  12[dependencies]tokio &#x3D; &amp;#123; version &#x3D; &quot;0.2&quot;, features &#x3D; [&quot;full&quot;] &amp;#125;   src&#x2F;main.rs  1234567891011use tokio::net::TcpS">
+<meta property="og:locale">
+<meta property="article:published_time" content="2020-07-09T22:57:53.000Z">
+<meta property="article:modified_time" content="2020-07-11T17:18:33.605Z">
+<meta property="article:author" content="oldcai">
+<meta property="article:tag" content="tokio">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World - rust之tokio- rust教程01">
-<meta name="twitter:description" content="1. 创建项目1cargo new hello-tokio 2. 修改文件 Cargo.toml  12[dependencies]tokio = &amp;#123; version = &quot;0.2&quot;, features = [&quot;full&quot;] &amp;#125;  src/main.rs  1234567891011use tokio::net::TcpStream;use tokio::prelude::*;">
     
     
         
@@ -39,17 +39,21 @@
     <!-- title -->
     <title>Hello World - rust之tokio- rust教程01</title>
     <!-- styles -->
-    <link rel="stylesheet" href="/css/style.css">
+    
+<link rel="stylesheet" href="/css/style.css">
+
     <!-- persian styles -->
     
-      <link rel="stylesheet" href="/css/rtl.css">
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
     
     <!-- rss -->
     
     
-      <link rel="alternate" href="/atom.xml" title="老蔡博客" type="application/atom+xml">
+      <link rel="alternate" href="/atom.xml" title="老蔡博客" type="application/atom+xml" />
     
-</head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 <body class="max-width mx-auto px3 ltr">
     
@@ -91,21 +95,21 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/rust/tokio-hello-world/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://www.oldcai.com/rust/tokio-hello-world/&text=Hello World - rust之tokio- rust教程01"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/rust/tokio-hello-world/&title=Hello World - rust之tokio- rust教程01"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/rust/tokio-hello-world/&is_video=false&description=Hello World - rust之tokio- rust教程01"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/rust/tokio-hello-world/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.oldcai.com/rust/tokio-hello-world/&text=Hello World - rust之tokio- rust教程01"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/rust/tokio-hello-world/&title=Hello World - rust之tokio- rust教程01"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/rust/tokio-hello-world/&is_video=false&description=Hello World - rust之tokio- rust教程01"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="mailto:?subject=Hello World - rust之tokio- rust教程01&body=Check out this article: https://www.oldcai.com/rust/tokio-hello-world/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://www.oldcai.com/rust/tokio-hello-world/&title=Hello World - rust之tokio- rust教程01"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://www.oldcai.com/rust/tokio-hello-world/&title=Hello World - rust之tokio- rust教程01"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/rust/tokio-hello-world/&title=Hello World - rust之tokio- rust教程01"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://www.oldcai.com/rust/tokio-hello-world/&title=Hello World - rust之tokio- rust教程01"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/rust/tokio-hello-world/&name=Hello World - rust之tokio- rust教程01&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.oldcai.com/rust/tokio-hello-world/&title=Hello World - rust之tokio- rust教程01"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.oldcai.com/rust/tokio-hello-world/&title=Hello World - rust之tokio- rust教程01"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/rust/tokio-hello-world/&title=Hello World - rust之tokio- rust教程01"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.oldcai.com/rust/tokio-hello-world/&title=Hello World - rust之tokio- rust教程01"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/rust/tokio-hello-world/&name=Hello World - rust之tokio- rust教程01&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-创建项目"><span class="toc-number">1.</span> <span class="toc-text">1. 创建项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-修改文件"><span class="toc-number">2.</span> <span class="toc-text">2. 修改文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-运行"><span class="toc-number">3.</span> <span class="toc-text">3. 运行</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#准备"><span class="toc-number">3.1.</span> <span class="toc-text">准备</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Windows"><span class="toc-number">3.1.1.</span> <span class="toc-text">Windows</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Mac"><span class="toc-number">3.1.2.</span> <span class="toc-text">Mac</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#运行代码"><span class="toc-number">3.2.</span> <span class="toc-text">运行代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如果出错，则运行"><span class="toc-number">3.3.</span> <span class="toc-text">如果出错，则运行</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">4.</span> <span class="toc-text">总结</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE"><span class="toc-number">1.</span> <span class="toc-text">1. 创建项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6"><span class="toc-number">2.</span> <span class="toc-text">2. 修改文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E8%BF%90%E8%A1%8C"><span class="toc-number">3.</span> <span class="toc-text">3. 运行</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%86%E5%A4%87"><span class="toc-number">3.1.</span> <span class="toc-text">准备</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Windows"><span class="toc-number">3.1.1.</span> <span class="toc-text">Windows</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Mac"><span class="toc-number">3.1.2.</span> <span class="toc-text">Mac</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E4%BB%A3%E7%A0%81"><span class="toc-number">3.2.</span> <span class="toc-text">运行代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E6%9E%9C%E5%87%BA%E9%94%99%EF%BC%8C%E5%88%99%E8%BF%90%E8%A1%8C"><span class="toc-number">3.3.</span> <span class="toc-text">如果出错，则运行</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">4.</span> <span class="toc-text">总结</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -135,14 +139,14 @@
       
     <div class="article-category">
         <i class="fas fa-archive"></i>
-        <a class="category-link" href="/categories/教程/">教程</a> › <a class="category-link" href="/categories/教程/rust/">rust</a>
+        <a class="category-link" href="/categories/%E6%95%99%E7%A8%8B/">教程</a> › <a class="category-link" href="/categories/%E6%95%99%E7%A8%8B/rust/">rust</a>
     </div>
 
 
       
     <div class="article-tag">
         <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/tags/tokio/">tokio</a>
+        <a class="tag-link-link" href="/tags/tokio/" rel="tag">tokio</a>
     </div>
 
 
@@ -152,18 +156,26 @@
 
   <div class="content" itemprop="articleBody">
     <h2 id="1-创建项目"><a href="#1-创建项目" class="headerlink" title="1. 创建项目"></a>1. 创建项目</h2><figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cargo <span class="keyword">new</span> <span class="type">hello</span>-tokio</span><br></pre></td></tr></table></figure>
+
+
 <h2 id="2-修改文件"><a href="#2-修改文件" class="headerlink" title="2. 修改文件"></a>2. 修改文件</h2><blockquote>
 <p>Cargo.toml</p>
 </blockquote>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[dependencies]</span></span><br><span class="line"><span class="attr">tokio</span> = &#123; version = <span class="string">"0.2"</span>, features = [<span class="string">"full"</span>] &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[dependencies]</span></span><br><span class="line"><span class="attr">tokio</span> = &#123; version = <span class="string">&quot;0.2&quot;</span>, features = [<span class="string">&quot;full&quot;</span>] &#125;</span><br></pre></td></tr></table></figure>
+
 <blockquote>
-<p>src/main.rs</p>
+<p>src&#x2F;main.rs</p>
 </blockquote>
-<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> tokio::net::TcpStream;</span><br><span class="line"><span class="keyword">use</span> tokio::prelude::*;</span><br><span class="line"></span><br><span class="line"><span class="meta">#[tokio::main]</span></span><br><span class="line">async <span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut</span> stream = TcpStream::connect(<span class="string">"127.0.0.1:6142"</span>).await.unwrap();</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">"created stream"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> result = stream.write(<span class="string">b"hello world\n"</span>).await;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">"wrote to stream; success=&#123;:?&#125;"</span>, result.is_ok());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="3-运行"><a href="#3-运行" class="headerlink" title="3. 运行"></a>3. 运行</h2><h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><h4 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h4><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">telnet <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span> <span class="number">6142</span></span><br></pre></td></tr></table></figure>
-<h4 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h4><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -l <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span> <span class="number">6142</span></span><br></pre></td></tr></table></figure>
-<h3 id="运行代码"><a href="#运行代码" class="headerlink" title="运行代码"></a>运行代码</h3><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cargo <span class="keyword">run</span><span class="bash"></span></span><br></pre></td></tr></table></figure>
-<h3 id="如果出错，则运行"><a href="#如果出错，则运行" class="headerlink" title="如果出错，则运行"></a>如果出错，则运行</h3><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RUST_BACKTRACE=full cargo <span class="keyword">run</span><span class="bash"></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> tokio::net::TcpStream;</span><br><span class="line"><span class="keyword">use</span> tokio::prelude::*;</span><br><span class="line"></span><br><span class="line"><span class="meta">#[tokio::main]</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut </span><span class="variable">stream</span> = TcpStream::<span class="title function_ invoke__">connect</span>(<span class="string">&quot;127.0.0.1:6142&quot;</span>).<span class="keyword">await</span>.<span class="title function_ invoke__">unwrap</span>();</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;created stream&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> <span class="variable">result</span> = stream.<span class="title function_ invoke__">write</span>(<span class="string">b&quot;hello world\n&quot;</span>).<span class="keyword">await</span>;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;wrote to stream; success=&#123;:?&#125;&quot;</span>, result.<span class="title function_ invoke__">is_ok</span>());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="3-运行"><a href="#3-运行" class="headerlink" title="3. 运行"></a>3. 运行</h2><h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><h4 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h4><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">telnet</span> <span class="number">127.0.0.1</span> <span class="number">6142</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h4><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">nc</span> -l <span class="number">127.0.0.1</span> <span class="number">6142</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="运行代码"><a href="#运行代码" class="headerlink" title="运行代码"></a>运行代码</h3><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cargo <span class="built_in">run</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="如果出错，则运行"><a href="#如果出错，则运行" class="headerlink" title="如果出错，则运行"></a>如果出错，则运行</h3><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">RUST_BACKTRACE</span>=full cargo run</span><br></pre></td></tr></table></figure>
 <p>可以查看到出错的堆栈</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>用tokio实现出一个客户端程序<br>实现功能：</p>
 <ol>
@@ -171,7 +183,9 @@
 <li>发送字符串<code>hello world\n</code></li>
 <li>检测是否发送成功并打印</li>
 </ol>
-<p>可能错误：<br>本地端口监听失败或还未监听，会出现错误：<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">thread 'main' panicked <span class="keyword">at</span> 'called `Result::unwrap()` <span class="keyword">on</span> an `Err` value: Os &#123; code: <span class="number">61</span>, kind: ConnectionRefused, message: <span class="string">"Connection refused"</span> &#125;', src/main.rs:<span class="number">6</span>:<span class="number">22</span></span><br><span class="line">note: <span class="built_in">run</span> <span class="keyword">with</span> `RUST_BACKTRACE=<span class="number">1</span>` environment variable <span class="keyword">to</span> display a backtrace</span><br></pre></td></tr></table></figure></p>
+<p>可能错误：<br>本地端口监听失败或还未监听，会出现错误：</p>
+<figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">thread &#x27;main&#x27; panicked at &#x27;called `Result::</span>unwrap()` on an `Err` value: Os &#123; code: <span class="number">61</span>, kind: ConnectionRefused, message: <span class="string">&quot;Connection refused&quot;</span> &#125;&#x27;, src/main.rs:<span class="number">6</span>:<span class="number">22</span></span><br><span class="line"><span class="title">note:</span> run with `RUST_BACKTRACE=<span class="number">1</span>` environment variable to display a backtrace</span><br></pre></td></tr></table></figure>
+
 
   </div>
 </article>
@@ -203,21 +217,21 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-创建项目"><span class="toc-number">1.</span> <span class="toc-text">1. 创建项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-修改文件"><span class="toc-number">2.</span> <span class="toc-text">2. 修改文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-运行"><span class="toc-number">3.</span> <span class="toc-text">3. 运行</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#准备"><span class="toc-number">3.1.</span> <span class="toc-text">准备</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Windows"><span class="toc-number">3.1.1.</span> <span class="toc-text">Windows</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Mac"><span class="toc-number">3.1.2.</span> <span class="toc-text">Mac</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#运行代码"><span class="toc-number">3.2.</span> <span class="toc-text">运行代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如果出错，则运行"><span class="toc-number">3.3.</span> <span class="toc-text">如果出错，则运行</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">4.</span> <span class="toc-text">总结</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE"><span class="toc-number">1.</span> <span class="toc-text">1. 创建项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6"><span class="toc-number">2.</span> <span class="toc-text">2. 修改文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E8%BF%90%E8%A1%8C"><span class="toc-number">3.</span> <span class="toc-text">3. 运行</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%86%E5%A4%87"><span class="toc-number">3.1.</span> <span class="toc-text">准备</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Windows"><span class="toc-number">3.1.1.</span> <span class="toc-text">Windows</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Mac"><span class="toc-number">3.1.2.</span> <span class="toc-text">Mac</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E4%BB%A3%E7%A0%81"><span class="toc-number">3.2.</span> <span class="toc-text">运行代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E6%9E%9C%E5%87%BA%E9%94%99%EF%BC%8C%E5%88%99%E8%BF%90%E8%A1%8C"><span class="toc-number">3.3.</span> <span class="toc-text">如果出错，则运行</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">4.</span> <span class="toc-text">总结</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/rust/tokio-hello-world/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://www.oldcai.com/rust/tokio-hello-world/&text=Hello World - rust之tokio- rust教程01"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/rust/tokio-hello-world/&title=Hello World - rust之tokio- rust教程01"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/rust/tokio-hello-world/&is_video=false&description=Hello World - rust之tokio- rust教程01"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/rust/tokio-hello-world/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.oldcai.com/rust/tokio-hello-world/&text=Hello World - rust之tokio- rust教程01"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/rust/tokio-hello-world/&title=Hello World - rust之tokio- rust教程01"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/rust/tokio-hello-world/&is_video=false&description=Hello World - rust之tokio- rust教程01"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="mailto:?subject=Hello World - rust之tokio- rust教程01&body=Check out this article: https://www.oldcai.com/rust/tokio-hello-world/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://www.oldcai.com/rust/tokio-hello-world/&title=Hello World - rust之tokio- rust教程01"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://www.oldcai.com/rust/tokio-hello-world/&title=Hello World - rust之tokio- rust教程01"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/rust/tokio-hello-world/&title=Hello World - rust之tokio- rust教程01"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://www.oldcai.com/rust/tokio-hello-world/&title=Hello World - rust之tokio- rust教程01"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/rust/tokio-hello-world/&name=Hello World - rust之tokio- rust教程01&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.oldcai.com/rust/tokio-hello-world/&title=Hello World - rust之tokio- rust教程01"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.oldcai.com/rust/tokio-hello-world/&title=Hello World - rust之tokio- rust教程01"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/rust/tokio-hello-world/&title=Hello World - rust之tokio- rust教程01"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.oldcai.com/rust/tokio-hello-world/&title=Hello World - rust之tokio- rust教程01"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/rust/tokio-hello-world/&name=Hello World - rust之tokio- rust教程01&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -258,13 +272,23 @@
 </body>
 </html>
 <!-- styles -->
+
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
 <link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
 
+
 <!-- jquery -->
+
 <script src="/lib/jquery/jquery.min.js"></script>
+
+
 <script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+
 <script src="/js/main.js"></script>
+
 <!-- search -->
 
 <!-- Google Analytics -->
