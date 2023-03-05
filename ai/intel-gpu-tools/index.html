@@ -8,14 +8,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
     <meta name="description" content="How to Show Gpu Usage After Installing Intel-Gpu-ToolsAfter installing intel-gpu-tools, you can show GPU usage using the intel_gpu_top command.Here are the steps to show GPU usage:  Open a terminal wi">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Get Started with Intel Arc GPU Monitoring: How to Show GPU Usage and More with intel-gpu-tools">
+<meta property="og:title" content="Get Started with Intel Arc GPU Monitoring: How to Show GPU Usage and Graphics Memory Usage">
 <meta property="og:url" content="https://www.oldcai.com/ai/intel-gpu-tools/">
 <meta property="og:site_name" content="老蔡博客">
 <meta property="og:description" content="How to Show Gpu Usage After Installing Intel-Gpu-ToolsAfter installing intel-gpu-tools, you can show GPU usage using the intel_gpu_top command.Here are the steps to show GPU usage:  Open a terminal wi">
 <meta property="og:locale">
 <meta property="og:image" content="https://i.imgur.com/nIZPjwO.png">
+<meta property="og:image" content="https://i.imgur.com/MjRt37b.png">
 <meta property="article:published_time" content="2023-02-21T16:46:23.000Z">
-<meta property="article:modified_time" content="2023-02-21T14:12:01.584Z">
+<meta property="article:modified_time" content="2023-03-05T13:01:04.753Z">
 <meta property="article:author" content="oldcai">
 <meta property="article:tag" content="Intel GPU">
 <meta property="article:tag" content="Monitoring">
@@ -40,7 +41,7 @@
       
     
     <!-- title -->
-    <title>Get Started with Intel Arc GPU Monitoring: How to Show GPU Usage and More with intel-gpu-tools</title>
+    <title>Get Started with Intel Arc GPU Monitoring: How to Show GPU Usage and Graphics Memory Usage</title>
     <!-- styles -->
     
 <link rel="stylesheet" href="/css/style.css">
@@ -99,21 +100,21 @@
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/ai/intel-gpu-tools/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.oldcai.com/ai/intel-gpu-tools/&text=Get Started with Intel Arc GPU Monitoring: How to Show GPU Usage and More with intel-gpu-tools"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/ai/intel-gpu-tools/&title=Get Started with Intel Arc GPU Monitoring: How to Show GPU Usage and More with intel-gpu-tools"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/ai/intel-gpu-tools/&is_video=false&description=Get Started with Intel Arc GPU Monitoring: How to Show GPU Usage and More with intel-gpu-tools"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Get Started with Intel Arc GPU Monitoring: How to Show GPU Usage and More with intel-gpu-tools&body=Check out this article: https://www.oldcai.com/ai/intel-gpu-tools/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.oldcai.com/ai/intel-gpu-tools/&title=Get Started with Intel Arc GPU Monitoring: How to Show GPU Usage and More with intel-gpu-tools"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.oldcai.com/ai/intel-gpu-tools/&title=Get Started with Intel Arc GPU Monitoring: How to Show GPU Usage and More with intel-gpu-tools"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/ai/intel-gpu-tools/&title=Get Started with Intel Arc GPU Monitoring: How to Show GPU Usage and More with intel-gpu-tools"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.oldcai.com/ai/intel-gpu-tools/&title=Get Started with Intel Arc GPU Monitoring: How to Show GPU Usage and More with intel-gpu-tools"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/ai/intel-gpu-tools/&name=Get Started with Intel Arc GPU Monitoring: How to Show GPU Usage and More with intel-gpu-tools&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://www.oldcai.com/ai/intel-gpu-tools/&t=Get Started with Intel Arc GPU Monitoring: How to Show GPU Usage and More with intel-gpu-tools"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.oldcai.com/ai/intel-gpu-tools/&text=Get Started with Intel Arc GPU Monitoring: How to Show GPU Usage and Graphics Memory Usage"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/ai/intel-gpu-tools/&title=Get Started with Intel Arc GPU Monitoring: How to Show GPU Usage and Graphics Memory Usage"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/ai/intel-gpu-tools/&is_video=false&description=Get Started with Intel Arc GPU Monitoring: How to Show GPU Usage and Graphics Memory Usage"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Get Started with Intel Arc GPU Monitoring: How to Show GPU Usage and Graphics Memory Usage&body=Check out this article: https://www.oldcai.com/ai/intel-gpu-tools/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.oldcai.com/ai/intel-gpu-tools/&title=Get Started with Intel Arc GPU Monitoring: How to Show GPU Usage and Graphics Memory Usage"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.oldcai.com/ai/intel-gpu-tools/&title=Get Started with Intel Arc GPU Monitoring: How to Show GPU Usage and Graphics Memory Usage"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/ai/intel-gpu-tools/&title=Get Started with Intel Arc GPU Monitoring: How to Show GPU Usage and Graphics Memory Usage"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.oldcai.com/ai/intel-gpu-tools/&title=Get Started with Intel Arc GPU Monitoring: How to Show GPU Usage and Graphics Memory Usage"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/ai/intel-gpu-tools/&name=Get Started with Intel Arc GPU Monitoring: How to Show GPU Usage and Graphics Memory Usage&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://www.oldcai.com/ai/intel-gpu-tools/&t=Get Started with Intel Arc GPU Monitoring: How to Show GPU Usage and Graphics Memory Usage"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#How-to-Show-Gpu-Usage-After-Installing-Intel-Gpu-Tools"><span class="toc-number">1.</span> <span class="toc-text">How to Show Gpu Usage After Installing Intel-Gpu-Tools</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#What-Else-Are-Included-in-the-Intel-Gpu-Tools"><span class="toc-number">2.</span> <span class="toc-text">What Else Are Included in the Intel-Gpu-Tools</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#How-to-Show-Gpu-Usage-After-Installing-Intel-Gpu-Tools"><span class="toc-number">1.</span> <span class="toc-text">How to Show Gpu Usage After Installing Intel-Gpu-Tools</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#What-Else-Are-Included-in-the-Intel-Gpu-Tools"><span class="toc-number">2.</span> <span class="toc-text">What Else Are Included in the Intel-Gpu-Tools</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#How-to-Show-Graphics-Memory-Usage"><span class="toc-number">3.</span> <span class="toc-text">How to Show Graphics Memory Usage</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -125,7 +126,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        Get Started with Intel Arc GPU Monitoring: How to Show GPU Usage and More with intel-gpu-tools
+        Get Started with Intel Arc GPU Monitoring: How to Show GPU Usage and Graphics Memory Usage
     </h1>
 
 
@@ -165,7 +166,7 @@
     <h2 id="How-to-Show-Gpu-Usage-After-Installing-Intel-Gpu-Tools"><a href="#How-to-Show-Gpu-Usage-After-Installing-Intel-Gpu-Tools" class="headerlink" title="How to Show Gpu Usage After Installing Intel-Gpu-Tools"></a>How to Show Gpu Usage After Installing Intel-Gpu-Tools</h2><p>After installing intel-gpu-tools, you can show GPU usage using the intel_gpu_top command.<br>Here are the steps to show GPU usage:</p>
 <ol>
 <li>Open a terminal window.</li>
-<li>Type the following command and press Enter to launch intel_gpu_top: <code>codeintel_gpu_top</code></li>
+<li>Type the following command and press Enter to launch intel_gpu_top: <code>intel_gpu_top</code></li>
 <li>The intel_gpu_top tool will display real-time GPU usage statistics for the Intel GPU. You will see a screen with a list of metrics that shows the utilization of various GPU components, such as the GPU engine, memory, and the GPU core frequency.</li>
 <li>Press ‘q’ to exit intel_gpu_top.</li>
 </ol>
@@ -180,6 +181,13 @@
 <li>intel_display_power: This tool can be used to control the display power of the Intel GPU, which can be useful for power management and reducing energy consumption.</li>
 </ol>
 <p>Overall, intel-gpu-tools is a useful collection of tools for developers and system administrators who need to monitor or debug Intel GPUs on Linux systems.</p>
+<h2 id="How-to-Show-Graphics-Memory-Usage"><a href="#How-to-Show-Graphics-Memory-Usage" class="headerlink" title="How to Show Graphics Memory Usage"></a>How to Show Graphics Memory Usage</h2><p>Sysmon can be utilized to monitor GPU memory, but the tool is not currently available in a system package. Therefore, it must be compiled from the source code.</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git clone https:<span class="regexp">//gi</span>thub.com<span class="regexp">/intel/</span>pti-gpu/</span><br><span class="line">cd pti-gpu<span class="regexp">/tools/</span>sysmon</span><br><span class="line">mkdir build &amp;&amp; cd build</span><br><span class="line">cmake -DCMAKE_BUILD_TYPE=Release .. &amp;&amp; make</span><br></pre></td></tr></table></figure>
+
+<p>Once the tool has been compiled, it can be executed via the command <code>./sysmon</code>.</p>
+<p><img src="https://i.imgur.com/MjRt37b.png" alt="graphics memory"></p>
+<p>The graphics memory usage of the Arc card is displayed in the <code>Device Memory Used(MB)</code> column, which is partitioned by process IDs.</p>
+<p>The compiled file can be copied into the <code>/bin/</code> directory or any other directory within the $PATH environment variable. Once the file is in the correct directory, you can run the tool using the <code>sysmon</code> command.</p>
 
   </div>
 </article>
@@ -215,22 +223,22 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#How-to-Show-Gpu-Usage-After-Installing-Intel-Gpu-Tools"><span class="toc-number">1.</span> <span class="toc-text">How to Show Gpu Usage After Installing Intel-Gpu-Tools</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#What-Else-Are-Included-in-the-Intel-Gpu-Tools"><span class="toc-number">2.</span> <span class="toc-text">What Else Are Included in the Intel-Gpu-Tools</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#How-to-Show-Gpu-Usage-After-Installing-Intel-Gpu-Tools"><span class="toc-number">1.</span> <span class="toc-text">How to Show Gpu Usage After Installing Intel-Gpu-Tools</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#What-Else-Are-Included-in-the-Intel-Gpu-Tools"><span class="toc-number">2.</span> <span class="toc-text">What Else Are Included in the Intel-Gpu-Tools</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#How-to-Show-Graphics-Memory-Usage"><span class="toc-number">3.</span> <span class="toc-text">How to Show Graphics Memory Usage</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
       <ul>
   <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/ai/intel-gpu-tools/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.oldcai.com/ai/intel-gpu-tools/&text=Get Started with Intel Arc GPU Monitoring: How to Show GPU Usage and More with intel-gpu-tools"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/ai/intel-gpu-tools/&title=Get Started with Intel Arc GPU Monitoring: How to Show GPU Usage and More with intel-gpu-tools"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/ai/intel-gpu-tools/&is_video=false&description=Get Started with Intel Arc GPU Monitoring: How to Show GPU Usage and More with intel-gpu-tools"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Get Started with Intel Arc GPU Monitoring: How to Show GPU Usage and More with intel-gpu-tools&body=Check out this article: https://www.oldcai.com/ai/intel-gpu-tools/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.oldcai.com/ai/intel-gpu-tools/&title=Get Started with Intel Arc GPU Monitoring: How to Show GPU Usage and More with intel-gpu-tools"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.oldcai.com/ai/intel-gpu-tools/&title=Get Started with Intel Arc GPU Monitoring: How to Show GPU Usage and More with intel-gpu-tools"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/ai/intel-gpu-tools/&title=Get Started with Intel Arc GPU Monitoring: How to Show GPU Usage and More with intel-gpu-tools"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.oldcai.com/ai/intel-gpu-tools/&title=Get Started with Intel Arc GPU Monitoring: How to Show GPU Usage and More with intel-gpu-tools"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/ai/intel-gpu-tools/&name=Get Started with Intel Arc GPU Monitoring: How to Show GPU Usage and More with intel-gpu-tools&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://www.oldcai.com/ai/intel-gpu-tools/&t=Get Started with Intel Arc GPU Monitoring: How to Show GPU Usage and More with intel-gpu-tools"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.oldcai.com/ai/intel-gpu-tools/&text=Get Started with Intel Arc GPU Monitoring: How to Show GPU Usage and Graphics Memory Usage"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/ai/intel-gpu-tools/&title=Get Started with Intel Arc GPU Monitoring: How to Show GPU Usage and Graphics Memory Usage"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/ai/intel-gpu-tools/&is_video=false&description=Get Started with Intel Arc GPU Monitoring: How to Show GPU Usage and Graphics Memory Usage"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Get Started with Intel Arc GPU Monitoring: How to Show GPU Usage and Graphics Memory Usage&body=Check out this article: https://www.oldcai.com/ai/intel-gpu-tools/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.oldcai.com/ai/intel-gpu-tools/&title=Get Started with Intel Arc GPU Monitoring: How to Show GPU Usage and Graphics Memory Usage"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.oldcai.com/ai/intel-gpu-tools/&title=Get Started with Intel Arc GPU Monitoring: How to Show GPU Usage and Graphics Memory Usage"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/ai/intel-gpu-tools/&title=Get Started with Intel Arc GPU Monitoring: How to Show GPU Usage and Graphics Memory Usage"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.oldcai.com/ai/intel-gpu-tools/&title=Get Started with Intel Arc GPU Monitoring: How to Show GPU Usage and Graphics Memory Usage"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/ai/intel-gpu-tools/&name=Get Started with Intel Arc GPU Monitoring: How to Show GPU Usage and Graphics Memory Usage&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://www.oldcai.com/ai/intel-gpu-tools/&t=Get Started with Intel Arc GPU Monitoring: How to Show GPU Usage and Graphics Memory Usage"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
