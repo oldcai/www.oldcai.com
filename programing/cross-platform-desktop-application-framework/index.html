@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="常用跨平台框架在跨平台桌面应用开发中，一些常用的框架包括 Electron、NW.js、Qt、JavaFX 等。 ElectronElectron 是一种基于 Node.js 和 Chromium 的框架，可以用 HTML、CSS 和 JavaScript 创建跨平台的桌面应用。由于它基于 Chromium，因此可以实现优秀的跨平台兼容性，并且有许多可用的插件和库可供使用。 NW.jsNW.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="跨平台桌面应用程序开发框架比较：Electron、NW.js、Qt、JavaFX 和 NeutralinoJS">
+<meta property="og:url" content="https://www.oldcai.com/programing/cross-platform-desktop-application-framework/">
+<meta property="og:site_name" content="老蔡博客">
+<meta property="og:description" content="常用跨平台框架在跨平台桌面应用开发中，一些常用的框架包括 Electron、NW.js、Qt、JavaFX 等。 ElectronElectron 是一种基于 Node.js 和 Chromium 的框架，可以用 HTML、CSS 和 JavaScript 创建跨平台的桌面应用。由于它基于 Chromium，因此可以实现优秀的跨平台兼容性，并且有许多可用的插件和库可供使用。 NW.jsNW.js">
+<meta property="og:locale">
+<meta property="article:published_time" content="2023-03-09T04:01:54.000Z">
+<meta property="article:modified_time" content="2023-03-09T05:33:59.522Z">
+<meta property="article:author" content="oldcai">
+<meta property="article:tag" content="跨平台桌面应用程序, Electron, NW.js, NeutralinoJS, Qt, JavaFX, 比较分析, 开发框架, Web技术, 软件开发">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>跨平台桌面应用程序开发框架比较：Electron、NW.js、Qt、JavaFX 和 NeutralinoJS</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/atom.xml" title="老蔡博客" type="application/atom+xml" />
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/categories/">Categories</a></li><!--
+     --><!--
+       --><li><a href="/tags/">Tags</a></li><!--
+     --><!--
+       --><li><a href="/friends/">Friends</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Archives</a></li><!--
+     --><!--
+       --><li><a href="/search/">Search</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/programing/NW-js-vs-Electron/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/linux/centos-disk-deep-clean-cn/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/programing/cross-platform-desktop-application-framework/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.oldcai.com/programing/cross-platform-desktop-application-framework/&text=跨平台桌面应用程序开发框架比较：Electron、NW.js、Qt、JavaFX 和 NeutralinoJS"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/programing/cross-platform-desktop-application-framework/&title=跨平台桌面应用程序开发框架比较：Electron、NW.js、Qt、JavaFX 和 NeutralinoJS"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/programing/cross-platform-desktop-application-framework/&is_video=false&description=跨平台桌面应用程序开发框架比较：Electron、NW.js、Qt、JavaFX 和 NeutralinoJS"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=跨平台桌面应用程序开发框架比较：Electron、NW.js、Qt、JavaFX 和 NeutralinoJS&body=Check out this article: https://www.oldcai.com/programing/cross-platform-desktop-application-framework/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.oldcai.com/programing/cross-platform-desktop-application-framework/&title=跨平台桌面应用程序开发框架比较：Electron、NW.js、Qt、JavaFX 和 NeutralinoJS"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.oldcai.com/programing/cross-platform-desktop-application-framework/&title=跨平台桌面应用程序开发框架比较：Electron、NW.js、Qt、JavaFX 和 NeutralinoJS"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/programing/cross-platform-desktop-application-framework/&title=跨平台桌面应用程序开发框架比较：Electron、NW.js、Qt、JavaFX 和 NeutralinoJS"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.oldcai.com/programing/cross-platform-desktop-application-framework/&title=跨平台桌面应用程序开发框架比较：Electron、NW.js、Qt、JavaFX 和 NeutralinoJS"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/programing/cross-platform-desktop-application-framework/&name=跨平台桌面应用程序开发框架比较：Electron、NW.js、Qt、JavaFX 和 NeutralinoJS&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://www.oldcai.com/programing/cross-platform-desktop-application-framework/&t=跨平台桌面应用程序开发框架比较：Electron、NW.js、Qt、JavaFX 和 NeutralinoJS"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E8%B7%A8%E5%B9%B3%E5%8F%B0%E6%A1%86%E6%9E%B6"><span class="toc-number">1.</span> <span class="toc-text">常用跨平台框架</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Electron"><span class="toc-number">1.1.</span> <span class="toc-text">Electron</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NW-js"><span class="toc-number">1.2.</span> <span class="toc-text">NW.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#QT"><span class="toc-number">1.3.</span> <span class="toc-text">QT</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JavaFX"><span class="toc-number">1.4.</span> <span class="toc-text">JavaFX</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NeutralinoJS"><span class="toc-number">1.5.</span> <span class="toc-text">NeutralinoJS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E6%AF%94NW-js%E5%92%8CElectron"><span class="toc-number">1.6.</span> <span class="toc-text">对比NW.js和Electron</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E5%93%AA%E4%B8%AA%E6%A1%86%E6%9E%B6"><span class="toc-number">2.</span> <span class="toc-text">选择哪个框架</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        跨平台桌面应用程序开发框架比较：Electron、NW.js、Qt、JavaFX 和 NeutralinoJS
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">oldcai</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2023-03-09T04:01:54.000Z" itemprop="datePublished">2023-03-09</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/%E8%B7%A8%E5%B9%B3%E5%8F%B0%E6%A1%8C%E9%9D%A2%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F-Electron-NW-js-NeutralinoJS-Qt-JavaFX-%E6%AF%94%E8%BE%83%E5%88%86%E6%9E%90-%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6-Web%E6%8A%80%E6%9C%AF-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/" rel="tag">跨平台桌面应用程序, Electron, NW.js, NeutralinoJS, Qt, JavaFX, 比较分析, 开发框架, Web技术, 软件开发</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="常用跨平台框架"><a href="#常用跨平台框架" class="headerlink" title="常用跨平台框架"></a>常用跨平台框架</h2><p>在跨平台桌面应用开发中，一些常用的框架包括 Electron、NW.js、Qt、JavaFX 等。</p>
+<h3 id="Electron"><a href="#Electron" class="headerlink" title="Electron"></a>Electron</h3><p>Electron 是一种基于 Node.js 和 Chromium 的框架，可以用 HTML、CSS 和 JavaScript 创建跨平台的桌面应用。由于它基于 Chromium，因此可以实现优秀的跨平台兼容性，并且有许多可用的插件和库可供使用。</p>
+<h3 id="NW-js"><a href="#NW-js" class="headerlink" title="NW.js"></a>NW.js</h3><p>NW.js 也是一个基于 Node.js 的框架，但与 Electron 不同的是，它使用了 Node-Webkit，它允许使用 JavaScript、HTML 和 CSS 编写桌面应用程序，并提供与操作系统的集成。</p>
+<h3 id="QT"><a href="#QT" class="headerlink" title="QT"></a>QT</h3><p>Qt 是一个跨平台的 C++ 应用程序框架，可以用于开发桌面应用程序和移动应用程序。它提供了丰富的图形用户界面组件、网络通信和数据库连接等功能，并且可用于多个平台。</p>
+<h3 id="JavaFX"><a href="#JavaFX" class="headerlink" title="JavaFX"></a>JavaFX</h3><p>JavaFX 是一个用于构建富互联网应用程序的框架，它允许使用 Java 和 XML 创建跨平台的桌面应用程序。它提供了可扩展的界面和媒体组件，支持动画和效果，并具有高性能和优秀的可视化效果。</p>
+<h3 id="NeutralinoJS"><a href="#NeutralinoJS" class="headerlink" title="NeutralinoJS"></a>NeutralinoJS</h3><p>NeutralinoJS 是一个用于构建跨平台桌面应用程序的轻量级框架，它使用了 Web 技术（HTML、CSS 和 JavaScript）和本地 API，以便让开发者可以使用 Web 技术和本地 API 来创建跨平台的桌面应用程序。相比于 Electron、NW.js 和其他类似的框架，NeutralinoJS 只有几兆字节的大小，因此它的下载和安装时间要快得多。<br>NeutralinoJS 可以在 Windows、Linux 和 macOS 等多个操作系统上运行，并且支持使用多种编程语言，如 JavaScript、TypeScript、Python 和 Go。与其他框架相比，NeutralinoJS 不依赖于任何特定的 UI 组件库，因此开发人员可以使用他们熟悉的技术和工具。<br>尽管 NeutralinoJS 在一些方面不如 Electron 和其他框架那样强大，但它的轻量级特性和灵活性使它成为一种很好的选择，尤其是对于需要快速构建跨平台桌面应用程序的开发人员。</p>
+<p>这里还有篇更详细的对比：《<a href="/programing/NeutralinoJS-vs-Electron/">NeutralinoJS 和 Electron 选哪个</a>》</p>
+<h3 id="对比NW-js和Electron"><a href="#对比NW-js和Electron" class="headerlink" title="对比NW.js和Electron"></a>对比NW.js和Electron</h3><p>NW.js 和 Electron 都是基于 Web 技术构建的跨平台桌面应用程序开发框架，它们都使用了 Chromium 渲染引擎来实现 UI 界面，并且都可以使用 HTML、CSS 和 JavaScript 来开发应用程序。它们都使用了 Web 技术来开发应用程序，具有很好的跨平台兼容性和丰富的开发工具和插件支持，但它们在应用程序性能、打包大小、Node.js 特性支持和社区生态系统等方面有一些不同。</p>
+<p>这里还有篇更详细的对比：《<a href="/programing/NW-js-vs-Electron/">跨平台桌面应用程序开发框架比较：NW.js 和 Electron 哪个好？</a>》</p>
+<h2 id="选择哪个框架"><a href="#选择哪个框架" class="headerlink" title="选择哪个框架"></a>选择哪个框架</h2><p>最后，选择哪个框架，还取决于你的技能和需求。</p>
+<p>如果你擅长 JavaScript 并且需要跨平台支持，那么 Electron，NW.js 和 NeutralinoJS 可能是更好的选择。</p>
+<p>如果你熟悉 C++ 并且需要开发高性能的应用程序，那么 Qt 可能是更好的选择。</p>
+<p>如果你使用 Java 并且需要在多个平台上开发桌面应用程序，那么 JavaFX 可能是更好的选择。</p>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/categories/">Categories</a></li>
+         
+          <li><a href="/tags/">Tags</a></li>
+         
+          <li><a href="/friends/">Friends</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E8%B7%A8%E5%B9%B3%E5%8F%B0%E6%A1%86%E6%9E%B6"><span class="toc-number">1.</span> <span class="toc-text">常用跨平台框架</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Electron"><span class="toc-number">1.1.</span> <span class="toc-text">Electron</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NW-js"><span class="toc-number">1.2.</span> <span class="toc-text">NW.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#QT"><span class="toc-number">1.3.</span> <span class="toc-text">QT</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JavaFX"><span class="toc-number">1.4.</span> <span class="toc-text">JavaFX</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NeutralinoJS"><span class="toc-number">1.5.</span> <span class="toc-text">NeutralinoJS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E6%AF%94NW-js%E5%92%8CElectron"><span class="toc-number">1.6.</span> <span class="toc-text">对比NW.js和Electron</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E5%93%AA%E4%B8%AA%E6%A1%86%E6%9E%B6"><span class="toc-number">2.</span> <span class="toc-text">选择哪个框架</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/programing/cross-platform-desktop-application-framework/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.oldcai.com/programing/cross-platform-desktop-application-framework/&text=跨平台桌面应用程序开发框架比较：Electron、NW.js、Qt、JavaFX 和 NeutralinoJS"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/programing/cross-platform-desktop-application-framework/&title=跨平台桌面应用程序开发框架比较：Electron、NW.js、Qt、JavaFX 和 NeutralinoJS"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/programing/cross-platform-desktop-application-framework/&is_video=false&description=跨平台桌面应用程序开发框架比较：Electron、NW.js、Qt、JavaFX 和 NeutralinoJS"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=跨平台桌面应用程序开发框架比较：Electron、NW.js、Qt、JavaFX 和 NeutralinoJS&body=Check out this article: https://www.oldcai.com/programing/cross-platform-desktop-application-framework/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.oldcai.com/programing/cross-platform-desktop-application-framework/&title=跨平台桌面应用程序开发框架比较：Electron、NW.js、Qt、JavaFX 和 NeutralinoJS"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.oldcai.com/programing/cross-platform-desktop-application-framework/&title=跨平台桌面应用程序开发框架比较：Electron、NW.js、Qt、JavaFX 和 NeutralinoJS"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/programing/cross-platform-desktop-application-framework/&title=跨平台桌面应用程序开发框架比较：Electron、NW.js、Qt、JavaFX 和 NeutralinoJS"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.oldcai.com/programing/cross-platform-desktop-application-framework/&title=跨平台桌面应用程序开发框架比较：Electron、NW.js、Qt、JavaFX 和 NeutralinoJS"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/programing/cross-platform-desktop-application-framework/&name=跨平台桌面应用程序开发框架比较：Electron、NW.js、Qt、JavaFX 和 NeutralinoJS&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://www.oldcai.com/programing/cross-platform-desktop-application-framework/&t=跨平台桌面应用程序开发框架比较：Electron、NW.js、Qt、JavaFX 和 NeutralinoJS"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2023
+    oldcai
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/categories/">Categories</a></li><!--
+     --><!--
+       --><li><a href="/tags/">Tags</a></li><!--
+     --><!--
+       --><li><a href="/friends/">Friends</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Archives</a></li><!--
+     --><!--
+       --><li><a href="/search/">Search</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8814571279145017"
+     crossorigin="anonymous"></script>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8814571279145017",
+          enable_page_level_ads: true
+     });
+</script>
+
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-3874125-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-3874125-2');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'oldcai';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+<!-- utterances Comments -->
+
+</body>
+</html>
