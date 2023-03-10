@@ -6,16 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta name="description" content="一般来说linux的内存分页是4096 bytes，也有可能有的不一样，有个api是专门来获取分页大小的： 头文件：unistd.h 函数：int getpagesize() 示例代码： #include &lt;unistd.h&gt;#include &lt;stdio.h&gt;int main(){    int pageSize &#x3D; getpagesize();    prin">
+    <meta name="description" content="一般来说linux的内存分页是4096 bytes，也有可能有的不一样。 不同语言有不同的获取方法 Python 获取系统内存分页一般可以使用Python中的os模块来获取Linux系统的内存分页大小。 1234import ospage_size &#x3D; os.sysconf(os.sysconf_names[&amp;#x27;SC_PAGE_SIZE&amp;#x27;])print(&quot;当前系统内存分">
 <meta property="og:type" content="article">
-<meta property="og:title" content="获取linux系统的内存分页大小">
+<meta property="og:title" content="获取 Linux 系统的内存分页大小">
 <meta property="og:url" content="https://www.oldcai.com/archives/964/">
 <meta property="og:site_name" content="老蔡博客">
-<meta property="og:description" content="一般来说linux的内存分页是4096 bytes，也有可能有的不一样，有个api是专门来获取分页大小的： 头文件：unistd.h 函数：int getpagesize() 示例代码： #include &lt;unistd.h&gt;#include &lt;stdio.h&gt;int main(){    int pageSize &#x3D; getpagesize();    prin">
+<meta property="og:description" content="一般来说linux的内存分页是4096 bytes，也有可能有的不一样。 不同语言有不同的获取方法 Python 获取系统内存分页一般可以使用Python中的os模块来获取Linux系统的内存分页大小。 1234import ospage_size &#x3D; os.sysconf(os.sysconf_names[&amp;#x27;SC_PAGE_SIZE&amp;#x27;])print(&quot;当前系统内存分">
 <meta property="og:locale">
 <meta property="article:published_time" content="2014-03-07T03:56:48.000Z">
-<meta property="article:modified_time" content="2018-10-23T14:45:53.000Z">
+<meta property="article:modified_time" content="2023-03-10T01:54:18.802Z">
 <meta property="article:author" content="oldcai">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="内存分页大小">
+<meta property="article:tag" content="os模块">
+<meta property="article:tag" content="命令行">
 <meta name="twitter:card" content="summary">
     
     
@@ -36,7 +40,7 @@
       
     
     <!-- title -->
-    <title>获取linux系统的内存分页大小</title>
+    <title>获取 Linux 系统的内存分页大小</title>
     <!-- styles -->
     
 <link rel="stylesheet" href="/css/style.css">
@@ -97,21 +101,21 @@
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/archives/964/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.oldcai.com/archives/964/&text=获取linux系统的内存分页大小"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/archives/964/&title=获取linux系统的内存分页大小"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/archives/964/&is_video=false&description=获取linux系统的内存分页大小"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=获取linux系统的内存分页大小&body=Check out this article: https://www.oldcai.com/archives/964/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.oldcai.com/archives/964/&title=获取linux系统的内存分页大小"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.oldcai.com/archives/964/&title=获取linux系统的内存分页大小"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/archives/964/&title=获取linux系统的内存分页大小"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.oldcai.com/archives/964/&title=获取linux系统的内存分页大小"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/archives/964/&name=获取linux系统的内存分页大小&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://www.oldcai.com/archives/964/&t=获取linux系统的内存分页大小"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.oldcai.com/archives/964/&text=获取 Linux 系统的内存分页大小"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/archives/964/&title=获取 Linux 系统的内存分页大小"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/archives/964/&is_video=false&description=获取 Linux 系统的内存分页大小"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=获取 Linux 系统的内存分页大小&body=Check out this article: https://www.oldcai.com/archives/964/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.oldcai.com/archives/964/&title=获取 Linux 系统的内存分页大小"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.oldcai.com/archives/964/&title=获取 Linux 系统的内存分页大小"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/archives/964/&title=获取 Linux 系统的内存分页大小"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.oldcai.com/archives/964/&title=获取 Linux 系统的内存分页大小"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/archives/964/&name=获取 Linux 系统的内存分页大小&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://www.oldcai.com/archives/964/&t=获取 Linux 系统的内存分页大小"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
     <div id="toc">
-      
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Python-%E8%8E%B7%E5%8F%96%E7%B3%BB%E7%BB%9F%E5%86%85%E5%AD%98%E5%88%86%E9%A1%B5"><span class="toc-number">1.</span> <span class="toc-text">Python 获取系统内存分页</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bash-Shell-%E8%8E%B7%E5%8F%96-Linux-%E5%86%85%E5%AD%98%E5%88%86%E9%A1%B5"><span class="toc-number">2.</span> <span class="toc-text">Bash Shell 获取 Linux 内存分页</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-%E8%8E%B7%E5%8F%96%E5%86%85%E5%AD%98%E5%88%86%E9%A1%B5%E5%A4%A7%E5%B0%8F"><span class="toc-number">3.</span> <span class="toc-text">C++ 获取内存分页大小</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -123,7 +127,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        获取linux系统的内存分页大小
+        获取 Linux 系统的内存分页大小
     </h1>
 
 
@@ -144,21 +148,43 @@
       
     <div class="article-category">
         <i class="fas fa-archive"></i>
-        <a class="category-link" href="/categories/linux/">linux</a> › <a class="category-link" href="/categories/linux/%E7%BC%96%E7%A8%8B/">编程</a>
+        <a class="category-link" href="/categories/Linux/">Linux</a> › <a class="category-link" href="/categories/Linux/%E7%BC%96%E7%A8%8B/">编程</a>
     </div>
 
 
       
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Python/" rel="tag">Python</a>, <a class="tag-link-link" href="/tags/os%E6%A8%A1%E5%9D%97/" rel="tag">os模块</a>, <a class="tag-link-link" href="/tags/%E5%86%85%E5%AD%98%E5%88%86%E9%A1%B5%E5%A4%A7%E5%B0%8F/" rel="tag">内存分页大小</a>, <a class="tag-link-link" href="/tags/%E5%91%BD%E4%BB%A4%E8%A1%8C/" rel="tag">命令行</a>
+    </div>
+
 
     </div>
   </header>
   
 
   <div class="content" itemprop="articleBody">
-    <p>一般来说linux的内存分页是4096 bytes，也有可能有的不一样，有个api是专门来获取分页大小的：</p>
+    <p>一般来说linux的内存分页是4096 bytes，也有可能有的不一样。</p>
+<p>不同语言有不同的获取方法</p>
+<h2 id="Python-获取系统内存分页"><a href="#Python-获取系统内存分页" class="headerlink" title="Python 获取系统内存分页"></a>Python 获取系统内存分页</h2><p>一般可以使用Python中的os模块来获取Linux系统的内存分页大小。</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line"></span><br><span class="line">page_size = os<span class="selector-class">.sysconf</span>(os<span class="selector-class">.sysconf_names</span><span class="selector-attr">[<span class="string">&#x27;SC_PAGE_SIZE&#x27;</span>]</span>)</span><br><span class="line"><span class="function"><span class="title">print</span><span class="params">(<span class="string">&quot;当前系统内存分页大小为:&quot;</span>, page_size, <span class="string">&quot;字节&quot;</span>)</span></span></span><br></pre></td></tr></table></figure>
+
+<p><code>os.sysconf</code>函数: 获取系统中当前的内存分页大小，返回的值以字节为单位。<br><code>SC_PAGE_SIZE</code>: 内存分页大小的参数名称。</p>
+<p>如果需要以不同的单位（如KB或MB）显示该值，可以将结果除以相应的数量。例如，要将内存分页大小以KB为单位显示，可以使用以下代码：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line"></span><br><span class="line">page_size = os<span class="selector-class">.sysconf</span>(os<span class="selector-class">.sysconf_names</span><span class="selector-attr">[<span class="string">&#x27;SC_PAGE_SIZE&#x27;</span>]</span>)</span><br><span class="line">page_size_kb = page_size / <span class="number">1024</span></span><br><span class="line"><span class="function"><span class="title">print</span><span class="params">(<span class="string">&quot;当前系统内存分页大小为:&quot;</span>, page_size_kb, <span class="string">&quot;KB&quot;</span>)</span></span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Bash-Shell-获取-Linux-内存分页"><a href="#Bash-Shell-获取-Linux-内存分页" class="headerlink" title="Bash Shell 获取 Linux 内存分页"></a>Bash Shell 获取 Linux 内存分页</h2><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">getconf PAGE_SIZE</span></span><br></pre></td></tr></table></figure>
+
+<p>该命令将返回系统中当前的内存分页大小，以字节为单位。如果您需要以不同的单位（如KB或MB）显示该值，可以将结果除以相应的数量。例如，要将内存分页大小以KB为单位显示，可以使用以下命令：</p>
+<figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">expr `getconf PAGE_SIZE` / <span class="number">1024</span></span><br></pre></td></tr></table></figure>
+
+<p>复制这条命令，可以以KB为单位，返回系统中当前的内存分页大小，一般返回为<code>4</code>，表示内存分页大小为4KB。</p>
+<h2 id="C-获取内存分页大小"><a href="#C-获取内存分页大小" class="headerlink" title="C++ 获取内存分页大小"></a>C++ 获取内存分页大小</h2><p>CPP有个api是专门来获取分页大小的：</p>
 <p>头文件：unistd.h 函数：int getpagesize() 示例代码：</p>
-<p>#include &lt;unistd.h&gt;<br>#include &lt;stdio.h&gt;<br>int main()<br>{<br>    int pageSize &#x3D; getpagesize();<br>    printf(“Page size on your system &#x3D; %i bytes\n”, pageSize);<br>    return 0;<br>}</p>
-<p>顺祝码祺。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> pageSize = <span class="built_in">getpagesize</span>();</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;当前系统内存分页大小为: %i bytes\n&quot;</span>, pageSize);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
 
   </div>
 </article>
@@ -194,22 +220,22 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Python-%E8%8E%B7%E5%8F%96%E7%B3%BB%E7%BB%9F%E5%86%85%E5%AD%98%E5%88%86%E9%A1%B5"><span class="toc-number">1.</span> <span class="toc-text">Python 获取系统内存分页</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bash-Shell-%E8%8E%B7%E5%8F%96-Linux-%E5%86%85%E5%AD%98%E5%88%86%E9%A1%B5"><span class="toc-number">2.</span> <span class="toc-text">Bash Shell 获取 Linux 内存分页</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-%E8%8E%B7%E5%8F%96%E5%86%85%E5%AD%98%E5%88%86%E9%A1%B5%E5%A4%A7%E5%B0%8F"><span class="toc-number">3.</span> <span class="toc-text">C++ 获取内存分页大小</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
       <ul>
   <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/archives/964/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.oldcai.com/archives/964/&text=获取linux系统的内存分页大小"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/archives/964/&title=获取linux系统的内存分页大小"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/archives/964/&is_video=false&description=获取linux系统的内存分页大小"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=获取linux系统的内存分页大小&body=Check out this article: https://www.oldcai.com/archives/964/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.oldcai.com/archives/964/&title=获取linux系统的内存分页大小"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.oldcai.com/archives/964/&title=获取linux系统的内存分页大小"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/archives/964/&title=获取linux系统的内存分页大小"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.oldcai.com/archives/964/&title=获取linux系统的内存分页大小"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/archives/964/&name=获取linux系统的内存分页大小&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://www.oldcai.com/archives/964/&t=获取linux系统的内存分页大小"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.oldcai.com/archives/964/&text=获取 Linux 系统的内存分页大小"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/archives/964/&title=获取 Linux 系统的内存分页大小"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/archives/964/&is_video=false&description=获取 Linux 系统的内存分页大小"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=获取 Linux 系统的内存分页大小&body=Check out this article: https://www.oldcai.com/archives/964/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.oldcai.com/archives/964/&title=获取 Linux 系统的内存分页大小"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.oldcai.com/archives/964/&title=获取 Linux 系统的内存分页大小"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/archives/964/&title=获取 Linux 系统的内存分页大小"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.oldcai.com/archives/964/&title=获取 Linux 系统的内存分页大小"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/archives/964/&name=获取 Linux 系统的内存分页大小&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://www.oldcai.com/archives/964/&t=获取 Linux 系统的内存分页大小"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
