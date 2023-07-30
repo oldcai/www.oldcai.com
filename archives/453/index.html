@@ -10,7 +10,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ruby中rescue抓取require异常的解决办法">
 <meta property="og:url" content="https://www.oldcai.com/archives/453/">
-<meta property="og:site_name" content="老蔡博客">
+<meta property="og:site_name" content="老菜博客">
 <meta property="og:description" content="在Ruby中，基本上所有异常都能用rescue来抓取到并排除掉。但是依赖库语句require ‘xxx’导致的异常却不能直接抓取到。那么怎么才能排除掉require异常呢？ 老蔡查阅典籍后发现，在Ruby中，空rescue子句的隐含意思是rescue StandardError，而require异常的错误是LoadError，并不是StandardError类的子类，所以不能直接抓取到。 解决的办">
 <meta property="og:locale">
 <meta property="article:published_time" content="2011-10-31T08:12:47.000Z">
@@ -49,7 +49,7 @@
     <!-- rss -->
     
     
-      <link rel="alternate" href="/atom.xml" title="老蔡博客" type="application/atom+xml" />
+      <link rel="alternate" href="/atom.xml" title="老菜博客" type="application/atom+xml" />
     
 	<!-- mathjax -->
 	
