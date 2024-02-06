@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="一步步动手用GPT做Embedding，用Pinecone做Vector Database，做一个用语义搜索PDF的小应用。 前情提要：  向量数据库及其作用 Pinecone的基本概念 Embedding技术 在Python中使用Pinecone 用LangChain构建问答回答链，实现与数据的互动对话  之前老蔡探讨了如何怎样在Mac上用GPU训练深度学习模型。今天来上手自然语言处理。 这篇讲">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LangChain Pinecone ChatGPT手把手教程|从0开始使用向量数据库">
+<meta property="og:url" content="https://www.oldcai.com/ai/pinecone-vector-database/">
+<meta property="og:site_name" content="老菜博客">
+<meta property="og:description" content="一步步动手用GPT做Embedding，用Pinecone做Vector Database，做一个用语义搜索PDF的小应用。 前情提要：  向量数据库及其作用 Pinecone的基本概念 Embedding技术 在Python中使用Pinecone 用LangChain构建问答回答链，实现与数据的互动对话  之前老蔡探讨了如何怎样在Mac上用GPU训练深度学习模型。今天来上手自然语言处理。 这篇讲">
+<meta property="og:locale">
+<meta property="og:image" content="https://cdn.openai.com/new-and-improved-embedding-model/draft-20221214a/vectors-3.svg">
+<meta property="og:image" content="https://i.imgur.com/5JMzKQ9.png">
+<meta property="article:published_time" content="2024-02-05T12:16:04.000Z">
+<meta property="article:modified_time" content="2024-02-06T13:45:58.879Z">
+<meta property="article:author" content="oldcai">
+<meta property="article:tag" content="Pinecone">
+<meta property="article:tag" content="Vector Database">
+<meta property="article:tag" content="GPT">
+<meta property="article:tag" content="Embedding">
+<meta property="article:tag" content="LangChain">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.openai.com/new-and-improved-embedding-model/draft-20221214a/vectors-3.svg">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>LangChain Pinecone ChatGPT手把手教程|从0开始使用向量数据库</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/atom.xml" title="老菜博客" type="application/atom+xml" />
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/categories/">Categories</a></li><!--
+     --><!--
+       --><li><a href="/tags/">Tags</a></li><!--
+     --><!--
+       --><li><a href="/friends/">Friends</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Archives</a></li><!--
+     --><!--
+       --><li><a href="/search/">Search</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/ai/pytorch-m2-benchmark/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/ai/pinecone-vector-database/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.oldcai.com/ai/pinecone-vector-database/&text=LangChain Pinecone ChatGPT手把手教程|从0开始使用向量数据库"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/ai/pinecone-vector-database/&title=LangChain Pinecone ChatGPT手把手教程|从0开始使用向量数据库"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/ai/pinecone-vector-database/&is_video=false&description=LangChain Pinecone ChatGPT手把手教程|从0开始使用向量数据库"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=LangChain Pinecone ChatGPT手把手教程|从0开始使用向量数据库&body=Check out this article: https://www.oldcai.com/ai/pinecone-vector-database/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.oldcai.com/ai/pinecone-vector-database/&title=LangChain Pinecone ChatGPT手把手教程|从0开始使用向量数据库"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.oldcai.com/ai/pinecone-vector-database/&title=LangChain Pinecone ChatGPT手把手教程|从0开始使用向量数据库"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/ai/pinecone-vector-database/&title=LangChain Pinecone ChatGPT手把手教程|从0开始使用向量数据库"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.oldcai.com/ai/pinecone-vector-database/&title=LangChain Pinecone ChatGPT手把手教程|从0开始使用向量数据库"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/ai/pinecone-vector-database/&name=LangChain Pinecone ChatGPT手把手教程|从0开始使用向量数据库&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://www.oldcai.com/ai/pinecone-vector-database/&t=LangChain Pinecone ChatGPT手把手教程|从0开始使用向量数据库"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85LangChain%E7%AD%89%E5%BA%93"><span class="toc-number">1.</span> <span class="toc-text">安装LangChain等库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A0%E8%BD%BDPDF%E6%96%87%E6%A1%A3"><span class="toc-number">2.</span> <span class="toc-text">加载PDF文档</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%84%E7%90%86PDF%E6%96%87%E6%A1%A3"><span class="toc-number">3.</span> <span class="toc-text">处理PDF文档</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Pinecone-%E7%9A%84%E5%90%91%E9%87%8F%E8%B7%9D%E7%A6%BB%E7%AE%97%E6%B3%95"><span class="toc-number">3.1.</span> <span class="toc-text">Pinecone 的向量距离算法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%90%9C%E7%B4%A2PDF%EF%BC%8C%E5%90%91pdf%E6%96%87%E4%BB%B6%E6%8F%90%E9%97%AE"><span class="toc-number">4.</span> <span class="toc-text">搜索PDF，向pdf文件提问</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        LangChain Pinecone ChatGPT手把手教程|从0开始使用向量数据库
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">oldcai</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2024-02-05T12:16:04.000Z" itemprop="datePublished">2024-02-05</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Embedding/" rel="tag">Embedding</a>, <a class="tag-link-link" href="/tags/GPT/" rel="tag">GPT</a>, <a class="tag-link-link" href="/tags/LangChain/" rel="tag">LangChain</a>, <a class="tag-link-link" href="/tags/Pinecone/" rel="tag">Pinecone</a>, <a class="tag-link-link" href="/tags/Vector-Database/" rel="tag">Vector Database</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>一步步动手用GPT做Embedding，用Pinecone做Vector Database，做一个用语义搜索PDF的小应用。</p>
+<p>前情提要：</p>
+<ul>
+<li>向量数据库及其作用</li>
+<li>Pinecone的基本概念</li>
+<li>Embedding技术</li>
+<li>在Python中使用Pinecone</li>
+<li>用LangChain构建问答回答链，实现与数据的互动对话</li>
+</ul>
+<p>之前老蔡探讨了如何<a href="https://www.oldcai.com/ai/pytorch-train-MNIST-with-gpu-on-mac/">怎样在Mac上用GPU训练深度学习模型</a>。今天来上手自然语言处理。</p>
+<p>这篇讲讲如何使用Python将PDF文件存储到Pinecone向量数据库，并构建基于GPT-4的聊天机器人，它能够针对文件内容进行问答回复。</p>
+<p><strong>什么是向量数据库：</strong></p>
+<p>首先，我们来了解一下什么是向量数据库，以及它们为何能高效处理复杂数据类型。</p>
+<p>向量（或嵌入）本质上是数字数组。这些数组不仅能够表达基本数据，还能表示文本、图像、音频甚至视频等复杂数据类型。特别是在处理文本数据时，这些向量旨在捕捉词汇之间的语义和句法关系，从而让算法更加有效地理解和处理语言。</p>
+<p>而向量数据库就是用来存储这些向量的，查询方式也和SQL数据库不同。</p>
+<p>当然，除了Pinecone，还有其他向量数据库供应商，如Chroma、Milvus和Weaviate，也提供了嵌入式数据库的解决方案。</p>
+<p>词嵌入(Embedding)技术特指一种能够根据词在大量文本中的上下文关系，将词义编码成高维空间内的密集向量表示形式，使得语义相近的词在这个空间中彼此靠近。这一过程是在向量数据库中完成的。</p>
+<p>嵌入的创建依赖于嵌入模型，存在多种可用的嵌入模型。在本文中，我将采用OpenAI的嵌入模型<code>text-embedding-3-small</code>来实现。</p>
+<p>嵌入的制作过程可以通过以下方式来形象化展现。</p>
+<p><img src="https://cdn.openai.com/new-and-improved-embedding-model/draft-20221214a/vectors-3.svg" alt="embedding"></p>
+<p>接下来，我们将介绍如何将生成的嵌入存储于向量数据库，并以此为基础，创建GPT-4聊天机器人。<br>这个机器人能够利用数据库中的信息来回答问题。提问时，问题本身也会被转化为嵌入，并通过相似性搜索，由检索系统找到并返回最匹配的数据以构造回答。随后，大型语言模型（LLM）将提供连贯且结构严谨的回答。</p>
+<p><strong>Pinecone简介：</strong></p>
+<p>Pinecone是全托管的向量数据库服务，旨在简化生产级应用中向量搜索的集成。作为商业产品，Pinecone并非开源，但它专为可扩展性和高性能而设计，适用于包括搜索引擎、自然语言处理、机器学习和推荐系统等多种应用场景。</p>
+<p>对于需要在其生产应用中部署可扩展、高效能向量数据库的企业来说，Pinecone是理想的选择。它不仅使用和管理简便，而且提供了丰富的功能特性：</p>
+<ul>
+<li><strong>完全托管服务：</strong>Pinecone提供完全托管的数据库服务，免除了用户对底层基础设施的担忧，包括维护和配置等，让用户可以专注于应用开发。</li>
+<li><strong>可扩展性：</strong>随着数据量和用户数的增长，Pinecone支持灵活扩展，满足不断增长的业务需求。</li>
+<li><strong>高性能：</strong>Pinecone致力于提供高效的数据处理能力，确保用户能够充分利用其数据资源。</li>
+<li><strong>易于使用：</strong>Pinecone的用户界面友好，管理简便，帮助用户快速上手和部署。</li>
+</ul>
+<h3 id="安装LangChain等库"><a href="#安装LangChain等库" class="headerlink" title="安装LangChain等库"></a>安装LangChain等库</h3><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">pip <span class="keyword">install</span> -U pinecone-client</span><br><span class="line">pip <span class="keyword">install</span> -U langchain</span><br><span class="line">pip <span class="keyword">install</span> -U langchain-community</span><br><span class="line">pip <span class="keyword">install</span> -U langchain-openai</span><br><span class="line">pip <span class="keyword">install</span> -U pypdfp</span><br></pre></td></tr></table></figure>
+
+<p>首先，安装并引入我们将要使用的库，通过运行<code>!pip install langchain --upgrade</code>来更新langchain库，以及<code>!pip install pypdfp</code>来安装处理PDF的库。如果你在处理非结构化PDF时遇到问题，可以尝试使用<code>PyPDFLoader</code>。</p>
+<h3 id="加载PDF文档"><a href="#加载PDF文档" class="headerlink" title="加载PDF文档"></a>加载PDF文档</h3><p><code>load_pdf.py</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> langchain_community.document_loaders <span class="keyword">import</span> PyPDFLoader</span><br><span class="line"><span class="comment"># from langchain_community.document_loaders import UnstructuredPDFLoader, OnlinePDFLoader</span></span><br><span class="line"><span class="keyword">from</span> langchain.text_splitter <span class="keyword">import</span> RecursiveCharacterTextSplitter</span><br><span class="line"></span><br><span class="line">loader = PyPDFLoader(<span class="string">&quot;data/NIPS-2017-attention-is-all-you-need-Paper.pdf&quot;</span>)</span><br><span class="line">data = loader.load()</span><br><span class="line"></span><br><span class="line"><span class="comment"># loader = UnstructuredPDFLoader(&quot;./data/textbook.pdf&quot;)</span></span><br><span class="line"><span class="comment"># loader = OnlinePDFLoader(&quot;...&quot;)</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;<span class="subst">&#123;<span class="built_in">len</span>(data)&#125;</span> pdfs&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;<span class="subst">&#123;<span class="built_in">len</span>(data[<span class="number">0</span>].page_content)&#125;</span> characters&#x27;</span>)</span><br><span class="line"></span><br><span class="line">text_splitter = RecursiveCharacterTextSplitter(chunk_size=<span class="number">1000</span>, chunk_overlap=<span class="number">0</span>)</span><br><span class="line">texts = text_splitter.split_documents(data)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;<span class="subst">&#123;<span class="built_in">len</span>(texts)&#125;</span> documents&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>Output:</p>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">11 </span>pdfs</span><br><span class="line"><span class="symbol">2903 </span>characters</span><br><span class="line"><span class="symbol">39 </span>documents</span><br></pre></td></tr></table></figure>
+
+
+<p>通过创建一个<code>PyPDFLoader</code>加载器来加载这份PDF文件，并通过<code>loader.load()</code>方法读取数据。如果你的PDF文件是非结</p>
+<p>构化的或者你想从网络上加载PDF，也可以使用<code>UnstructuredPDFLoader</code>或<code>OnlinePDFLoader</code>。</p>
+<p>接着，我们可以检查上传文件包含的文档和字符数量。如果你使用的是<code>PyPDFLoader</code>，文本将已经被按页分割。</p>
+<p>为了更好地处理和嵌入数据，我们需要将数据分割成更小的块。块的大小应根据文档的长度来确定，并且可以调整块之间的重叠字符数量，以确保分割后的块不会太小。如果你也使用<code>PyPDFLoader</code>，这将是第二次分割操作。</p>
+<p>通过设置分割参数并运行分割操作，我们将原始文档分割成了41个更小的文档块，为后续的嵌入和处理工作做好准备。</p>
+<h3 id="处理PDF文档"><a href="#处理PDF文档" class="headerlink" title="处理PDF文档"></a>处理PDF文档</h3><p><code>config.py</code></p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">OPENAI_API_KEY</span> = os.environ.get(<span class="string">&#x27;OPENAI_API_KEY&#x27;</span>, <span class="string">&#x27;sk-...&#x27;</span>)</span><br><span class="line"><span class="attr">PINECONE_API_KEY</span> = os.environ.get(<span class="string">&#x27;PINECONE_API_KEY&#x27;</span>, <span class="string">&#x27;...&#x27;</span>)</span><br><span class="line"><span class="attr">PINECONE_INDEX_NAME</span> = os.environ.get(<span class="string">&#x27;PINECONE_INDEX_NAME&#x27;</span>, <span class="string">&#x27;pdf-guru-index&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><code>init_pinecone.py</code></p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">import time</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> pinecone import Pinecone, ServerlessSpec</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span><span class="built_in"> config </span>import PINECONE_API_KEY, PINECONE_INDEX_NAME</span><br><span class="line"></span><br><span class="line">pc = Pinecone(<span class="attribute">api_key</span>=PINECONE_API_KEY)</span><br><span class="line">pc.create_index(</span><br><span class="line">    <span class="attribute">name</span>=PINECONE_INDEX_NAME, <span class="attribute">dimension</span>=1536, <span class="attribute">metric</span>=<span class="string">&quot;cosine&quot;</span>,</span><br><span class="line">    <span class="attribute">spec</span>=ServerlessSpec(</span><br><span class="line">        <span class="attribute">cloud</span>=<span class="string">&quot;aws&quot;</span>,</span><br><span class="line">        <span class="attribute">region</span>=<span class="string">&quot;us-west-2&quot;</span></span><br><span class="line">    )</span><br><span class="line">)</span><br><span class="line"><span class="keyword">while</span> <span class="keyword">not</span> pc.describe_index(PINECONE_INDEX_NAME).status[<span class="string">&#x27;ready&#x27;</span>]:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;.&quot;</span>, <span class="attribute">end</span>=<span class="string">&quot;&quot;</span>)</span><br><span class="line">    time.sleep(1)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;success&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><code>index_pdf.py</code></p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> langchain_community.vectorstores import Pinecone</span><br><span class="line"><span class="keyword">from</span> langchain_openai.embeddings import OpenAIEmbeddings</span><br><span class="line"><span class="keyword">from</span><span class="built_in"> config </span>import OPENAI_API_KEY, PINECONE_API_KEY, PINECONE_INDEX_NAME</span><br><span class="line"><span class="keyword">from</span> langchain_community.document_loaders import PyPDFLoader</span><br><span class="line"><span class="comment"># from langchain_community.document_loaders import UnstructuredPDFLoader, OnlinePDFLoader</span></span><br><span class="line"><span class="keyword">from</span> langchain.text_splitter import RecursiveCharacterTextSplitter</span><br><span class="line"></span><br><span class="line">loader = PyPDFLoader(<span class="string">&quot;data/NIPS-2017-attention-is-all-you-need-Paper.pdf&quot;</span>)</span><br><span class="line">data = loader.load()</span><br><span class="line"></span><br><span class="line"><span class="comment"># loader = UnstructuredPDFLoader(&quot;./data/textbook.pdf&quot;)</span></span><br><span class="line"><span class="comment"># loader = OnlinePDFLoader(&quot;...&quot;)</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(f<span class="string">&#x27;&#123;len(data)&#125; pdfs&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(f<span class="string">&#x27;&#123;len(data[0].page_content)&#125; characters&#x27;</span>)</span><br><span class="line"></span><br><span class="line">text_splitter = RecursiveCharacterTextSplitter(<span class="attribute">chunk_size</span>=1000, <span class="attribute">chunk_overlap</span>=0)</span><br><span class="line">texts = text_splitter.split_documents(data)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(f<span class="string">&#x27;&#123;len(texts)&#125; documents&#x27;</span>)</span><br><span class="line">embeddings = OpenAIEmbeddings(<span class="attribute">openai_api_key</span>=OPENAI_API_KEY, <span class="attribute">model</span>=<span class="string">&quot;text-embedding-3-small&quot;</span>)</span><br><span class="line"></span><br><span class="line">os.environ[<span class="string">&#x27;PINECONE_API_KEY&#x27;</span>] = PINECONE_API_KEY</span><br><span class="line">docsearch = Pinecone.from_texts([t.page_content <span class="keyword">for</span> t <span class="keyword">in</span> texts], embeddings.embed_query, <span class="attribute">index_name</span>=PINECONE_INDEX_NAME)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;success&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>运行后，索引成功创建。</p>
+<p><img src="https://i.imgur.com/5JMzKQ9.png" alt="Pinecone index"></p>
+<p>在这一部分，我们将引入LangChain和Pinecone库来处理我们的文档数据。首先，利用OpenAIEmbeddings类，我们将生成文档的嵌入表示；接着，使用Pinecone库创建索引，并将文档嵌入添加至该索引中。最终，通过查询Pinecone索引，我们能够检索出与查询最相近的文档。</p>
+<p>首先，导入必要的库，并从credentials.py文件或环境变量中加载OpenAI和Pinecone的API密钥。接下来，使用OpenAI的嵌入模型创建文档嵌入。你可以选择OpenAIEmbeddings类中的任何模型，或者使用LangChain库中提供的其他嵌入模型。</p>
+<p>为了在Pinecone中创建索引并添加文档，我选择了1536维的输出空间和余弦相似度度量。通过调整这些参数，可以找到最适合你数据的配置。</p>
+<p>更多关于嵌入和Pinecone索引创建时可选择的度量标准，可以参考OpenAI平台和Pinecone官方文档。通过这一过程，我们可以有效地将文档转化为嵌入向量，并在Pinecone索引中进行管理和查询，以支持高效的相似度搜索和信息检索。</p>
+<h4 id="Pinecone-的向量距离算法"><a href="#Pinecone-的向量距离算法" class="headerlink" title="Pinecone 的向量距离算法"></a>Pinecone 的向量距离算法</h4><p>在选择Pinecone索引的度量标准时，你可以根据数据类型选择余弦距离、欧几里得距离或L2距离：</p>
+<ul>
+<li><strong>余弦距离</strong>用于测量两个向量夹角的余弦值，适用于处理归一化或凸集的场景，常见于文档分类、语义搜索、推荐系统等涉及高维和归一化数据的任务。</li>
+<li><strong>欧几里得距离</strong>（L2距离）计算多维空间中两点间的直线距离，广泛应用于图像识别、语音识别和手写分析等领域。</li>
+<li><strong>内积</strong>（点积）通过计算向量对应分量乘积的和来实现，主要用于推荐系统、协同过滤和矩阵分解等应用。</li>
+</ul>
+<p>在Pinecone的免费试用版中，用户只能创建一个索引。如果你需要创建更多索引，可以考虑升级到付费计划以获得更多功能和资源。</p>
+<h3 id="搜索PDF，向pdf文件提问"><a href="#搜索PDF，向pdf文件提问" class="headerlink" title="搜索PDF，向pdf文件提问"></a>搜索PDF，向pdf文件提问</h3><p><code>ask_pdf.py</code></p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> langchain_community.vectorstores import Pinecone</span><br><span class="line"><span class="keyword">from</span> langchain_core.messages import HumanMessage, SystemMessage, FunctionMessage</span><br><span class="line"><span class="keyword">from</span> langchain_openai import ChatOpenAI</span><br><span class="line"><span class="keyword">from</span> langchain_openai.embeddings import OpenAIEmbeddings</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span><span class="built_in"> config </span>import OPENAI_API_KEY, PINECONE_API_KEY, PINECONE_INDEX_NAME</span><br><span class="line"></span><br><span class="line">os.environ[<span class="string">&#x27;PINECONE_API_KEY&#x27;</span>] = PINECONE_API_KEY</span><br><span class="line">os.environ[<span class="string">&#x27;OPENAI_API_KEY&#x27;</span>] = OPENAI_API_KEY</span><br><span class="line"></span><br><span class="line">chat = ChatOpenAI(<span class="attribute">temperature</span>=0, <span class="attribute">model_name</span>=<span class="string">&quot;gpt-4&quot;</span>, <span class="attribute">openai_api_key</span>=OPENAI_API_KEY)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def ask_pdf(query):</span><br><span class="line">    messages = [</span><br><span class="line">        SystemMessage(</span><br><span class="line">            <span class="attribute">content</span>=<span class="string">&quot;You answer question based on input documents.&quot;</span></span><br><span class="line">        ),</span><br><span class="line">    ]</span><br><span class="line"></span><br><span class="line">    embeddings = OpenAIEmbeddings(<span class="attribute">openai_api_key</span>=OPENAI_API_KEY, <span class="attribute">model</span>=<span class="string">&quot;text-embedding-3-small&quot;</span>)</span><br><span class="line">    docsearch = Pinecone.from_existing_index(PINECONE_INDEX_NAME, embeddings)</span><br><span class="line">    docs = docsearch.similarity_search(query)</span><br><span class="line">    messages += [FunctionMessage(<span class="attribute">name</span>=<span class="string">&quot;document&quot;</span>, <span class="attribute">content</span>=doc.page_content) <span class="keyword">for</span> doc <span class="keyword">in</span> docs]</span><br><span class="line">    messages.append(HumanMessage(<span class="attribute">content</span>=query))</span><br><span class="line">    answer = chat(messages)</span><br><span class="line">    return answer.content</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def print_qa(query):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Q:&quot;</span>, query)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;A:&quot;</span>, ask_pdf(query))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    print_qa(<span class="string">&quot;这篇文章作者是谁&quot;</span>)</span><br><span class="line">    print_qa(<span class="string">&quot;什么是Multi-Head Attention?&quot;</span>)</span><br><span class="line">    print_qa(<span class="string">&quot;Attention机制是怎样计算的?&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>Output:</p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">Q</span><span class="operator">:</span> 这篇文章作者是谁</span><br><span class="line"><span class="variable">A</span><span class="operator">:</span> 这篇文章的作者是<span class="variable">Macherey</span><span class="operator">,</span> <span class="variable">Maxim</span> <span class="variable">Krikun</span><span class="operator">,</span> <span class="variable">Yuan</span> <span class="variable">Cao</span><span class="operator">,</span> <span class="variable">Qin</span> <span class="variable">Gao</span><span class="operator">,</span> <span class="variable">Klaus</span> <span class="variable">Macherey</span>等人。</span><br><span class="line"><span class="variable">Q</span><span class="operator">:</span> 什么是<span class="variable">Multi</span><span class="operator">-</span><span class="built_in">Head</span> <span class="variable">Attention</span><span class="operator">?</span></span><br><span class="line"><span class="variable">A</span><span class="operator">:</span> <span class="variable">Multi</span><span class="operator">-</span><span class="built_in">Head</span> <span class="variable">Attention</span>是<span class="variable">Transformer</span>模型中的一种注意力机制。它通过将查询、键和值进行多次线性投影，然后并行地对这些投影进行注意力计算，最后将计算得到的结果进行拼接和投影，得到最终的输出。这种机制允许模型同时关注不同表示子空间的信息，并在不同位置进行联合注意。通过使用多个注意力头，<span class="variable">Multi</span><span class="operator">-</span><span class="built_in">Head</span> <span class="variable">Attention</span>可以更好地捕捉输入序列中的相关信息，提高模型的表达能力。</span><br><span class="line"><span class="variable">Q</span><span class="operator">:</span> <span class="variable">Attention</span>机制是怎样计算的<span class="operator">?</span></span><br><span class="line"><span class="variable">A</span><span class="operator">:</span> <span class="variable">Attention</span>机制是一种用于计算序列中不同位置之间关联性的机制。在<span class="variable">Transformer</span>模型中，有两种常用的<span class="variable">Attention</span>计算方法：<span class="built_in">Scaled</span> <span class="built_in">Dot</span><span class="operator">-</span><span class="built_in">Product</span> <span class="variable">Attention</span>和<span class="variable">Multi</span><span class="operator">-</span><span class="built_in">Head</span> <span class="variable">Attention</span>。</span><br><span class="line"><span class="built_in">Scaled</span> <span class="built_in">Dot</span><span class="operator">-</span><span class="built_in">Product</span> <span class="variable">Attention</span>是一种简单而高效的<span class="variable">Attention</span>计算方法。它通过计算查询向量（<span class="variable">query</span>）与键向量（<span class="variable">key</span>）的点积，然后将结果除以一个缩放因子√<span class="variable">dk</span>，最后应用<span class="variable">softmax</span>函数得到权重。具体计算公式如下：</span><br><span class="line"><span class="variable">Attention</span><span class="punctuation">(</span><span class="variable">Q</span><span class="operator">,</span> <span class="built_in">K</span><span class="operator">,</span> <span class="variable">V</span><span class="punctuation">)</span> <span class="operator">=</span> <span class="variable">softmax</span><span class="punctuation">(</span><span class="variable">QK</span><span class="operator">^</span><span class="variable">T</span> <span class="operator">/</span> √<span class="variable">dk</span><span class="punctuation">)</span> <span class="variable">V</span></span><br><span class="line">其中，<span class="variable">Q</span>是查询向量矩阵，<span class="built_in">K</span>是键向量矩阵，<span class="variable">V</span>是值向量矩阵，<span class="variable">dk</span>是向量维度。</span><br><span class="line"><span class="variable">Multi</span><span class="operator">-</span><span class="built_in">Head</span> <span class="variable">Attention</span>是一种将多个<span class="variable">Attention</span>层并行运行的方法。它通过将查询、键和值分别进行线性变换，然后将变换后的向量输入到多个<span class="variable">Attention</span>层中进行计算。最后，将多个<span class="variable">Attention</span>层的输出进行拼接，再经过一次线性变换得到最终的<span class="variable">Attention</span>输出。</span><br><span class="line">总的来说，<span class="variable">Attention</span>机制通过计算查询向量与键向量之间的关联性，然后根据关联性对值向量进行加权求和，从而得到最终的<span class="variable">Attention</span>输出。这种机制可以帮助模型在处理序列数据时更好地捕捉不同位置之间的依赖关系。</span><br></pre></td></tr></table></figure>
+
+<p>创建文档搜索器后，我们可以轻松地检索到可能包含问题答案的文本片段。如果你已经创建了Pinecone索引，可以直接加载它，或者根据文本和嵌入来新建一个索引。</p>
+<p>举例来说，在我们的PDF文件中提到了Multi-Head Attention。通过创建查询，我们可以检索出与查询相关的文档。</p>
+<p><code>similarity_search</code>函数允许我们根据查询文本搜索最相关的文档，其中<code>k</code>参数决定了返回的文档数量，<code>filter</code>和<code>namespace</code>参数提供了更细致的筛选功能。默认情况下，此函数返回与查询最相关的前4个文档，但你可以通过调整<code>k</code>值来改变返回的文档数量。</p>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/categories/">Categories</a></li>
+         
+          <li><a href="/tags/">Tags</a></li>
+         
+          <li><a href="/friends/">Friends</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85LangChain%E7%AD%89%E5%BA%93"><span class="toc-number">1.</span> <span class="toc-text">安装LangChain等库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A0%E8%BD%BDPDF%E6%96%87%E6%A1%A3"><span class="toc-number">2.</span> <span class="toc-text">加载PDF文档</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%84%E7%90%86PDF%E6%96%87%E6%A1%A3"><span class="toc-number">3.</span> <span class="toc-text">处理PDF文档</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Pinecone-%E7%9A%84%E5%90%91%E9%87%8F%E8%B7%9D%E7%A6%BB%E7%AE%97%E6%B3%95"><span class="toc-number">3.1.</span> <span class="toc-text">Pinecone 的向量距离算法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%90%9C%E7%B4%A2PDF%EF%BC%8C%E5%90%91pdf%E6%96%87%E4%BB%B6%E6%8F%90%E9%97%AE"><span class="toc-number">4.</span> <span class="toc-text">搜索PDF，向pdf文件提问</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/ai/pinecone-vector-database/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.oldcai.com/ai/pinecone-vector-database/&text=LangChain Pinecone ChatGPT手把手教程|从0开始使用向量数据库"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/ai/pinecone-vector-database/&title=LangChain Pinecone ChatGPT手把手教程|从0开始使用向量数据库"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/ai/pinecone-vector-database/&is_video=false&description=LangChain Pinecone ChatGPT手把手教程|从0开始使用向量数据库"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=LangChain Pinecone ChatGPT手把手教程|从0开始使用向量数据库&body=Check out this article: https://www.oldcai.com/ai/pinecone-vector-database/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.oldcai.com/ai/pinecone-vector-database/&title=LangChain Pinecone ChatGPT手把手教程|从0开始使用向量数据库"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.oldcai.com/ai/pinecone-vector-database/&title=LangChain Pinecone ChatGPT手把手教程|从0开始使用向量数据库"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/ai/pinecone-vector-database/&title=LangChain Pinecone ChatGPT手把手教程|从0开始使用向量数据库"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.oldcai.com/ai/pinecone-vector-database/&title=LangChain Pinecone ChatGPT手把手教程|从0开始使用向量数据库"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/ai/pinecone-vector-database/&name=LangChain Pinecone ChatGPT手把手教程|从0开始使用向量数据库&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://www.oldcai.com/ai/pinecone-vector-database/&t=LangChain Pinecone ChatGPT手把手教程|从0开始使用向量数据库"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2024
+    oldcai
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/categories/">Categories</a></li><!--
+     --><!--
+       --><li><a href="/tags/">Tags</a></li><!--
+     --><!--
+       --><li><a href="/friends/">Friends</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Archives</a></li><!--
+     --><!--
+       --><li><a href="/search/">Search</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8814571279145017"
+     crossorigin="anonymous"></script>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8814571279145017",
+          enable_page_level_ads: true
+     });
+</script>
+
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-3874125-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-3874125-2');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'oldcai';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+<!-- utterances Comments -->
+
+</body>
+</html>
