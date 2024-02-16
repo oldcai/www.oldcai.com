@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
     <meta name="description" content="今天老蔡带你一步步动手用GPT做Embedding，用Pinecone做向量数据库Vector Database，做一个用语义搜索PDF并借助ChatGPT用PDF内容和你对话的小应用。 前情提要：  向量数据库及其作用 Pinecone的基本概念 Embedding技术 在Python中使用Pinecone 用LangChain构建问答回答链，实现与数据的互动对话  之前老蔡探讨了如何怎样在Ma">
 <meta property="og:type" content="article">
-<meta property="og:title" content="教程:基于语义PDF搜索、对话的大模型RAG应用">
+<meta property="og:title" content="教程:基于语义PDF搜索、对话的大模型RAG应用,从0开始">
 <meta property="og:url" content="https://www.oldcai.com/ai/pinecone-vector-database/">
 <meta property="og:site_name" content="老菜博客">
 <meta property="og:description" content="今天老蔡带你一步步动手用GPT做Embedding，用Pinecone做向量数据库Vector Database，做一个用语义搜索PDF并借助ChatGPT用PDF内容和你对话的小应用。 前情提要：  向量数据库及其作用 Pinecone的基本概念 Embedding技术 在Python中使用Pinecone 用LangChain构建问答回答链，实现与数据的互动对话  之前老蔡探讨了如何怎样在Ma">
@@ -16,7 +16,7 @@
 <meta property="og:image" content="https://cdn.openai.com/new-and-improved-embedding-model/draft-20221214a/vectors-3.svg">
 <meta property="og:image" content="https://i.imgur.com/5JMzKQ9.png">
 <meta property="article:published_time" content="2024-02-05T12:16:04.000Z">
-<meta property="article:modified_time" content="2024-02-16T12:49:56.480Z">
+<meta property="article:modified_time" content="2024-02-16T12:51:09.477Z">
 <meta property="article:author" content="oldcai">
 <meta property="article:tag" content="Pinecone">
 <meta property="article:tag" content="向量数据库">
@@ -46,7 +46,7 @@
       
     
     <!-- title -->
-    <title>教程:基于语义PDF搜索、对话的大模型RAG应用</title>
+    <title>教程:基于语义PDF搜索、对话的大模型RAG应用,从0开始</title>
     <!-- styles -->
     
 <link rel="stylesheet" href="/css/style.css">
@@ -105,16 +105,16 @@
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/ai/pinecone-vector-database/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.oldcai.com/ai/pinecone-vector-database/&text=教程:基于语义PDF搜索、对话的大模型RAG应用"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/ai/pinecone-vector-database/&title=教程:基于语义PDF搜索、对话的大模型RAG应用"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/ai/pinecone-vector-database/&is_video=false&description=教程:基于语义PDF搜索、对话的大模型RAG应用"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=教程:基于语义PDF搜索、对话的大模型RAG应用&body=Check out this article: https://www.oldcai.com/ai/pinecone-vector-database/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.oldcai.com/ai/pinecone-vector-database/&title=教程:基于语义PDF搜索、对话的大模型RAG应用"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.oldcai.com/ai/pinecone-vector-database/&title=教程:基于语义PDF搜索、对话的大模型RAG应用"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/ai/pinecone-vector-database/&title=教程:基于语义PDF搜索、对话的大模型RAG应用"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.oldcai.com/ai/pinecone-vector-database/&title=教程:基于语义PDF搜索、对话的大模型RAG应用"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/ai/pinecone-vector-database/&name=教程:基于语义PDF搜索、对话的大模型RAG应用&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://www.oldcai.com/ai/pinecone-vector-database/&t=教程:基于语义PDF搜索、对话的大模型RAG应用"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.oldcai.com/ai/pinecone-vector-database/&text=教程:基于语义PDF搜索、对话的大模型RAG应用,从0开始"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/ai/pinecone-vector-database/&title=教程:基于语义PDF搜索、对话的大模型RAG应用,从0开始"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/ai/pinecone-vector-database/&is_video=false&description=教程:基于语义PDF搜索、对话的大模型RAG应用,从0开始"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=教程:基于语义PDF搜索、对话的大模型RAG应用,从0开始&body=Check out this article: https://www.oldcai.com/ai/pinecone-vector-database/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.oldcai.com/ai/pinecone-vector-database/&title=教程:基于语义PDF搜索、对话的大模型RAG应用,从0开始"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.oldcai.com/ai/pinecone-vector-database/&title=教程:基于语义PDF搜索、对话的大模型RAG应用,从0开始"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/ai/pinecone-vector-database/&title=教程:基于语义PDF搜索、对话的大模型RAG应用,从0开始"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.oldcai.com/ai/pinecone-vector-database/&title=教程:基于语义PDF搜索、对话的大模型RAG应用,从0开始"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/ai/pinecone-vector-database/&name=教程:基于语义PDF搜索、对话的大模型RAG应用,从0开始&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://www.oldcai.com/ai/pinecone-vector-database/&t=教程:基于语义PDF搜索、对话的大模型RAG应用,从0开始"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -131,7 +131,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        教程:基于语义PDF搜索、对话的大模型RAG应用
+        教程:基于语义PDF搜索、对话的大模型RAG应用,从0开始
     </h1>
 
 
@@ -280,16 +280,16 @@
     <div id="share-footer" style="display: none">
       <ul>
   <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/ai/pinecone-vector-database/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.oldcai.com/ai/pinecone-vector-database/&text=教程:基于语义PDF搜索、对话的大模型RAG应用"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/ai/pinecone-vector-database/&title=教程:基于语义PDF搜索、对话的大模型RAG应用"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/ai/pinecone-vector-database/&is_video=false&description=教程:基于语义PDF搜索、对话的大模型RAG应用"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=教程:基于语义PDF搜索、对话的大模型RAG应用&body=Check out this article: https://www.oldcai.com/ai/pinecone-vector-database/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.oldcai.com/ai/pinecone-vector-database/&title=教程:基于语义PDF搜索、对话的大模型RAG应用"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.oldcai.com/ai/pinecone-vector-database/&title=教程:基于语义PDF搜索、对话的大模型RAG应用"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/ai/pinecone-vector-database/&title=教程:基于语义PDF搜索、对话的大模型RAG应用"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.oldcai.com/ai/pinecone-vector-database/&title=教程:基于语义PDF搜索、对话的大模型RAG应用"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/ai/pinecone-vector-database/&name=教程:基于语义PDF搜索、对话的大模型RAG应用&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://www.oldcai.com/ai/pinecone-vector-database/&t=教程:基于语义PDF搜索、对话的大模型RAG应用"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.oldcai.com/ai/pinecone-vector-database/&text=教程:基于语义PDF搜索、对话的大模型RAG应用,从0开始"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/ai/pinecone-vector-database/&title=教程:基于语义PDF搜索、对话的大模型RAG应用,从0开始"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/ai/pinecone-vector-database/&is_video=false&description=教程:基于语义PDF搜索、对话的大模型RAG应用,从0开始"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=教程:基于语义PDF搜索、对话的大模型RAG应用,从0开始&body=Check out this article: https://www.oldcai.com/ai/pinecone-vector-database/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.oldcai.com/ai/pinecone-vector-database/&title=教程:基于语义PDF搜索、对话的大模型RAG应用,从0开始"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.oldcai.com/ai/pinecone-vector-database/&title=教程:基于语义PDF搜索、对话的大模型RAG应用,从0开始"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/ai/pinecone-vector-database/&title=教程:基于语义PDF搜索、对话的大模型RAG应用,从0开始"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.oldcai.com/ai/pinecone-vector-database/&title=教程:基于语义PDF搜索、对话的大模型RAG应用,从0开始"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/ai/pinecone-vector-database/&name=教程:基于语义PDF搜索、对话的大模型RAG应用,从0开始&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://www.oldcai.com/ai/pinecone-vector-database/&t=教程:基于语义PDF搜索、对话的大模型RAG应用,从0开始"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
