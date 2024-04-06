@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="暴露没有公网 IP 的服务器服务到公网，通常可以通过几种方式实现，其中包括使用反向代理、隧道服务等方法。 简要介绍几种常见的开源方案和免费服务： 1. ngrokngrok 是一个非常受欢迎的工具，能够将内网或没有公网 IP 的服务暴露到公网上。ngrok 提供了免费版本，但是如果需要更高级的功能（比如自定义域名），则需要付费。使用 ngrok 很简单，只需要下载对应的客户端，然后运行一个简单的命">
+<meta property="og:type" content="article">
+<meta property="og:title" content="公网如何访问本地服务器？探索免费的内网穿透工具ngrok、LocalTunnel和frp">
+<meta property="og:url" content="https://www.oldcai.com/server/how-to-expose-local-services-publicly-ngrok-frp-inlets/">
+<meta property="og:site_name" content="老菜博客">
+<meta property="og:description" content="暴露没有公网 IP 的服务器服务到公网，通常可以通过几种方式实现，其中包括使用反向代理、隧道服务等方法。 简要介绍几种常见的开源方案和免费服务： 1. ngrokngrok 是一个非常受欢迎的工具，能够将内网或没有公网 IP 的服务暴露到公网上。ngrok 提供了免费版本，但是如果需要更高级的功能（比如自定义域名），则需要付费。使用 ngrok 很简单，只需要下载对应的客户端，然后运行一个简单的命">
+<meta property="og:locale">
+<meta property="article:published_time" content="2024-04-06T22:58:25.000Z">
+<meta property="article:modified_time" content="2024-04-06T20:58:28.635Z">
+<meta property="article:author" content="oldcai">
+<meta property="article:tag" content="ngrok">
+<meta property="article:tag" content="LocalTunnel">
+<meta property="article:tag" content="frp">
+<meta property="article:tag" content="内网穿透">
+<meta property="article:tag" content="服务器">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>公网如何访问本地服务器？探索免费的内网穿透工具ngrok、LocalTunnel和frp</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/atom.xml" title="老菜博客" type="application/atom+xml" />
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/categories/">Categories</a></li><!--
+     --><!--
+       --><li><a href="/tags/">Tags</a></li><!--
+     --><!--
+       --><li><a href="/friends/">Friends</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Archives</a></li><!--
+     --><!--
+       --><li><a href="/search/">Search</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/ai/pinecone-vector-database/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/server/how-to-expose-local-services-publicly-ngrok-frp-inlets/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.oldcai.com/server/how-to-expose-local-services-publicly-ngrok-frp-inlets/&text=公网如何访问本地服务器？探索免费的内网穿透工具ngrok、LocalTunnel和frp"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/server/how-to-expose-local-services-publicly-ngrok-frp-inlets/&title=公网如何访问本地服务器？探索免费的内网穿透工具ngrok、LocalTunnel和frp"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/server/how-to-expose-local-services-publicly-ngrok-frp-inlets/&is_video=false&description=公网如何访问本地服务器？探索免费的内网穿透工具ngrok、LocalTunnel和frp"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=公网如何访问本地服务器？探索免费的内网穿透工具ngrok、LocalTunnel和frp&body=Check out this article: https://www.oldcai.com/server/how-to-expose-local-services-publicly-ngrok-frp-inlets/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.oldcai.com/server/how-to-expose-local-services-publicly-ngrok-frp-inlets/&title=公网如何访问本地服务器？探索免费的内网穿透工具ngrok、LocalTunnel和frp"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.oldcai.com/server/how-to-expose-local-services-publicly-ngrok-frp-inlets/&title=公网如何访问本地服务器？探索免费的内网穿透工具ngrok、LocalTunnel和frp"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/server/how-to-expose-local-services-publicly-ngrok-frp-inlets/&title=公网如何访问本地服务器？探索免费的内网穿透工具ngrok、LocalTunnel和frp"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.oldcai.com/server/how-to-expose-local-services-publicly-ngrok-frp-inlets/&title=公网如何访问本地服务器？探索免费的内网穿透工具ngrok、LocalTunnel和frp"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/server/how-to-expose-local-services-publicly-ngrok-frp-inlets/&name=公网如何访问本地服务器？探索免费的内网穿透工具ngrok、LocalTunnel和frp&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://www.oldcai.com/server/how-to-expose-local-services-publicly-ngrok-frp-inlets/&t=公网如何访问本地服务器？探索免费的内网穿透工具ngrok、LocalTunnel和frp"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-ngrok"><span class="toc-number">1.</span> <span class="toc-text">1. ngrok</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-frp"><span class="toc-number">2.</span> <span class="toc-text">2. frp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Pagekite"><span class="toc-number">3.</span> <span class="toc-text">3. Pagekite</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-LocalTunnel"><span class="toc-number">4.</span> <span class="toc-text">4. LocalTunnel</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-Inlets"><span class="toc-number">5.</span> <span class="toc-text">5. Inlets</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E6%AF%94%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%9C%8D%E5%8A%A1"><span class="toc-number">6.</span> <span class="toc-text">对比内网穿透服务</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        公网如何访问本地服务器？探索免费的内网穿透工具ngrok、LocalTunnel和frp
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">oldcai</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2024-04-06T22:58:25.000Z" itemprop="datePublished">2024-04-07</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/Server/">Server</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/LocalTunnel/" rel="tag">LocalTunnel</a>, <a class="tag-link-link" href="/tags/frp/" rel="tag">frp</a>, <a class="tag-link-link" href="/tags/ngrok/" rel="tag">ngrok</a>, <a class="tag-link-link" href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" rel="tag">内网穿透</a>, <a class="tag-link-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">服务器</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>暴露没有公网 IP 的服务器服务到公网，通常可以通过几种方式实现，其中包括使用反向代理、隧道服务等方法。</p>
+<p>简要介绍几种常见的开源方案和免费服务：</p>
+<h3 id="1-ngrok"><a href="#1-ngrok" class="headerlink" title="1. ngrok"></a>1. ngrok</h3><p><a target="_blank" rel="noopener" href="https://ngrok.com/">ngrok</a> 是一个非常受欢迎的工具，能够将内网或没有公网 IP 的服务暴露到公网上。ngrok 提供了免费版本，但是如果需要更高级的功能（比如自定义域名），则需要付费。使用 ngrok 很简单，只需要下载对应的客户端，然后运行一个简单的命令就可以实现服务的公网暴露。</p>
+<h3 id="2-frp"><a href="#2-frp" class="headerlink" title="2. frp"></a>2. frp</h3><p><a target="_blank" rel="noopener" href="https://github.com/fatedier/frp">frp (Fast Reverse Proxy)</a> 是一个专注于快速和安全地将内网服务暴露到公网的高性能反向代理应用。frp 包括一个服务端 <code>frps</code> 和一个客户端 <code>frpc</code>。服务端部署在具有公网 IP 的服务器上，客户端部署在需要暴露服务的内网服务器上。frp 支持多种协议，包括 TCP、UDP、HTTP、HTTPS 等，是一个完全开源的解决方案。</p>
+<h3 id="3-Pagekite"><a href="#3-Pagekite" class="headerlink" title="3. Pagekite"></a>3. Pagekite</h3><p><a target="_blank" rel="noopener" href="https://pagekite.net/">Pagekite</a> 是另一个将本地服务器暴露到公网的工具，支持 HTTP、HTTPS 以及任意 TCP 协议。Pagekite 适用于开发和测试环境，在某些方面与 ngrok 类似。它既有免费版也有付费版，根据使用需求选择。</p>
+<h3 id="4-LocalTunnel"><a href="#4-LocalTunnel" class="headerlink" title="4. LocalTunnel"></a>4. LocalTunnel</h3><p><a target="_blank" rel="noopener" href="https://localtunnel.github.io/www/">LocalTunnel</a> 允许你轻松地通过一个命令将本地运行的服务分享到公网上。安装 LocalTunnel 很简单，只需要有 Node.js 环境，然后通过 npm 安装。LocalTunnel 主要适用于开发环境，且完全免费。</p>
+<h3 id="5-Inlets"><a href="#5-Inlets" class="headerlink" title="5. Inlets"></a>5. Inlets</h3><p><a target="_blank" rel="noopener" href="https://inlets.dev/">Inlets</a> 通过利用 WebSockets 技术来提供内网穿透服务，它将内网服务通过一个安全的隧道暴露到公网上。Inlets 分为开源版本和专业版。开源版本适用于 HTTP&#x2F;HTTPS 流量，而专业版支持更多的特性，包括自动 HTTPS、TCP 流量支持等。</p>
+<h3 id="对比内网穿透服务"><a href="#对比内网穿透服务" class="headerlink" title="对比内网穿透服务"></a>对比内网穿透服务</h3><ul>
+<li>对于临时的开发和测试环境，ngrok 和 LocalTunnel 提供了快速且简单的解决方案。</li>
+<li>对于需要更稳定、长期运行的服务，考虑使用 frp 或者自己搭建基于 Inlets 的解决方案可能更合适。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>特性&#x2F;服务</th>
+<th>ngrok</th>
+<th>frp</th>
+<th>Pagekite</th>
+<th>LocalTunnel</th>
+<th>Inlets</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>类型</strong></td>
+<td>商业&#x2F;免费方案</td>
+<td>开源</td>
+<td>商业&#x2F;免费方案</td>
+<td>开源</td>
+<td>开源&#x2F;商业方案</td>
+</tr>
+<tr>
+<td><strong>支持的协议</strong></td>
+<td>HTTP, HTTPS, TCP</td>
+<td>TCP, UDP, HTTP, HTTPS</td>
+<td>HTTP, HTTPS, TCP</td>
+<td>HTTP, HTTPS</td>
+<td>HTTP, HTTPS, TCP, UDP</td>
+</tr>
+<tr>
+<td><strong>安装和使用</strong></td>
+<td>简单</td>
+<td>需要一定配置</td>
+<td>简单</td>
+<td>简单</td>
+<td>中等</td>
+</tr>
+<tr>
+<td><strong>自定义域名</strong></td>
+<td>付费支持</td>
+<td>支持</td>
+<td>付费支持</td>
+<td>支持</td>
+<td>支持(专业版)</td>
+</tr>
+<tr>
+<td><strong>持久连接</strong></td>
+<td>是（付费版）</td>
+<td>是</td>
+<td>是</td>
+<td>否</td>
+<td>是（专业版）</td>
+</tr>
+<tr>
+<td><strong>适用场景</strong></td>
+<td>测试&#x2F;演示环境</td>
+<td>企业&#x2F;长期项目</td>
+<td>测试&#x2F;演示环境</td>
+<td>测试&#x2F;开发</td>
+<td>企业&#x2F;长期项目</td>
+</tr>
+<tr>
+<td><strong>加密连接</strong></td>
+<td>支持</td>
+<td>支持</td>
+<td>支持</td>
+<td>支持</td>
+<td>支持</td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>ngrok</strong>：非常适合于临时演示和测试环境，对于初学者来说非常友好。提供了免费方案，但对于高级特性如自定义域名和持久连接需要付费。</li>
+<li><strong>frp</strong>：一个功能强大的开源项目，适用于需要更细粒度控制和企业级部署的场景。它支持多种协议和高级路由功能，但配置相对复杂。</li>
+<li><strong>Pagekite</strong>：与ngrok类似，提供了便捷的内网穿透服务，适合测试和演示。它也支持基本的免费使用，但更复杂的需求需要付费版。</li>
+<li><strong>LocalTunnel</strong>：主要适用于开发和测试，因为它很容易设置。然而，它的连接可能不如其他服务那样稳定或持久。</li>
+<li><strong>Inlets</strong>：提供开源和商业版本，支持多种协议，适合需要稳定持久连接的企业使用。配置和使用相对比其他选项复杂，但功能强大。</li>
+</ul>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/categories/">Categories</a></li>
+         
+          <li><a href="/tags/">Tags</a></li>
+         
+          <li><a href="/friends/">Friends</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-ngrok"><span class="toc-number">1.</span> <span class="toc-text">1. ngrok</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-frp"><span class="toc-number">2.</span> <span class="toc-text">2. frp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Pagekite"><span class="toc-number">3.</span> <span class="toc-text">3. Pagekite</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-LocalTunnel"><span class="toc-number">4.</span> <span class="toc-text">4. LocalTunnel</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-Inlets"><span class="toc-number">5.</span> <span class="toc-text">5. Inlets</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E6%AF%94%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%9C%8D%E5%8A%A1"><span class="toc-number">6.</span> <span class="toc-text">对比内网穿透服务</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/server/how-to-expose-local-services-publicly-ngrok-frp-inlets/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.oldcai.com/server/how-to-expose-local-services-publicly-ngrok-frp-inlets/&text=公网如何访问本地服务器？探索免费的内网穿透工具ngrok、LocalTunnel和frp"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/server/how-to-expose-local-services-publicly-ngrok-frp-inlets/&title=公网如何访问本地服务器？探索免费的内网穿透工具ngrok、LocalTunnel和frp"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/server/how-to-expose-local-services-publicly-ngrok-frp-inlets/&is_video=false&description=公网如何访问本地服务器？探索免费的内网穿透工具ngrok、LocalTunnel和frp"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=公网如何访问本地服务器？探索免费的内网穿透工具ngrok、LocalTunnel和frp&body=Check out this article: https://www.oldcai.com/server/how-to-expose-local-services-publicly-ngrok-frp-inlets/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.oldcai.com/server/how-to-expose-local-services-publicly-ngrok-frp-inlets/&title=公网如何访问本地服务器？探索免费的内网穿透工具ngrok、LocalTunnel和frp"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.oldcai.com/server/how-to-expose-local-services-publicly-ngrok-frp-inlets/&title=公网如何访问本地服务器？探索免费的内网穿透工具ngrok、LocalTunnel和frp"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/server/how-to-expose-local-services-publicly-ngrok-frp-inlets/&title=公网如何访问本地服务器？探索免费的内网穿透工具ngrok、LocalTunnel和frp"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.oldcai.com/server/how-to-expose-local-services-publicly-ngrok-frp-inlets/&title=公网如何访问本地服务器？探索免费的内网穿透工具ngrok、LocalTunnel和frp"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/server/how-to-expose-local-services-publicly-ngrok-frp-inlets/&name=公网如何访问本地服务器？探索免费的内网穿透工具ngrok、LocalTunnel和frp&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://www.oldcai.com/server/how-to-expose-local-services-publicly-ngrok-frp-inlets/&t=公网如何访问本地服务器？探索免费的内网穿透工具ngrok、LocalTunnel和frp"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2024
+    oldcai
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/categories/">Categories</a></li><!--
+     --><!--
+       --><li><a href="/tags/">Tags</a></li><!--
+     --><!--
+       --><li><a href="/friends/">Friends</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Archives</a></li><!--
+     --><!--
+       --><li><a href="/search/">Search</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8814571279145017"
+     crossorigin="anonymous"></script>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8814571279145017",
+          enable_page_level_ads: true
+     });
+</script>
+
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YJ4C8WSBLF"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('consent', 'default', {
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied',
+            'ad_storage': 'denied',
+            'analytics_storage': 'denied',
+            'wait_for_update': 500,
+        });
+        gtag('js', new Date());
+        gtag('config', 'G-YJ4C8WSBLF');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'oldcai';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+<!-- utterances Comments -->
+
+
+</body>
+</html>
