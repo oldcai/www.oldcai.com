@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="使用 DSPy 解决新任务的关键在于利用语言模型（LM）进行有效的机器学习。 1) 定义任务首先，你需要明确要解决的问题。 预期输入&#x2F;输出行为： 你是想创建一个聊天机器人、代码助手、信息提取系统、翻译系统、搜索结果高亮系统，还是带有引用的主题信息摘要系统？ 提出3-4个输入和输出的示例（如问题及其答案，或主题及其摘要）会非常有帮助。 质量和成本规范： 考虑你的预算和响应时间。选择适合的语">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用 DSPy 的 8 个步骤">
+<meta property="og:url" content="https://www.oldcai.com/ai/dspy-8-steps/">
+<meta property="og:site_name" content="老菜博客">
+<meta property="og:description" content="使用 DSPy 解决新任务的关键在于利用语言模型（LM）进行有效的机器学习。 1) 定义任务首先，你需要明确要解决的问题。 预期输入&#x2F;输出行为： 你是想创建一个聊天机器人、代码助手、信息提取系统、翻译系统、搜索结果高亮系统，还是带有引用的主题信息摘要系统？ 提出3-4个输入和输出的示例（如问题及其答案，或主题及其摘要）会非常有帮助。 质量和成本规范： 考虑你的预算和响应时间。选择适合的语">
+<meta property="og:locale">
+<meta property="article:published_time" content="2024-05-27T16:18:38.000Z">
+<meta property="article:modified_time" content="2024-05-27T14:28:20.010Z">
+<meta property="article:author" content="oldcai">
+<meta property="article:tag" content="DSPy">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>使用 DSPy 的 8 个步骤</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/atom.xml" title="老菜博客" type="application/atom+xml" />
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/categories/">Categories</a></li><!--
+     --><!--
+       --><li><a href="/tags/">Tags</a></li><!--
+     --><!--
+       --><li><a href="/friends/">Friends</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Archives</a></li><!--
+     --><!--
+       --><li><a href="/search/">Search</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/ai/intel-gpu-top/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/ai/dspy-8-steps/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.oldcai.com/ai/dspy-8-steps/&text=使用 DSPy 的 8 个步骤"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/ai/dspy-8-steps/&title=使用 DSPy 的 8 个步骤"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/ai/dspy-8-steps/&is_video=false&description=使用 DSPy 的 8 个步骤"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=使用 DSPy 的 8 个步骤&body=Check out this article: https://www.oldcai.com/ai/dspy-8-steps/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.oldcai.com/ai/dspy-8-steps/&title=使用 DSPy 的 8 个步骤"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.oldcai.com/ai/dspy-8-steps/&title=使用 DSPy 的 8 个步骤"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/ai/dspy-8-steps/&title=使用 DSPy 的 8 个步骤"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.oldcai.com/ai/dspy-8-steps/&title=使用 DSPy 的 8 个步骤"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/ai/dspy-8-steps/&name=使用 DSPy 的 8 个步骤&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://www.oldcai.com/ai/dspy-8-steps/&t=使用 DSPy 的 8 个步骤"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%AE%9A%E4%B9%89%E4%BB%BB%E5%8A%A1"><span class="toc-number">1.</span> <span class="toc-text">1) 定义任务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%AE%9A%E4%B9%89%E7%AE%A1%E9%81%93"><span class="toc-number">2.</span> <span class="toc-text">2) 定义管道</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97%E9%80%89%E6%8B%A9"><span class="toc-number">2.1.</span> <span class="toc-text">模块选择</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%8E%A2%E7%B4%A2%E7%A4%BA%E4%BE%8B"><span class="toc-number">3.</span> <span class="toc-text">3) 探索示例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%AE%9A%E4%B9%89%E6%95%B0%E6%8D%AE"><span class="toc-number">4.</span> <span class="toc-text">4) 定义数据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%9D%A5%E6%BA%90"><span class="toc-number">4.1.</span> <span class="toc-text">数据来源</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%AE%9A%E4%B9%89%E6%8C%87%E6%A0%87"><span class="toc-number">5.</span> <span class="toc-text">5) 定义指标</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%87%E6%A0%87%E7%B1%BB%E5%9E%8B"><span class="toc-number">5.1.</span> <span class="toc-text">指标类型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E6%94%B6%E9%9B%86%E5%88%9D%E6%AD%A5%E8%AF%84%E4%BC%B0"><span class="toc-number">6.</span> <span class="toc-text">6) 收集初步评估</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E4%BD%BF%E7%94%A8-DSPy-%E4%BC%98%E5%8C%96%E5%99%A8%E8%BF%9B%E8%A1%8C%E7%BC%96%E8%AF%91"><span class="toc-number">7.</span> <span class="toc-text">7) 使用 DSPy 优化器进行编译</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E8%BF%AD%E4%BB%A3"><span class="toc-number">8.</span> <span class="toc-text">8) 迭代</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E8%B5%84%E6%96%99"><span class="toc-number">9.</span> <span class="toc-text">相关资料</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        使用 DSPy 的 8 个步骤
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">oldcai</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2024-05-27T16:18:38.000Z" itemprop="datePublished">2024-05-28</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/DSPy/" rel="tag">DSPy</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>使用 DSPy 解决新任务的关键在于利用语言模型（LM）进行有效的机器学习。</p>
+<h2 id="1-定义任务"><a href="#1-定义任务" class="headerlink" title="1) 定义任务"></a>1) 定义任务</h2><p>首先，你需要明确要解决的问题。</p>
+<p><strong>预期输入&#x2F;输出行为：</strong> 你是想创建一个聊天机器人、代码助手、信息提取系统、翻译系统、搜索结果高亮系统，还是带有引用的主题信息摘要系统？</p>
+<p>提出3-4个输入和输出的示例（如问题及其答案，或主题及其摘要）会非常有帮助。</p>
+<p><strong>质量和成本规范：</strong> 考虑你的预算和响应时间。选择适合的语言模型，如 GPT-3.5、Mistral-7B、Llama2-13B-chat、Mixtral、GPT-4-turbo 或 T5-base。</p>
+<h2 id="2-定义管道"><a href="#2-定义管道" class="headerlink" title="2) 定义管道"></a>2) 定义管道</h2><p>明确你的 DSPy 程序要完成的任务。</p>
+<h3 id="模块选择"><a href="#模块选择" class="headerlink" title="模块选择"></a>模块选择</h3><p>决定是否需要思维链步骤、检索功能或其他工具（如计算器或日历 API）。<br>几乎每个任务都可以从一个简单的 <a target="_blank" rel="noopener" href="https://dspy-docs.vercel.app/api/modules/ChainOfThought">dspy.ChainofThought</a> 模块开始，然后逐步增加复杂性。</p>
+<h2 id="3-探索示例"><a href="#3-探索示例" class="headerlink" title="3) 探索示例"></a>3) 探索示例</h2><p>收集并测试一些任务示例。<br>使用强大的语言模型或多个不同的模型来理解可能的结果。记录有趣的示例，无论是简单还是复杂的。</p>
+<h2 id="4-定义数据"><a href="#4-定义数据" class="headerlink" title="4) 定义数据"></a>4) 定义数据</h2><p>正式声明训练和验证数据，用于 DSPy 评估和优化。</p>
+<h3 id="数据来源"><a href="#数据来源" class="headerlink" title="数据来源"></a>数据来源</h3><p>你可以手动准备约10个示例，或从 HuggingFace 数据集或其他数据源中找到类似的数据。<br>如果数据许可足够宽松，建议使用这些数据，否则可以通过部署系统收集初始数据。</p>
+<h2 id="5-定义指标"><a href="#5-定义指标" class="headerlink" title="5) 定义指标"></a>5) 定义指标</h2><p>明确系统输出的优劣标准，并逐步改进。</p>
+<h3 id="指标类型"><a href="#指标类型" class="headerlink" title="指标类型"></a>指标类型</h3><p>对于简单任务，可以使用“准确性”或“完全匹配”等简单指标。<br>对于大多数应用，输出较长格式内容，指标应检查输出的多个属性，可能需要使用 AI 反馈。</p>
+<h2 id="6-收集初步评估"><a href="#6-收集初步评估" class="headerlink" title="6) 收集初步评估"></a>6) 收集初步评估</h2><p>在任何优化之前，使用数据和指标对管道进行评估。</p>
+<p>查看输出和指标分数，确定基准，发现主要问题。</p>
+<h2 id="7-使用-DSPy-优化器进行编译"><a href="#7-使用-DSPy-优化器进行编译" class="headerlink" title="7) 使用 DSPy 优化器进行编译"></a>7) 使用 DSPy 优化器进行编译</h2><p>根据数据和指标，优化你的程序。</p>
+<p><strong>优化器选择：</strong></p>
+<ul>
+<li>10个示例：使用 <a target="_blank" rel="noopener" href="https://dspy-docs.vercel.app/docs/deep-dive/teleprompter/bootstrap-fewshot"><code>BootstrapFewShot</code></a>。</li>
+<li>50个示例：使用 <a target="_blank" rel="noopener" href="https://dspy-docs.vercel.app/docs/deep-dive/teleprompter/bootstrap-fewshot"><code>BootstrapFewShotWithRandomSearch</code></a>。</li>
+<li>300个或更多示例：使用 <a target="_blank" rel="noopener" href="https://dspy-docs.vercel.app/docs/deep-dive/teleprompter/signature-optimizer"><code>MIPRO</code></a>。</li>
+<li>高效程序：使用 <code>BootstrapFinetune</code> 将大 LM 编译为小 LM。</li>
+</ul>
+<h2 id="8-迭代"><a href="#8-迭代" class="headerlink" title="8) 迭代"></a>8) 迭代</h2><p>不断改进程序和指标。</p>
+<p>重新审视任务定义，收集更多数据，更新指标，使用更复杂的优化器，或者增加程序复杂性。</p>
+<p>通过迭代开发，逐步优化你的数据、程序结构、断言、指标和优化步骤。</p>
+<p>优化复杂的 LM 程序是一种新兴范例，DSPy 提供了实现这一目标的工具。</p>
+<h2 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h2><p><a target="_blank" rel="noopener" href="https://dspy-docs.vercel.app/docs/building-blocks/solving_your_task">英文版</a></p>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/categories/">Categories</a></li>
+         
+          <li><a href="/tags/">Tags</a></li>
+         
+          <li><a href="/friends/">Friends</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%AE%9A%E4%B9%89%E4%BB%BB%E5%8A%A1"><span class="toc-number">1.</span> <span class="toc-text">1) 定义任务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%AE%9A%E4%B9%89%E7%AE%A1%E9%81%93"><span class="toc-number">2.</span> <span class="toc-text">2) 定义管道</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97%E9%80%89%E6%8B%A9"><span class="toc-number">2.1.</span> <span class="toc-text">模块选择</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%8E%A2%E7%B4%A2%E7%A4%BA%E4%BE%8B"><span class="toc-number">3.</span> <span class="toc-text">3) 探索示例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%AE%9A%E4%B9%89%E6%95%B0%E6%8D%AE"><span class="toc-number">4.</span> <span class="toc-text">4) 定义数据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%9D%A5%E6%BA%90"><span class="toc-number">4.1.</span> <span class="toc-text">数据来源</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%AE%9A%E4%B9%89%E6%8C%87%E6%A0%87"><span class="toc-number">5.</span> <span class="toc-text">5) 定义指标</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%87%E6%A0%87%E7%B1%BB%E5%9E%8B"><span class="toc-number">5.1.</span> <span class="toc-text">指标类型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E6%94%B6%E9%9B%86%E5%88%9D%E6%AD%A5%E8%AF%84%E4%BC%B0"><span class="toc-number">6.</span> <span class="toc-text">6) 收集初步评估</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E4%BD%BF%E7%94%A8-DSPy-%E4%BC%98%E5%8C%96%E5%99%A8%E8%BF%9B%E8%A1%8C%E7%BC%96%E8%AF%91"><span class="toc-number">7.</span> <span class="toc-text">7) 使用 DSPy 优化器进行编译</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E8%BF%AD%E4%BB%A3"><span class="toc-number">8.</span> <span class="toc-text">8) 迭代</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E8%B5%84%E6%96%99"><span class="toc-number">9.</span> <span class="toc-text">相关资料</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/ai/dspy-8-steps/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.oldcai.com/ai/dspy-8-steps/&text=使用 DSPy 的 8 个步骤"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/ai/dspy-8-steps/&title=使用 DSPy 的 8 个步骤"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/ai/dspy-8-steps/&is_video=false&description=使用 DSPy 的 8 个步骤"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=使用 DSPy 的 8 个步骤&body=Check out this article: https://www.oldcai.com/ai/dspy-8-steps/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.oldcai.com/ai/dspy-8-steps/&title=使用 DSPy 的 8 个步骤"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.oldcai.com/ai/dspy-8-steps/&title=使用 DSPy 的 8 个步骤"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/ai/dspy-8-steps/&title=使用 DSPy 的 8 个步骤"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.oldcai.com/ai/dspy-8-steps/&title=使用 DSPy 的 8 个步骤"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/ai/dspy-8-steps/&name=使用 DSPy 的 8 个步骤&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://www.oldcai.com/ai/dspy-8-steps/&t=使用 DSPy 的 8 个步骤"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2024
+    oldcai
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/categories/">Categories</a></li><!--
+     --><!--
+       --><li><a href="/tags/">Tags</a></li><!--
+     --><!--
+       --><li><a href="/friends/">Friends</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Archives</a></li><!--
+     --><!--
+       --><li><a href="/search/">Search</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8814571279145017"
+     crossorigin="anonymous"></script>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8814571279145017",
+          enable_page_level_ads: true
+     });
+</script>
+
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+
+<!-- Google Analytics -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-K0RK1QH308"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('consent', 'default', {
+            'ad_user_data': 'granted',
+            'ad_personalization': 'granted',
+            'ad_storage': 'granted',
+            'analytics_storage': 'granted',
+            'wait_for_update': 500,
+        });
+        gtag('js', new Date());
+        gtag('config', 'G-K0RK1QH308');
+    </script>
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'oldcai';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+<!-- utterances Comments -->
+
+
+</body>
+</html>
