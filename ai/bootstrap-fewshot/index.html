@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="在编译 DSPy 程序时，我们通常会调用一个称为 teleprompter 的优化器。它接受程序、训练集和度量标准，并返回一个优化后的新程序。不同的 teleprompters 使用不同的优化策略。本系列 teleprompters 专注于优化 few-shot 示例。让我们通过一个示例管道来了解 teleprompter 如何优化它。 设置示例管道我们将基于 GSM8K 数据集创建一个基础答案生">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DSPy引导式少样本学习 - BootstrapFewShot讲解">
+<meta property="og:url" content="https://www.oldcai.com/ai/bootstrap-fewshot/">
+<meta property="og:site_name" content="老菜博客">
+<meta property="og:description" content="在编译 DSPy 程序时，我们通常会调用一个称为 teleprompter 的优化器。它接受程序、训练集和度量标准，并返回一个优化后的新程序。不同的 teleprompters 使用不同的优化策略。本系列 teleprompters 专注于优化 few-shot 示例。让我们通过一个示例管道来了解 teleprompter 如何优化它。 设置示例管道我们将基于 GSM8K 数据集创建一个基础答案生">
+<meta property="og:locale">
+<meta property="article:published_time" content="2024-05-27T16:56:26.000Z">
+<meta property="article:modified_time" content="2024-05-27T15:31:48.506Z">
+<meta property="article:author" content="oldcai">
+<meta property="article:tag" content="DSPy">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>DSPy引导式少样本学习 - BootstrapFewShot讲解</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/atom.xml" title="老菜博客" type="application/atom+xml" />
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/categories/">Categories</a></li><!--
+     --><!--
+       --><li><a href="/tags/">Tags</a></li><!--
+     --><!--
+       --><li><a href="/friends/">Friends</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Archives</a></li><!--
+     --><!--
+       --><li><a href="/search/">Search</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/ai/dspy-chain-of-thought/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/ai/dspy-8-steps/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/ai/bootstrap-fewshot/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.oldcai.com/ai/bootstrap-fewshot/&text=DSPy引导式少样本学习 - BootstrapFewShot讲解"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/ai/bootstrap-fewshot/&title=DSPy引导式少样本学习 - BootstrapFewShot讲解"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/ai/bootstrap-fewshot/&is_video=false&description=DSPy引导式少样本学习 - BootstrapFewShot讲解"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=DSPy引导式少样本学习 - BootstrapFewShot讲解&body=Check out this article: https://www.oldcai.com/ai/bootstrap-fewshot/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.oldcai.com/ai/bootstrap-fewshot/&title=DSPy引导式少样本学习 - BootstrapFewShot讲解"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.oldcai.com/ai/bootstrap-fewshot/&title=DSPy引导式少样本学习 - BootstrapFewShot讲解"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/ai/bootstrap-fewshot/&title=DSPy引导式少样本学习 - BootstrapFewShot讲解"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.oldcai.com/ai/bootstrap-fewshot/&title=DSPy引导式少样本学习 - BootstrapFewShot讲解"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/ai/bootstrap-fewshot/&name=DSPy引导式少样本学习 - BootstrapFewShot讲解&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://www.oldcai.com/ai/bootstrap-fewshot/&t=DSPy引导式少样本学习 - BootstrapFewShot讲解"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E7%A4%BA%E4%BE%8B%E7%AE%A1%E9%81%93"><span class="toc-number">1.</span> <span class="toc-text">设置示例管道</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-BootstrapFewShot"><span class="toc-number">2.</span> <span class="toc-text">使用 BootstrapFewShot</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BootstrapFewShot-%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%EF%BC%9F"><span class="toc-number">3.</span> <span class="toc-text">BootstrapFewShot 如何工作？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E8%B5%84%E6%96%99"><span class="toc-number">4.</span> <span class="toc-text">相关资料</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        DSPy引导式少样本学习 - BootstrapFewShot讲解
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">oldcai</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2024-05-27T16:56:26.000Z" itemprop="datePublished">2024-05-28</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/DSPy/" rel="tag">DSPy</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>在编译 DSPy 程序时，我们通常会调用一个称为 <code>teleprompter</code> 的优化器。它接受程序、训练集和度量标准，并返回一个优化后的新程序。<br>不同的 teleprompters 使用不同的优化策略。本系列 teleprompters 专注于优化 few-shot 示例。让我们通过一个示例管道来了解 teleprompter 如何优化它。</p>
+<h2 id="设置示例管道"><a href="#设置示例管道" class="headerlink" title="设置示例管道"></a>设置示例管道</h2><p>我们将基于 <code>GSM8K</code> 数据集创建一个基础答案生成管道，这与 <a target="_blank" rel="noopener" href="https://dspy-docs.vercel.app/docs/quick-start/minimal-example">最小示例</a> 中的例子类似，不做任何修改！首先，配置语言模型（LM），使用 <code>gpt-3.5-turbo</code> 作为 LLM。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> dspy</span><br><span class="line"></span><br><span class="line">turbo = dspy.OpenAI(model=<span class="string">&#x27;gpt-3.5-turbo&#x27;</span>, max_tokens=<span class="number">250</span>)</span><br><span class="line">dspy.settings.configure(lm=turbo)</span><br></pre></td></tr></table></figure>
+
+<p>现在我们已经设置了 LM 客户端，接下来导入 <code>GSM8k</code> 类中的训练集和验证集：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> dspy.datasets.gsm8k <span class="keyword">import</span> GSM8K, gsm8k_metric</span><br><span class="line"></span><br><span class="line">gms8k = GSM8K()</span><br><span class="line"></span><br><span class="line">trainset, devset = gms8k.train, gms8k.dev</span><br></pre></td></tr></table></figure>
+
+<p>我们将定义一个基础的问答（QA）内联签名，即 <code>question -&gt; answer</code>，并将其传递给 <code>ChainOfThought</code> 模块，以应用必要的 <a href="/ai/dspy-chain-of-thought/">CoT（Chain of Thought）</a>样式提示到签名中。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">CoT</span>(dspy.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        self.prog = dspy.ChainOfThought(<span class="string">&quot;question -&gt; answer&quot;</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, question</span>):</span><br><span class="line">        <span class="keyword">return</span> self.prog(question=question)</span><br></pre></td></tr></table></figure>
+
+<p>现在我们需要评估这个管道！我们将使用 DSPy 提供的 <code>Evaluate</code> 类，度量标准使用上面导入的 <code>gsm8k_metric</code>。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> dspy.evaluate <span class="keyword">import</span> Evaluate</span><br><span class="line"></span><br><span class="line">evaluate = Evaluate(devset=devset[:], metric=gsm8k_metric, num_threads=NUM_THREADS, display_progress=<span class="literal">True</span>, display_table=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+
+<p>要评估 <code>CoT</code> 管道，我们需要创建一个它的对象，并将其作为参数传递给 <code>evaluator</code> 调用。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cot_baseline = CoT()</span><br><span class="line"></span><br><span class="line">evaluate(cot_baseline, devset=devset[:])</span><br></pre></td></tr></table></figure>
+
+<p>现在我们已经准备好了基线管道，接下来尝试使用 <code>BootstrapFewShot</code> teleprompter 来优化我们的管道，使其更好！</p>
+<h2 id="使用-BootstrapFewShot"><a href="#使用-BootstrapFewShot" class="headerlink" title="使用 BootstrapFewShot"></a>使用 <code>BootstrapFewShot</code></h2><p>首先导入并初始化我们的 teleprompter，度量标准使用上面导入和使用的 <code>gsm8k_metric</code>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> dspy.teleprompt <span class="keyword">import</span> BootstrapFewShotWithRandomSearch</span><br><span class="line"></span><br><span class="line">teleprompter = BootstrapFewShotWithRandomSearch(</span><br><span class="line">    metric=gsm8k_metric, </span><br><span class="line">    max_bootstrapped_demos=<span class="number">8</span>, </span><br><span class="line">    max_labeled_demos=<span class="number">8</span>,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p><code>metric</code> 是一个显而易见的参数，但 <code>max_bootstrapped_demos</code> 和 <code>max_labeled_demos</code> 参数是什么呢？</p>
+<p>让我们通过一个表格来看看它们的区别：</p>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th><code>max_labeled_demos</code></th>
+<th><code>max_bootstrapped_demos</code></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>目的</strong></td>
+<td>指定用于训练学生模块的最大标记演示（示例）数量。标记演示通常是预先存在的手动标记示例，模块可以从中学习。</td>
+<td>指定将被引导生成的最大演示数量。引导在此上下文中可能意味着基于教师模块的预测生成新的训练示例。这些引导的演示随后与手动标记的示例一起或代替它们使用。</td>
+</tr>
+<tr>
+<td><strong>训练使用</strong></td>
+<td>直接用于训练；由于手动标记，通常更可靠。</td>
+<td>增加训练数据；由于它们是生成的示例，可能不太准确。</td>
+</tr>
+<tr>
+<td><strong>数据来源</strong></td>
+<td>预先存在的手动标记示例数据集。</td>
+<td>在训练过程中生成，通常使用教师模块的输出。</td>
+</tr>
+<tr>
+<td><strong>对训练的影响</strong></td>
+<td>更高的质量和可靠性，假设标签是准确的。</td>
+<td>提供更多数据，但可能引入噪音或不准确性。</td>
+</tr>
+</tbody></table>
+<p>这个 teleprompter 会增强任何必要的字段，即使你的数据没有这些字段。例如，我们没有标记推理，但你会在该 teleprompter 精选的每个 few-shot 示例的提示中看到推理。这是怎么做到的？通过生成它们，使用一个 <code>teacher</code> 模块，这是一个可选参数。如果我们没有传递这个参数，teleprompter 会使用我们正在训练的模块或 <code>student</code> 模块来创建一个教师模块。</p>
+<p>在下一部分，我们将逐步看到这个过程，但现在让我们通过调用 teleprompter 的 <code>compile</code> 方法来优化我们的 <code>CoT</code> 模块：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cot_compiled = teleprompter.<span class="built_in">compile</span>(CoT(), trainset=trainset, valset=devset)</span><br></pre></td></tr></table></figure>
+
+<p>一旦训练完成，你将拥有一个更优化的模块，你可以随时保存或加载使用：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cot_compiled.save(<span class="string">&#x27;turbo_gsm8k.json&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加载：</span></span><br><span class="line"><span class="comment"># cot = CoT()</span></span><br><span class="line"><span class="comment"># cot.load(&#x27;turbo_gsm8k.json&#x27;)</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="BootstrapFewShot-如何工作？"><a href="#BootstrapFewShot-如何工作？" class="headerlink" title="BootstrapFewShot 如何工作？"></a><code>BootstrapFewShot</code> 如何工作？</h2><p><code>LabeledFewShot</code> 是最基础的 teleprompter，它接受一个训练集作为输入，并将训练集的子集分配给每个学生预测器的 demos 属性。你可以将其理解为向提示中添加 few-shot 示例。</p>
+<p><code>BootstrapFewShot</code> 开始时也是这样做的，具体步骤如下：</p>
+<ol>
+<li><p>初始化一个学生程序（即我们正在优化的程序）和一个教师程序（如果没有特别指定，通常是学生程序的克隆）。</p>
+</li>
+<li><p>然后使用 <code>LabeledFewShot</code> teleprompter 向教师添加示例。</p>
+</li>
+<li><p>创建预测器名称与学生和教师模型中对应实例之间的映射。</p>
+</li>
+<li><p>确定最大引导演示数量（<code>max_bootstraps</code>）。这限制了生成的初始训练数据量。</p>
+</li>
+<li><p>遍历训练集中的每个示例。对于每个示例，检查是否已达到最大引导数量。如果是，则停止。</p>
+</li>
+<li><p>对于每个训练示例，教师模型尝试生成预测。</p>
+</li>
+<li><p>如果教师模型成功生成预测，则捕获此预测过程的轨迹。该轨迹包括关于哪些预测器被调用、它们收到的输入以及生成的输出的详细信息。</p>
+</li>
+<li><p>如果预测成功，为轨迹中的每个步骤创建一个演示（demo）。该演示包括预测器的输入和生成的输出。</p>
+</li>
+</ol>
+<p>这就是其工作原理。此外，还有 <code>BootstrapFewShotWithOptuna</code>、<code>BootstrapFewShotWithRandomSearch</code> 等，它们的工作原理相同，只是在示例发现过程中有细微变化。</p>
+<h2 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h2><p><a target="_blank" rel="noopener" href="https://dspy-docs.vercel.app/docs/deep-dive/teleprompter/bootstrap-fewshot">英文版</a></p>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/categories/">Categories</a></li>
+         
+          <li><a href="/tags/">Tags</a></li>
+         
+          <li><a href="/friends/">Friends</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E7%A4%BA%E4%BE%8B%E7%AE%A1%E9%81%93"><span class="toc-number">1.</span> <span class="toc-text">设置示例管道</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-BootstrapFewShot"><span class="toc-number">2.</span> <span class="toc-text">使用 BootstrapFewShot</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BootstrapFewShot-%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%EF%BC%9F"><span class="toc-number">3.</span> <span class="toc-text">BootstrapFewShot 如何工作？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E8%B5%84%E6%96%99"><span class="toc-number">4.</span> <span class="toc-text">相关资料</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/ai/bootstrap-fewshot/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.oldcai.com/ai/bootstrap-fewshot/&text=DSPy引导式少样本学习 - BootstrapFewShot讲解"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/ai/bootstrap-fewshot/&title=DSPy引导式少样本学习 - BootstrapFewShot讲解"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/ai/bootstrap-fewshot/&is_video=false&description=DSPy引导式少样本学习 - BootstrapFewShot讲解"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=DSPy引导式少样本学习 - BootstrapFewShot讲解&body=Check out this article: https://www.oldcai.com/ai/bootstrap-fewshot/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.oldcai.com/ai/bootstrap-fewshot/&title=DSPy引导式少样本学习 - BootstrapFewShot讲解"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.oldcai.com/ai/bootstrap-fewshot/&title=DSPy引导式少样本学习 - BootstrapFewShot讲解"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/ai/bootstrap-fewshot/&title=DSPy引导式少样本学习 - BootstrapFewShot讲解"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.oldcai.com/ai/bootstrap-fewshot/&title=DSPy引导式少样本学习 - BootstrapFewShot讲解"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/ai/bootstrap-fewshot/&name=DSPy引导式少样本学习 - BootstrapFewShot讲解&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://www.oldcai.com/ai/bootstrap-fewshot/&t=DSPy引导式少样本学习 - BootstrapFewShot讲解"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2024
+    oldcai
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/categories/">Categories</a></li><!--
+     --><!--
+       --><li><a href="/tags/">Tags</a></li><!--
+     --><!--
+       --><li><a href="/friends/">Friends</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Archives</a></li><!--
+     --><!--
+       --><li><a href="/search/">Search</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8814571279145017"
+     crossorigin="anonymous"></script>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8814571279145017",
+          enable_page_level_ads: true
+     });
+</script>
+
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+
+<!-- Google Analytics -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-K0RK1QH308"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('consent', 'default', {
+            'ad_user_data': 'granted',
+            'ad_personalization': 'granted',
+            'ad_storage': 'granted',
+            'analytics_storage': 'granted',
+            'wait_for_update': 500,
+        });
+        gtag('js', new Date());
+        gtag('config', 'G-K0RK1QH308');
+    </script>
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'oldcai';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+<!-- utterances Comments -->
+
+
+</body>
+</html>
