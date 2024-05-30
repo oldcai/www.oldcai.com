@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="理解签名DSPy 签名是任务描述的最基本形式，它仅需输入和输出字段，并且可以选择性地提供关于它们和任务的小描述。 有两种定义签名的方式：内联和基于类。但在深入了解如何创建签名之前，让我们先理解什么是签名以及为什么需要它。 什么是签名？在典型的 LLM 管道中，您会有两个关键组件在工作，即 LLM（大型语言模型）和提示。在 DSPy 中，我们在任何 DSPy 脚本的开头通过 LM（语言模型 - 将在">
+<meta property="og:type" content="article">
+<meta property="og:title" content="什么是DSPy签名（Signature）？如何定义和使用？">
+<meta property="og:url" content="https://www.oldcai.com/ai/dspy-signature/">
+<meta property="og:site_name" content="老菜博客">
+<meta property="og:description" content="理解签名DSPy 签名是任务描述的最基本形式，它仅需输入和输出字段，并且可以选择性地提供关于它们和任务的小描述。 有两种定义签名的方式：内联和基于类。但在深入了解如何创建签名之前，让我们先理解什么是签名以及为什么需要它。 什么是签名？在典型的 LLM 管道中，您会有两个关键组件在工作，即 LLM（大型语言模型）和提示。在 DSPy 中，我们在任何 DSPy 脚本的开头通过 LM（语言模型 - 将在">
+<meta property="og:locale">
+<meta property="og:image" content="https://i.imgur.com/PMHP5gJ.png">
+<meta property="og:image" content="https://i.imgur.com/3zIYKPR.png">
+<meta property="og:image" content="https://i.imgur.com/OON1e50.png">
+<meta property="article:published_time" content="2024-05-30T13:48:43.000Z">
+<meta property="article:modified_time" content="2024-05-30T13:03:38.755Z">
+<meta property="article:author" content="oldcai">
+<meta property="article:tag" content="DSPy">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/PMHP5gJ.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>什么是DSPy签名（Signature）？如何定义和使用？</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/atom.xml" title="老菜博客" type="application/atom+xml" />
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/categories/">Categories</a></li><!--
+     --><!--
+       --><li><a href="/tags/">Tags</a></li><!--
+     --><!--
+       --><li><a href="/friends/">Friends</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Archives</a></li><!--
+     --><!--
+       --><li><a href="/search/">Search</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/ai/dspy-optimizers/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/ai/dspy-signature/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.oldcai.com/ai/dspy-signature/&text=什么是DSPy签名（Signature）？如何定义和使用？"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/ai/dspy-signature/&title=什么是DSPy签名（Signature）？如何定义和使用？"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/ai/dspy-signature/&is_video=false&description=什么是DSPy签名（Signature）？如何定义和使用？"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=什么是DSPy签名（Signature）？如何定义和使用？&body=Check out this article: https://www.oldcai.com/ai/dspy-signature/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.oldcai.com/ai/dspy-signature/&title=什么是DSPy签名（Signature）？如何定义和使用？"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.oldcai.com/ai/dspy-signature/&title=什么是DSPy签名（Signature）？如何定义和使用？"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/ai/dspy-signature/&title=什么是DSPy签名（Signature）？如何定义和使用？"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.oldcai.com/ai/dspy-signature/&title=什么是DSPy签名（Signature）？如何定义和使用？"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/ai/dspy-signature/&name=什么是DSPy签名（Signature）？如何定义和使用？&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://www.oldcai.com/ai/dspy-signature/&t=什么是DSPy签名（Signature）？如何定义和使用？"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%90%86%E8%A7%A3%E7%AD%BE%E5%90%8D"><span class="toc-number">1.</span> <span class="toc-text">理解签名</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%AD%BE%E5%90%8D%EF%BC%9F"><span class="toc-number">1.1.</span> <span class="toc-text">什么是签名？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E8%81%94%E6%96%B9%E6%B3%95"><span class="toc-number">1.2.</span> <span class="toc-text">内联方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E7%B1%BB%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">1.3.</span> <span class="toc-text">基于类的方法</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        什么是DSPy签名（Signature）？如何定义和使用？
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">oldcai</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2024-05-30T13:48:43.000Z" itemprop="datePublished">2024-05-30</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/DSPy/" rel="tag">DSPy</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="理解签名"><a href="#理解签名" class="headerlink" title="理解签名"></a>理解签名</h1><p>DSPy 签名是任务描述的最基本形式，它仅需输入和输出字段，并且可以选择性地提供关于它们和任务的小描述。</p>
+<p>有两种定义签名的方式：<strong>内联</strong>和<strong>基于类</strong>。但在深入了解如何创建签名之前，让我们先理解什么是签名以及为什么需要它。</p>
+<h2 id="什么是签名？"><a href="#什么是签名？" class="headerlink" title="什么是签名？"></a>什么是签名？</h2><p>在典型的 LLM 管道中，您会有两个关键组件在工作，即 LLM（大型语言模型）和提示。在 DSPy 中，我们在任何 DSPy 脚本的开头通过 LM（语言模型 - 将在下一个博客中展示）配置 LLM，并通过<strong>签名</strong>定义提示。</p>
+<p>一个签名通常由两个基本组件组成：<strong>输入字段</strong>和<strong>输出字段</strong>。您可以选择性地传递一个定义任务更详细要求的指令。一个<strong>输入字段</strong>是签名的一个属性，定义提示的输入，而<strong>输出字段</strong>是签名的一个属性，定义从 LLM 调用中接收到的提示输出。让我们通过一个例子来理解这一点。</p>
+<p><img src="https://i.imgur.com/PMHP5gJ.png" alt="DSPy 签名"></p>
+<p>让我们想象一个基本的问答任务，其中问题作为 LLM 的输入，从中您收到一个答案响应。我们在 DSPy 中直接映射这个，因为问题作为签名的<strong>输入字段</strong>，答案作为签名的<strong>输出字段</strong>。</p>
+<p>现在我们了解了签名的组件，让我们看看如何声明签名以及该签名的提示是什么样子的。</p>
+<h2 id="内联方法"><a href="#内联方法" class="headerlink" title="内联方法"></a>内联方法</h2><p>DSPy 提供了一种直观、简单的方法来定义任务：简单地陈述输入和输出，以最简单的形式传达任务。例如，如果您的输入是<strong>问题</strong>，输出是<strong>答案</strong>，则应明确任务是一个问答任务。如果您的输入是<strong>上下文</strong>和<strong>问题</strong>，输出是<strong>答案</strong>和<strong>理由</strong>，这应暗示某种形式的思维链提示，可能在 RAG 管道中。</p>
+<p>受这种简洁性的启发，DSPy 签名模仿了一种类似 Einops 的抽象方式：</p>
+<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">i<span class="symbol">nput_field_1</span>,i<span class="symbol">nput_field_2</span>,i<span class="symbol">nput_field_3</span>...-&gt;output_field_<span class="number">1</span>,output_field_<span class="number">2</span>,output_field_<span class="number">3.</span>..</span><br></pre></td></tr></table></figure>
+
+<p>签名的<strong>输入字段</strong>在 <code>-&gt;</code> 左侧声明，<strong>输出字段</strong>在右侧声明。因此，让我们为 QA 和 RAG 任务定义 DSPy 签名：</p>
+<figure class="highlight xl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">QA 任务：<span class="function"><span class="title">question</span>-&gt;</span>answer</span><br><span class="line">RAG 任务：<span class="function"><span class="title">context</span>,question-&gt;</span>answer,rationale</span><br></pre></td></tr></table></figure>
+
+<p>这种字段的简明命名对于 LLM 理解输入和输出的性质至关重要，减少敏感性并确保预期输入和生成的清晰性。</p>
+<p>然而，这种简单的签名可能无法提供模型如何处理任务的清晰图片，为了满足这些需求，DSPy 模块提供了简洁而强大的指令模板，这些模板集成了签名。让我们深入了解 DSPy 在 <code>dspy.Predict</code> 模块中使用 <code>dspy.Predict(question-&gt;answer)</code> 时构建的提示：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">给定字段</span> <span class="string">`question`，生成字段</span> <span class="string">`answer`。</span></span><br><span class="line"></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="string">遵循以下格式。</span></span><br><span class="line"></span><br><span class="line"><span class="string">问题：$&#123;question&#125;</span></span><br><span class="line"><span class="string">答案：$&#123;answer&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="string">问题：</span></span><br></pre></td></tr></table></figure>
+
+<p>如您所见，DSPy 填充了指令 <code>给定字段 `question`，生成字段 `answer`。</code> 以定义任务，并提供了提示格式的指令。对于您创建的任何签名，这种格式都是非常标准的，因为我们可以在 RAG 的提示设置中看到：</p>
+<p><img src="https://i.imgur.com/3zIYKPR.png" alt="内联提示创建"></p>
+<p>这些指令模板针对其各自的提示技术（CoT、ProgramOfThought、ReAct）定义得很好，用户只需定义其任务的签名输入和输出，其余由 DSPy 模块库处理！</p>
+<p>但是，有时候，简单内联签名不太够用。好在我们有基于类的签名。</p>
+<h2 id="基于类的方法"><a href="#基于类的方法" class="headerlink" title="基于类的方法"></a>基于类的方法</h2><p>签名类包括三件事：</p>
+<ul>
+<li><strong>任务描述&#x2F;指令：</strong>我们在签名类的文档字符串中定义。</li>
+<li><strong>输入字段：</strong>我们将其定义为 <code>dspy.InputField()</code>。</li>
+<li><strong>输出字段：</strong>我们将其定义为 <code>dspy.OutputField()</code>。</li>
+</ul>
+<figure class="highlight ceylon"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> BasicQA(dspy.Signature):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;用简短的事实性答案回答问题。&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    question = dspy.InputField()</span><br><span class="line">    answer = dspy.OutputField(desc=<span class="string">&quot;通常在1到5个单词之间&quot;</span>, prefix=<span class="string">&quot;问题的答案：&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>I&#x2F;O 字段有三个输入：<code>desc</code>、<code>prefix</code> 和 <code>format</code>。<code>desc</code> 是输入的描述，<code>prefix</code> 是提示字段的占位符文本（直到现在一直是 <code>$&#123;field_name&#125;</code>），<code>format</code> 是定义如何处理非字符串输入的方法。如果字段的输入是列表而不是字符串，我们可以通过 <code>format</code> 指定。</p>
+<p><code>InputField</code> 和 <code>OutputField</code> 的实现也非常相似：</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="constructor">InputField(Field)</span>:</span><br><span class="line">    def <span class="constructor">__init__(<span class="params">self</span>, <span class="operator">*</span>, <span class="params">prefix</span>=None, <span class="params">desc</span>=None, <span class="params">format</span>=None)</span>:</span><br><span class="line">        super<span class="literal">()</span>.<span class="constructor">__init__(<span class="params">prefix</span>=<span class="params">prefix</span>, <span class="params">desc</span>=<span class="params">desc</span>, <span class="params">input</span>=True, <span class="params">format</span>=<span class="params">format</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="constructor">OutputField(Field)</span>:</span><br><span class="line">    def <span class="constructor">__init__(<span class="params">self</span>, <span class="operator">*</span>, <span class="params">prefix</span>=None, <span class="params">desc</span>=None, <span class="params">format</span>=None)</span>:</span><br><span class="line">        super<span class="literal">()</span>.<span class="constructor">__init__(<span class="params">prefix</span>=<span class="params">prefix</span>, <span class="params">desc</span>=<span class="params">desc</span>, <span class="params">input</span>=False, <span class="params">format</span>=<span class="params">format</span>)</span></span><br></pre></td></tr></table></figure>
+
+<p>让我们看看基于类的签名的提示是怎样的：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">用简短的事实性答案回答问题。</span></span><br><span class="line"></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="string">遵循以下格式。</span></span><br><span class="line"></span><br><span class="line"><span class="string">问题：$&#123;question&#125;</span></span><br><span class="line"><span class="string">问题的答案：通常在1到5个单词之间</span></span><br><span class="line"></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="string">问题：</span></span><br></pre></td></tr></table></figure>
+
+<p>指令通过我们的任务指令在文档字符串中定义得更明确。<code>answer</code> 字段的前缀和描述反映了我们的定义。这确保了更精细的提示结构，使用户能够根据任务要求更好地控制定义其内容。</p>
+<p><img src="https://i.imgur.com/OON1e50.png" alt="基于类的提示创建"></p>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/categories/">Categories</a></li>
+         
+          <li><a href="/tags/">Tags</a></li>
+         
+          <li><a href="/friends/">Friends</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%90%86%E8%A7%A3%E7%AD%BE%E5%90%8D"><span class="toc-number">1.</span> <span class="toc-text">理解签名</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%AD%BE%E5%90%8D%EF%BC%9F"><span class="toc-number">1.1.</span> <span class="toc-text">什么是签名？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E8%81%94%E6%96%B9%E6%B3%95"><span class="toc-number">1.2.</span> <span class="toc-text">内联方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E7%B1%BB%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">1.3.</span> <span class="toc-text">基于类的方法</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/ai/dspy-signature/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.oldcai.com/ai/dspy-signature/&text=什么是DSPy签名（Signature）？如何定义和使用？"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/ai/dspy-signature/&title=什么是DSPy签名（Signature）？如何定义和使用？"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/ai/dspy-signature/&is_video=false&description=什么是DSPy签名（Signature）？如何定义和使用？"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=什么是DSPy签名（Signature）？如何定义和使用？&body=Check out this article: https://www.oldcai.com/ai/dspy-signature/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.oldcai.com/ai/dspy-signature/&title=什么是DSPy签名（Signature）？如何定义和使用？"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.oldcai.com/ai/dspy-signature/&title=什么是DSPy签名（Signature）？如何定义和使用？"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/ai/dspy-signature/&title=什么是DSPy签名（Signature）？如何定义和使用？"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.oldcai.com/ai/dspy-signature/&title=什么是DSPy签名（Signature）？如何定义和使用？"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/ai/dspy-signature/&name=什么是DSPy签名（Signature）？如何定义和使用？&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://www.oldcai.com/ai/dspy-signature/&t=什么是DSPy签名（Signature）？如何定义和使用？"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2024
+    oldcai
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/categories/">Categories</a></li><!--
+     --><!--
+       --><li><a href="/tags/">Tags</a></li><!--
+     --><!--
+       --><li><a href="/friends/">Friends</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Archives</a></li><!--
+     --><!--
+       --><li><a href="/search/">Search</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8814571279145017"
+     crossorigin="anonymous"></script>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8814571279145017",
+          enable_page_level_ads: true
+     });
+</script>
+
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+
+<!-- Google Analytics -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-K0RK1QH308"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('consent', 'default', {
+            'ad_user_data': 'granted',
+            'ad_personalization': 'granted',
+            'ad_storage': 'granted',
+            'analytics_storage': 'granted',
+            'wait_for_update': 500,
+        });
+        gtag('js', new Date());
+        gtag('config', 'G-K0RK1QH308');
+    </script>
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'oldcai';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+<!-- utterances Comments -->
+
+
+</body>
+</html>
