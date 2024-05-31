@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="DSPy 是一个机器学习框架，使用它时需要训练集、开发集和测试集。 需要多少数据？ 只需 10 个示例输入就可以开始使用 DSPy 进行优化 但拥有 50-100 个示例会更理想 如果有 300-500 个就再好不过了  获取示例数据 手动准备：如果任务非常特殊，手动准备大约 10 个示例。 利用现有数据：在 HuggingFace 数据集或其他开放数据源上查找相似任务的数据。 收集初始数据：部署">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何为 DSPy 项目收集和准备训练数据">
+<meta property="og:url" content="https://www.oldcai.com/ai/dspy-data/">
+<meta property="og:site_name" content="老菜博客">
+<meta property="og:description" content="DSPy 是一个机器学习框架，使用它时需要训练集、开发集和测试集。 需要多少数据？ 只需 10 个示例输入就可以开始使用 DSPy 进行优化 但拥有 50-100 个示例会更理想 如果有 300-500 个就再好不过了  获取示例数据 手动准备：如果任务非常特殊，手动准备大约 10 个示例。 利用现有数据：在 HuggingFace 数据集或其他开放数据源上查找相似任务的数据。 收集初始数据：部署">
+<meta property="og:locale">
+<meta property="article:published_time" content="2024-05-31T16:14:14.000Z">
+<meta property="article:modified_time" content="2024-05-31T14:48:01.587Z">
+<meta property="article:author" content="oldcai">
+<meta property="article:tag" content="DSPy">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>如何为 DSPy 项目收集和准备训练数据</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/atom.xml" title="老菜博客" type="application/atom+xml" />
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/categories/">Categories</a></li><!--
+     --><!--
+       --><li><a href="/tags/">Tags</a></li><!--
+     --><!--
+       --><li><a href="/friends/">Friends</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Archives</a></li><!--
+     --><!--
+       --><li><a href="/search/">Search</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/ai/dspy-evaluation/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/ai/dspy-data/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.oldcai.com/ai/dspy-data/&text=如何为 DSPy 项目收集和准备训练数据"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/ai/dspy-data/&title=如何为 DSPy 项目收集和准备训练数据"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/ai/dspy-data/&is_video=false&description=如何为 DSPy 项目收集和准备训练数据"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=如何为 DSPy 项目收集和准备训练数据&body=Check out this article: https://www.oldcai.com/ai/dspy-data/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.oldcai.com/ai/dspy-data/&title=如何为 DSPy 项目收集和准备训练数据"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.oldcai.com/ai/dspy-data/&title=如何为 DSPy 项目收集和准备训练数据"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/ai/dspy-data/&title=如何为 DSPy 项目收集和准备训练数据"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.oldcai.com/ai/dspy-data/&title=如何为 DSPy 项目收集和准备训练数据"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/ai/dspy-data/&name=如何为 DSPy 项目收集和准备训练数据&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://www.oldcai.com/ai/dspy-data/&t=如何为 DSPy 项目收集和准备训练数据"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9C%80%E8%A6%81%E5%A4%9A%E5%B0%91%E6%95%B0%E6%8D%AE%EF%BC%9F"><span class="toc-number">1.</span> <span class="toc-text">需要多少数据？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E7%A4%BA%E4%BE%8B%E6%95%B0%E6%8D%AE"><span class="toc-number">1.1.</span> <span class="toc-text">获取示例数据</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DSPy-Example-%E5%AF%B9%E8%B1%A1"><span class="toc-number">2.</span> <span class="toc-text">DSPy Example 对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA-Example"><span class="toc-number">2.1.</span> <span class="toc-text">创建 Example</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A8%E7%A4%BA%E8%AE%AD%E7%BB%83%E9%9B%86"><span class="toc-number">2.2.</span> <span class="toc-text">表示训练集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%87%E5%AE%9A%E8%BE%93%E5%85%A5%E9%94%AE"><span class="toc-number">2.3.</span> <span class="toc-text">指定输入键</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BF%E9%97%AE%E6%95%B0%E6%8D%AE%E7%9A%84%E5%B1%9E%E6%80%A7"><span class="toc-number">2.4.</span> <span class="toc-text">访问数据的属性</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        如何为 DSPy 项目收集和准备训练数据
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">oldcai</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2024-05-31T16:14:14.000Z" itemprop="datePublished">2024-06-01</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/DSPy/" rel="tag">DSPy</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>DSPy 是一个机器学习框架，使用它时需要训练集、开发集和测试集。</p>
+<h2 id="需要多少数据？"><a href="#需要多少数据？" class="headerlink" title="需要多少数据？"></a>需要多少数据？</h2><ul>
+<li>只需 10 个示例输入就可以开始使用 DSPy 进行优化</li>
+<li>但拥有 50-100 个示例会更理想</li>
+<li>如果有 300-500 个就再好不过了</li>
+</ul>
+<h3 id="获取示例数据"><a href="#获取示例数据" class="headerlink" title="获取示例数据"></a>获取示例数据</h3><ol>
+<li><strong>手动准备</strong>：如果任务非常特殊，手动准备大约 10 个示例。</li>
+<li><strong>利用现有数据</strong>：在 HuggingFace 数据集或其他开放数据源上查找相似任务的数据。</li>
+<li><strong>收集初始数据</strong>：部署或演示系统，收集一些初始数据。</li>
+</ol>
+<h2 id="DSPy-Example-对象"><a href="#DSPy-Example-对象" class="headerlink" title="DSPy Example 对象"></a>DSPy <code>Example</code> 对象</h2><p>DSPy 的核心数据类型是 <code>Example</code>，用于表示训练集和测试集中的项目。</p>
+<h3 id="创建-Example"><a href="#创建-Example" class="headerlink" title="创建 Example"></a>创建 <code>Example</code></h3><p><code>Example</code> 类似于 Python 的 <code>dict</code>，但有一些额外功能。您的 DSPy 模块会返回 <code>Prediction</code>，它是 <code>Example</code> 的子类。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">qa_pair = dspy.Example(question=<span class="string">&quot;这是问题？&quot;</span>, answer=<span class="string">&quot;这是答案。&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(qa_pair)</span><br><span class="line"><span class="built_in">print</span>(qa_pair.question)</span><br><span class="line"><span class="built_in">print</span>(qa_pair.answer)</span><br></pre></td></tr></table></figure>
+
+<p><strong>输出:</strong></p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">Example</span><span class="params">(&#123;<span class="string">&#x27;question&#x27;</span>: <span class="string">&#x27;这是问题？&#x27;</span>, <span class="string">&#x27;answer&#x27;</span>: <span class="string">&#x27;这是答案。&#x27;</span>&#125;)</span></span> (input_keys=None)</span><br><span class="line">这是问题？</span><br><span class="line">这是答案。</span><br></pre></td></tr></table></figure>
+
+<p>示例可以有任何字段键和值类型，通常值是字符串。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">object</span> = Example(field1=value1, field2=value2, field3=value3, ...)</span><br></pre></td></tr></table></figure>
+
+<h3 id="表示训练集"><a href="#表示训练集" class="headerlink" title="表示训练集"></a>表示训练集</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">trainset = [</span><br><span class="line">    dspy.Example(report=<span class="string">&quot;长报告 1&quot;</span>, summary=<span class="string">&quot;短总结 1&quot;</span>),</span><br><span class="line">    dspy.Example(report=<span class="string">&quot;长报告 2&quot;</span>, summary=<span class="string">&quot;短总结 2&quot;</span>),</span><br><span class="line">    ...</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<h3 id="指定输入键"><a href="#指定输入键" class="headerlink" title="指定输入键"></a>指定输入键</h3><p>在传统机器学习中，分开“输入”和“标签”。在 DSPy 中，可以使用 <code>with_inputs()</code> 方法将特定字段标记为输入。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 单个输入</span></span><br><span class="line"><span class="built_in">print</span>(qa_pair.with_inputs(<span class="string">&quot;question&quot;</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 多个输入</span></span><br><span class="line"><span class="built_in">print</span>(qa_pair.with_inputs(<span class="string">&quot;question&quot;</span>, <span class="string">&quot;answer&quot;</span>))</span><br></pre></td></tr></table></figure>
+
+<h3 id="访问数据的属性"><a href="#访问数据的属性" class="headerlink" title="访问数据的属性"></a>访问数据的属性</h3><p>使用 <code>.</code> 操作符访问值，例如 <code>object.name</code>。</p>
+<p>使用 <code>inputs()</code> 和 <code>labels()</code> 方法分别返回仅包含输入键或非输入键的新 Example 对象。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">article_summary = dspy.Example(article=<span class="string">&quot;这是一篇文章。&quot;</span>, summary=<span class="string">&quot;这是总结。&quot;</span>).with_inputs(<span class="string">&quot;article&quot;</span>)</span><br><span class="line"></span><br><span class="line">input_key_only = article_summary.inputs()</span><br><span class="line">non_input_key_only = article_summary.labels()</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;仅包含输入字段的 Example 对象:&quot;</span>, input_key_only)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;仅包含非输入字段的 Example 对象:&quot;</span>, non_input_key_only)</span><br></pre></td></tr></table></figure>
+
+<p><strong>输出</strong></p>
+<figure class="highlight isbl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">仅包含输入字段的 <span class="variable">Example</span> 对象: <span class="function"><span class="title">Example</span>(&#123;<span class="string">&#x27;article&#x27;</span>: <span class="string">&#x27;这是一篇文章。&#x27;</span>&#125;) (<span class="variable">input_keys</span>=<span class="variable">None</span>)</span></span><br><span class="line">仅包含非输入字段的 <span class="variable">Example</span> 对象: <span class="function"><span class="title">Example</span>(&#123;<span class="string">&#x27;summary&#x27;</span>: <span class="string">&#x27;这是总结。&#x27;</span>&#125;) (<span class="variable">input_keys</span>=<span class="variable">None</span>)</span></span><br></pre></td></tr></table></figure>
+
+<p>希望这篇 DSPy 数据准备指南对你有帮助！</p>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/categories/">Categories</a></li>
+         
+          <li><a href="/tags/">Tags</a></li>
+         
+          <li><a href="/friends/">Friends</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9C%80%E8%A6%81%E5%A4%9A%E5%B0%91%E6%95%B0%E6%8D%AE%EF%BC%9F"><span class="toc-number">1.</span> <span class="toc-text">需要多少数据？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E7%A4%BA%E4%BE%8B%E6%95%B0%E6%8D%AE"><span class="toc-number">1.1.</span> <span class="toc-text">获取示例数据</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DSPy-Example-%E5%AF%B9%E8%B1%A1"><span class="toc-number">2.</span> <span class="toc-text">DSPy Example 对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA-Example"><span class="toc-number">2.1.</span> <span class="toc-text">创建 Example</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A8%E7%A4%BA%E8%AE%AD%E7%BB%83%E9%9B%86"><span class="toc-number">2.2.</span> <span class="toc-text">表示训练集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%87%E5%AE%9A%E8%BE%93%E5%85%A5%E9%94%AE"><span class="toc-number">2.3.</span> <span class="toc-text">指定输入键</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BF%E9%97%AE%E6%95%B0%E6%8D%AE%E7%9A%84%E5%B1%9E%E6%80%A7"><span class="toc-number">2.4.</span> <span class="toc-text">访问数据的属性</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/ai/dspy-data/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.oldcai.com/ai/dspy-data/&text=如何为 DSPy 项目收集和准备训练数据"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/ai/dspy-data/&title=如何为 DSPy 项目收集和准备训练数据"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/ai/dspy-data/&is_video=false&description=如何为 DSPy 项目收集和准备训练数据"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=如何为 DSPy 项目收集和准备训练数据&body=Check out this article: https://www.oldcai.com/ai/dspy-data/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.oldcai.com/ai/dspy-data/&title=如何为 DSPy 项目收集和准备训练数据"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.oldcai.com/ai/dspy-data/&title=如何为 DSPy 项目收集和准备训练数据"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/ai/dspy-data/&title=如何为 DSPy 项目收集和准备训练数据"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.oldcai.com/ai/dspy-data/&title=如何为 DSPy 项目收集和准备训练数据"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/ai/dspy-data/&name=如何为 DSPy 项目收集和准备训练数据&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://www.oldcai.com/ai/dspy-data/&t=如何为 DSPy 项目收集和准备训练数据"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2024
+    oldcai
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/categories/">Categories</a></li><!--
+     --><!--
+       --><li><a href="/tags/">Tags</a></li><!--
+     --><!--
+       --><li><a href="/friends/">Friends</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Archives</a></li><!--
+     --><!--
+       --><li><a href="/search/">Search</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8814571279145017"
+     crossorigin="anonymous"></script>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8814571279145017",
+          enable_page_level_ads: true
+     });
+</script>
+
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+
+<!-- Google Analytics -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-K0RK1QH308"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('consent', 'default', {
+            'ad_user_data': 'granted',
+            'ad_personalization': 'granted',
+            'ad_storage': 'granted',
+            'analytics_storage': 'granted',
+            'wait_for_update': 500,
+        });
+        gtag('js', new Date());
+        gtag('config', 'G-K0RK1QH308');
+    </script>
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'oldcai';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+<!-- utterances Comments -->
+
+
+</body>
+</html>
