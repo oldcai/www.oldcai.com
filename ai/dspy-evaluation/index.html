@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="什么是指标指标是一个函数，用于获取数据中的示例和系统的输出，然后返回一个量化输出质量的分数。简单来说，指标就是评价系统输出好坏的标准。 如何定义 DSPy 指标？长文本如何评分？对于简单任务，这个标准可能是“准确率”、“完全匹配”或“F1分数”。但对于大多数应用场景，系统会输出长文本，这时指标应该检查输出的多个属性，甚至可能需要使用AI反馈。 初次定义指标时，由简单开始，逐步迭代是关键。 简单指标">
+<meta property="og:type" content="article">
+<meta property="og:title" content="让你的AI系统表现更出色！DSPy指标优化技巧大公开">
+<meta property="og:url" content="https://www.oldcai.com/ai/dspy-evaluation/">
+<meta property="og:site_name" content="老菜博客">
+<meta property="og:description" content="什么是指标指标是一个函数，用于获取数据中的示例和系统的输出，然后返回一个量化输出质量的分数。简单来说，指标就是评价系统输出好坏的标准。 如何定义 DSPy 指标？长文本如何评分？对于简单任务，这个标准可能是“准确率”、“完全匹配”或“F1分数”。但对于大多数应用场景，系统会输出长文本，这时指标应该检查输出的多个属性，甚至可能需要使用AI反馈。 初次定义指标时，由简单开始，逐步迭代是关键。 简单指标">
+<meta property="og:locale">
+<meta property="article:published_time" content="2024-05-31T13:31:37.000Z">
+<meta property="article:modified_time" content="2024-05-31T11:48:57.588Z">
+<meta property="article:author" content="oldcai">
+<meta property="article:tag" content="DSPy">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>让你的AI系统表现更出色！DSPy指标优化技巧大公开</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/atom.xml" title="老菜博客" type="application/atom+xml" />
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/categories/">Categories</a></li><!--
+     --><!--
+       --><li><a href="/tags/">Tags</a></li><!--
+     --><!--
+       --><li><a href="/friends/">Friends</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Archives</a></li><!--
+     --><!--
+       --><li><a href="/search/">Search</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/ai/dspy-signature-optimizer/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/ai/dspy-evaluation/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.oldcai.com/ai/dspy-evaluation/&text=让你的AI系统表现更出色！DSPy指标优化技巧大公开"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/ai/dspy-evaluation/&title=让你的AI系统表现更出色！DSPy指标优化技巧大公开"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/ai/dspy-evaluation/&is_video=false&description=让你的AI系统表现更出色！DSPy指标优化技巧大公开"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=让你的AI系统表现更出色！DSPy指标优化技巧大公开&body=Check out this article: https://www.oldcai.com/ai/dspy-evaluation/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.oldcai.com/ai/dspy-evaluation/&title=让你的AI系统表现更出色！DSPy指标优化技巧大公开"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.oldcai.com/ai/dspy-evaluation/&title=让你的AI系统表现更出色！DSPy指标优化技巧大公开"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/ai/dspy-evaluation/&title=让你的AI系统表现更出色！DSPy指标优化技巧大公开"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.oldcai.com/ai/dspy-evaluation/&title=让你的AI系统表现更出色！DSPy指标优化技巧大公开"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/ai/dspy-evaluation/&name=让你的AI系统表现更出色！DSPy指标优化技巧大公开&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://www.oldcai.com/ai/dspy-evaluation/&t=让你的AI系统表现更出色！DSPy指标优化技巧大公开"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%8C%87%E6%A0%87"><span class="toc-number">1.</span> <span class="toc-text">什么是指标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%AE%9A%E4%B9%89-DSPy-%E6%8C%87%E6%A0%87%EF%BC%9F%E9%95%BF%E6%96%87%E6%9C%AC%E5%A6%82%E4%BD%95%E8%AF%84%E5%88%86%EF%BC%9F"><span class="toc-number">2.</span> <span class="toc-text">如何定义 DSPy 指标？长文本如何评分？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E6%8C%87%E6%A0%87%E7%A4%BA%E4%BE%8B"><span class="toc-number">3.</span> <span class="toc-text">简单指标示例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%BF%9B%E8%A1%8C%E8%AF%84%E4%BC%B0%EF%BC%9F"><span class="toc-number">4.</span> <span class="toc-text">如何进行评估？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AB%98%E7%BA%A7%EF%BC%9A%E4%BD%BF%E7%94%A8DSPy%E7%A8%8B%E5%BA%8F%E4%BD%9C%E4%B8%BA%E6%8C%87%E6%A0%87"><span class="toc-number">5.</span> <span class="toc-text">高级：使用DSPy程序作为指标</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AB%98%E7%BA%A7%EF%BC%9A%E8%AE%BF%E9%97%AEtrace"><span class="toc-number">5.1.</span> <span class="toc-text">高级：访问trace</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        让你的AI系统表现更出色！DSPy指标优化技巧大公开
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">oldcai</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2024-05-31T13:31:37.000Z" itemprop="datePublished">2024-05-31</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/DSPy/" rel="tag">DSPy</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="什么是指标"><a href="#什么是指标" class="headerlink" title="什么是指标"></a>什么是指标</h2><p>指标是一个函数，用于获取数据中的示例和系统的输出，然后返回一个量化输出质量的分数。简单来说，指标就是评价系统输出好坏的标准。</p>
+<h2 id="如何定义-DSPy-指标？长文本如何评分？"><a href="#如何定义-DSPy-指标？长文本如何评分？" class="headerlink" title="如何定义 DSPy 指标？长文本如何评分？"></a>如何定义 DSPy 指标？长文本如何评分？</h2><p>对于简单任务，这个标准可能是“准确率”、“完全匹配”或“F1分数”。但对于大多数应用场景，系统会输出<strong>长文本</strong>，这时指标应该检查输出的多个属性，甚至可能需要使用AI反馈。</p>
+<p>初次定义指标时，由简单开始，逐步迭代是关键。</p>
+<h2 id="简单指标示例"><a href="#简单指标示例" class="headerlink" title="简单指标示例"></a>简单指标示例</h2><p>在DSPy中，指标就是一个Python函数，它接收<code>example</code>（如训练集或开发集中的样本）和程序的输出<code>pred</code>，并返回一个<code>float</code>（或<code>int</code>或<code>bool</code>）分数。</p>
+<p>你的指标函数也应该接受一个可选的第三个参数<code>trace</code>，虽然暂时可以忽略，但在优化时会派上用场。</p>
+<p>以下是一个简单的指标示例，比较<code>example.answer</code>和<code>pred.answer</code>，返回一个<code>bool</code>值。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">validate_answer</span>(<span class="params">example, pred, trace=<span class="literal">None</span></span>):</span><br><span class="line">    <span class="keyword">return</span> example.answer.lower() == pred.answer.lower()</span><br></pre></td></tr></table></figure>
+
+<p>你也可以使用内置的实用工具，比如：</p>
+<ul>
+<li><code>dspy.evaluate.metrics.answer_exact_match</code></li>
+<li><code>dspy.evaluate.metrics.answer_passage_match</code></li>
+</ul>
+<p>复杂一些的指标示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">validate_context_and_answer</span>(<span class="params">example, pred, trace=<span class="literal">None</span></span>):</span><br><span class="line">    answer_match = example.answer.lower() == pred.answer.lower()</span><br><span class="line">    context_match = <span class="built_in">any</span>((pred.answer.lower() <span class="keyword">in</span> c) <span class="keyword">for</span> c <span class="keyword">in</span> pred.context)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> trace <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">        <span class="keyword">return</span> (answer_match + context_match) / <span class="number">2.0</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> answer_match <span class="keyword">and</span> context_match</span><br></pre></td></tr></table></figure>
+
+<h2 id="如何进行评估？"><a href="#如何进行评估？" class="headerlink" title="如何进行评估？"></a>如何进行评估？</h2><p>定义好指标后，可以通过一个简单的Python循环进行评估。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">scores = []</span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> devset:</span><br><span class="line">    pred = program(**x.inputs())</span><br><span class="line">    score = metric(x, pred)</span><br><span class="line">    scores.append(score)</span><br></pre></td></tr></table></figure>
+
+<p>你也可以使用内置的<code>Evaluate</code>实用工具，帮助并行评估和展示结果。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> dspy.evaluate <span class="keyword">import</span> Evaluate</span><br><span class="line"></span><br><span class="line">evaluator = Evaluate(devset=YOUR_DEVSET, num_threads=<span class="number">1</span>, display_progress=<span class="literal">True</span>, display_table=<span class="number">5</span>)</span><br><span class="line">evaluator(YOUR_PROGRAM, metric=YOUR_METRIC)</span><br></pre></td></tr></table></figure>
+
+<p>对于大多数应用场景，系统会输出长文本，指标应检查输出的多个维度，甚至可以利用AI反馈。</p>
+<h2 id="高级：使用DSPy程序作为指标"><a href="#高级：使用DSPy程序作为指标" class="headerlink" title="高级：使用DSPy程序作为指标"></a>高级：使用DSPy程序作为指标</h2><p>如果你的指标本身是一个DSPy程序，可以通过优化它来迭代改进。这通常很容易，因为指标的输出是一个简单的值（如分数），可以通过收集示例来定义和优化。</p>
+<h3 id="高级：访问trace"><a href="#高级：访问trace" class="headerlink" title="高级：访问trace"></a>高级：访问<code>trace</code></h3><p>在评估运行时，DSPy不会跟踪程序的步骤。但在优化期间，DSPy会跟踪你的语言模型调用。你可以利用这些跟踪信息来验证中间步骤。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">validate_hops</span>(<span class="params">example, pred, trace=<span class="literal">None</span></span>):</span><br><span class="line">    hops = [example.question] + [outputs.query <span class="keyword">for</span> *_ , outputs <span class="keyword">in</span> trace <span class="keyword">if</span> <span class="string">&#x27;query&#x27;</span> <span class="keyword">in</span> outputs]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">max</span>([<span class="built_in">len</span>(h) <span class="keyword">for</span> h <span class="keyword">in</span> hops]) &gt; <span class="number">100</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">any</span>(dspy.evaluate.answer_exact_match_str(hops[idx], hops[:idx], frac=<span class="number">0.8</span>) <span class="keyword">for</span> idx <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>, <span class="built_in">len</span>(hops))):</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+
+<p>定义和优化指标是一个迭代过程，简单开始，逐步改进，借助AI反馈不断优化你的系统输出。希望这篇指南对你有所帮助，祝你在使用DSPy的过程中取得好成绩！</p>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/categories/">Categories</a></li>
+         
+          <li><a href="/tags/">Tags</a></li>
+         
+          <li><a href="/friends/">Friends</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%8C%87%E6%A0%87"><span class="toc-number">1.</span> <span class="toc-text">什么是指标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%AE%9A%E4%B9%89-DSPy-%E6%8C%87%E6%A0%87%EF%BC%9F%E9%95%BF%E6%96%87%E6%9C%AC%E5%A6%82%E4%BD%95%E8%AF%84%E5%88%86%EF%BC%9F"><span class="toc-number">2.</span> <span class="toc-text">如何定义 DSPy 指标？长文本如何评分？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E6%8C%87%E6%A0%87%E7%A4%BA%E4%BE%8B"><span class="toc-number">3.</span> <span class="toc-text">简单指标示例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%BF%9B%E8%A1%8C%E8%AF%84%E4%BC%B0%EF%BC%9F"><span class="toc-number">4.</span> <span class="toc-text">如何进行评估？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AB%98%E7%BA%A7%EF%BC%9A%E4%BD%BF%E7%94%A8DSPy%E7%A8%8B%E5%BA%8F%E4%BD%9C%E4%B8%BA%E6%8C%87%E6%A0%87"><span class="toc-number">5.</span> <span class="toc-text">高级：使用DSPy程序作为指标</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AB%98%E7%BA%A7%EF%BC%9A%E8%AE%BF%E9%97%AEtrace"><span class="toc-number">5.1.</span> <span class="toc-text">高级：访问trace</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/ai/dspy-evaluation/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.oldcai.com/ai/dspy-evaluation/&text=让你的AI系统表现更出色！DSPy指标优化技巧大公开"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/ai/dspy-evaluation/&title=让你的AI系统表现更出色！DSPy指标优化技巧大公开"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/ai/dspy-evaluation/&is_video=false&description=让你的AI系统表现更出色！DSPy指标优化技巧大公开"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=让你的AI系统表现更出色！DSPy指标优化技巧大公开&body=Check out this article: https://www.oldcai.com/ai/dspy-evaluation/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.oldcai.com/ai/dspy-evaluation/&title=让你的AI系统表现更出色！DSPy指标优化技巧大公开"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.oldcai.com/ai/dspy-evaluation/&title=让你的AI系统表现更出色！DSPy指标优化技巧大公开"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/ai/dspy-evaluation/&title=让你的AI系统表现更出色！DSPy指标优化技巧大公开"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.oldcai.com/ai/dspy-evaluation/&title=让你的AI系统表现更出色！DSPy指标优化技巧大公开"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/ai/dspy-evaluation/&name=让你的AI系统表现更出色！DSPy指标优化技巧大公开&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://www.oldcai.com/ai/dspy-evaluation/&t=让你的AI系统表现更出色！DSPy指标优化技巧大公开"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2024
+    oldcai
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/categories/">Categories</a></li><!--
+     --><!--
+       --><li><a href="/tags/">Tags</a></li><!--
+     --><!--
+       --><li><a href="/friends/">Friends</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Archives</a></li><!--
+     --><!--
+       --><li><a href="/search/">Search</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8814571279145017"
+     crossorigin="anonymous"></script>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8814571279145017",
+          enable_page_level_ads: true
+     });
+</script>
+
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+
+<!-- Google Analytics -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-K0RK1QH308"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('consent', 'default', {
+            'ad_user_data': 'granted',
+            'ad_personalization': 'granted',
+            'ad_storage': 'granted',
+            'analytics_storage': 'granted',
+            'wait_for_update': 500,
+        });
+        gtag('js', new Date());
+        gtag('config', 'G-K0RK1QH308');
+    </script>
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'oldcai';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+<!-- utterances Comments -->
+
+
+</body>
+</html>
