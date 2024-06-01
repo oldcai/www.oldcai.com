@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="DSPy 模块是构建语言模型（LM）程序的基础单元。  每个模块都抽象了一个提示技术（如链式思维或 ReAct），能够处理任何 DSPy 签名。 DSPy 模块具有可学习参数，可以被调用以处理输入并返回输出。 多个模块可以组合成更大的模块（程序），类似于 PyTorch 中的神经网络模块，但应用于语言模型程序。  如何使用内置模块，如 dspy.Predict 或 dspy.ChainOfThou">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DSPy模块(Module)有哪些功能？如何使用它们优化AI模型？">
+<meta property="og:url" content="https://www.oldcai.com/ai/dspy-modules/">
+<meta property="og:site_name" content="老菜博客">
+<meta property="og:description" content="DSPy 模块是构建语言模型（LM）程序的基础单元。  每个模块都抽象了一个提示技术（如链式思维或 ReAct），能够处理任何 DSPy 签名。 DSPy 模块具有可学习参数，可以被调用以处理输入并返回输出。 多个模块可以组合成更大的模块（程序），类似于 PyTorch 中的神经网络模块，但应用于语言模型程序。  如何使用内置模块，如 dspy.Predict 或 dspy.ChainOfThou">
+<meta property="og:locale">
+<meta property="article:published_time" content="2024-06-01T04:36:11.000Z">
+<meta property="article:modified_time" content="2024-06-01T02:53:06.618Z">
+<meta property="article:author" content="oldcai">
+<meta property="article:tag" content="DSPy">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>DSPy模块(Module)有哪些功能？如何使用它们优化AI模型？</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/atom.xml" title="老菜博客" type="application/atom+xml" />
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/categories/">Categories</a></li><!--
+     --><!--
+       --><li><a href="/tags/">Tags</a></li><!--
+     --><!--
+       --><li><a href="/friends/">Friends</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Archives</a></li><!--
+     --><!--
+       --><li><a href="/search/">Search</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/ai/dspy-data/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/ai/dspy-modules/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.oldcai.com/ai/dspy-modules/&text=DSPy模块(Module)有哪些功能？如何使用它们优化AI模型？"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/ai/dspy-modules/&title=DSPy模块(Module)有哪些功能？如何使用它们优化AI模型？"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/ai/dspy-modules/&is_video=false&description=DSPy模块(Module)有哪些功能？如何使用它们优化AI模型？"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=DSPy模块(Module)有哪些功能？如何使用它们优化AI模型？&body=Check out this article: https://www.oldcai.com/ai/dspy-modules/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.oldcai.com/ai/dspy-modules/&title=DSPy模块(Module)有哪些功能？如何使用它们优化AI模型？"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.oldcai.com/ai/dspy-modules/&title=DSPy模块(Module)有哪些功能？如何使用它们优化AI模型？"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/ai/dspy-modules/&title=DSPy模块(Module)有哪些功能？如何使用它们优化AI模型？"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.oldcai.com/ai/dspy-modules/&title=DSPy模块(Module)有哪些功能？如何使用它们优化AI模型？"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/ai/dspy-modules/&name=DSPy模块(Module)有哪些功能？如何使用它们优化AI模型？&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://www.oldcai.com/ai/dspy-modules/&t=DSPy模块(Module)有哪些功能？如何使用它们优化AI模型？"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E5%86%85%E7%BD%AE%E6%A8%A1%E5%9D%97%EF%BC%8C%E5%A6%82-dspy-Predict-%E6%88%96-dspy-ChainOfThought%EF%BC%9F"><span class="toc-number">1.</span> <span class="toc-text">如何使用内置模块，如 dspy.Predict 或 dspy.ChainOfThought？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.1.</span> <span class="toc-text">使用步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E6%A8%A1%E5%9D%97"><span class="toc-number">1.2.</span> <span class="toc-text">配置模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E8%AF%A6%E7%BB%86%E8%BE%93%E5%87%BA"><span class="toc-number">1.3.</span> <span class="toc-text">查看详细输出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96-DSPy-%E6%A8%A1%E5%9D%97"><span class="toc-number">2.</span> <span class="toc-text">其他 DSPy 模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%84%E5%90%88%E5%A4%9A%E4%B8%AA%E6%A8%A1%E5%9D%97"><span class="toc-number">3.</span> <span class="toc-text">组合多个模块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E4%B8%80%E6%AD%A5%E5%AD%A6%E4%B9%A0"><span class="toc-number">3.1.</span> <span class="toc-text">进一步学习</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        DSPy模块(Module)有哪些功能？如何使用它们优化AI模型？
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">oldcai</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2024-06-01T04:36:11.000Z" itemprop="datePublished">2024-06-01</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/DSPy/" rel="tag">DSPy</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p><strong>DSPy 模块</strong>是构建语言模型（LM）程序的基础单元。</p>
+<ul>
+<li>每个模块都抽象了一个<strong>提示技术</strong>（如链式思维或 ReAct），能够处理任何 <a href="https://www.oldcai.com/ai/dspy-signature/">DSPy 签名</a>。</li>
+<li>DSPy 模块具有<strong>可学习参数</strong>，可以被调用以处理输入并返回输出。</li>
+<li>多个模块可以组合成更大的模块（程序），类似于 PyTorch 中的神经网络模块，但应用于语言模型程序。</li>
+</ul>
+<h2 id="如何使用内置模块，如-dspy-Predict-或-dspy-ChainOfThought？"><a href="#如何使用内置模块，如-dspy-Predict-或-dspy-ChainOfThought？" class="headerlink" title="如何使用内置模块，如 dspy.Predict 或 dspy.ChainOfThought？"></a>如何使用内置模块，如 <code>dspy.Predict</code> 或 <code>dspy.ChainOfThought</code>？</h2><p>我们先从最基本的 <code>dspy.Predict</code> 模块开始。所有其他 DSPy 模块都是基于 <code>dspy.Predict</code> 构建的。</p>
+<p>签名（Signature）是定义我们在 DSPy 中使用的任何模块行为的规范。如果还不了解，可以先过一遍 <a href="https://www.oldcai.com/ai/dspy-signature/">DSPy 签名</a>。</p>
+<h3 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h3><ol>
+<li><strong>声明模块</strong>：给模块一个签名。</li>
+<li><strong>调用模块</strong>：使用输入参数调用模块。</li>
+<li><strong>提取输出</strong>：获取输出字段。</li>
+</ol>
+<p>例如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">sentence = <span class="string">&quot;it&#x27;s a charming and often affecting journey.&quot;</span>  <span class="comment"># 来自 SST-2 数据集的示例</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 1. 使用签名声明模块</span></span><br><span class="line">classify = dspy.Predict(<span class="string">&#x27;sentence -&gt; sentiment&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 使用输入参数调用模块</span></span><br><span class="line">response = classify(sentence=sentence)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 访问输出</span></span><br><span class="line"><span class="built_in">print</span>(response.sentiment)  <span class="comment"># 输出：Positive</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="配置模块"><a href="#配置模块" class="headerlink" title="配置模块"></a>配置模块</h3><p>声明模块时，我们可以传递配置参数，例如请求多个结果：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">question = <span class="string">&quot;What&#x27;s something great about the ColBERT retrieval model?&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 1. 使用签名声明模块，并传递配置参数</span></span><br><span class="line">classify = dspy.ChainOfThought(<span class="string">&#x27;question -&gt; answer&#x27;</span>, n=<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 使用输入参数调用模块</span></span><br><span class="line">response = classify(question=question)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 访问输出</span></span><br><span class="line"><span class="built_in">print</span>(response.completions.answer)</span><br></pre></td></tr></table></figure>
+
+<p><strong>输出：</strong></p>
+<figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  <span class="comment">&#x27;One great thing about the ColBERT retrieval model is its superior efficiency and effectiveness compared to other models.&#x27;,</span></span><br><span class="line">  <span class="comment">&#x27;Its ability to efficiently retrieve relevant information from large document collections.&#x27;,</span></span><br><span class="line">  ...</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看详细输出"><a href="#查看详细输出" class="headerlink" title="查看详细输出"></a>查看详细输出</h3><p><code>dspy.ChainOfThought</code> 模块通常会在输出字段之前生成 <code>rationale</code>（推理过程）。我们可以这样查看：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;Rationale: <span class="subst">&#123;response.rationale[<span class="number">0</span>]&#125;</span>&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;Answer: <span class="subst">&#123;response.answer[<span class="number">0</span>]&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>输出：</strong></p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Rationale: produce <span class="keyword">the</span> answer. We can consider <span class="keyword">the</span> fact <span class="keyword">that</span> ColBERT has shown <span class="keyword">to</span> outperform other state-<span class="keyword">of</span>-<span class="keyword">the</span>-art retrieval models <span class="keyword">in</span> terms <span class="keyword">of</span> efficiency <span class="keyword">and</span> effectiveness. It uses contextualized embeddings <span class="keyword">and</span> performs document retrieval <span class="keyword">in</span> a way <span class="keyword">that</span> <span class="keyword">is</span> both accurate <span class="keyword">and</span> scalable.</span><br><span class="line">Answer: One great thing <span class="keyword">about</span> <span class="keyword">the</span> ColBERT retrieval model <span class="keyword">is</span> <span class="keyword">its</span> superior efficiency <span class="keyword">and</span> effectiveness compared <span class="keyword">to</span> other models.</span><br></pre></td></tr></table></figure>
+
+<h2 id="其他-DSPy-模块"><a href="#其他-DSPy-模块" class="headerlink" title="其他 DSPy 模块"></a>其他 DSPy 模块</h2><ol>
+<li>**<code>dspy.Predict</code>**：基本预测模块。</li>
+<li>**<code>dspy.ChainOfThought</code>**：逐步思考模块。</li>
+<li>**<code>dspy.ProgramOfThought</code>**：代码生成模块。</li>
+<li>**<code>dspy.ReAct</code>**：可以使用工具的代理模块。</li>
+<li>**<code>dspy.MultiChainComparison</code>**：比较多个输出以生成最终预测。</li>
+</ol>
+<p>此外，还有一些函数式模块：</p>
+<ol start="6">
+<li>**<code>dspy.majority</code>**：投票模块，返回最受欢迎的响应。</li>
+</ol>
+<p>查看<a href="https://www.oldcai.com/ai/dspy-8-steps/">每个模块的详细指南</a>获取更多示例。</p>
+<h2 id="组合多个模块"><a href="#组合多个模块" class="headerlink" title="组合多个模块"></a>组合多个模块</h2><p>DSPy 就是 Python 代码，使用模块进行控制流。这类似于 PyTorch 的定义式计算图方法。你可以自由地调用和组合模块，创建强大的语言模型程序。参考入门教程了解更多细节。</p>
+<h3 id="进一步学习"><a href="#进一步学习" class="headerlink" title="进一步学习"></a>进一步学习</h3><p>如果你想深入了解如何优化 DSPy 项目，可以参考以下链接：</p>
+<ul>
+<li><a href="https://www.oldcai.com/ai/dspy-data/">如何为 DSPy 项目收集和准备训练数据</a></li>
+<li><a href="https://www.oldcai.com/ai/dspy-evaluation/">让你的AI系统表现更出色！DSPy指标优化技巧大公开</a></li>
+<li><a href="https://www.oldcai.com/ai/dspy-signature-optimizer/">如何优化 DSPy 签名，从零开始创建一个CoT管道？</a></li>
+<li><a href="https://www.oldcai.com/ai/dspy-optimizers/">DSPy 优化器 optimizer，提升你的 AI 模型性能</a></li>
+<li><a href="https://www.oldcai.com/ai/dspy-tutorial/">DSPy教程：用 DSPy 自动优化大型语言模型 LLM 应用</a></li>
+<li><a href="https://www.oldcai.com/ai/dspy-chain-of-thought/">DSPy思考链ChainOfThought讲解</a></li>
+<li><a href="https://www.oldcai.com/ai/bootstrap-fewshot/">DSPy引导式少样本学习 - BootstrapFewShot讲解</a></li>
+<li><a href="https://www.oldcai.com/ai/dspy-8-steps/">怎样使用DSPy？任何DSPy项目都能套用的8个步骤</a></li>
+</ul>
+<p>通过这些简单步骤和资源，你可以高效地利用 DSPy 构建和优化你的语言模型程序！</p>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/categories/">Categories</a></li>
+         
+          <li><a href="/tags/">Tags</a></li>
+         
+          <li><a href="/friends/">Friends</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E5%86%85%E7%BD%AE%E6%A8%A1%E5%9D%97%EF%BC%8C%E5%A6%82-dspy-Predict-%E6%88%96-dspy-ChainOfThought%EF%BC%9F"><span class="toc-number">1.</span> <span class="toc-text">如何使用内置模块，如 dspy.Predict 或 dspy.ChainOfThought？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.1.</span> <span class="toc-text">使用步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E6%A8%A1%E5%9D%97"><span class="toc-number">1.2.</span> <span class="toc-text">配置模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E8%AF%A6%E7%BB%86%E8%BE%93%E5%87%BA"><span class="toc-number">1.3.</span> <span class="toc-text">查看详细输出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96-DSPy-%E6%A8%A1%E5%9D%97"><span class="toc-number">2.</span> <span class="toc-text">其他 DSPy 模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%84%E5%90%88%E5%A4%9A%E4%B8%AA%E6%A8%A1%E5%9D%97"><span class="toc-number">3.</span> <span class="toc-text">组合多个模块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E4%B8%80%E6%AD%A5%E5%AD%A6%E4%B9%A0"><span class="toc-number">3.1.</span> <span class="toc-text">进一步学习</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/ai/dspy-modules/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.oldcai.com/ai/dspy-modules/&text=DSPy模块(Module)有哪些功能？如何使用它们优化AI模型？"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/ai/dspy-modules/&title=DSPy模块(Module)有哪些功能？如何使用它们优化AI模型？"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/ai/dspy-modules/&is_video=false&description=DSPy模块(Module)有哪些功能？如何使用它们优化AI模型？"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=DSPy模块(Module)有哪些功能？如何使用它们优化AI模型？&body=Check out this article: https://www.oldcai.com/ai/dspy-modules/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.oldcai.com/ai/dspy-modules/&title=DSPy模块(Module)有哪些功能？如何使用它们优化AI模型？"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.oldcai.com/ai/dspy-modules/&title=DSPy模块(Module)有哪些功能？如何使用它们优化AI模型？"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/ai/dspy-modules/&title=DSPy模块(Module)有哪些功能？如何使用它们优化AI模型？"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.oldcai.com/ai/dspy-modules/&title=DSPy模块(Module)有哪些功能？如何使用它们优化AI模型？"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/ai/dspy-modules/&name=DSPy模块(Module)有哪些功能？如何使用它们优化AI模型？&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://www.oldcai.com/ai/dspy-modules/&t=DSPy模块(Module)有哪些功能？如何使用它们优化AI模型？"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2024
+    oldcai
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/categories/">Categories</a></li><!--
+     --><!--
+       --><li><a href="/tags/">Tags</a></li><!--
+     --><!--
+       --><li><a href="/friends/">Friends</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Archives</a></li><!--
+     --><!--
+       --><li><a href="/search/">Search</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8814571279145017"
+     crossorigin="anonymous"></script>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8814571279145017",
+          enable_page_level_ads: true
+     });
+</script>
+
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+
+<!-- Google Analytics -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-K0RK1QH308"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('consent', 'default', {
+            'ad_user_data': 'granted',
+            'ad_personalization': 'granted',
+            'ad_storage': 'granted',
+            'analytics_storage': 'granted',
+            'wait_for_update': 500,
+        });
+        gtag('js', new Date());
+        gtag('config', 'G-K0RK1QH308');
+    </script>
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'oldcai';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+<!-- utterances Comments -->
+
+
+</body>
+</html>
