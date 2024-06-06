@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta name="description" content="DSPy Assertion 是什么当单独靠 metrics 不足以训练出复杂的要求，或需要更大的成本才能训练出符合要求的训练结果，Assert 和 Suggest 断言就会十分好用。DSPy Assertions是引导你的LLM朝着期望结果前进的关键工具。它们旨在提高可重复性，提升结果质量，并确保项目的可预测性。  dspy.Assert：像严厉负责的教练，如果没有达到要求，它不仅要求重做，还会">
+    <meta name="description" content="DSPy 断言是什么DSPy Assertions 是引导你的 LLM 应用朝着期望结果迭代的路标和导航。断言提升结果质量，并确保项目的可预测性。 什么时候使用断言你需要亲手捏出结果的形状，而不只是满足于评判结果的好坏，Assert 和 Suggest 断言就会十分好用。 更加严谨地表述是，当单纯靠指标评估不足以训练出满足复杂的要求的应用；或单凭 metric 的随机结果排序来优化，需要巨大的成本">
 <meta property="og:type" content="article">
-<meta property="og:title" content="利用 Assert 和 Suggest 断言优化 DSPy 应用">
+<meta property="og:title" content="用 Assert 和 Suggest 断言优化 DSPy 应用">
 <meta property="og:url" content="https://www.oldcai.com/ai/dspy-assertion/">
 <meta property="og:site_name" content="老菜博客">
-<meta property="og:description" content="DSPy Assertion 是什么当单独靠 metrics 不足以训练出复杂的要求，或需要更大的成本才能训练出符合要求的训练结果，Assert 和 Suggest 断言就会十分好用。DSPy Assertions是引导你的LLM朝着期望结果前进的关键工具。它们旨在提高可重复性，提升结果质量，并确保项目的可预测性。  dspy.Assert：像严厉负责的教练，如果没有达到要求，它不仅要求重做，还会">
+<meta property="og:description" content="DSPy 断言是什么DSPy Assertions 是引导你的 LLM 应用朝着期望结果迭代的路标和导航。断言提升结果质量，并确保项目的可预测性。 什么时候使用断言你需要亲手捏出结果的形状，而不只是满足于评判结果的好坏，Assert 和 Suggest 断言就会十分好用。 更加严谨地表述是，当单纯靠指标评估不足以训练出满足复杂的要求的应用；或单凭 metric 的随机结果排序来优化，需要巨大的成本">
 <meta property="og:locale">
 <meta property="article:published_time" content="2024-06-05T17:35:13.000Z">
-<meta property="article:modified_time" content="2024-06-06T06:32:23.299Z">
+<meta property="article:modified_time" content="2024-06-06T06:46:52.097Z">
 <meta property="article:author" content="oldcai">
 <meta property="article:tag" content="DSPy">
 <meta name="twitter:card" content="summary">
@@ -37,7 +37,7 @@
       
     
     <!-- title -->
-    <title>利用 Assert 和 Suggest 断言优化 DSPy 应用</title>
+    <title>用 Assert 和 Suggest 断言优化 DSPy 应用</title>
     <!-- styles -->
     
 <link rel="stylesheet" href="/css/style.css">
@@ -96,21 +96,21 @@
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/ai/dspy-assertion/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.oldcai.com/ai/dspy-assertion/&text=利用 Assert 和 Suggest 断言优化 DSPy 应用"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/ai/dspy-assertion/&title=利用 Assert 和 Suggest 断言优化 DSPy 应用"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/ai/dspy-assertion/&is_video=false&description=利用 Assert 和 Suggest 断言优化 DSPy 应用"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=利用 Assert 和 Suggest 断言优化 DSPy 应用&body=Check out this article: https://www.oldcai.com/ai/dspy-assertion/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.oldcai.com/ai/dspy-assertion/&title=利用 Assert 和 Suggest 断言优化 DSPy 应用"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.oldcai.com/ai/dspy-assertion/&title=利用 Assert 和 Suggest 断言优化 DSPy 应用"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/ai/dspy-assertion/&title=利用 Assert 和 Suggest 断言优化 DSPy 应用"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.oldcai.com/ai/dspy-assertion/&title=利用 Assert 和 Suggest 断言优化 DSPy 应用"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/ai/dspy-assertion/&name=利用 Assert 和 Suggest 断言优化 DSPy 应用&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://www.oldcai.com/ai/dspy-assertion/&t=利用 Assert 和 Suggest 断言优化 DSPy 应用"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.oldcai.com/ai/dspy-assertion/&text=用 Assert 和 Suggest 断言优化 DSPy 应用"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/ai/dspy-assertion/&title=用 Assert 和 Suggest 断言优化 DSPy 应用"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/ai/dspy-assertion/&is_video=false&description=用 Assert 和 Suggest 断言优化 DSPy 应用"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=用 Assert 和 Suggest 断言优化 DSPy 应用&body=Check out this article: https://www.oldcai.com/ai/dspy-assertion/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.oldcai.com/ai/dspy-assertion/&title=用 Assert 和 Suggest 断言优化 DSPy 应用"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.oldcai.com/ai/dspy-assertion/&title=用 Assert 和 Suggest 断言优化 DSPy 应用"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/ai/dspy-assertion/&title=用 Assert 和 Suggest 断言优化 DSPy 应用"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.oldcai.com/ai/dspy-assertion/&title=用 Assert 和 Suggest 断言优化 DSPy 应用"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/ai/dspy-assertion/&name=用 Assert 和 Suggest 断言优化 DSPy 应用&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://www.oldcai.com/ai/dspy-assertion/&t=用 Assert 和 Suggest 断言优化 DSPy 应用"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#DSPy-Assertion-%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">1.</span> <span class="toc-text">DSPy Assertion 是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%A1%AE%E4%BF%9D%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F"><span class="toc-number">2.</span> <span class="toc-text">1. 确保输出格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%A4%9A%E6%96%AD%E8%A8%80"><span class="toc-number">3.</span> <span class="toc-text">2. 多断言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E5%A4%A7%E9%87%8F%E7%A4%BA%E4%BE%8B"><span class="toc-number">4.</span> <span class="toc-text">生成大量示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E4%B8%80%E6%AD%A5%E5%AD%A6%E4%B9%A0"><span class="toc-number">5.</span> <span class="toc-text">进一步学习</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#DSPy-%E6%96%AD%E8%A8%80%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">1.</span> <span class="toc-text">DSPy 断言是什么</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E4%BD%BF%E7%94%A8%E6%96%AD%E8%A8%80"><span class="toc-number">1.1.</span> <span class="toc-text">什么时候使用断言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%AD%E8%A8%80%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.2.</span> <span class="toc-text">有哪些断言类型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B"><span class="toc-number">2.</span> <span class="toc-text">代码示例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%A1%AE%E4%BF%9D%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F"><span class="toc-number">2.1.</span> <span class="toc-text">1. 确保输出格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%A4%9A%E6%96%AD%E8%A8%80"><span class="toc-number">2.2.</span> <span class="toc-text">2. 多断言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E5%A4%A7%E9%87%8F%E7%A4%BA%E4%BE%8B"><span class="toc-number">2.3.</span> <span class="toc-text">生成大量示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E4%B8%80%E6%AD%A5%E5%AD%A6%E4%B9%A0"><span class="toc-number">2.4.</span> <span class="toc-text">进一步学习</span></a></li></ol></li></ol>
     </div>
   </span>
 </div>
@@ -122,7 +122,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        利用 Assert 和 Suggest 断言优化 DSPy 应用
+        用 Assert 和 Suggest 断言优化 DSPy 应用
     </h1>
 
 
@@ -154,13 +154,15 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h3 id="DSPy-Assertion-是什么"><a href="#DSPy-Assertion-是什么" class="headerlink" title="DSPy Assertion 是什么"></a>DSPy Assertion 是什么</h3><p>当单独靠 metrics 不足以训练出复杂的要求，或需要更大的成本才能训练出符合要求的训练结果，Assert 和 <code>Suggest</code> 断言就会十分好用。DSPy Assertions是引导你的LLM朝着期望结果前进的关键工具。它们旨在提高可重复性，提升结果质量，并确保项目的可预测性。</p>
-<ul>
+    <h2 id="DSPy-断言是什么"><a href="#DSPy-断言是什么" class="headerlink" title="DSPy 断言是什么"></a>DSPy 断言是什么</h2><p>DSPy Assertions 是引导你的 LLM 应用朝着期望结果迭代的<strong>路标和导航</strong>。断言提升结果质量，并确保项目的可预测性。</p>
+<h3 id="什么时候使用断言"><a href="#什么时候使用断言" class="headerlink" title="什么时候使用断言"></a>什么时候使用断言</h3><p>你需要亲手捏出结果的形状，而不只是满足于评判结果的好坏，<code>Assert</code> 和 <code>Suggest</code> 断言就会十分好用。</p>
+<p>更加严谨地表述是，当单纯靠<a href="https://www.oldcai.com/ai/dspy-evaluation/">指标评估</a>不足以训练出满足复杂的要求的应用；或单凭 <code>metric</code> 的随机结果排序来优化，需要巨大的成本才能训练出符合要求的训练结果，就需要使用断言。</p>
+<h3 id="有哪些断言类型"><a href="#有哪些断言类型" class="headerlink" title="有哪些断言类型"></a>有哪些断言类型</h3><ul>
 <li><strong>dspy.Assert</strong>：像严厉负责的教练，如果没有达到要求，它不仅要求重做，还会动态调整计划。如果问题持续存在，它会停止执行并抛出<code>dspy.AssertionError</code>。</li>
 <li><strong>dspy.Suggest</strong>：像温和耐心的老师，重新尝试时更为灵活，不会严格惩罚，适合评估阶段。</li>
 </ul>
 <p><code>dspy.Suggest</code> 和 <code>dspy.Assert</code> 都是在 <code>forward</code> 中就能使用。它们都巧妙地利用了回溯机制优化模型。</p>
-<p>下面，用两个例子讲讲怎样使用它们。</p>
+<h2 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h2><p>下面，用几个例子讲讲怎样使用它们。</p>
 <h3 id="1-确保输出格式"><a href="#1-确保输出格式" class="headerlink" title="1. 确保输出格式"></a>1. 确保输出格式</h3><p>目标：确保输出的项目包含超过两个，并用逗号分隔。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">from</span> dspy.primitives.assertions <span class="keyword">import</span> assert_transform_module, backtrack_handler</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">check_format</span>(<span class="params">action_items</span>):</span><br><span class="line">  <span class="string">&quot;&quot;&quot;Check that the action items are a list of comma-separated action items&quot;&quot;&quot;</span></span><br><span class="line">  <span class="keyword">if</span> <span class="built_in">len</span>(action_items.split(<span class="string">&quot;,&quot;</span>)) == <span class="number">1</span>:</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">  <span class="keyword">match</span> = re.search(<span class="string">r&#x27;(\d)\.\s.+?(\\n|$)&#x27;</span>, action_items, re.MULTILINE)</span><br><span class="line">  <span class="keyword">if</span> <span class="keyword">match</span>:</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">  <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">GenerateExampleWithAssert</span>(dspy.Module):</span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">    <span class="built_in">super</span>().__init__()</span><br><span class="line">    self.generate_example = dspy.ChainOfThought(TranscriptExample)</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self</span>):</span><br><span class="line">    ex = self.generate_example(**varying_temp())</span><br><span class="line">    dspy.Assert(check_format(ex.action_items), <span class="string">&quot;Action Items should be a comma-separated list&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> ex</span><br><span class="line"></span><br><span class="line">dspy.configure(trace=[])</span><br><span class="line"></span><br><span class="line">generate_with_assert = assert_transform_module(GenerateExampleWithAssert(), backtrack_handler)</span><br><span class="line"></span><br><span class="line">example = generate_with_assert()</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(example)</span><br></pre></td></tr></table></figure>
 
@@ -225,22 +227,22 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#DSPy-Assertion-%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">1.</span> <span class="toc-text">DSPy Assertion 是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%A1%AE%E4%BF%9D%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F"><span class="toc-number">2.</span> <span class="toc-text">1. 确保输出格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%A4%9A%E6%96%AD%E8%A8%80"><span class="toc-number">3.</span> <span class="toc-text">2. 多断言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E5%A4%A7%E9%87%8F%E7%A4%BA%E4%BE%8B"><span class="toc-number">4.</span> <span class="toc-text">生成大量示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E4%B8%80%E6%AD%A5%E5%AD%A6%E4%B9%A0"><span class="toc-number">5.</span> <span class="toc-text">进一步学习</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#DSPy-%E6%96%AD%E8%A8%80%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">1.</span> <span class="toc-text">DSPy 断言是什么</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E4%BD%BF%E7%94%A8%E6%96%AD%E8%A8%80"><span class="toc-number">1.1.</span> <span class="toc-text">什么时候使用断言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%AD%E8%A8%80%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.2.</span> <span class="toc-text">有哪些断言类型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B"><span class="toc-number">2.</span> <span class="toc-text">代码示例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%A1%AE%E4%BF%9D%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F"><span class="toc-number">2.1.</span> <span class="toc-text">1. 确保输出格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%A4%9A%E6%96%AD%E8%A8%80"><span class="toc-number">2.2.</span> <span class="toc-text">2. 多断言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E5%A4%A7%E9%87%8F%E7%A4%BA%E4%BE%8B"><span class="toc-number">2.3.</span> <span class="toc-text">生成大量示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E4%B8%80%E6%AD%A5%E5%AD%A6%E4%B9%A0"><span class="toc-number">2.4.</span> <span class="toc-text">进一步学习</span></a></li></ol></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
       <ul>
   <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/ai/dspy-assertion/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.oldcai.com/ai/dspy-assertion/&text=利用 Assert 和 Suggest 断言优化 DSPy 应用"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/ai/dspy-assertion/&title=利用 Assert 和 Suggest 断言优化 DSPy 应用"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/ai/dspy-assertion/&is_video=false&description=利用 Assert 和 Suggest 断言优化 DSPy 应用"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=利用 Assert 和 Suggest 断言优化 DSPy 应用&body=Check out this article: https://www.oldcai.com/ai/dspy-assertion/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.oldcai.com/ai/dspy-assertion/&title=利用 Assert 和 Suggest 断言优化 DSPy 应用"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.oldcai.com/ai/dspy-assertion/&title=利用 Assert 和 Suggest 断言优化 DSPy 应用"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/ai/dspy-assertion/&title=利用 Assert 和 Suggest 断言优化 DSPy 应用"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.oldcai.com/ai/dspy-assertion/&title=利用 Assert 和 Suggest 断言优化 DSPy 应用"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/ai/dspy-assertion/&name=利用 Assert 和 Suggest 断言优化 DSPy 应用&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://www.oldcai.com/ai/dspy-assertion/&t=利用 Assert 和 Suggest 断言优化 DSPy 应用"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.oldcai.com/ai/dspy-assertion/&text=用 Assert 和 Suggest 断言优化 DSPy 应用"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/ai/dspy-assertion/&title=用 Assert 和 Suggest 断言优化 DSPy 应用"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/ai/dspy-assertion/&is_video=false&description=用 Assert 和 Suggest 断言优化 DSPy 应用"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=用 Assert 和 Suggest 断言优化 DSPy 应用&body=Check out this article: https://www.oldcai.com/ai/dspy-assertion/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.oldcai.com/ai/dspy-assertion/&title=用 Assert 和 Suggest 断言优化 DSPy 应用"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.oldcai.com/ai/dspy-assertion/&title=用 Assert 和 Suggest 断言优化 DSPy 应用"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/ai/dspy-assertion/&title=用 Assert 和 Suggest 断言优化 DSPy 应用"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.oldcai.com/ai/dspy-assertion/&title=用 Assert 和 Suggest 断言优化 DSPy 应用"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/ai/dspy-assertion/&name=用 Assert 和 Suggest 断言优化 DSPy 应用&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://www.oldcai.com/ai/dspy-assertion/&t=用 Assert 和 Suggest 断言优化 DSPy 应用"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
