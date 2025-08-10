@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="CLAUDE.md 文件Claude Code像金鱼一样，是没有长期记忆的。他就只靠这一个文件来理解这个项目。作为开发者，我们要维护CLAUDE.md文件，让 Claude Code 每次运行都更容易理解这个项目。 权限管理我在做原型的时候，一般会让它拥有所有的权限，在一个安全的沙盒环境里面去运行。但是在做严肃的项目的时候，可能就要让它每次进行写操作和执行 bash 命令的时候都需要我去允许。 在">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Claude Code 最佳实践">
+<meta property="og:url" content="https://www.oldcai.com/programing/claude-code-best-practice/">
+<meta property="og:site_name" content="老菜博客">
+<meta property="og:description" content="CLAUDE.md 文件Claude Code像金鱼一样，是没有长期记忆的。他就只靠这一个文件来理解这个项目。作为开发者，我们要维护CLAUDE.md文件，让 Claude Code 每次运行都更容易理解这个项目。 权限管理我在做原型的时候，一般会让它拥有所有的权限，在一个安全的沙盒环境里面去运行。但是在做严肃的项目的时候，可能就要让它每次进行写操作和执行 bash 命令的时候都需要我去允许。 在">
+<meta property="og:locale">
+<meta property="article:published_time" content="2025-08-10T17:32:54.000Z">
+<meta property="article:modified_time" content="2025-08-10T15:32:43.545Z">
+<meta property="article:author" content="oldcai">
+<meta property="article:tag" content="Vibe Coding">
+<meta property="article:tag" content="Claude Code">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Claude Code 最佳实践</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/atom.xml" title="老菜博客" type="application/atom+xml" />
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/categories/">Categories</a></li><!--
+     --><!--
+       --><li><a href="/tags/">Tags</a></li><!--
+     --><!--
+       --><li><a href="/friends/">Friends</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Archives</a></li><!--
+     --><!--
+       --><li><a href="/search/">Search</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/programing/what-can-claude-code-do/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/programing/claude-code-best-practice/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.oldcai.com/programing/claude-code-best-practice/&text=Claude Code 最佳实践"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/programing/claude-code-best-practice/&title=Claude Code 最佳实践"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/programing/claude-code-best-practice/&is_video=false&description=Claude Code 最佳实践"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Claude Code 最佳实践&body=Check out this article: https://www.oldcai.com/programing/claude-code-best-practice/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.oldcai.com/programing/claude-code-best-practice/&title=Claude Code 最佳实践"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.oldcai.com/programing/claude-code-best-practice/&title=Claude Code 最佳实践"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/programing/claude-code-best-practice/&title=Claude Code 最佳实践"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.oldcai.com/programing/claude-code-best-practice/&title=Claude Code 最佳实践"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/programing/claude-code-best-practice/&name=Claude Code 最佳实践&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://www.oldcai.com/programing/claude-code-best-practice/&t=Claude Code 最佳实践"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#CLAUDE-md-%E6%96%87%E4%BB%B6"><span class="toc-number">1.</span> <span class="toc-text">CLAUDE.md 文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">权限管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%8E%E6%A0%B7%E4%BF%AE%E6%94%B9-Bug%EF%BC%9F"><span class="toc-number">3.</span> <span class="toc-text">怎样修改 Bug？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9C%8B%E5%88%B0%E4%BA%8B%E6%83%85%E4%B8%8D%E5%AF%B9%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F"><span class="toc-number">4.</span> <span class="toc-text">看到事情不对怎么办？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TDD"><span class="toc-number">5.</span> <span class="toc-text">TDD</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86"><span class="toc-number">6.</span> <span class="toc-text">版本管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B4%E6%8E%A5%E7%B2%98%E8%B4%B4%E5%9B%BE%E7%89%87"><span class="toc-number">7.</span> <span class="toc-text">直接粘贴图片</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Claude-Code-%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7"><span class="toc-number">8.</span> <span class="toc-text">Claude Code 高级技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ESC-%E9%94%AE%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">8.1.</span> <span class="toc-text">ESC 键的使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E9%AD%94%E6%B3%95%E5%91%BD%E4%BB%A4"><span class="toc-number">8.2.</span> <span class="toc-text">使用魔法命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E4%B8%AA-agent-%E4%B9%8B%E9%97%B4%E6%80%8E%E6%A0%B7%E4%BA%A4%E6%B5%81%EF%BC%9F"><span class="toc-number">8.3.</span> <span class="toc-text">多个 agent 之间怎样交流？</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Claude Code 最佳实践
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">oldcai</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2025-08-10T17:32:54.000Z" itemprop="datePublished">2025-08-11</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Claude-Code/" rel="tag">Claude Code</a>, <a class="tag-link-link" href="/tags/Vibe-Coding/" rel="tag">Vibe Coding</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="CLAUDE-md-文件"><a href="#CLAUDE-md-文件" class="headerlink" title="CLAUDE.md 文件"></a>CLAUDE.md 文件</h2><p>Claude Code像金鱼一样，是没有长期记忆的。他就只靠这一个文件来理解这个项目。<br>作为开发者，我们要维护CLAUDE.md文件，让 Claude Code 每次运行都更容易理解这个项目。</p>
+<h2 id="权限管理"><a href="#权限管理" class="headerlink" title="权限管理"></a>权限管理</h2><p>我在做原型的时候，一般会让它拥有所有的权限，在一个安全的沙盒环境里面去运行。但是在做严肃的项目的时候，可能就要让它每次进行写操作和执行 bash 命令的时候都需要我去允许。</p>
+<p>在使用 Claude Code 的时候，用快捷键 <code>Shift + Tab</code> 可以切换权限模式。有时候你可以全部允许，有时候你用 plan 模式（完全不允许文件写入）。</p>
+<h2 id="怎样修改-Bug？"><a href="#怎样修改-Bug？" class="headerlink" title="怎样修改 Bug？"></a>怎样修改 Bug？</h2><ul>
+<li><p><strong>你不应该这么说</strong>：我需要你修复这个 bug（描述bug）</p>
+</li>
+<li><p><strong>你应该这么说</strong>：我有一个这样的 bug（描述bug），你能不能在代码里面搜索一下，找到什么导致的这个 bug，然后告诉我复他计划。</p>
+</li>
+</ul>
+<p>这样可以节省很多时间。因为你可以去验证 Claude 的计划，而不是让他胡乱改代码，让整个 commit 不可控。<br>老菜在这个上面吃过亏，甚至最后只能靠自己手动去修改代码。但是这其实可以避免。可以在理解整个项目代码实现的原理和结构的前提下，通过上面的和 Claude Code 沟通的方法来实现。</p>
+<h2 id="看到事情不对怎么办？"><a href="#看到事情不对怎么办？" class="headerlink" title="看到事情不对怎么办？"></a>看到事情不对怎么办？</h2><p>当我们看到 Claude Code 正在朝着奇怪的方向修改代码的时候，我们可以按一下 ESC 键，让它停止当前的计划，然后我们告诉他接下来应该怎么做。</p>
+<h2 id="TDD"><a href="#TDD" class="headerlink" title="TDD"></a>TDD</h2><p>让 Claude Code 每次只修少量修改代码，不断迭代，并且通过所有测试。</p>
+<h2 id="版本管理"><a href="#版本管理" class="headerlink" title="版本管理"></a>版本管理</h2><p>让 Claude Code 时不时就就提交一下代码，这样你在出错的时候可以方便回滚。</p>
+<h2 id="直接粘贴图片"><a href="#直接粘贴图片" class="headerlink" title="直接粘贴图片"></a>直接粘贴图片</h2><p>Claude Code 是多模态的，我们可以随时把我们的 mockup 或者是屏幕截图发给他。快捷键是 Ctrl + v。但是要注意，它只能在本机上面这样粘贴图片，如果在远程服务器上面就不太行了。要先上传图片，然后再@这张图片。</p>
+<h2 id="Claude-Code-高级技巧"><a href="#Claude-Code-高级技巧" class="headerlink" title="Claude Code 高级技巧"></a>Claude Code 高级技巧</h2><h3 id="ESC-键的使用"><a href="#ESC-键的使用" class="headerlink" title="ESC 键的使用"></a>ESC 键的使用</h3><ul>
+<li><strong>按一次:</strong> 中断当前的执行。</li>
+<li><strong>按两次:</strong> 回溯之前的对话。虽然说 Claude Code 不能将已经修改的代码回缩到之前的 checkpoint快照，但是它可以将我们当前的会话恢复到之前的历史记录情景中。</li>
+</ul>
+<h3 id="使用魔法命令"><a href="#使用魔法命令" class="headerlink" title="使用魔法命令"></a>使用魔法命令</h3><ul>
+<li>think hard</li>
+<li>ultrathink</li>
+</ul>
+<p>现在 Claude Code 在两次工具调用之间也可以思考。所以我们在找 bug 或者是需要分析的时候，加上一个魔法命令，会极大的提高成功率。</p>
+<h3 id="多个-agent-之间怎样交流？"><a href="#多个-agent-之间怎样交流？" class="headerlink" title="多个 agent 之间怎样交流？"></a>多个 agent 之间怎样交流？</h3><p>他们可以共享一个 .md 文件。 比如告诉 agents A 将某一个工作的描述写到这个文件 ticket.md 中，然后告诉 agent B 从 @ticket.md 文件中读取他的工作描述。</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/categories/">Categories</a></li>
+         
+          <li><a href="/tags/">Tags</a></li>
+         
+          <li><a href="/friends/">Friends</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#CLAUDE-md-%E6%96%87%E4%BB%B6"><span class="toc-number">1.</span> <span class="toc-text">CLAUDE.md 文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">权限管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%8E%E6%A0%B7%E4%BF%AE%E6%94%B9-Bug%EF%BC%9F"><span class="toc-number">3.</span> <span class="toc-text">怎样修改 Bug？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9C%8B%E5%88%B0%E4%BA%8B%E6%83%85%E4%B8%8D%E5%AF%B9%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F"><span class="toc-number">4.</span> <span class="toc-text">看到事情不对怎么办？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TDD"><span class="toc-number">5.</span> <span class="toc-text">TDD</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86"><span class="toc-number">6.</span> <span class="toc-text">版本管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B4%E6%8E%A5%E7%B2%98%E8%B4%B4%E5%9B%BE%E7%89%87"><span class="toc-number">7.</span> <span class="toc-text">直接粘贴图片</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Claude-Code-%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7"><span class="toc-number">8.</span> <span class="toc-text">Claude Code 高级技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ESC-%E9%94%AE%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">8.1.</span> <span class="toc-text">ESC 键的使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E9%AD%94%E6%B3%95%E5%91%BD%E4%BB%A4"><span class="toc-number">8.2.</span> <span class="toc-text">使用魔法命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E4%B8%AA-agent-%E4%B9%8B%E9%97%B4%E6%80%8E%E6%A0%B7%E4%BA%A4%E6%B5%81%EF%BC%9F"><span class="toc-number">8.3.</span> <span class="toc-text">多个 agent 之间怎样交流？</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/programing/claude-code-best-practice/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.oldcai.com/programing/claude-code-best-practice/&text=Claude Code 最佳实践"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/programing/claude-code-best-practice/&title=Claude Code 最佳实践"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/programing/claude-code-best-practice/&is_video=false&description=Claude Code 最佳实践"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Claude Code 最佳实践&body=Check out this article: https://www.oldcai.com/programing/claude-code-best-practice/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.oldcai.com/programing/claude-code-best-practice/&title=Claude Code 最佳实践"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.oldcai.com/programing/claude-code-best-practice/&title=Claude Code 最佳实践"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/programing/claude-code-best-practice/&title=Claude Code 最佳实践"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.oldcai.com/programing/claude-code-best-practice/&title=Claude Code 最佳实践"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/programing/claude-code-best-practice/&name=Claude Code 最佳实践&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://www.oldcai.com/programing/claude-code-best-practice/&t=Claude Code 最佳实践"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2025
+    oldcai
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/categories/">Categories</a></li><!--
+     --><!--
+       --><li><a href="/tags/">Tags</a></li><!--
+     --><!--
+       --><li><a href="/friends/">Friends</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Archives</a></li><!--
+     --><!--
+       --><li><a href="/search/">Search</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8814571279145017"
+     crossorigin="anonymous"></script>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8814571279145017",
+          enable_page_level_ads: true
+     });
+</script>
+
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+
+<!-- Google Analytics -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-K0RK1QH308"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('consent', 'default', {
+            'ad_user_data': 'granted',
+            'ad_personalization': 'granted',
+            'ad_storage': 'granted',
+            'analytics_storage': 'granted',
+            'wait_for_update': 500,
+        });
+        gtag('js', new Date());
+        gtag('config', 'G-K0RK1QH308');
+    </script>
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+
+</body>
+</html>
