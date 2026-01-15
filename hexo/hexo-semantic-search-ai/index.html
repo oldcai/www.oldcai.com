@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="静态博客很轻便，但搜索往往是短板：读者明明知道“要找什么”，却很难用关键词精准命中。对拥有 Hexo 博客的人来说，理想的搜索应该是“会理解意图的搜索”。 hexo-semantic-search-ai 就是为这个场景准备的：它把 SemanticSearch 语义搜索引擎接入 Hexo，让静态博客也能拥有“理解语义”的搜索体验，而且搜索引擎本身可以基于 Cloudflare Workers 的免">
+<meta property="og:type" content="article">
+<meta property="og:title" content="给 Hexo 加上语义搜索：hexo-semantic-search-ai">
+<meta property="og:url" content="https://www.oldcai.com/hexo/hexo-semantic-search-ai/">
+<meta property="og:site_name" content="老菜博客">
+<meta property="og:description" content="静态博客很轻便，但搜索往往是短板：读者明明知道“要找什么”，却很难用关键词精准命中。对拥有 Hexo 博客的人来说，理想的搜索应该是“会理解意图的搜索”。 hexo-semantic-search-ai 就是为这个场景准备的：它把 SemanticSearch 语义搜索引擎接入 Hexo，让静态博客也能拥有“理解语义”的搜索体验，而且搜索引擎本身可以基于 Cloudflare Workers 的免">
+<meta property="og:locale">
+<meta property="article:published_time" content="2026-01-15T02:00:00.000Z">
+<meta property="article:modified_time" content="2026-01-15T05:51:10.240Z">
+<meta property="article:author" content="oldcai">
+<meta property="article:tag" content="Hexo">
+<meta property="article:tag" content="搜索">
+<meta property="article:tag" content="语义搜索">
+<meta property="article:tag" content="SemanticSearch">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>给 Hexo 加上语义搜索：hexo-semantic-search-ai</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/atom.xml" title="老菜博客" type="application/atom+xml" />
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/categories/">Categories</a></li><!--
+     --><!--
+       --><li><a href="/tags/">Tags</a></li><!--
+     --><!--
+       --><li><a href="/friends/">Friends</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Archives</a></li><!--
+     --><!--
+       --><li><a href="/search/">Search</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/programing/claude-code-best-practice/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/hexo/hexo-semantic-search-ai/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.oldcai.com/hexo/hexo-semantic-search-ai/&text=给 Hexo 加上语义搜索：hexo-semantic-search-ai"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/hexo/hexo-semantic-search-ai/&title=给 Hexo 加上语义搜索：hexo-semantic-search-ai"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/hexo/hexo-semantic-search-ai/&is_video=false&description=给 Hexo 加上语义搜索：hexo-semantic-search-ai"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=给 Hexo 加上语义搜索：hexo-semantic-search-ai&body=Check out this article: https://www.oldcai.com/hexo/hexo-semantic-search-ai/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.oldcai.com/hexo/hexo-semantic-search-ai/&title=给 Hexo 加上语义搜索：hexo-semantic-search-ai"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.oldcai.com/hexo/hexo-semantic-search-ai/&title=给 Hexo 加上语义搜索：hexo-semantic-search-ai"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/hexo/hexo-semantic-search-ai/&title=给 Hexo 加上语义搜索：hexo-semantic-search-ai"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.oldcai.com/hexo/hexo-semantic-search-ai/&title=给 Hexo 加上语义搜索：hexo-semantic-search-ai"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/hexo/hexo-semantic-search-ai/&name=给 Hexo 加上语义搜索：hexo-semantic-search-ai&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://www.oldcai.com/hexo/hexo-semantic-search-ai/&t=给 Hexo 加上语义搜索：hexo-semantic-search-ai"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E8%A6%81%E7%82%B9%EF%BC%88%E7%AB%99%E5%9C%A8-Hexo-%E5%8D%9A%E4%B8%BB%E7%9A%84%E8%A7%92%E5%BA%A6%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">核心要点（站在 Hexo 博主的角度）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%82%E5%90%88%E8%B0%81%EF%BC%9F"><span class="toc-number">2.</span> <span class="toc-text">适合谁？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8A%E6%89%8B%E6%B5%81%E7%A8%8B%EF%BC%883-%E6%AD%A5%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">上手流程（3 步）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC-1-%E6%AD%A5%EF%BC%9A%E9%83%A8%E7%BD%B2-SemanticSearch"><span class="toc-number">3.1.</span> <span class="toc-text">第 1 步：部署 SemanticSearch</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC-2-%E6%AD%A5%EF%BC%9A%E5%AE%89%E8%A3%85%E6%8F%92%E4%BB%B6"><span class="toc-number">3.2.</span> <span class="toc-text">第 2 步：安装插件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC-3-%E6%AD%A5%EF%BC%9A%E9%85%8D%E7%BD%AE-config-yml"><span class="toc-number">3.3.</span> <span class="toc-text">第 3 步：配置 _config.yml</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E9%A2%98%E6%8E%A5%E5%85%A5%EF%BC%88%E6%9C%80%E5%B0%8F%E5%8F%AF%E7%94%A8%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">主题接入（最小可用）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%90%9C%E7%B4%A2%E6%A1%86"><span class="toc-number">4.1.</span> <span class="toc-text">搜索框</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E6%96%87%E7%AB%A0"><span class="toc-number">4.2.</span> <span class="toc-text">相关文章</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%BC%94%E7%A4%BA"><span class="toc-number">5.</span> <span class="toc-text">我的博客演示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E5%9C%B0%E5%9D%80"><span class="toc-number">6.</span> <span class="toc-text">项目地址</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        给 Hexo 加上语义搜索：hexo-semantic-search-ai
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">oldcai</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2026-01-15T02:00:00.000Z" itemprop="datePublished">2026-01-15</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/Hexo/">Hexo</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Hexo/" rel="tag">Hexo</a>, <a class="tag-link-link" href="/tags/SemanticSearch/" rel="tag">SemanticSearch</a>, <a class="tag-link-link" href="/tags/%E6%90%9C%E7%B4%A2/" rel="tag">搜索</a>, <a class="tag-link-link" href="/tags/%E8%AF%AD%E4%B9%89%E6%90%9C%E7%B4%A2/" rel="tag">语义搜索</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>静态博客很轻便，但搜索往往是短板：读者明明知道“要找什么”，却很难用关键词精准命中。对拥有 Hexo 博客的人来说，理想的搜索应该是“会理解意图的搜索”。</p>
+<p><strong>hexo-semantic-search-ai</strong> 就是为这个场景准备的：它把 SemanticSearch 语义搜索引擎接入 Hexo，让静态博客也能拥有“理解语义”的搜索体验，而且搜索引擎本身可以基于 Cloudflare Workers 的免费额度起步。</p>
+<h2 id="核心要点（站在-Hexo-博主的角度）"><a href="#核心要点（站在-Hexo-博主的角度）" class="headerlink" title="核心要点（站在 Hexo 博主的角度）"></a>核心要点（站在 Hexo 博主的角度）</h2><ol>
+<li><strong>静态博客也能有真正可用的搜索</strong></li>
+</ol>
+<ul>
+<li>不需要把站点改成动态服务</li>
+<li>不需要自建复杂后端</li>
+<li>只需部署一个语义搜索服务并接入插件</li>
+</ul>
+<ol start="2">
+<li><strong>语义搜索比关键词更懂读者</strong></li>
+</ol>
+<ul>
+<li>读者可以用自然语言描述问题</li>
+<li>搜索能理解上下文和意图，而不是死匹配</li>
+</ul>
+<ol start="3">
+<li><strong>构建期同步，运行期几乎零负担</strong></li>
+</ol>
+<ul>
+<li>文章在 <code>hexo generate</code> 后自动同步</li>
+<li>只同步变化内容（增量更新），维护成本低</li>
+</ul>
+<ol start="4">
+<li><strong>相关文章更“像真的相关”</strong></li>
+</ol>
+<ul>
+<li>基于语义相似度生成推荐</li>
+<li>更适合引导读者继续阅读</li>
+</ul>
+<ol start="5">
+<li><strong>前端完全可控</strong></li>
+</ol>
+<ul>
+<li>自带搜索框 helper 和 JS API</li>
+<li>你可以完全定制样式与渲染</li>
+</ul>
+<h2 id="适合谁？"><a href="#适合谁？" class="headerlink" title="适合谁？"></a>适合谁？</h2><ul>
+<li>已经在用 Hexo，但发现“搜索体验不够好”的博主</li>
+<li>内容逐渐变多，想让读者更容易发现旧文</li>
+<li>想要搜索功能，但不想引入复杂后端或额外服务的人</li>
+</ul>
+<h2 id="上手流程（3-步）"><a href="#上手流程（3-步）" class="headerlink" title="上手流程（3 步）"></a>上手流程（3 步）</h2><h3 id="第-1-步：部署-SemanticSearch"><a href="#第-1-步：部署-SemanticSearch" class="headerlink" title="第 1 步：部署 SemanticSearch"></a>第 1 步：部署 SemanticSearch</h3><p>在 Cloudflare Workers 上部署 SemanticSearch（可从免费额度开始），拿到 endpoint 和 key。</p>
+<h3 id="第-2-步：安装插件"><a href="#第-2-步：安装插件" class="headerlink" title="第 2 步：安装插件"></a>第 2 步：安装插件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-semantic-search-ai --save</span><br></pre></td></tr></table></figure>
+
+<h3 id="第-3-步：配置-config-yml"><a href="#第-3-步：配置-config-yml" class="headerlink" title="第 3 步：配置 _config.yml"></a>第 3 步：配置 <code>_config.yml</code></h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">semantic_search:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">endpoint:</span> <span class="string">https://your-search.your-subdomain.workers.dev</span></span><br><span class="line">  <span class="attr">writer_key:</span> <span class="string">$&#123;SEMANTIC_SEARCH_WRITER_KEY&#125;</span></span><br><span class="line">  <span class="attr">reader_key:</span> <span class="string">your-reader-key</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">sync:</span></span><br><span class="line">    <span class="attr">auto:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">fields:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">title</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">content</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">excerpt</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">tags</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">categories</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">related_posts:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">limit:</span> <span class="number">5</span></span><br><span class="line">    <span class="attr">min_score:</span> <span class="number">0.3</span></span><br><span class="line">    <span class="attr">query_fields:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">title</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">excerpt</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">search:</span></span><br><span class="line">    <span class="attr">placeholder:</span> <span class="string">&quot;搜索...&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>建议把 writer key 放进环境变量：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> SEMANTIC_SEARCH_WRITER_KEY=your-writer-key</span><br></pre></td></tr></table></figure>
+
+<h2 id="主题接入（最小可用）"><a href="#主题接入（最小可用）" class="headerlink" title="主题接入（最小可用）"></a>主题接入（最小可用）</h2><h3 id="搜索框"><a href="#搜索框" class="headerlink" title="搜索框"></a>搜索框</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%- semantic_search_box() %&gt;</span><br></pre></td></tr></table></figure>
+
+<p>别忘了引入前端脚本：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;&lt;%- url_for(&#x27;/js/semantic-search.js&#x27;) %&gt;&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="相关文章"><a href="#相关文章" class="headerlink" title="相关文章"></a>相关文章</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%- semantic_related_posts() %&gt;</span><br></pre></td></tr></table></figure>
+
+<p>如果想完全控制渲染，可以直接取原始数据自己画 UI。</p>
+<h2 id="我的博客演示"><a href="#我的博客演示" class="headerlink" title="我的博客演示"></a>我的博客演示</h2><p>我已经在自己的博客上做了示例：</p>
+<ul>
+<li><a href="https://www.oldcai.com/">https://www.oldcai.com/</a></li>
+</ul>
+<p>你可以在站内试试用自然语言搜索内容，感受语义搜索的体验差异。</p>
+<h2 id="项目地址"><a href="#项目地址" class="headerlink" title="项目地址"></a>项目地址</h2><ul>
+<li>NPM: <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/hexo-semantic-search-ai">https://www.npmjs.com/package/hexo-semantic-search-ai</a></li>
+<li>GitHub: <a target="_blank" rel="noopener" href="https://github.com/SemanticSearch-ai/hexo-plugin">https://github.com/SemanticSearch-ai/hexo-plugin</a></li>
+</ul>
+<hr>
+<p>如果你正在运营 Hexo 博客，强烈建议把搜索升级到语义检索层级。<strong>hexo-semantic-search-ai</strong> 的意义在于：让静态博客也能拥有现代搜索体验，而且门槛足够低，几乎是“立刻可用”。</p>
+
+  </div>
+  
+  
+    <div class="semantic-related-posts"><h3 class="semantic-related-title">Related Posts</h3><ul class="semantic-related-list"><li class="semantic-related-item"><a href="https://www.oldcai.com/server/free-semantic-search-engine/" class="semantic-related-link">Build Your Free Semantic Search Engine with Cloudflare Workers</a></li><li class="semantic-related-item"><a href="https://www.oldcai.com/ai/pinecone-vector-database/" class="semantic-related-link">教程:基于语义PDF搜索、对话的大模型RAG应用,从0开始</a></li><li class="semantic-related-item"><a href="https://www.oldcai.com/hexo/wordpress-to-hexo-lose-return/" class="semantic-related-link">WordPress 转 Hexo 后，回车变成空格的问题解决</a></li><li class="semantic-related-item"><a href="https://www.oldcai.com/server/cppjieba-service/" class="semantic-related-link">把cppjieba打包成了Docker镜像</a></li><li class="semantic-related-item"><a href="https://www.oldcai.com/hexo/migrate-to-hexo/" class="semantic-related-link">弃用 WordPress，对比 Ghost 后改用 Hexo</a></li></ul></div>
+  
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/categories/">Categories</a></li>
+         
+          <li><a href="/tags/">Tags</a></li>
+         
+          <li><a href="/friends/">Friends</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E8%A6%81%E7%82%B9%EF%BC%88%E7%AB%99%E5%9C%A8-Hexo-%E5%8D%9A%E4%B8%BB%E7%9A%84%E8%A7%92%E5%BA%A6%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">核心要点（站在 Hexo 博主的角度）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%82%E5%90%88%E8%B0%81%EF%BC%9F"><span class="toc-number">2.</span> <span class="toc-text">适合谁？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8A%E6%89%8B%E6%B5%81%E7%A8%8B%EF%BC%883-%E6%AD%A5%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">上手流程（3 步）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC-1-%E6%AD%A5%EF%BC%9A%E9%83%A8%E7%BD%B2-SemanticSearch"><span class="toc-number">3.1.</span> <span class="toc-text">第 1 步：部署 SemanticSearch</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC-2-%E6%AD%A5%EF%BC%9A%E5%AE%89%E8%A3%85%E6%8F%92%E4%BB%B6"><span class="toc-number">3.2.</span> <span class="toc-text">第 2 步：安装插件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC-3-%E6%AD%A5%EF%BC%9A%E9%85%8D%E7%BD%AE-config-yml"><span class="toc-number">3.3.</span> <span class="toc-text">第 3 步：配置 _config.yml</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E9%A2%98%E6%8E%A5%E5%85%A5%EF%BC%88%E6%9C%80%E5%B0%8F%E5%8F%AF%E7%94%A8%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">主题接入（最小可用）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%90%9C%E7%B4%A2%E6%A1%86"><span class="toc-number">4.1.</span> <span class="toc-text">搜索框</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E6%96%87%E7%AB%A0"><span class="toc-number">4.2.</span> <span class="toc-text">相关文章</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%BC%94%E7%A4%BA"><span class="toc-number">5.</span> <span class="toc-text">我的博客演示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E5%9C%B0%E5%9D%80"><span class="toc-number">6.</span> <span class="toc-text">项目地址</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.oldcai.com/hexo/hexo-semantic-search-ai/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.oldcai.com/hexo/hexo-semantic-search-ai/&text=给 Hexo 加上语义搜索：hexo-semantic-search-ai"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.oldcai.com/hexo/hexo-semantic-search-ai/&title=给 Hexo 加上语义搜索：hexo-semantic-search-ai"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.oldcai.com/hexo/hexo-semantic-search-ai/&is_video=false&description=给 Hexo 加上语义搜索：hexo-semantic-search-ai"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=给 Hexo 加上语义搜索：hexo-semantic-search-ai&body=Check out this article: https://www.oldcai.com/hexo/hexo-semantic-search-ai/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.oldcai.com/hexo/hexo-semantic-search-ai/&title=给 Hexo 加上语义搜索：hexo-semantic-search-ai"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.oldcai.com/hexo/hexo-semantic-search-ai/&title=给 Hexo 加上语义搜索：hexo-semantic-search-ai"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.oldcai.com/hexo/hexo-semantic-search-ai/&title=给 Hexo 加上语义搜索：hexo-semantic-search-ai"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.oldcai.com/hexo/hexo-semantic-search-ai/&title=给 Hexo 加上语义搜索：hexo-semantic-search-ai"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.oldcai.com/hexo/hexo-semantic-search-ai/&name=给 Hexo 加上语义搜索：hexo-semantic-search-ai&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://www.oldcai.com/hexo/hexo-semantic-search-ai/&t=给 Hexo 加上语义搜索：hexo-semantic-search-ai"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2026
+    oldcai
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/categories/">Categories</a></li><!--
+     --><!--
+       --><li><a href="/tags/">Tags</a></li><!--
+     --><!--
+       --><li><a href="/friends/">Friends</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Archives</a></li><!--
+     --><!--
+       --><li><a href="/search/">Search</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8814571279145017"
+     crossorigin="anonymous"></script>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8814571279145017",
+          enable_page_level_ads: true
+     });
+</script>
+
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+
+
+<!-- Google Analytics -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-K0RK1QH308"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('consent', 'default', {
+            'ad_user_data': 'granted',
+            'ad_personalization': 'granted',
+            'ad_storage': 'granted',
+            'analytics_storage': 'granted',
+            'wait_for_update': 500,
+        });
+        gtag('js', new Date());
+        gtag('config', 'G-K0RK1QH308');
+    </script>
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+
+</body>
+</html>
