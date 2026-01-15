@@ -169,6 +169,10 @@
 <p>话说这个测试程序要跑3-4个小时才崩溃，要知道C++奔跑起来的效率是很高的，三个多小时前的数据测试完全没有问题，说明hashmap一定程度上是比较可靠的。而数据插入到大约7103824条左右，hashmap的线性表就崩了。报错：list insert iterator outside range（之前是不报错的，要加入一个DEBUG宏）。看了一下hashmap的源码，发现问题所在：它将元素的hash值存入了一个线性表List，用来节省查找所需的时间，而它的List的类型又是int，导致这个int溢出后，线性表就无法插入数据了，于是写入不了数据，导致程序崩溃。<strong>（最后发现，是自己的32位系统一个进程内存超过了限制。。。）</strong> 算了一下帐，map利用红黑树排序，时间复杂度也就只有O(Log2N)，也不是太多，而stl应该更加安全吧。毕竟是C++发家的家伙，用的人也不计其数，所以换回了std::map，继续测试。</p>
 
   </div>
+  
+  
+    <div class="semantic-related-posts"><h3 class="semantic-related-title">Related Posts</h3><ul class="semantic-related-list"><li class="semantic-related-item"><a href="undefined" class="semantic-related-link">undefined</a></li><li class="semantic-related-item"><a href="undefined" class="semantic-related-link">undefined</a></li><li class="semantic-related-item"><a href="undefined" class="semantic-related-link">undefined</a></li><li class="semantic-related-item"><a href="undefined" class="semantic-related-link">undefined</a></li><li class="semantic-related-item"><a href="undefined" class="semantic-related-link">undefined</a></li></ul></div>
+  
 </article>
 
 
@@ -310,6 +314,7 @@
 <script src="/js/main.js"></script>
 
 <!-- search -->
+
 
 
 <!-- Google Analytics -->

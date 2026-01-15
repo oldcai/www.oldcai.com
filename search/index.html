@@ -93,12 +93,17 @@
 
   <div class="content" itemprop="articleBody">
       
-        <section id="search">
-  <form>
-    <input type="text" class="search-input" id="search-input" placeholder="Search...">
-  </form>
-  <div id="search-result"></div>
-  <p class="search-no-result">No results found.</p>
+        
+<section id="search">
+  
+    <div class="semantic-search-box" id="semantic-search">
+  <input type="text" class="semantic-search-input" placeholder="Search..." />
+  <div class="semantic-search-results"></div>
+</div>
+<script>
+  window.SEMANTIC_SEARCH_CONFIG = {"endpoint":"https://search-oldcai-com.oldcai.workers.dev","readerKey":"3vqaMk6L"};
+</script>
+  
 </section>
 
       
@@ -166,6 +171,9 @@
 <script src="/js/main.js"></script>
 
 <!-- search -->
+
+
+  <script src="/js/semantic-search.js"></script>
 
 
 <!-- Google Analytics -->
