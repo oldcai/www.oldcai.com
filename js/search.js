@@ -49,6 +49,29 @@ var searchFunc = function(path, searchId, contentId) {
     return result;
   }
 
+  function getQueryFromUrl() {
+    try {
+      var url = new URL(window.location.href);
+      return url.searchParams.get("q") || "";
+    } catch (e) {
+      return "";
+    }
+  }
+
+  function updateUrlQuery(query) {
+    try {
+      var url = new URL(window.location.href);
+      if (query) {
+        url.searchParams.set("q", query);
+      } else {
+        url.searchParams.delete("q");
+      }
+      window.history.replaceState({}, "", url.toString());
+    } catch (e) {
+      return;
+    }
+  }
+
   $.ajax({
     url: path,
     dataType: "xml",
@@ -66,14 +89,15 @@ var searchFunc = function(path, searchId, contentId) {
       if (!$input) { return; }
       var $resultContent = document.getElementById(contentId);
 
-      $input.addEventListener("input", function(){
+      var performSearch = function(query) {
         var resultList = [];
-        var keywords = getAllCombinations(this.value.trim().toLowerCase().split(" "))
-          .sort(function(a,b) { return b.split(" ").length - a.split(" ").length; });
+        var trimmedQuery = query.trim();
         $resultContent.innerHTML = "";
-        if (this.value.trim().length <= 0) {
+        if (trimmedQuery.length <= 0) {
           return;
         }
+        var keywords = getAllCombinations(trimmedQuery.toLowerCase().split(" "))
+          .sort(function(a,b) { return b.split(" ").length - a.split(" ").length; });
         // perform local searching
         datas.forEach(function(data) {
           var matches = 0;
@@ -152,7 +176,26 @@ var searchFunc = function(path, searchId, contentId) {
           result += "</ul>";
           $resultContent.innerHTML = result;
         }
+      };
+
+      $input.addEventListener("input", function(){
+        performSearch(this.value);
       });
+
+      $input.addEventListener("keydown", function(e) {
+        if (e.key === "Enter" || e.keyCode === 13) {
+          e.preventDefault();
+          var query = this.value.trim();
+          updateUrlQuery(query);
+          performSearch(query);
+        }
+      });
+
+      var urlQuery = getQueryFromUrl();
+      if (urlQuery) {
+        $input.value = urlQuery;
+        performSearch(urlQuery);
+      }
     }
   });
 };
