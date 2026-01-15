@@ -67,6 +67,27 @@
     },
 
     /**
+     * Update URL with search query parameter
+     */
+    _updateUrl: function(query) {
+      var url = new URL(window.location.href);
+      if (query) {
+        url.searchParams.set('q', query);
+      } else {
+        url.searchParams.delete('q');
+      }
+      window.history.replaceState({}, '', url.toString());
+    },
+
+    /**
+     * Get search query from URL parameter
+     */
+    _getQueryFromUrl: function() {
+      var url = new URL(window.location.href);
+      return url.searchParams.get('q') || '';
+    },
+
+    /**
      * Bind search box with auto-complete
      */
     bindSearchBox: function(inputSelector, resultSelector, options) {
@@ -89,6 +110,22 @@
       var minLength = options.minLength || 2;
       var debounceMs = options.debounce || 300;
 
+      // Perform search and update URL
+      var doSearch = function(query, updateHistory) {
+        if (updateHistory) {
+          self._updateUrl(query);
+        }
+        self.search(query, { limit: options.limit || 10 })
+          .then(function(results) {
+            self._renderResults(resultContainer, results, options);
+          })
+          .catch(function(error) {
+            console.error('SemanticSearch error:', error);
+            resultContainer.innerHTML = '<div class="semantic-search-error">Search failed</div>';
+            resultContainer.style.display = 'block';
+          });
+      };
+
       input.addEventListener('input', function() {
         var query = input.value.trim();
 
@@ -101,17 +138,30 @@
         }
 
         debounceTimer = setTimeout(function() {
-          self.search(query, { limit: options.limit || 10 })
-            .then(function(results) {
-              self._renderResults(resultContainer, results, options);
-            })
-            .catch(function(error) {
-              console.error('SemanticSearch error:', error);
-              resultContainer.innerHTML = '<div class="semantic-search-error">Search failed</div>';
-              resultContainer.style.display = 'block';
-            });
+          doSearch(query, false);
         }, debounceMs);
       });
+
+      // Update URL on Enter key
+      input.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          var query = input.value.trim();
+          if (query.length >= minLength) {
+            clearTimeout(debounceTimer);
+            doSearch(query, true);
+          }
+        }
+      });
+
+      // Load query from URL on init
+      var urlQuery = self._getQueryFromUrl();
+      if (urlQuery) {
+        input.value = urlQuery;
+        if (urlQuery.length >= minLength) {
+          doSearch(urlQuery, false);
+        }
+      }
 
       // Hide results on click outside
       document.addEventListener('click', function(e) {
