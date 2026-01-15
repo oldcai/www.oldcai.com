@@ -1374,20 +1374,29 @@ article .content .caption {
 }
 .search-input,
 .semantic-search-input {
-  padding: 4px 7px;
+  display: block;
   width: 100%;
+  min-height: 3rem;
+  padding: 0.7rem 0.95rem;
   outline: none;
   border: solid 1px #ccc;
-  border-radius: 5px;
+  border-radius: 10px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(0,0,0,0.02));
   background-color: #1d1f21;
   color: #c9cacc;
-  font-size: 1.2rem;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
+  font-size: 1.05rem;
+  letter-spacing: 0.01em;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+.search-input::placeholder,
+.semantic-search-input::placeholder {
+  color: #908d8d;
 }
 .search-input:focus,
 .semantic-search-input:focus {
-  border: solid 1px #2bbc8a;
+  border-color: #2bbc8a;
+  box-shadow: 0 0 0 3px rgba(43,188,138,0.2);
 }
 #search-result ul.search-result-list {
   padding: 0;
