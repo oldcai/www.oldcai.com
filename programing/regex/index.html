@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta name="description" content="零宽断言，表示匹配字符的时候再添加一些定位条件，使匹配更精准，但又不匹配到字符串。    举例 解释    \w+(?&#x3D;ing) 匹配以ing结尾的单词前缀（不包括ing），talking匹配到talk   \w+(?!ing) 匹配不是以ing结尾的多个字符，do talking匹配到do   (?&lt;&#x3D;re)\w+ 匹配以re开头的多个字符（不包括re），redo匹配到do   (?&amp;lt">
+    <meta name="description" content="零宽断言，表示匹配字符的时候再添加一些定位条件，使匹配更精准，但又不匹配到字符串。简单来说，零宽断言只做判断，不消耗字符。 四种零宽断言   名称 示例 解释 匹配举例    零宽正先行断言 (Positive Lookahead) \w+(?&#x3D;ing) 匹配后面紧跟 ing 的单词前缀，不包括 ing 本身 talking → talk，singing → sing，king → 不匹配（k 前">
 <meta property="og:type" content="article">
 <meta property="og:title" content="正则表达式进阶，零宽正回顾断言，零宽负回顾断言">
 <meta property="og:url" content="https://www.oldcai.com/programing/regex/">
 <meta property="og:site_name" content="老菜博客">
-<meta property="og:description" content="零宽断言，表示匹配字符的时候再添加一些定位条件，使匹配更精准，但又不匹配到字符串。    举例 解释    \w+(?&#x3D;ing) 匹配以ing结尾的单词前缀（不包括ing），talking匹配到talk   \w+(?!ing) 匹配不是以ing结尾的多个字符，do talking匹配到do   (?&lt;&#x3D;re)\w+ 匹配以re开头的多个字符（不包括re），redo匹配到do   (?&amp;lt">
+<meta property="og:description" content="零宽断言，表示匹配字符的时候再添加一些定位条件，使匹配更精准，但又不匹配到字符串。简单来说，零宽断言只做判断，不消耗字符。 四种零宽断言   名称 示例 解释 匹配举例    零宽正先行断言 (Positive Lookahead) \w+(?&#x3D;ing) 匹配后面紧跟 ing 的单词前缀，不包括 ing 本身 talking → talk，singing → sing，king → 不匹配（k 前">
 <meta property="og:locale">
 <meta property="article:published_time" content="2018-10-21T13:19:01.000Z">
-<meta property="article:modified_time" content="2018-10-27T12:22:24.000Z">
+<meta property="article:modified_time" content="2026-03-21T02:49:11.238Z">
 <meta property="article:author" content="oldcai">
 <meta property="article:tag" content="代码高亮">
 <meta name="twitter:card" content="summary">
@@ -112,7 +112,7 @@
 
     </div>
     <div id="toc">
-      
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E7%A7%8D%E9%9B%B6%E5%AE%BD%E6%96%AD%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">四种零宽断言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%84%E5%90%88%E4%BD%BF%E7%94%A8"><span class="toc-number">2.</span> <span class="toc-text">组合使用</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -161,32 +161,68 @@
   
 
   <div class="content" itemprop="articleBody">
-    <p>零宽断言，表示匹配字符的时候再添加一些定位条件，使匹配更精准，但又不匹配到字符串。</p>
-<table>
+    <p>零宽断言，表示匹配字符的时候再添加一些定位条件，使匹配更精准，但又不匹配到字符串。简单来说，零宽断言只做判断，不消耗字符。</p>
+<h2 id="四种零宽断言"><a href="#四种零宽断言" class="headerlink" title="四种零宽断言"></a>四种零宽断言</h2><table>
 <thead>
 <tr>
-<th align="center">举例</th>
+<th align="center">名称</th>
+<th align="center">示例</th>
 <th align="center">解释</th>
+<th align="center">匹配举例</th>
 </tr>
 </thead>
 <tbody><tr>
+<td align="center">零宽正先行断言 (Positive Lookahead)</td>
 <td align="center"><code>\w+(?=ing)</code></td>
-<td align="center">匹配以ing结尾的单词前缀（不包括ing），<code>talking</code>匹配到<code>talk</code></td>
+<td align="center">匹配后面紧跟 <code>ing</code> 的单词前缀，不包括 <code>ing</code> 本身</td>
+<td align="center"><code>talking</code> → <code>talk</code>，<code>singing</code> → <code>sing</code>，<code>king</code> → 不匹配（<code>k</code> 前无 <code>\w+</code>）</td>
 </tr>
 <tr>
+<td align="center">零宽负先行断言 (Negative Lookahead)</td>
 <td align="center"><code>\w+(?!ing)</code></td>
-<td align="center">匹配不是以ing结尾的多个字符，<code>do talking</code>匹配到<code>do</code></td>
+<td align="center">匹配后面不跟 <code>ing</code> 的多个字符</td>
+<td align="center"><code>do talking</code> → <code>do</code>，<code>hello</code> → <code>hello</code>，<code>run</code> → <code>run</code></td>
 </tr>
 <tr>
+<td align="center">零宽正回顾断言 (Positive Lookbehind)</td>
 <td align="center"><code>(?&lt;=re)\w+</code></td>
-<td align="center">匹配以re开头的多个字符（不包括re），<code>redo</code>匹配到<code>do</code></td>
+<td align="center">匹配前面紧跟 <code>re</code> 的多个字符，不包括 <code>re</code> 本身</td>
+<td align="center"><code>redo</code> → <code>do</code>，<code>return</code> → <code>turn</code>，<code>research</code> → <code>search</code></td>
 </tr>
 <tr>
+<td align="center">零宽负回顾断言 (Negative Lookbehind)</td>
 <td align="center"><code>(?&lt;!re)\w+</code></td>
-<td align="center">匹配排除re开头的单词外的其他单词，<code>refreshing wether</code>匹配到<code>weather</code></td>
+<td align="center">匹配前面不是 <code>re</code> 的单词</td>
+<td align="center"><code>refreshing weather</code> → <code>weather</code>，<code>hello world</code> → <code>hello</code>、<code>world</code></td>
 </tr>
 </tbody></table>
-<p>组合起来使用<br><code>(?&lt;=\s)\d+(?=\s)</code> 匹配两边是空白符的数字，不包括空白符，相当于Vim中在单词上按下<code>*</code>号的结果</p>
+<h2 id="组合使用"><a href="#组合使用" class="headerlink" title="组合使用"></a>组合使用</h2><p>零宽断言可以组合起来，同时约束前后条件：</p>
+<p><code>(?&lt;=\s)\d+(?=\s)</code> 匹配两边是空白符的数字，不包括空白符，相当于Vim中在单词上按下<code>*</code>号的结果</p>
+<p>更多组合举例：</p>
+<table>
+<thead>
+<tr>
+<th align="center">示例</th>
+<th align="center">解释</th>
+<th align="center">匹配举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>(?&lt;=\$)\d+</code></td>
+<td align="center">匹配美元符号后面的数字</td>
+<td align="center"><code>$100</code> → <code>100</code>，<code>€50</code> → 不匹配</td>
+</tr>
+<tr>
+<td align="center"><code>\d+(?=%)</code></td>
+<td align="center">匹配百分号前面的数字</td>
+<td align="center"><code>80%</code> → <code>80</code>，<code>100%off</code> → <code>100</code></td>
+</tr>
+<tr>
+<td align="center"><code>(?&lt;=\[)\w+(?=\])</code></td>
+<td align="center">匹配方括号内的内容</td>
+<td align="center"><code>[INFO]</code> → <code>INFO</code>，<code>[ERROR]</code> → <code>ERROR</code></td>
+</tr>
+</tbody></table>
 <p>另外，推荐一个测试正则表达式的网站: <a target="_blank" rel="noopener" href="https://regexr.com/">Regexr</a><br>regex，是正则regular expression的缩写，加上r就当是被正则坑的人的意思吧😂</p>
 
   </div>
@@ -221,7 +257,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E7%A7%8D%E9%9B%B6%E5%AE%BD%E6%96%AD%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">四种零宽断言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%84%E5%90%88%E4%BD%BF%E7%94%A8"><span class="toc-number">2.</span> <span class="toc-text">组合使用</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
